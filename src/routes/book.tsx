@@ -120,34 +120,15 @@ const pressLogos = ["NBT", "mid-day", "NewsTrack", "DailyHunt"];
 
 function BookCover() {
   return (
-    <div className="group relative mx-auto aspect-[2/3] w-full max-w-sm [perspective:1500px]">
-      <div className="absolute -inset-8 rounded-3xl bg-gradient-brand opacity-50 blur-3xl animate-gradient" aria-hidden />
-      <div className="absolute inset-0 rotate-1 rounded-sm bg-night/80 shadow-2xl transition-transform duration-700 group-hover:rotate-2" />
-      <div className="relative flex h-full w-full flex-col justify-between rounded-sm bg-night p-8 text-white shadow-2xl transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(-12deg)_rotateX(4deg)]">
-        <div className="absolute inset-0 bg-gradient-brand opacity-90 animate-gradient" />
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage:
-              "linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)",
-            backgroundSize: "32px 32px",
-          }}
+    <div className="group relative mx-auto w-full max-w-sm">
+      <div className="absolute -inset-6 -z-10 rounded-3xl opacity-60 blur-3xl" style={{ background: "var(--accent-soft)" }} aria-hidden />
+      <div className="relative aspect-2/3 w-full overflow-hidden rounded-2xl border border-rule shadow-lift transition-transform duration-500 group-hover:-translate-y-1">
+        <img
+          src="https://acceleratewithai.in/wp-content/uploads/2023/11/Kindle-cover-1600-x-2500-px-1.jpg"
+          alt="Accelerate with AI - book cover by Ambesh Tiwari"
+          className="h-full w-full object-cover"
+          loading="eager"
         />
-        <div className="relative">
-          <p className="font-mono text-[0.65rem] uppercase tracking-[0.25em] text-white/80">Ambesh Tiwari</p>
-          <div className="mt-6 h-px w-12 bg-white/60" />
-        </div>
-        <h2 className="relative text-5xl font-extrabold leading-[1.0] tracking-tighter md:text-6xl">
-          Accelerate
-          <br />
-          <em className="font-serif italic font-normal">with</em> AI
-        </h2>
-        <div className="relative">
-          <p className="text-xs text-white/80">How to Use AI for Your Business Growth</p>
-          <p className="mt-6 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-white/60">
-            Published 12 Nov 2023
-          </p>
-        </div>
       </div>
     </div>
   );
@@ -157,16 +138,17 @@ function BookPage() {
   return (
     <div className="premium-canvas">
       {/* HERO */}
-      <section className="relative isolate overflow-hidden">
-        <div className="container-edit grid gap-16 pt-20 pb-28 md:grid-cols-12 md:gap-20 md:pt-32">
+      <section className="premium-canvas relative isolate overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-dots opacity-40" aria-hidden />
+        <div className="container-edit grid items-center gap-16 pt-10 pb-16 md:grid-cols-12 md:gap-16 md:pt-14 md:pb-20">
           <div className="md:col-span-7">
             <Reveal>
               <p className="eyebrow">The book</p>
             </Reveal>
             <Reveal delay={100}>
-              <h1 className="mt-6 text-5xl font-extrabold leading-[0.95] tracking-tighter md:text-7xl lg:text-[7rem]">
+              <h1 className="mt-6 font-display text-5xl font-extrabold leading-[0.95] tracking-[-0.03em] text-ink md:text-7xl lg:text-[5.5rem]">
                 Accelerate <br />
-                <span className="text-gradient-brand animate-gradient">with AI.</span>
+                <span className="font-serif italic font-medium">with AI.</span>
               </h1>
             </Reveal>
             <Reveal delay={200}>
@@ -175,20 +157,20 @@ function BookPage() {
               </p>
             </Reveal>
             <Reveal delay={300}>
-              <p className="mt-8 max-w-xl text-xl leading-relaxed text-ink-soft">
+              <p className="mt-8 max-w-xl text-lg leading-relaxed text-ink-soft md:text-xl">
                 A must-read for those who not only want to understand AI but also apply it to scale their
                 business.
               </p>
             </Reveal>
             <Reveal delay={400} className="mt-8 flex flex-wrap items-center gap-3">
-              <span className="inline-flex items-center gap-2 rounded-full border border-amber/40 bg-amber/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-amber">
+              <span className="inline-flex items-center gap-2 rounded-full border border-rule px-4 py-1.5 text-xs font-semibold uppercase tracking-wider" style={{ color: "var(--accent)" }}>
                 <Award className="h-3.5 w-3.5" /> Amazon Bestseller
               </span>
               <span className="text-sm text-ink-muted">Kindle + Physical · English · 2023</span>
             </Reveal>
             <Reveal delay={500} className="mt-10 flex flex-wrap gap-3">
               <a
-                href="https://www.amazon.in/dp/B0CN8L7ZWP"
+                href="https://www.amazon.in/dp/B0CLKZK6JS?ref_=cm_sw_r_cp_ud_dp_YJBSASGYYGPGJ42PBTK2&asin=B0CLKZK6JS&revisionId=7bc12fe7&format=3&depth=1"
                 target="_blank"
                 rel="noreferrer"
                 className="btn-premium inline-flex h-14 items-center gap-2 rounded-full px-8 text-base font-semibold"
@@ -198,7 +180,7 @@ function BookPage() {
                 </span>
               </a>
               <a
-                href="https://www.amazon.in/dp/B0CN8L7ZWP"
+                href="https://www.amazon.in/dp/B0CLKZK6JS?ref_=cm_sw_r_cp_ud_dp_YJBSASGYYGPGJ42PBTK2"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex h-14 items-center gap-2 rounded-full border border-ink/15 bg-canvas px-8 text-base font-semibold text-ink transition-all hover:-translate-y-0.5 hover:border-ink/40"

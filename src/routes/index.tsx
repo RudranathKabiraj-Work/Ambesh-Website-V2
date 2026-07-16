@@ -155,8 +155,8 @@ function HomePage() {
       <section className="premium-canvas relative isolate overflow-hidden">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-dots opacity-40" aria-hidden />
 
-        <div className="container-edit pt-20 pb-24 md:pt-28 md:pb-32">
-          <div className="grid gap-16 lg:grid-cols-12 lg:gap-12">
+        <div className="container-edit pt-10 pb-24 md:pt-14 md:pb-32">
+          <div className="grid items-center gap-16 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-7">
               <Reveal>
                 <span className="inline-flex items-center gap-2 rounded-full border border-rule bg-canvas px-3 py-1 text-xs text-ink-muted">
@@ -348,16 +348,16 @@ function HomePage() {
       <section id="services" className="relative overflow-hidden bg-canvas py-14 md:py-20">
         <div className="tex-dots-soft tex-fade pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
-          <div className="grid gap-12 md:grid-cols-12 md:items-end">
+          <div className="grid gap-8 md:grid-cols-12 md:items-end md:gap-12">
             <Reveal className="md:col-span-7">
               <p className="eyebrow">How Ambesh helps</p>
-              <h2 className="mt-4 font-display text-4xl font-extrabold tracking-[-0.03em] md:text-5xl">
+              <h2 className="mt-4 font-display text-[2rem] font-extrabold leading-[1.1] tracking-[-0.03em] sm:text-4xl md:text-5xl">
                 Build a business that is{" "}
                 <span className="font-serif italic font-medium">easier to manage.</span>
               </h2>
             </Reveal>
             <Reveal delay={100} className="md:col-span-5">
-              <p className="text-lg text-ink-soft">
+              <p className="text-base leading-[1.6] text-ink-soft md:text-lg">
                 Three stages of one coordinated engagement. Ambesh leads the
                 thinking, design and training. BDA Technologies handles
                 technical implementation when required.
@@ -365,22 +365,29 @@ function HomePage() {
             </Reveal>
           </div>
 
-          <div className="mt-16 grid gap-6 lg:grid-cols-3">
+          <div className="mt-10 grid gap-6 md:mt-16 lg:grid-cols-3">
             {services.map((s, i) => (
               <Reveal key={s.title} delay={i * 100}>
-                <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-rule bg-canvas p-8 transition-all duration-300 hover:-translate-y-1 hover:border-ink/30 hover:shadow-lift">
+                <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-rule bg-canvas p-7 transition-all duration-300 hover:-translate-y-1 hover:border-ink/30 hover:shadow-lift md:p-8">
                   <div className="pointer-events-none absolute -top-24 -right-24 h-48 w-48 rounded-full opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-60" style={{ background: "var(--accent-soft)" }} aria-hidden />
+
                   <div className="flex items-center justify-between">
                     <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-rule" style={{ background: "var(--accent-soft)", color: "var(--accent)" }}>
                       <s.icon className="h-5 w-5" />
                     </div>
-                    <span className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-ink-muted">{s.eyebrow}</span>
+                    <span className="font-display text-3xl font-extrabold tracking-tight text-ink/10 md:text-4xl">
+                      {s.eyebrow.split(" - ")[0]}
+                    </span>
                   </div>
-                  <h3 className="mt-7 font-display text-[1.65rem] font-extrabold tracking-[-0.025em] leading-[1.15] text-ink md:text-[1.85rem]">{s.title}</h3>
-                  <p className="mt-4 text-[15px] leading-[1.65] text-ink-soft">{s.desc}</p>
-                  <ul className="mt-6 space-y-2.5">
+
+                  <p className="mt-6 inline-flex w-fit items-center gap-1.5 border-l-2 pl-2.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.15em]" style={{ borderColor: "var(--accent)", color: "var(--accent)" }}>
+                    {s.eyebrow.split(" - ")[1]}
+                  </p>
+                  <h3 className="mt-3 font-display text-2xl font-extrabold tracking-[-0.02em] leading-[1.2] text-ink md:text-[1.85rem]">{s.title}</h3>
+                  <p className="mt-3 text-[15px] leading-[1.65] text-ink-soft md:mt-4">{s.desc}</p>
+                  <ul className="mt-5 space-y-3 md:mt-6">
                     {s.bullets.map((b) => (
-                      <li key={b} className="flex items-start gap-2.5 text-sm text-ink-soft">
+                      <li key={b} className="flex items-start gap-2.5 text-sm leading-[1.5] text-ink-soft">
                         <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" style={{ color: "var(--accent)" }} />
                         <span>{b}</span>
                       </li>
@@ -668,18 +675,13 @@ function HomePage() {
           <div className="grid gap-12 rounded-3xl border border-rule bg-canvas p-8 md:grid-cols-12 md:items-center md:gap-16 md:p-14">
             <Reveal className="md:col-span-5">
               <div className="relative mx-auto w-full max-w-[280px]">
-                <div className="aspect-[2/3] rounded-r-md rounded-l shadow-lift" style={{ background: "linear-gradient(135deg, oklch(0.22 0.04 265) 0%, oklch(0.16 0.012 265) 100%)" }}>
-                  <div className="flex h-full flex-col justify-between p-7 text-canvas">
-                    <p className="font-mono text-[0.6rem] uppercase tracking-[0.3em] text-canvas/50">A book by Ambesh Tiwari</p>
-                    <div>
-                      <p className="font-display text-3xl font-extrabold leading-[1] tracking-[-0.02em]">
-                        Accelerate<br />with{" "}
-                        <span className="font-serif italic font-medium" style={{ color: "var(--accent-soft)" }}>AI</span>
-                      </p>
-                      <div className="mt-4 h-px w-10 bg-canvas/40" />
-                      <p className="mt-3 text-xs text-canvas/70">A simple book for a complicated world.</p>
-                    </div>
-                  </div>
+                <div className="aspect-2/3 overflow-hidden rounded-r-md rounded-l shadow-lift">
+                  <img
+                    src="https://acceleratewithai.in/wp-content/uploads/2023/11/Kindle-cover-1600-x-2500-px-1.jpg"
+                    alt="Accelerate with AI - book cover by Ambesh Tiwari"
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                  />
                 </div>
                 <div className="absolute -bottom-3 -right-3 -z-10 h-full w-full rounded-r-md rounded-l" style={{ background: "var(--accent-soft)" }} aria-hidden />
               </div>
@@ -700,7 +702,7 @@ function HomePage() {
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
-                  href="https://www.amazon.in/dp/B0CN8L7ZWP"
+                  href="https://www.amazon.in/dp/B0CLKZK6JS?ref_=cm_sw_r_cp_ud_dp_YJBSASGYYGPGJ42PBTK2"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-premium group inline-flex h-12 items-center gap-2 rounded-full px-6 text-sm font-semibold"

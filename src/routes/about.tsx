@@ -120,13 +120,13 @@ function AboutPage() {
       {/* HERO */}
       <section className="relative isolate overflow-hidden premium-canvas">
         <div className="absolute inset-0 tex-dots-soft opacity-60" />
-        <div className="container-edit relative grid gap-12 pt-20 pb-24 md:grid-cols-12 md:gap-16 md:pt-28 md:pb-32">
+        <div className="container-edit relative grid items-center gap-12 pt-10 pb-24 md:grid-cols-12 md:gap-16 md:pt-14 md:pb-32">
           <div className="md:col-span-7">
             <Reveal>
               <p className="font-mono text-xs uppercase tracking-[0.25em] text-ink-muted">About</p>
             </Reveal>
             <Reveal delay={100}>
-              <h1 className="mt-6 text-5xl font-extrabold leading-[0.98] tracking-tighter text-ink md:text-7xl lg:text-[6.25rem]">
+              <h1 className="mt-6 font-display text-4xl font-extrabold leading-[1.1] tracking-[-0.03em] text-ink sm:text-5xl md:text-6xl lg:text-[4.25rem] lg:leading-[1.05]">
                 I help founders turn business chaos into systems.
               </h1>
             </Reveal>

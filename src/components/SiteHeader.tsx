@@ -32,9 +32,7 @@ export function SiteHeader() {
     >
       <div className="container-edit flex h-16 items-center justify-between md:h-18">
         <Link to="/" onClick={() => setOpen(false)} className="group flex items-center gap-2.5">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-ink text-[0.7rem] font-extrabold tracking-tight text-canvas">
-            AT
-          </span>
+          <img src="/atlogo.png" alt="Ambesh Tiwari logo" className="h-9 w-9 shrink-0 rounded-lg object-contain" />
           <span className="font-display text-base font-bold tracking-tight text-ink">
             Ambesh Tiwari
           </span>
