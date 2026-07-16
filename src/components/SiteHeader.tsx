@@ -30,7 +30,7 @@ export function SiteHeader() {
           : "border-b border-transparent bg-canvas/60 backdrop-blur-md"
       }`}
     >
-      <div className="container-edit flex h-16 items-center justify-between md:h-18">
+      <div className="container-edit flex h-16 items-center justify-between xl:h-18">
         <Link to="/" onClick={() => setOpen(false)} className="group flex items-center gap-2.5">
           <img src="/atlogo.png" alt="Ambesh Tiwari logo" className="h-9 w-9 shrink-0 rounded-lg object-contain" />
           <span className="font-display text-base font-bold tracking-tight text-ink">
@@ -38,14 +38,14 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav className="hidden items-center gap-1 xl:flex">
           {nav.map((item) => (
             <Link
               key={item.to}
               to={item.to}
               activeProps={{ className: "bg-sand font-semibold text-ink" }}
               inactiveProps={{ className: "text-ink-muted" }}
-              className="rounded-full px-3.5 py-2 text-[14px] font-medium transition-colors hover:text-ink"
+              className="whitespace-nowrap rounded-full px-3.5 py-2 text-[14px] font-medium transition-colors hover:text-ink"
             >
               {item.label}
             </Link>
@@ -54,7 +54,7 @@ export function SiteHeader() {
 
         <a
           href="/contact?service=diagnostic"
-          className="hidden items-center gap-1.5 rounded-full bg-ink px-4 py-2.5 text-[13px] font-semibold text-canvas transition-all hover:-translate-y-0.5 hover:shadow-lift md:inline-flex"
+          className="hidden shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full bg-ink px-4 py-2.5 text-[13px] font-semibold text-canvas transition-all hover:-translate-y-0.5 hover:shadow-lift xl:inline-flex"
         >
           Book a Business Systems Diagnostic <ArrowUpRight className="h-3.5 w-3.5" />
         </a>
@@ -64,7 +64,7 @@ export function SiteHeader() {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="md:hidden"
+          className="xl:hidden"
           aria-label="Toggle menu"
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -72,7 +72,7 @@ export function SiteHeader() {
       </div>
 
       {open && (
-        <div className="border-t border-rule bg-canvas md:hidden">
+        <div className="border-t border-rule bg-canvas xl:hidden">
           <nav className="container-edit flex flex-col gap-1 py-4">
             {nav.map((item) => (
               <Link

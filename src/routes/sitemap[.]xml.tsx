@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import "@tanstack/react-start";
-
-const SITE_URL = "https://ambesh.lovable.app";
+import { SITE_URL } from "@/lib/seo";
 
 const PAGES: { path: string; priority: string; changefreq: string }[] = [
   { path: "/", priority: "1.0", changefreq: "weekly" },
