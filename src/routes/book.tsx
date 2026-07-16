@@ -226,7 +226,7 @@ function BookPage() {
       </section>
 
       {/* WHO IT'S FOR */}
-      <section className="tex-dots-soft py-28">
+      <section className="tex-dots-soft py-16">
         <div className="container-edit">
           <Reveal>
             <p className="eyebrow">Who it is for</p>
@@ -249,7 +249,7 @@ function BookPage() {
       </section>
 
       {/* WHAT THE BOOK COVERS */}
-      <section className="tex-grid py-28">
+      <section className="tex-grid py-16">
         <div className="container-edit">
           <Reveal>
             <p className="eyebrow">Inside the book</p>
@@ -277,7 +277,7 @@ function BookPage() {
       </section>
 
       {/* WHAT EXPERTS SAY */}
-      <section className="tex-diagonal py-28">
+      <section className="tex-diagonal py-16">
         <div className="container-edit">
           <Reveal>
             <p className="eyebrow">What experts say</p>
@@ -326,7 +326,7 @@ function BookPage() {
       </section>
 
       {/* ABOUT THE AUTHOR */}
-      <section className="container-edit py-28">
+      <section className="container-edit py-16">
         <div className="grid gap-12 md:grid-cols-12 md:gap-20">
           <Reveal className="md:col-span-4">
             <p className="eyebrow">About the author</p>

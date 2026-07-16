@@ -308,7 +308,7 @@ function ContactPage() {
       </section>
 
       {/* FAQ */}
-      <section className="relative bg-sand py-28">
+      <section className="relative bg-sand py-16">
         <div className="absolute inset-0 tex-diagonal opacity-80" aria-hidden />
         <div className="container-edit relative grid gap-12 md:grid-cols-12 md:gap-16">
           <Reveal className="md:col-span-4">

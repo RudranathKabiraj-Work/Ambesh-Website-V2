@@ -217,23 +217,38 @@ function HomePage() {
 
             <Reveal delay={200} className="lg:col-span-5">
               <div className="relative">
-                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl border border-rule bg-sand shadow-lift">
+                <div className="group relative aspect-[4/5] w-full overflow-hidden rounded-3xl border border-rule shadow-lift">
+                  <div className="absolute inset-0 bg-black" />
+                  <div
+                    className="absolute inset-0 opacity-15"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)",
+                      backgroundSize: "32px 32px",
+                    }}
+                  />
+                  <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
+                  <div className="absolute -bottom-24 -left-16 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
+
+                  <img
+                    src="https://www.automationschool.in/AmbeshImage.png"
+                    alt="Ambesh Tiwari"
+                    className="absolute bottom-0 left-0 w-full h-auto object-contain object-bottom scale-125 translate-y-8 transition-transform duration-500 group-hover:scale-130 group-hover:translate-y-7 origin-bottom"
+                    loading="eager"
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-black/0" aria-hidden />
                   <div className="absolute inset-0 flex flex-col justify-between p-8">
                     <div className="flex items-center justify-between">
-                      <span className="font-mono text-[0.65rem] uppercase tracking-[0.25em] text-ink-muted">
-                        Portrait · Editorial
-                      </span>
+                      <span className="h-2 w-2 rounded-full" style={{ background: "var(--accent)" }} />
+                      
                       <span className="h-2 w-2 rounded-full" style={{ background: "var(--accent)" }} />
                     </div>
                     <div>
-                      <p className="font-display text-[8rem] font-extrabold leading-[0.85] tracking-[-0.05em] text-ink">
-                        AT
-                      </p>
-                      <div className="mt-6 h-px w-16 bg-ink/30" />
-                      <p className="mt-4 font-serif text-xl italic text-ink-soft">
+                      <div className="h-px w-16 bg-white/40" />
+                      <p className="mt-4 font-serif text-xl italic text-white/90">
                         &ldquo;A business that only runs when the founder pushes it, is a job with extra steps.&rdquo;
                       </p>
-                      <p className="mt-3 font-mono text-[0.65rem] uppercase tracking-[0.25em] text-ink-muted">
+                      <p className="mt-3 font-mono text-[0.65rem] font-bold uppercase tracking-[0.25em] text-white">
                         Ambesh Tiwari
                       </p>
                     </div>
@@ -291,7 +306,7 @@ function HomePage() {
       </section>
 
       {/* PROBLEM */}
-      <section className="relative overflow-hidden bg-sand py-24 md:py-28">
+      <section className="relative overflow-hidden bg-sand py-14 md:py-16">
         <div className="tex-diagonal pointer-events-none absolute inset-0 opacity-60" aria-hidden />
         <div className="container-edit relative">
           <div className="grid gap-12 md:grid-cols-12 md:items-start">
@@ -330,7 +345,7 @@ function HomePage() {
       </section>
 
       {/* SOLUTION / SERVICES */}
-      <section id="services" className="relative overflow-hidden bg-canvas py-24 md:py-32">
+      <section id="services" className="relative overflow-hidden bg-canvas py-14 md:py-20">
         <div className="tex-dots-soft tex-fade pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <div className="grid gap-12 md:grid-cols-12 md:items-end">
@@ -401,7 +416,7 @@ function HomePage() {
       </section>
 
       {/* FOUR-STEP METHOD */}
-      <section className="relative bg-sand py-24 md:py-32">
+      <section className="relative bg-sand py-14 md:py-20">
         <div className="tex-grid tex-fade pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
@@ -431,7 +446,7 @@ function HomePage() {
       </section>
 
       {/* AI TRAINING IN ACTION */}
-      <section className="relative overflow-hidden bg-canvas py-24 md:py-32">
+      <section className="relative overflow-hidden bg-canvas py-14 md:py-20">
         <div className="tex-dots-soft tex-fade pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
@@ -485,7 +500,7 @@ function HomePage() {
       </section>
 
       {/* WHAT THIS LOOKS LIKE INSIDE A REAL BUSINESS */}
-      <section className="relative overflow-hidden bg-sand py-24 md:py-32">
+      <section className="relative overflow-hidden bg-sand py-14 md:py-20">
         <div className="tex-grid-fine tex-fade pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
@@ -519,7 +534,7 @@ function HomePage() {
       </section>
 
       {/* BDA TECHNOLOGIES CLARITY */}
-      <section className="relative overflow-hidden bg-canvas py-24 md:py-32">
+      <section className="relative overflow-hidden bg-canvas py-14 md:py-20">
         <div className="tex-dots-soft tex-fade pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
@@ -582,7 +597,7 @@ function HomePage() {
       </section>
 
       {/* ABOUT */}
-      <section className="relative overflow-hidden bg-sand py-24 md:py-32">
+      <section className="relative overflow-hidden bg-sand py-14 md:py-20">
         <div className="tex-diagonal pointer-events-none absolute inset-0 opacity-70" aria-hidden />
         <div className="container-edit relative">
           <div className="grid gap-12 md:grid-cols-12 md:gap-16">
@@ -631,7 +646,7 @@ function HomePage() {
       </section>
 
       {/* SOCIAL PROOF STAT (no unverified testimonials) */}
-      <section className="relative overflow-hidden bg-canvas py-16 md:py-20">
+      <section className="relative overflow-hidden bg-canvas py-14 md:py-16">
         <div className="tex-noise tex-fade pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit">
           <Reveal>
@@ -647,7 +662,7 @@ function HomePage() {
       </section>
 
       {/* BOOK */}
-      <section className="relative overflow-hidden bg-sand py-24 md:py-32">
+      <section className="relative overflow-hidden bg-sand py-14 md:py-20">
         <div className="tex-grid-fine tex-fade pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <div className="grid gap-12 rounded-3xl border border-rule bg-canvas p-8 md:grid-cols-12 md:items-center md:gap-16 md:p-14">
@@ -739,7 +754,7 @@ function HomePage() {
       <section className="relative overflow-hidden bg-ink text-canvas">
         <div className="pointer-events-none absolute inset-0 opacity-[0.06]" style={{ backgroundImage: "radial-gradient(oklch(1 0 0 / 0.6) 1px, transparent 1px)", backgroundSize: "22px 22px" }} aria-hidden />
         <div className="pointer-events-none absolute -top-40 left-1/2 h-[40rem] w-[40rem] -translate-x-1/2 rounded-full opacity-30 blur-3xl" style={{ background: "var(--accent)" }} aria-hidden />
-        <div className="container-edit relative py-24 md:py-32">
+        <div className="container-edit relative py-14 md:py-20">
           <Reveal>
             <p className="font-mono text-[0.7rem] uppercase tracking-[0.25em] text-canvas/50">
               <Sparkles className="mr-2 inline h-3 w-3" />

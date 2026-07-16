@@ -116,7 +116,7 @@ function ClientsPage() {
       </section>
 
       {/* NAMED ENGAGEMENTS */}
-      <section className="relative overflow-hidden bg-sand py-24 md:py-28">
+      <section className="relative overflow-hidden bg-sand py-14 md:py-16">
         <div className="tex-grid tex-fade pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
@@ -151,7 +151,7 @@ function ClientsPage() {
       </section>
 
       {/* INDUSTRIES */}
-      <section className="relative overflow-hidden bg-canvas py-24 md:py-28">
+      <section className="relative overflow-hidden bg-canvas py-14 md:py-16">
         <div className="container-edit relative">
           <Reveal>
             <p className="eyebrow">Industries</p>
@@ -172,7 +172,7 @@ function ClientsPage() {
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="relative overflow-hidden bg-sand py-24 md:py-28">
+      <section className="relative overflow-hidden bg-sand py-14 md:py-16">
         <div className="container-edit relative">
           <Reveal>
             <p className="eyebrow">In their words</p>
@@ -210,7 +210,7 @@ function ClientsPage() {
 
       {/* CTA */}
       <section className="relative overflow-hidden bg-ink text-canvas">
-        <div className="container-edit relative py-24 md:py-28">
+        <div className="container-edit relative py-14 md:py-16">
           <Reveal>
             <p className="font-mono text-[0.7rem] uppercase tracking-[0.25em] text-canvas/50">
               Join the list

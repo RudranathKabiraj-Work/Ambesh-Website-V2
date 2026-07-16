@@ -177,7 +177,7 @@ function PodcastPage() {
       {/* FEATURED EPISODES */}
       <section className="relative premium-canvas">
         <div className="absolute inset-0 tex-grid tex-fade" aria-hidden />
-        <div className="container-edit relative py-28">
+        <div className="container-edit relative py-16">
           <Reveal>
             <p className="eyebrow">Featured conversations</p>
             <h2 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-6xl">
@@ -227,7 +227,7 @@ function PodcastPage() {
       {/* WHAT WE TALK ABOUT */}
       <section className="relative premium-canvas">
         <div className="absolute inset-0 tex-diagonal tex-fade" aria-hidden />
-        <div className="container-edit relative py-28">
+        <div className="container-edit relative py-16">
           <div className="grid gap-12 md:grid-cols-12">
             <Reveal className="md:col-span-5">
               <p className="eyebrow">What we talk about</p>
@@ -259,7 +259,7 @@ function PodcastPage() {
       {/* ABOUT THE HOST */}
       <section className="relative premium-canvas">
         <div className="absolute inset-0 tex-dots-soft tex-fade" aria-hidden />
-        <div className="container-edit relative py-28">
+        <div className="container-edit relative py-16">
           <div className="grid gap-12 md:grid-cols-12 md:items-center">
             <Reveal className="md:col-span-5">
               <div className="relative aspect-square w-full overflow-hidden rounded-3xl bg-gradient-brand animate-gradient shadow-glow">
@@ -353,7 +353,7 @@ function PodcastPage() {
       {/* CLOSING - GUEST PITCH */}
       <section className="relative premium-canvas">
         <div className="absolute inset-0 tex-grid tex-fade-t" aria-hidden />
-        <div className="container-edit relative py-28 text-center">
+        <div className="container-edit relative py-16 text-center">
           <Reveal>
             <h2 className="mx-auto max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-6xl">
               Got a story <span className="text-gradient-brand animate-gradient">worth sharing?</span>

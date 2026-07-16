@@ -198,7 +198,7 @@ function TrainingPage() {
       </section>
 
       {/* FORMATS */}
-      <section id="formats" className="relative overflow-hidden bg-canvas py-24 md:py-32">
+      <section id="formats" className="relative overflow-hidden bg-canvas py-14 md:py-20">
         <div className="tex-dots-soft tex-fade pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <div className="grid gap-12 md:grid-cols-12 md:items-end">
@@ -256,7 +256,7 @@ function TrainingPage() {
       </section>
 
       {/* NAMED ENGAGEMENTS */}
-      <section className="relative overflow-hidden bg-sand py-24 md:py-32">
+      <section className="relative overflow-hidden bg-sand py-14 md:py-20">
         <div className="tex-grid tex-fade pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
@@ -292,7 +292,7 @@ function TrainingPage() {
       </section>
 
       {/* OUTCOMES */}
-      <section className="relative overflow-hidden bg-canvas py-24 md:py-32">
+      <section className="relative overflow-hidden bg-canvas py-14 md:py-20">
         <div className="tex-dots-soft tex-fade pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
@@ -316,7 +316,7 @@ function TrainingPage() {
       </section>
 
       {/* THEMES */}
-      <section className="relative overflow-hidden bg-sand py-24 md:py-32">
+      <section className="relative overflow-hidden bg-sand py-14 md:py-20">
         <div className="tex-diagonal pointer-events-none absolute inset-0 opacity-70" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
@@ -355,7 +355,7 @@ function TrainingPage() {
       </section>
 
       {/* INDUSTRIES */}
-      <section className="relative overflow-hidden bg-canvas py-24 md:py-32">
+      <section className="relative overflow-hidden bg-canvas py-14 md:py-20">
         <div className="tex-grid-fine tex-fade pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
@@ -387,7 +387,7 @@ function TrainingPage() {
           style={{ background: "var(--accent)" }}
           aria-hidden
         />
-        <div className="container-edit relative py-24 md:py-32">
+        <div className="container-edit relative py-14 md:py-20">
           <Reveal>
             <p className="font-mono text-[0.7rem] uppercase tracking-[0.25em] text-canvas/50">
               <Sparkles className="mr-2 inline h-3 w-3" />

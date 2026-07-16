@@ -202,7 +202,7 @@ function BusinessOSPage() {
       </section>
 
       {/* PILLARS */}
-      <section className="relative overflow-hidden py-24 md:py-32">
+      <section className="relative overflow-hidden py-14 md:py-20">
         <div className="absolute inset-0 tex-dots-soft tex-fade pointer-events-none" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
@@ -251,7 +251,7 @@ function BusinessOSPage() {
       </section>
 
       {/* AUDIENCES */}
-      <section className="container-edit py-24 md:py-32">
+      <section className="container-edit py-14 md:py-20">
         <Reveal>
           <p className="eyebrow">Who this is for</p>
           <h2 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-6xl">
@@ -300,7 +300,7 @@ function BusinessOSPage() {
       </section>
 
       {/* PROCESS */}
-      <section className="relative overflow-hidden bg-sand py-28">
+      <section className="relative overflow-hidden bg-sand py-16">
         <div className="absolute inset-0 tex-grid tex-fade pointer-events-none" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
@@ -326,7 +326,7 @@ function BusinessOSPage() {
       </section>
 
       {/* TRAINING CROSSLINK */}
-      <section className="container-edit py-24">
+      <section className="container-edit py-14">
         <Reveal>
           <div className="grid gap-8 rounded-3xl border border-rule bg-canvas p-8 md:grid-cols-12 md:items-center md:gap-12 md:p-12">
             <div className="md:col-span-7">
@@ -348,7 +348,7 @@ function BusinessOSPage() {
       </section>
 
       {/* FAQ */}
-      <section className="container-edit py-28">
+      <section className="container-edit py-16">
         <div className="grid gap-12 md:grid-cols-12 md:gap-16">
           <Reveal className="md:col-span-4">
             <p className="eyebrow">Common questions</p>
@@ -381,7 +381,7 @@ function BusinessOSPage() {
       {/* CLOSING CTA */}
       <section className="premium-canvas relative isolate overflow-hidden">
         <div className="absolute inset-0 tex-grid tex-fade pointer-events-none" aria-hidden />
-        <div className="container-edit relative py-24 md:py-32 text-center">
+        <div className="container-edit relative py-14 md:py-20 text-center">
           <Reveal><p className="eyebrow">Start with a diagnosis</p></Reveal>
           <Reveal delay={100}>
             <h2 className="mx-auto mt-6 max-w-4xl text-4xl font-extrabold leading-[1.05] tracking-tighter text-ink md:text-6xl">

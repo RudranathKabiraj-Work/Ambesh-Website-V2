@@ -153,7 +153,7 @@ function AboutPage() {
       </section>
 
       {/* PULL QUOTE */}
-      <section className="relative bg-canvas py-24 md:py-32">
+      <section className="relative bg-canvas py-14 md:py-20">
         <div className="absolute inset-0 tex-grid opacity-40" />
         <div className="container-edit relative">
           <Reveal>
@@ -170,7 +170,7 @@ function AboutPage() {
       </section>
 
       {/* THE STORY - editorial narrative */}
-      <section className="relative bg-sand py-28 md:py-32">
+      <section className="relative bg-sand py-14 md:py-16">
         <div className="absolute inset-0 tex-diagonal opacity-50" />
         <div className="container-edit relative grid gap-12 md:grid-cols-12">
           <Reveal className="md:col-span-4">
@@ -204,7 +204,7 @@ function AboutPage() {
       </section>
 
       {/* WHAT HE BELIEVES */}
-      <section className="relative bg-canvas py-28 md:py-32">
+      <section className="relative bg-canvas py-14 md:py-16">
         <div className="container-edit">
           <Reveal>
             <p className="eyebrow">What he believes</p>
@@ -230,7 +230,7 @@ function AboutPage() {
       </section>
 
       {/* THREE ROLES */}
-      <section className="relative bg-sand py-28 md:py-32">
+      <section className="relative bg-sand py-14 md:py-16">
         <div className="absolute inset-0 tex-dots-soft opacity-50" />
         <div className="container-edit relative">
           <Reveal>
@@ -263,7 +263,7 @@ function AboutPage() {
       </section>
 
       {/* JOURNEY */}
-      <section className="relative bg-canvas py-28 md:py-32">
+      <section className="relative bg-canvas py-14 md:py-16">
         <div className="container-edit">
           <Reveal>
             <p className="eyebrow">The journey</p>
@@ -289,7 +289,7 @@ function AboutPage() {
       </section>
 
       {/* WHAT HE HAS BUILT */}
-      <section className="relative bg-sand py-28 md:py-32">
+      <section className="relative bg-sand py-14 md:py-16">
         <div className="absolute inset-0 tex-grid opacity-40" />
         <div className="container-edit relative">
           <Reveal>
@@ -330,7 +330,7 @@ function AboutPage() {
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="relative bg-canvas py-28 md:py-32">
+      <section className="relative bg-canvas py-14 md:py-16">
         <div className="container-edit">
           <Reveal>
             <p className="eyebrow">What people say</p>
@@ -362,7 +362,7 @@ function AboutPage() {
       </section>
 
       {/* A FEW THINGS WORTH KNOWING */}
-      <section className="relative bg-sand py-24 md:py-28">
+      <section className="relative bg-sand py-14 md:py-16">
         <div className="container-edit grid gap-12 md:grid-cols-12">
           <Reveal className="md:col-span-5">
             <p className="eyebrow">A few things worth knowing</p>
@@ -385,7 +385,7 @@ function AboutPage() {
       </section>
 
       {/* CLOSING CTA */}
-      <section className="relative isolate overflow-hidden premium-canvas py-28 md:py-36">
+      <section className="relative isolate overflow-hidden premium-canvas py-14 md:py-16">
         <div className="absolute inset-0 tex-dots-soft opacity-60" />
         <div className="container-edit relative text-center">
           <Reveal>
