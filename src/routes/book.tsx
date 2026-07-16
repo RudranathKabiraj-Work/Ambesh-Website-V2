@@ -1,0 +1,405 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowUpRight, BookOpen, Mail, Award, ShoppingBag } from "lucide-react";
+import { Reveal } from "@/components/Reveal";
+import { buildMeta, jsonLd, breadcrumbSchema, SITE_URL, DEFAULT_OG_IMAGE } from "@/lib/seo";
+
+export const Route = createFileRoute("/book")({
+  head: () => {
+    const m = buildMeta({
+      path: "/book",
+      title: "Accelerate with AI - Book by Ambesh Tiwari",
+      description:
+        "Accelerate with AI: a simple book for a complicated world. By Ambesh Tiwari. Amazon bestseller. Available on Kindle and in print.",
+      keywords:
+        "Accelerate with AI book, Ambesh Tiwari book, AI book for professionals, AI book India, AI for business owners book",
+      ogType: "book",
+    });
+    return {
+      ...m,
+      scripts: [
+        jsonLd({
+          "@context": "https://schema.org",
+          "@type": "Book",
+          name: "Accelerate with AI",
+          alternateName: "Accelerate with AI: A Simple Book for a Complicated World",
+          author: { "@type": "Person", name: "Ambesh Tiwari", url: SITE_URL },
+          inLanguage: "en",
+          datePublished: "2023-11-12",
+          bookFormat: ["https://schema.org/EBook", "https://schema.org/Paperback"],
+          image: DEFAULT_OG_IMAGE,
+          url: `${SITE_URL}/book`,
+          description:
+            "A practical guide for business owners, founders and professionals on using AI to scale their work.",
+          offers: {
+            "@type": "Offer",
+            url: "https://www.amazon.in/dp/B0CN8L7ZWP",
+            availability: "https://schema.org/InStock",
+            priceCurrency: "INR",
+          },
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: "4.6",
+            reviewCount: "120",
+            bestRating: "5",
+            worstRating: "1",
+          },
+        }),
+        jsonLd(
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Book", path: "/book" },
+          ]),
+        ),
+      ],
+    };
+  },
+  component: BookPage,
+});
+
+const audiences = [
+  {
+    t: "Business owners and founders",
+    b: "Who know AI matters but do not know where to start. A framework for thinking about AI as a business decision, not a technology decision.",
+    c: "from-violet to-pink",
+  },
+  {
+    t: "Team leads and managers",
+    b: "Who need to help their teams adopt AI without disrupting what already works. Practical chapters on implementation, not theory.",
+    c: "from-pink to-amber",
+  },
+  {
+    t: "Professionals building their career",
+    b: "Who want to be the person on their team who actually understands AI - not the one who is still thinking about it.",
+    c: "from-amber to-cyan",
+  },
+];
+
+const takeaways = [
+  "How AI is transforming industries and what it means for your business",
+  "How to navigate the AI tool landscape and pick what actually matters",
+  "How to use AI to personalise customer experiences",
+  "Common adoption challenges and how to work through them",
+  "Where AI is heading and what to watch",
+  "Real-world applications from automation to customer insights",
+  "How to build an AI strategy that aligns with your business goals",
+  "Using AI for better data-driven decisions",
+  "Ethical considerations that actually matter in practice",
+  "How to build a scalable, AI-powered business model",
+];
+
+const featuredEndorsement = {
+  name: "William Koehler, Ph.D.",
+  role: "Dean, Sloane School of Business & Communication, Regis College, Massachusetts, USA",
+  q: "In his timely new book, Accelerate with AI, growth consultant and entrepreneur Ambesh Tiwari has provided something the business world sorely needs: a strategically focused, practical, and accessible guide to the myriad ways in which firms of all sizes can harness artificial intelligence to be more efficient and effective.",
+};
+
+const endorsements = [
+  {
+    name: "Madhu C Dutta-Koehler, PhD, MIT",
+    role: "Founder and President, The Greener Health Corp.",
+    q: "If businesses want to leverage AI to get ahead, Ambesh Tiwari's insights and takeaways are certainly a fundamental stepping stone in this field.",
+  },
+  {
+    name: "Aditya Lohia",
+    role: "Executive Director, Lohia Industries (P) Ltd.",
+    q: "Ambesh has done an excellent job in making everyone aware of the fact that AI is not for the corporate houses only but of every businessperson.",
+  },
+  {
+    name: "Shyam Sunder",
+    role: "AI Researcher, CSIR-CEERI, Pilani",
+    q: "The academic world often dwells on theory, but Ambesh's book is a refreshing pivot to action. It translates high-level concepts into actionable strategies that can be implemented from day one.",
+  },
+  {
+    name: "Prabhat Sinha",
+    role: "IT Expert, Entrepreneur & Best-selling Author",
+    q: "In the book Accelerate with AI, Ambesh has tried to accumulate some highly effective AI tools, tips and tricks at one place for business owners.",
+  },
+];
+
+const pressLogos = ["NBT", "mid-day", "NewsTrack", "DailyHunt"];
+
+function BookCover() {
+  return (
+    <div className="group relative mx-auto aspect-[2/3] w-full max-w-sm [perspective:1500px]">
+      <div className="absolute -inset-8 rounded-3xl bg-gradient-brand opacity-50 blur-3xl animate-gradient" aria-hidden />
+      <div className="absolute inset-0 rotate-1 rounded-sm bg-night/80 shadow-2xl transition-transform duration-700 group-hover:rotate-2" />
+      <div className="relative flex h-full w-full flex-col justify-between rounded-sm bg-night p-8 text-white shadow-2xl transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(-12deg)_rotateX(4deg)]">
+        <div className="absolute inset-0 bg-gradient-brand opacity-90 animate-gradient" />
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage:
+              "linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)",
+            backgroundSize: "32px 32px",
+          }}
+        />
+        <div className="relative">
+          <p className="font-mono text-[0.65rem] uppercase tracking-[0.25em] text-white/80">Ambesh Tiwari</p>
+          <div className="mt-6 h-px w-12 bg-white/60" />
+        </div>
+        <h2 className="relative text-5xl font-extrabold leading-[1.0] tracking-tighter md:text-6xl">
+          Accelerate
+          <br />
+          <em className="font-serif italic font-normal">with</em> AI
+        </h2>
+        <div className="relative">
+          <p className="text-xs text-white/80">How to Use AI for Your Business Growth</p>
+          <p className="mt-6 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-white/60">
+            Published 12 Nov 2023
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function BookPage() {
+  return (
+    <div className="premium-canvas">
+      {/* HERO */}
+      <section className="relative isolate overflow-hidden">
+        <div className="container-edit grid gap-16 pt-20 pb-28 md:grid-cols-12 md:gap-20 md:pt-32">
+          <div className="md:col-span-7">
+            <Reveal>
+              <p className="eyebrow">The book</p>
+            </Reveal>
+            <Reveal delay={100}>
+              <h1 className="mt-6 text-5xl font-extrabold leading-[0.95] tracking-tighter md:text-7xl lg:text-[7rem]">
+                Accelerate <br />
+                <span className="text-gradient-brand animate-gradient">with AI.</span>
+              </h1>
+            </Reveal>
+            <Reveal delay={200}>
+              <p className="mt-6 font-serif text-2xl italic leading-snug text-ink-soft md:text-3xl">
+                A simple book for a complicated world.
+              </p>
+            </Reveal>
+            <Reveal delay={300}>
+              <p className="mt-8 max-w-xl text-xl leading-relaxed text-ink-soft">
+                A must-read for those who not only want to understand AI but also apply it to scale their
+                business.
+              </p>
+            </Reveal>
+            <Reveal delay={400} className="mt-8 flex flex-wrap items-center gap-3">
+              <span className="inline-flex items-center gap-2 rounded-full border border-amber/40 bg-amber/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-amber">
+                <Award className="h-3.5 w-3.5" /> Amazon Bestseller
+              </span>
+              <span className="text-sm text-ink-muted">Kindle + Physical · English · 2023</span>
+            </Reveal>
+            <Reveal delay={500} className="mt-10 flex flex-wrap gap-3">
+              <a
+                href="https://www.amazon.in/dp/B0CN8L7ZWP"
+                target="_blank"
+                rel="noreferrer"
+                className="btn-premium inline-flex h-14 items-center gap-2 rounded-full px-8 text-base font-semibold"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  Read on Kindle <ArrowUpRight className="h-4 w-4" />
+                </span>
+              </a>
+              <a
+                href="https://www.amazon.in/dp/B0CN8L7ZWP"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex h-14 items-center gap-2 rounded-full border border-ink/15 bg-canvas px-8 text-base font-semibold text-ink transition-all hover:-translate-y-0.5 hover:border-ink/40"
+              >
+                <ShoppingBag className="h-4 w-4" /> Get a Physical Copy
+              </a>
+            </Reveal>
+          </div>
+          <Reveal delay={300} className="md:col-span-5">
+            <BookCover />
+          </Reveal>
+        </div>
+
+        {/* Press strip */}
+        <div className="border-y border-rule bg-canvas/60 backdrop-blur">
+          <div className="container-edit flex flex-wrap items-center justify-center gap-x-12 gap-y-3 py-6 text-ink-muted">
+            <span className="font-mono text-[0.65rem] uppercase tracking-[0.25em]">As featured on</span>
+            {pressLogos.map((p) => (
+              <span key={p} className="font-serif text-lg italic">
+                {p}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHO IT'S FOR */}
+      <section className="tex-dots-soft py-28">
+        <div className="container-edit">
+          <Reveal>
+            <p className="eyebrow">Who it is for</p>
+            <h2 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-6xl">
+              Written for people who <span className="text-gradient-brand animate-gradient">do real work.</span>
+            </h2>
+          </Reveal>
+          <div className="mt-16 grid gap-6 md:grid-cols-3">
+            {audiences.map((x, i) => (
+              <Reveal key={x.t} delay={i * 100}>
+                <div className="group h-full rounded-3xl border border-rule bg-canvas p-8 transition-all hover:-translate-y-1 hover:shadow-glow">
+                  <div className={`h-1 w-12 rounded-full bg-gradient-to-r ${x.c}`} />
+                  <h3 className="mt-6 text-2xl font-extrabold tracking-tight">{x.t}</h3>
+                  <p className="mt-4 text-base text-ink-muted">{x.b}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHAT THE BOOK COVERS */}
+      <section className="tex-grid py-28">
+        <div className="container-edit">
+          <Reveal>
+            <p className="eyebrow">Inside the book</p>
+            <h2 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-6xl">
+              10 things this book will{" "}
+              <span className="text-gradient-brand animate-gradient">teach you.</span>
+            </h2>
+            <p className="mt-4 max-w-2xl text-lg text-ink-muted">10 clear takeaways.</p>
+          </Reveal>
+          <div className="mt-12 grid gap-3 md:grid-cols-2">
+            {takeaways.map((t, i) => (
+              <Reveal key={t} delay={(i % 4) * 60}>
+                <div className="group flex items-start gap-5 rounded-2xl border border-rule bg-canvas p-5 transition-all hover:-translate-y-0.5 hover:border-transparent hover:shadow-glow">
+                  <span className="font-mono text-sm text-ink-muted">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <p className="text-lg font-semibold tracking-tight transition-colors group-hover:text-violet">
+                    {t}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHAT EXPERTS SAY */}
+      <section className="tex-diagonal py-28">
+        <div className="container-edit">
+          <Reveal>
+            <p className="eyebrow">What experts say</p>
+            <h2 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-6xl">
+              The people who <span className="text-gradient-brand animate-gradient">read it first.</span>
+            </h2>
+          </Reveal>
+
+          {/* Featured endorsement */}
+          <Reveal delay={150} className="mt-12">
+            <div className="relative overflow-hidden rounded-3xl border border-rule bg-canvas p-10 shadow-lift md:p-14">
+              <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-gradient-brand opacity-20 blur-3xl" />
+              <p className="font-mono text-[0.65rem] uppercase tracking-[0.25em] text-ink-muted">
+                Featured endorsement
+              </p>
+              <p className="mt-6 font-serif text-2xl italic leading-snug text-ink md:text-3xl">
+                "{featuredEndorsement.q}"
+              </p>
+              <div className="mt-8 flex items-center gap-4">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-brand font-mono text-sm font-bold text-white">
+                  WK
+                </div>
+                <div>
+                  <p className="text-lg font-bold tracking-tight">{featuredEndorsement.name}</p>
+                  <p className="text-sm text-ink-muted">{featuredEndorsement.role}</p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Other endorsements */}
+          <div className="mt-6 grid gap-6 md:grid-cols-2">
+            {endorsements.map((e, i) => (
+              <Reveal key={e.name} delay={i * 80}>
+                <div className="h-full rounded-3xl border border-rule bg-canvas p-8 transition-all hover:-translate-y-1 hover:shadow-glow">
+                  <p className="font-serif text-lg italic leading-snug text-ink">"{e.q}"</p>
+                  <div className="mt-6">
+                    <p className="text-base font-bold tracking-tight">{e.name}</p>
+                    <p className="text-sm text-ink-muted">{e.role}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT THE AUTHOR */}
+      <section className="container-edit py-28">
+        <div className="grid gap-12 md:grid-cols-12 md:gap-20">
+          <Reveal className="md:col-span-4">
+            <p className="eyebrow">About the author</p>
+          </Reveal>
+          <Reveal delay={150} className="md:col-span-8">
+            <p className="text-2xl font-medium leading-relaxed tracking-tight text-ink md:text-3xl">
+              Ambesh Tiwari is the founder of BDA Technologies, host of the{" "}
+              <em className="font-serif italic">Inspire with Ambesh</em> podcast, and an AI trainer who has
+              worked with{" "}
+              <span className="text-gradient-brand animate-gradient">5,000+ professionals</span> across 50+
+              organisations in India, UAE and Africa. He blends an engineering background with an MBA in
+              International Marketing, a decade of business building, and a practical, no-hype approach to
+              AI that comes from using it in his own work every day.
+            </p>
+            <Link
+              to="/about"
+              className="mt-8 inline-flex items-center gap-2 text-base font-semibold text-violet hover:text-pink"
+            >
+              Read the full story <ArrowUpRight className="h-4 w-4" />
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* CLOSING CTA */}
+      <section className="container-edit pb-24">
+        <Reveal>
+          <div className="overflow-hidden rounded-3xl bg-night p-12 text-white md:p-16">
+            <div className="grid gap-10 md:grid-cols-2 md:items-center">
+              <div>
+                <p className="font-mono text-xs uppercase tracking-[0.25em] text-white/50">Free</p>
+                <h3 className="mt-4 text-4xl font-extrabold leading-tight tracking-tighter md:text-5xl">
+                  Get <span className="text-gradient-brand animate-gradient">Chapter 1</span> on us.
+                </h3>
+                <p className="mt-4 text-white/70">
+                  Drop your email. We'll send the first chapter as a PDF - and an invite to the next AI
+                  training cohort.
+                </p>
+                <Link
+                  to="/training"
+                  className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white/80 hover:text-white"
+                >
+                  <BookOpen className="h-4 w-4" /> Or explore AI Knowledge programs
+                </Link>
+              </div>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const email = (new FormData(e.currentTarget).get("email") as string) || "";
+                  window.location.href = `mailto:hello@ambesh.com?subject=Send%20me%20Chapter%201&body=Please%20send%20Chapter%201%20to%20${encodeURIComponent(email)}`;
+                }}
+                className="flex flex-col gap-3 sm:flex-row"
+              >
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  placeholder="you@company.com"
+                  className="h-14 flex-1 rounded-full border border-white/15 bg-white/5 px-6 text-white placeholder:text-white/40 focus:border-white/40 focus:outline-none"
+                />
+                <button
+                  type="submit"
+                  className="btn-premium inline-flex h-14 items-center justify-center gap-2 rounded-full px-7 text-base font-semibold"
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                    <Mail className="h-4 w-4" /> Send it
+                  </span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </Reveal>
+      </section>
+    </div>
+  );
+}

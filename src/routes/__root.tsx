@@ -1,0 +1,107 @@
+import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
+import { StickyCTABar } from "@/components/StickyCTABar";
+import { useReveal } from "@/hooks/use-reveal";
+import {
+  SITE_URL,
+  jsonLd,
+  personSchema,
+  organizationSchema,
+} from "@/lib/seo";
+
+import appCss from "../styles.css?url";
+
+function NotFoundComponent() {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-canvas px-4">
+      <div className="max-w-md text-center">
+        <p className="eyebrow">Error 404</p>
+        <h1 className="mt-6 text-7xl font-extrabold tracking-tighter">
+          <span className="text-gradient-brand">404</span>
+        </h1>
+        <p className="mt-4 text-sm text-ink-muted">
+          The page you're looking for doesn't exist or has been moved.
+        </p>
+        <Link
+          to="/"
+          className="mt-8 inline-flex h-11 items-center justify-center rounded-full bg-gradient-brand px-6 text-sm font-semibold text-white animate-gradient"
+        >
+          Return home
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+export const Route = createRootRoute({
+  head: () => ({
+    meta: [
+      { charSet: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "theme-color", content: "#0A0A0F" },
+      { name: "format-detection", content: "telephone=no" },
+      { httpEquiv: "x-ua-compatible", content: "IE=edge" },
+
+      // Geo / locale signals (helpful for India-focused queries)
+      { name: "geo.region", content: "IN-DL" },
+      { name: "geo.placename", content: "Delhi" },
+      { name: "language", content: "English" },
+
+      // Sensible site-wide defaults - every leaf route overrides title/description
+      { title: "Ambesh Tiwari - AI Trainer for Corporate Teams & Founders" },
+      {
+        name: "description",
+        content:
+          "Ambesh Tiwari is one of India's leading AI trainers. He has trained 5,000+ professionals across 50+ organisations in 11 industries.",
+      },
+      { property: "og:title", content: "Ambesh Tiwari - AI Trainer for Corporate Teams & Founders" },
+      { name: "twitter:title", content: "Ambesh Tiwari - AI Trainer for Corporate Teams & Founders" },
+      { name: "description", content: "Ambesh helps companies turn confused, overloaded teams into confident, AI-ready professionals using practical Agentic AI systems they can apply from day one." },
+      { property: "og:description", content: "Ambesh helps companies turn confused, overloaded teams into confident, AI-ready professionals using practical Agentic AI systems they can apply from day one." },
+      { name: "twitter:description", content: "Ambesh helps companies turn confused, overloaded teams into confident, AI-ready professionals using practical Agentic AI systems they can apply from day one." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/zfDSuVYBGngYqKphABVIppoL25e2/social-images/social-1776622875929-Ambesh__AI_Portfolio_2024_(1080_x_1080_px).webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/zfDSuVYBGngYqKphABVIppoL25e2/social-images/social-1776622875929-Ambesh__AI_Portfolio_2024_(1080_x_1080_px).webp" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:type", content: "website" },
+    ],
+    links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", href: "/favicon.ico" },
+      { rel: "alternate", hrefLang: "en", href: SITE_URL },
+      { rel: "alternate", hrefLang: "x-default", href: SITE_URL },
+    ],
+    scripts: [jsonLd(personSchema), jsonLd(organizationSchema)],
+  }),
+  shellComponent: RootShell,
+  component: RootComponent,
+  notFoundComponent: NotFoundComponent,
+});
+
+function RootShell({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <HeadContent />
+      </head>
+      <body>
+        {children}
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+
+function RootComponent() {
+  useReveal();
+  return (
+    <div className="flex min-h-screen flex-col bg-canvas text-ink">
+      <SiteHeader />
+      <main className="flex-1">
+        <Outlet />
+      </main>
+      <SiteFooter />
+      <StickyCTABar />
+    </div>
+  );
+}

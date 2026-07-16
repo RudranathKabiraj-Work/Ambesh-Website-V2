@@ -1,0 +1,22 @@
+# Ambesh Tiwari
+
+> Ambesh Tiwari is a Business Operating Systems consultant, AI trainer, author and founder of BDA Technologies. He helps founder-led businesses reduce founder dependency through clear SOPs, workflows, reporting systems and practical AI processes. Consulting and training are led by Ambesh personally; technical implementation is delivered by the team at BDA Technologies.
+
+Ambesh Tiwari is based in Delhi, India. He works with founder-led businesses across India, the UAE and Africa. He personally leads the business diagnostic, leadership discussions, process and workflow design, SOP architecture, reporting and accountability structure, AI adoption strategy, team training and major reviews. The BDA Technologies team implements the dashboards, workflows, automations, integrations and AI tools when required. He has trained 5,000+ professionals across 50+ organisations in 11 industries, and is the author of Accelerate with AI and host of the Inspire with Ambesh podcast.
+
+## Pages
+
+- [Home](/): Business Systems Consultant, AI Trainer and founder of BDA Technologies. Helps founder-led businesses build clear systems and use AI in daily work.
+- [About](/about): Background, story, beliefs and the three roles Ambesh plays as entrepreneur, builder and teacher.
+- [Business OS](/services): Consulting engagement that installs SOPs, workflows, reporting and AI-enabled execution for founder-led businesses.
+- [AI Training](/training): Practical AI training for leadership teams, departments and full teams. Formats, outcomes and organisations served.
+- [Clients](/clients): Selected AI training engagements and business systems implementation work.
+- [Book](/book): Accelerate with AI, a practical book on AI adoption for professionals and teams.
+- [Podcast](/podcast): Inspire with Ambesh, conversations with founders and operators building with systems and AI.
+- [Contact](/contact): Book a free 30-minute Business Systems Diagnostic.
+
+## Optional
+
+- [Privacy Policy](/privacy): How visitor and client data is collected, used and protected.
+- [Terms of Use](/terms): Terms for using the website and engaging with services.
+- [Refund Policy](/refund): Refund and cancellation terms for training and consulting engagements.
