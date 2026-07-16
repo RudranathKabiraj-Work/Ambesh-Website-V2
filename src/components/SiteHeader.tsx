@@ -43,7 +43,7 @@ export function SiteHeader() {
             <Link
               key={item.to}
               to={item.to}
-              activeProps={{ className: "text-ink" }}
+              activeProps={{ className: "bg-sand font-semibold text-ink" }}
               inactiveProps={{ className: "text-ink-muted" }}
               className="rounded-full px-3.5 py-2 text-[14px] font-medium transition-colors hover:text-ink"
             >
@@ -79,7 +79,9 @@ export function SiteHeader() {
                 key={item.to}
                 to={item.to}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-4 py-3 text-base font-medium text-ink hover:bg-sand"
+                activeProps={{ className: "bg-sand font-semibold text-ink" }}
+                inactiveProps={{ className: "text-ink" }}
+                className="rounded-lg px-4 py-3 text-base font-medium hover:bg-sand"
               >
                 {item.label}
               </Link>

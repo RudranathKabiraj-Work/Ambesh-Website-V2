@@ -96,7 +96,7 @@ const builds = [
   { name: "BDA Technologies", year: "2017", desc: "AI transformation and growth agency. The home base.", link: "bdatechnologies.com", href: "https://bdatechnologies.com" },
   { name: "Automation School", year: "2023", desc: "Online learning for professionals. Structured courses on AI and automation.", link: "automationschool.in", href: "https://automationschool.in" },
   { name: "LinkAssist", year: "2025", desc: "AI-powered LinkedIn authority building.", link: "linkassist.ai", href: "https://linkassist.ai" },
-  { name: "HireAssist", year: "2025", desc: "AI assistant for recruitment workflows.", link: "hireassist.co.in", href: "https://hireassist.co.in" },
+  { name: "HireAssist", year: "2025", desc: "AI assistant for recruitment workflows.", link: "hireassist.org", href: "https://hireassist.org" },
   { name: "TaskAssist", year: "2025", desc: "AI productivity tool for overwhelmed professionals.", link: "Coming soon", href: "#" },
 ];
 

@@ -14,9 +14,7 @@ export function SiteFooter() {
     { l: "About", to: "/about" as const },
     { l: "Business OS", to: "/services" as const },
     { l: "AI Training", to: "/training" as const },
-    { l: "Clients", to: "/clients" as const },
     { l: "Book", to: "/book" as const },
-    { l: "Podcast", to: "/podcast" as const },
     { l: "Contact", to: "/contact" as const },
   ];
 
@@ -25,7 +23,7 @@ export function SiteFooter() {
     { l: "Accelerate with AI", h: "https://acceleratewithai.in" },
     { l: "Automation School", h: "https://automationschool.in" },
     { l: "LinkAssist.ai", h: "https://linkassist.ai" },
-    { l: "HireAssist.co.in", h: "https://hireassist.co.in" },
+    { l: "HireAssist.org", h: "https://hireassist.org" },
   ];
 
 
@@ -37,9 +35,7 @@ export function SiteFooter() {
           {/* Brand block */}
           <div className="md:col-span-5">
             <div className="flex items-center gap-2.5">
-              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-ink text-[0.7rem] font-extrabold text-canvas">
-                AT
-              </span>
+              <img src="/atlogo.png" alt="Ambesh Tiwari logo" className="h-9 w-9 shrink-0 rounded-lg object-contain" />
               <span className="font-display text-base font-bold tracking-tight text-ink">
                 Ambesh Tiwari
               </span>
