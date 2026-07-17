@@ -64,12 +64,15 @@ const heroStats = [
 ];
 
 const proofLogos = [
-  "Landmark Group",
-  "ICSI Delhi",
-  "Ministry of Finance, Tanzania",
-  "Indian School of Business",
+  { name: "Landmark Group", src: "/logos/landmark-group.png" },
+  { name: "Institute of Chartered Accountants of India", src: "/logos/icai.png" },
+  { name: "Ministry of Finance, Tanzania", src: "/logos/tanzania-mof.png" },
+  { name: "Indian School of Business", src: "/logos/isb.png" },
+  { name: "Thrive Global", src: "/logos/thrive-global.svg" },
+  { name: "Navbharat Times", src: "/logos/navbharat-times.png" },
+  { name: "NewsTrack", src: "/logos/newstrack.jpg" },
+  { name: "Dailyhunt", src: "/logos/dailyhunt.svg" },
 ];
-const mediaLogos = ["Thrive Global", "Navbharat Times", "DailyHunt", "NewsTrack"];
 
 const problems = [
   "You still approve too many small decisions",
@@ -282,23 +285,19 @@ function HomePage() {
               Trusted by teams at leading organisations across India, UAE and Africa.
             </p>
           </Reveal>
-          <div className="mt-8 space-y-6">
+          <div className="mt-8">
             <Marquee
               fade={32}
-              speed={55}
+              speed={60}
               items={proofLogos.map((l) => (
-                <span key={l} className="font-display text-lg font-bold tracking-tight text-ink/55 transition-colors hover:text-ink sm:text-xl">
-                  {l}
-                </span>
-              ))}
-            />
-            <Marquee
-              fade={32}
-              speed={65}
-              items={mediaLogos.map((l) => (
-                <span key={l} className="font-serif text-base italic text-ink-muted/70 transition-colors hover:text-ink sm:text-lg">
-                  {l}
-                </span>
+                <img
+                  key={l.name}
+                  src={l.src}
+                  alt={l.name}
+                  title={l.name}
+                  className="h-8 w-auto object-contain opacity-80 transition-opacity hover:opacity-100 sm:h-10"
+                  loading="lazy"
+                />
               ))}
             />
           </div>
