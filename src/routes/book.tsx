@@ -147,8 +147,8 @@ function BookPage() {
             </Reveal>
             <Reveal delay={100}>
               <h1 className="mt-6 font-display text-5xl font-extrabold leading-[0.95] tracking-[-0.03em] text-ink md:text-7xl lg:text-[5.5rem]">
-                Accelerate <br />
-                <span className="font-serif italic font-medium">with AI.</span>
+                Accelerate <br/>
+                <span className="text-gradient-brand">With AI.</span>
               </h1>
             </Reveal>
             <Reveal delay={200}>

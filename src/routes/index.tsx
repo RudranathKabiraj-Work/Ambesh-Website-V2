@@ -172,7 +172,7 @@ function HomePage() {
                     <span className="font-serif italic font-medium text-ink">systems,</span>
                     <span className="absolute -bottom-1 left-0 h-[3px] w-full rounded-full" style={{ background: "var(--accent)" }} />
                   </span>{" "}
-                  not stress.
+                  <span className="text-gradient-brand animate-gradient">not stress.</span>
                 </h1>
               </Reveal>
 
@@ -231,9 +231,9 @@ function HomePage() {
                   <div className="absolute -bottom-24 -left-16 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
 
                   <img
-                    src="https://www.automationschool.in/AmbeshImage.png"
+                    src="/ambesh-tiwari.jpg"
                     alt="Ambesh Tiwari"
-                    className="absolute bottom-0 left-0 w-full h-auto object-contain object-bottom scale-125 translate-y-8 transition-transform duration-500 group-hover:scale-130 group-hover:translate-y-7 origin-bottom"
+                    className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                     loading="eager"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-black/0" aria-hidden />
@@ -692,7 +692,8 @@ function HomePage() {
                 <BookOpen className="h-3 w-3" /> The Book
               </p>
               <h2 className="mt-4 font-display text-4xl font-extrabold tracking-[-0.03em] md:text-5xl">
-                Accelerate with AI
+                Accelerate  
+                <span className="text-gradient-brand"> With AI</span>
               </h2>
               <p className="mt-3 font-serif text-xl italic text-ink-soft">A simple book for a complicated world.</p>
               <p className="mt-6 max-w-xl text-[17px] leading-[1.65] text-ink-soft">

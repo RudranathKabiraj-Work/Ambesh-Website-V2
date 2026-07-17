@@ -150,7 +150,7 @@ function TrainingPage() {
           <Reveal delay={80}>
             <h1 className="mt-5 max-w-4xl font-display text-[2.4rem] font-extrabold leading-[1.05] tracking-[-0.03em] text-ink sm:text-5xl md:text-6xl lg:text-[4rem]">
               Corporate AI training that turns{" "}
-              <span className="font-serif italic font-medium">
+              <span className="font-serif italic font-medium text-gradient-brand animate-gradient">
                 confusion into daily use.
               </span>
             </h1>

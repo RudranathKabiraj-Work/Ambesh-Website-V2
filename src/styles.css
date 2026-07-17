@@ -281,7 +281,7 @@
   /* Premium blue-black button */
   .btn-premium {
     position: relative;
-    background: var(--btn-blue-black);
+    background: var(--gradient-brand);
     background-size: 200% 200%;
     color: var(--canvas);
     overflow: hidden;

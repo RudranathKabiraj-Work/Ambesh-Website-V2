@@ -82,7 +82,7 @@ const roles = [
 ];
 
 const journey = [
-  { year: "Bihar", t: "Where it started", d: "Grew up in a middle-class family. Curious, restless, never quite fit the mould. Tried joining the Indian Army. Did not make it. Kept the discipline." },
+  { year: "Small Town", t: "Where it started", d: "Grew up in a middle-class family. Curious, restless, never quite fit the mould. Tried joining the Indian Army. Did not make it. Kept the discipline." },
   { year: "Engineering + MBA", t: "Building the foundation", d: "BTech in Electronics and Telecommunication (BPUT, Odisha). MBA in International Marketing (Symbiosis, Pune). Brand Management from the University of London." },
   { year: "Zen Technologies", t: "First corporate chapter", d: "Three promotions in three years. Trained defence and police teams on simulators. Discovered a talent for business development. Resigned to build something of his own." },
   { year: "2017", t: "BDA Technologies", d: "Founded Building Digital Arena in Delhi. A growth and digital transformation agency. StartupIndia recognised. Google, Meta and Shopify partnerships." },
@@ -98,6 +98,7 @@ const builds = [
   { name: "LinkAssist", year: "2025", desc: "AI-powered LinkedIn authority building.", link: "linkassist.ai", href: "https://linkassist.ai" },
   { name: "HireAssist", year: "2025", desc: "AI assistant for recruitment workflows.", link: "hireassist.org", href: "https://hireassist.org" },
   { name: "TaskAssist", year: "2025", desc: "AI productivity tool for overwhelmed professionals.", link: "Coming soon", href: "#" },
+  { name: "BDA OS", year: "2026", desc: "An AI-powered business operating system designed to streamline workflows, automate operations, and help organizations scale with intelligent processes.", link: "Coming soon", href: "https://bdatechnologies.com" },
 ];
 
 const placeholderTestimonials = [
@@ -107,7 +108,7 @@ const placeholderTestimonials = [
 ];
 
 const knowables = [
-  "Grew up in small-town Bihar. The first person in many rooms who understands both sides of the technology divide.",
+  "Grew up in small-town. The first person in many rooms who understands both sides of the technology divide.",
   "Three promotions in three years at his first job. Then he quit to build his own thing. That tells you something about how he thinks.",
   "Tried joining the Indian Army. Multiple times. Did not make it. Kept the discipline. Named his company's logo colour dark olive green because of it.",
   "He believes the best way to learn AI is to build something useless with it first. The useful things come later.",
@@ -123,11 +124,12 @@ function AboutPage() {
         <div className="container-edit relative grid items-center gap-12 pt-10 pb-24 md:grid-cols-12 md:gap-16 md:pt-14 md:pb-32">
           <div className="md:col-span-7">
             <Reveal>
-              <p className="font-mono text-xs uppercase tracking-[0.25em] text-ink-muted">About</p>
+              <p className="eyebrow">About</p>
             </Reveal>
             <Reveal delay={100}>
               <h1 className="mt-6 font-display text-4xl font-extrabold leading-[1.1] tracking-[-0.03em] text-ink sm:text-5xl md:text-6xl lg:text-[4.25rem] lg:leading-[1.05]">
-                I help founders turn business chaos into systems.
+                I help founders turn business chaos{" "}
+                <span className="text-gradient-brand animate-gradient">into systems.</span>
               </h1>
             </Reveal>
             <Reveal delay={250}>
@@ -177,7 +179,7 @@ function AboutPage() {
             <div className="md:sticky md:top-28">
               <p className="eyebrow">The story</p>
               <h2 className="mt-4 font-serif text-3xl font-semibold leading-[1.1] tracking-tight text-ink md:text-4xl">
-                From Bihar to building across{" "}
+                From small town to building across{" "}
                 <em className="text-gradient-brand animate-gradient">three continents.</em>
               </h2>
             </div>
@@ -268,7 +270,7 @@ function AboutPage() {
           <Reveal>
             <p className="eyebrow">The journey</p>
             <h2 className="mt-4 max-w-3xl font-serif text-4xl font-semibold leading-[1.05] tracking-tight text-ink md:text-6xl">
-              From Bihar to training teams across{" "}
+              From small town to training teams across{" "}
               <span className="text-gradient-brand animate-gradient italic">three continents.</span>
             </h2>
           </Reveal>

@@ -35,7 +35,7 @@ export function SiteFooter() {
           {/* Brand block */}
           <div className="md:col-span-5">
             <div className="flex items-center gap-2.5">
-              <img src="/atlogo.png" alt="Ambesh Tiwari logo" className="h-9 w-9 shrink-0 rounded-lg object-contain" />
+              <img src="/atlogo.jpeg" alt="Ambesh Tiwari logo" className="h-9 w-9 shrink-0 rounded-lg object-contain" />
               <span className="font-display text-base font-bold tracking-tight text-ink">
                 Ambesh Tiwari
               </span>
@@ -65,7 +65,7 @@ export function SiteFooter() {
 
           {/* Pages */}
           <div className="md:col-span-3">
-            <p className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-ink-muted">
+            <p className="eyebrow">
               Pages
             </p>
             <ul className="mt-5 grid grid-cols-2 gap-2.5 text-sm md:grid-cols-1">
@@ -81,7 +81,7 @@ export function SiteFooter() {
 
           {/* Brands */}
           <div className="md:col-span-4">
-            <p className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-ink-muted">
+            <p className="eyebrow">
               Brands
             </p>
             <ul className="mt-5 space-y-2.5 text-sm">
@@ -118,10 +118,6 @@ export function SiteFooter() {
           <div className="text-center md:text-left">
             <p>
               © {new Date().getFullYear()} Ambesh Tiwari. All rights reserved.
-            </p>
-            <p className="mt-1 text-[11px] text-ink-muted/80">
-              Business and implementation engagements are contracted and
-              delivered through BDA Technologies Pvt. Ltd.
             </p>
           </div>
           <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 md:justify-end">

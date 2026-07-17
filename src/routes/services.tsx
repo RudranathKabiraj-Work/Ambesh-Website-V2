@@ -141,9 +141,9 @@ const audiences = {
 } as const;
 
 const process = [
-  { step: "01", title: "Diagnose", body: "A structured 2-week diagnosis of the business. Founder interviews, team interviews, workflow audit. You get an honest picture of where the business is stuck." },
+  { step: "01", title: "Audit", body: "A structured 2-week diagnosis of the business. Founder interviews, team interviews, workflow audit. You get an honest picture of where the business is stuck." },
   { step: "02", title: "Design", body: "The Operating System is designed for your business. Sales, delivery, operations and hiring workflows, with AI leverage installed where it earns its keep. Nothing generic." },
-  { step: "03", title: "Install", body: "The OS is installed inside the team. Documented, trained and running. Leadership is aligned. Existing tools are used where they work, replaced only when they do not." },
+  { step: "03", title: "Build", body: "The OS is built and customized for your business. Documented, trained and running. Leadership is aligned. Existing tools are used where they work, replaced only when they do not." },
   { step: "04", title: "Adopt", body: "30 and 60 day adoption check-ins. The team is trained on the OS. The business is handed over to run and improve without ongoing dependency on Ambesh." },
 ];
 
@@ -157,10 +157,10 @@ function BusinessOSPage() {
       {/* HERO */}
       <section className="premium-canvas relative isolate overflow-hidden">
         <div className="absolute inset-0 tex-dots-soft tex-fade pointer-events-none" aria-hidden />
-        <div className="container-edit relative pt-20 pb-24 md:pt-32 md:pb-32">
+        <div className="container-edit relative pt-20 pb-20 md:pt-28 md:pb-24">
           <Reveal><p className="eyebrow">Business OS</p></Reveal>
           <Reveal delay={100}>
-            <h1 className="mt-6 max-w-5xl text-5xl font-extrabold leading-[0.98] tracking-tighter text-ink md:text-7xl lg:text-[6rem]">
+            <h1 className="mt-6 max-w-5xl font-display text-[2.4rem] font-extrabold leading-[1.05] tracking-[-0.03em] text-ink sm:text-5xl md:text-6xl lg:text-[4.25rem]">
               Build the operating system your business needs{" "}
               <span className="text-gradient-brand">before it can scale.</span>
             </h1>
