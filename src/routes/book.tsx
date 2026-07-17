@@ -1,7 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
+import type { FormEvent } from "react";
 import { ArrowUpRight, BookOpen, Mail, Award, ShoppingBag } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { buildMeta, jsonLd, breadcrumbSchema, SITE_URL, DEFAULT_OG_IMAGE } from "@/lib/seo";
+import { submitLeadToGHL } from "@/lib/ghl";
 
 export const Route = createFileRoute("/book")({
   head: () => {
@@ -140,6 +143,28 @@ function BookCover() {
 }
 
 function BookPage() {
+  const submitChapterLeadFn = useServerFn(submitLeadToGHL);
+
+  async function onChapterSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const email = (new FormData(e.currentTarget).get("email") as string) || "";
+
+    try {
+      await submitChapterLeadFn({
+        data: {
+          name: email.split("@")[0] || "Book reader",
+          email,
+          serviceLabel: "Book - Chapter 1 request",
+          pageUrl: window.location.href,
+        },
+      });
+    } catch (error) {
+      console.error("GHL sync failed:", error);
+    }
+
+    window.location.href = `mailto:hello@ambesh.com?subject=Send%20me%20Chapter%201&body=Please%20send%20Chapter%201%20to%20${encodeURIComponent(email)}`;
+  }
+
   return (
     <div className="premium-canvas">
       {/* HERO */}
@@ -364,14 +389,7 @@ function BookPage() {
                   <BookOpen className="h-4 w-4" /> Or explore AI Knowledge programs
                 </Link>
               </div>
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  const email = (new FormData(e.currentTarget).get("email") as string) || "";
-                  window.location.href = `mailto:hello@ambesh.com?subject=Send%20me%20Chapter%201&body=Please%20send%20Chapter%201%20to%20${encodeURIComponent(email)}`;
-                }}
-                className="flex flex-col gap-3 sm:flex-row"
-              >
+              <form onSubmit={onChapterSubmit} className="flex flex-col gap-3 sm:flex-row">
                 <input
                   type="email"
                   name="email"

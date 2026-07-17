@@ -1,9 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import { useEffect, useState, type FormEvent } from "react";
-import { ArrowUpRight, Calendar, Clock, ShieldCheck, Sparkles, Plus, Minus, Mail, MessageCircle } from "lucide-react";
+import { ArrowUpRight, Calendar, Clock, ShieldCheck, Sparkles, Plus, Minus, Mail, MessageCircle, CheckCircle2, X } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { buildMeta, jsonLd, breadcrumbSchema, faqSchema, SITE_URL } from "@/lib/seo";
 import { whatsappUrl, WA_MESSAGES } from "@/lib/wa";
+import { submitLeadToGHL } from "@/lib/ghl";
 
 const faqs = [
   { q: "What happens after submitting the form?", a: "You will get a reply within 24 hours, usually with 2 to 3 calendar slots for a 30-minute discovery call." },
@@ -82,7 +84,7 @@ function readQuery() {
 
 function ContactPage() {
   const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [service, setService] = useState("");
   const [type, setType] = useState("");
@@ -109,39 +111,66 @@ function ContactPage() {
             : WA_MESSAGES.contact;
 
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  const submitLeadFn = useServerFn(submitLeadToGHL);
+
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const form = e.currentTarget;
     setSubmitting(true);
-    const data = new FormData(e.currentTarget);
-    const lines = [
-      `Name: ${data.get("name")}`,
-      `Company: ${data.get("company")}`,
-      `Designation: ${data.get("designation")}`,
-      `Team size: ${data.get("teamSize")}`,
-      `Preferred format: ${data.get("format")}`,
-      `Timeline: ${data.get("timeline")}`,
-      serviceLabel ? `Interested in: ${serviceLabel}` : "",
-      isPodcast ? "Type: Podcast guest pitch" : "",
-      "",
-      "Where time is being lost:",
-      String(data.get("challenge") || ""),
-    ].filter(Boolean);
-    const subjectPrefix = isPodcast
-      ? "Podcast guest pitch"
-      : serviceLabel
-        ? `${serviceLabel} inquiry`
-        : "Inquiry";
-    const subject = `${subjectPrefix} - ${data.get("company")}`;
-    window.location.href = `mailto:hello@ambesh.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
-    setSubmitted(true);
-    setTimeout(() => setSubmitting(false), 1500);
+    const data = new FormData(form);
+    const name = String(data.get("name") || "");
+    const email = String(data.get("email") || "");
+    const company = String(data.get("company") || "");
+    const designation = String(data.get("designation") || "");
+    const teamSize = String(data.get("teamSize") || "");
+    const format = String(data.get("format") || "");
+    const timeline = String(data.get("timeline") || "");
+    const challenge = String(data.get("challenge") || "");
+
+    try {
+      await submitLeadFn({
+        data: {
+          name,
+          email,
+          company,
+          designation,
+          teamSize,
+          format,
+          timeline,
+          challenge,
+          serviceLabel: isPodcast ? "Podcast guest pitch" : serviceLabel,
+          pageUrl: window.location.href,
+        },
+      });
+    } catch (error) {
+      console.error("GHL sync failed:", error);
+    }
+
+    form.reset();
+    setShowSuccessModal(true);
+    setSubmitting(false);
   }
 
   const heroHeading = isPodcast
-    ? "Pitch a conversation for the podcast."
+    ? (
+      <>
+        Pitch a conversation{" "}
+        <span className="text-gradient-brand animate-gradient">for the podcast.</span>
+      </>
+    )
     : service === "diagnostic"
-      ? "Let's diagnose your business."
-      : "Let's build the system your business needs.";
+      ? (
+        <>
+          Let's diagnose{" "}
+          <span className="text-gradient-brand animate-gradient">your business.</span>
+        </>
+      )
+      : (
+        <>
+          Let's build the system{" "}
+          <span className="text-gradient-brand animate-gradient">your business needs.</span>
+        </>
+      );
   const heroSub = isPodcast
     ? "Tell us about you, the story, and why now. If it is a fit, we will set up a recording."
     : "Free 30-minute Business Systems Diagnostic. No pitch deck. A practical diagnosis of where the business is stuck and what the next 90 days should focus on.";
@@ -151,12 +180,12 @@ function ContactPage() {
       {/* HERO */}
       <section className="premium-canvas relative isolate overflow-hidden">
         <div className="absolute inset-0 tex-dots-soft tex-fade opacity-70" aria-hidden />
-        <div className="container-edit relative pt-24 pb-20 md:pt-36 md:pb-28">
+        <div className="container-edit relative pt-12 pb-16 md:pt-16 md:pb-20">
           <Reveal>
             <p className="eyebrow">Contact</p>
           </Reveal>
           <Reveal delay={100}>
-            <h1 className="mt-6 max-w-5xl text-5xl font-extrabold leading-[0.95] tracking-tighter md:text-7xl lg:text-[5.5rem]">
+            <h1 className="mt-6 max-w-5xl font-display text-[2.4rem] font-extrabold leading-[1.05] tracking-[-0.03em] text-ink sm:text-5xl md:text-6xl lg:text-[4.25rem]">
               {heroHeading}
             </h1>
           </Reveal>
@@ -202,6 +231,7 @@ function ContactPage() {
 
                 <div className="grid gap-5 sm:grid-cols-2">
                   <Field label="Your name" name="name" required />
+                  <Field label="Email" name="email" type="email" required />
                   <Field label="Company" name="company" required />
                   <Field label="Designation" name="designation" required />
                   <SelectField label="Team size" name="teamSize" options={["1 to 10", "10 to 50", "50 to 200", "200 to 1,000", "1,000+"]} />
@@ -227,21 +257,9 @@ function ContactPage() {
                   disabled={submitting}
                   className="btn-premium group mt-8 inline-flex h-14 w-full items-center justify-center gap-2 rounded-full text-base font-semibold disabled:opacity-60"
                 >
-                  {submitting ? "Opening email..." : "Send inquiry"}
+                  {submitting ? "Sending..." : "Send inquiry"}
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </button>
-
-                {submitted && (
-                  <a
-                    href={whatsappUrl(waMessage)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full border border-rule bg-sand px-5 py-3 text-sm font-semibold text-ink transition hover:bg-sand-deep"
-                  >
-                    <MessageCircle className="h-4 w-4" />
-                    Prefer WhatsApp? Message Ambesh directly
-                  </a>
-                )}
 
                 <p className="mt-4 text-center text-xs text-ink-muted">
                   We respond within 24 hours. NDA available on request.
@@ -351,18 +369,62 @@ function ContactPage() {
           </div>
         </div>
       </section>
+
+      {showSuccessModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-ink/50 p-4 backdrop-blur-sm"
+          onClick={() => setShowSuccessModal(false)}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-md rounded-3xl border border-rule bg-canvas p-8 text-center shadow-lift"
+          >
+            <button
+              onClick={() => setShowSuccessModal(false)}
+              aria-label="Close"
+              className="absolute right-5 top-5 flex h-8 w-8 items-center justify-center rounded-full text-ink-muted transition hover:bg-sand hover:text-ink"
+            >
+              <X className="h-4 w-4" />
+            </button>
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gradient-brand-soft">
+              <CheckCircle2 className="h-8 w-8 text-accent" />
+            </div>
+            <h3 className="mt-5 text-2xl font-extrabold tracking-tight">Inquiry sent!</h3>
+            <p className="mt-3 text-base text-ink-muted">
+              ✅ Thank you! Your inquiry has been submitted successfully. We'll get in touch with you shortly.
+            </p>
+            <div className="mt-7 flex flex-col gap-3">
+              <a
+                href={whatsappUrl(waMessage)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-[#25D366] text-sm font-semibold text-white transition hover:opacity-90"
+              >
+                <MessageCircle className="h-4 w-4" />
+                Message on WhatsApp
+              </a>
+              <button
+                onClick={() => setShowSuccessModal(false)}
+                className="text-sm font-semibold text-ink-muted transition hover:text-ink"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
 
-function Field({ label, name, required }: { label: string; name: string; required?: boolean }) {
+function Field({ label, name, required, type = "text" }: { label: string; name: string; required?: boolean; type?: string }) {
   return (
     <div>
       <label className="mb-2 block text-xs font-semibold uppercase tracking-wider text-ink-muted font-mono-label">
         {label}
       </label>
       <input
-        type="text"
+        type={type}
         name={name}
         required={required}
         className="h-12 w-full rounded-xl border border-rule bg-canvas px-4 text-base transition-all focus:border-accent focus:outline-none focus:ring-4 focus:ring-accent/15"
