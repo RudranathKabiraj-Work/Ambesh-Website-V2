@@ -12,7 +12,7 @@ export const Route = createFileRoute("/clients")({
       description:
         "Selected engagements across India, UAE and Africa. Corporate teams, professional bodies, and government programs served by Ambesh Tiwari.",
       keywords:
-        "Ambesh Tiwari clients, corporate AI training clients India, Landmark Group AI, ICSI AI training, Ministry of Finance Tanzania",
+        "Ambesh Tiwari clients, corporate AI training clients India, Landmark Group AI, ICAI AI training, Ministry of Finance Tanzania",
     });
     return {
       ...m,
@@ -44,7 +44,7 @@ const heroStats = [
 
 const engagements = [
   { name: "Landmark Group", location: "Dubai, UAE", format: "Corporate AI and automation training", tag: "Retail" },
-  { name: "ICSI", location: "Delhi, India", format: "AI session for CS professionals", tag: "Professional body" },
+  { name: "NICASA of NIRC of ICAI", location: "New Delhi, India", format: "AI session for CA professionals", tag: "Professional body" },
   { name: "Ministry of Finance", location: "Dar es Salaam, Tanzania", format: "Government AI adoption program", tag: "Government" },
   { name: "Indian School of Business", location: "Hyderabad, India", format: "AI for executives session", tag: "Business school" },
 ];
@@ -55,8 +55,12 @@ const industries = [
 ];
 
 const logos = [
-  "Landmark Group", "ICSI Delhi", "Ministry of Finance, Tanzania",
-  "Indian School of Business", "Automation School", "LinkAssist",
+  { name: "Landmark Group", src: "/logos/landmark-group.png" },
+  { name: "Institute of Chartered Accountants of India", src: "/logos/icai.png" },
+  { name: "Ministry of Finance, Tanzania", src: "/logos/tanzania-mof.png" },
+  { name: "Indian School of Business", src: "/logos/isb.png" },
+  { name: "Automation School", src: "/logos/automation-school.png" },
+  { name: "LinkAssist", src: "/logos/linkassist.png" },
 ];
 
 const testimonials = [
@@ -107,9 +111,14 @@ function ClientsPage() {
             fade={32}
             speed={55}
             items={logos.map((l) => (
-              <span key={l} className="font-display text-lg font-bold tracking-tight text-ink/55 sm:text-xl">
-                {l}
-              </span>
+              <img
+                key={l.name}
+                src={l.src}
+                alt={l.name}
+                title={l.name}
+                className="h-8 w-auto object-contain opacity-80 transition-opacity hover:opacity-100 sm:h-10"
+                loading="lazy"
+              />
             ))}
           />
         </div>

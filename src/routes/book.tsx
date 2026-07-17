@@ -116,7 +116,12 @@ const endorsements = [
   },
 ];
 
-const pressLogos = ["NBT", "mid-day", "NewsTrack", "DailyHunt"];
+const pressLogos = [
+  { name: "Navbharat Times", src: "/logos/navbharat-times.png" },
+  { name: "Mid-day", src: "/logos/mid-day.png" },
+  { name: "NewsTrack", src: "/logos/newstrack.jpg" },
+  { name: "Dailyhunt", src: "/logos/dailyhunt-icon.png" },
+];
 
 function BookCover() {
   return (
@@ -199,9 +204,14 @@ function BookPage() {
           <div className="container-edit flex flex-wrap items-center justify-center gap-x-12 gap-y-3 py-6 text-ink-muted">
             <span className="font-mono text-[0.65rem] uppercase tracking-[0.25em]">As featured on</span>
             {pressLogos.map((p) => (
-              <span key={p} className="font-serif text-lg italic">
-                {p}
-              </span>
+              <img
+                key={p.name}
+                src={p.src}
+                alt={p.name}
+                title={p.name}
+                className="h-7 w-auto object-contain opacity-80 transition-opacity hover:opacity-100"
+                loading="lazy"
+              />
             ))}
           </div>
         </div>

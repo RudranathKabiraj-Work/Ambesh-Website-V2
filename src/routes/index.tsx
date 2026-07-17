@@ -71,7 +71,7 @@ const proofLogos = [
   { name: "Thrive Global", src: "/logos/thrive-global.svg" },
   { name: "Navbharat Times", src: "/logos/navbharat-times.png" },
   { name: "NewsTrack", src: "/logos/newstrack.jpg" },
-  { name: "Dailyhunt", src: "/logos/dailyhunt.svg" },
+  { name: "Dailyhunt", src: "/logos/dailyhunt-icon.png" },
 ];
 
 const problems = [
@@ -128,9 +128,9 @@ const steps = [
 ];
 
 const trainingPhotos = [
-  { tag: "Workshop", caption: "Landmark Group, Dubai - Corporate AI and automation training" },
-  { tag: "Professional body", caption: "ICSI, Delhi - AI session for CS professionals" },
-  { tag: "Government", caption: "Ministry of Finance, Tanzania - Government AI enablement" },
+  { tag: "Workshop", caption: "Landmark Group, Dubai - Corporate AI and automation training", src: "/training/landmark-group-dubai.jpg" },
+  { tag: "Professional body", caption: "NICASA of NIRC of ICAI, New Delhi - AI session for CA professionals", src: "/training/icai-nirc-new-delhi.jpg" },
+  { tag: "Government", caption: "Ministry of Finance, Tanzania - Government AI enablement", src: "/training/ministry-of-finance-tanzania.jpg" },
 ];
 
 const insideExamples = [
@@ -482,8 +482,13 @@ function HomePage() {
               <Reveal key={p.caption} delay={i * 100}>
                 <figure className="group overflow-hidden rounded-2xl border border-rule bg-canvas">
                   <div className="relative aspect-[4/3] overflow-hidden bg-ink">
-                    <div className="absolute inset-0 opacity-60" style={{ backgroundImage: "linear-gradient(135deg, oklch(0.22 0.04 265) 0%, oklch(0.16 0.012 265) 100%)" }} />
-                    <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(oklch(1 0 0 / 0.5) 1px, transparent 1px)", backgroundSize: "16px 16px" }} />
+                    <img
+                      src={p.src}
+                      alt={p.caption}
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/10 to-black/0" aria-hidden />
                     <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
                       <span className="rounded-full bg-canvas/95 px-3 py-1 text-[0.65rem] font-mono uppercase tracking-[0.18em] text-ink">{p.tag}</span>
                       <span className="font-display text-2xl font-extrabold text-canvas/30">0{i + 1}</span>
