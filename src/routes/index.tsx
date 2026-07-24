@@ -64,14 +64,25 @@ const heroStats = [
 ];
 
 const proofLogos = [
-  { name: "Landmark Group", src: "/logos/landmark-group.png" },
-  { name: "Institute of Chartered Accountants of India", src: "/logos/icai.png" },
-  { name: "Ministry of Finance, Tanzania", src: "/logos/tanzania-mof.png" },
-  { name: "Indian School of Business", src: "/logos/isb.png" },
+  { name: "Mid-day", src: "/logos/mid-day.png" },
+  // { name: "Landmark Group", src: "/logos/landmark-group.png" },
+  // { name: "Institute of Chartered Accountants of India", src: "/logos/icai.png" },
+  // { name: "Ministry of Finance, Tanzania", src: "/logos/tanzania-mof.png" },
+  // { name: "Indian School of Business", src: "/logos/isb.png" },
   { name: "Thrive Global", src: "/logos/thrive-global.svg" },
   { name: "Navbharat Times", src: "/logos/navbharat-times.png" },
   { name: "NewsTrack", src: "/logos/newstrack.jpg" },
-  { name: "Dailyhunt", src: "/logos/dailyhunt-icon.png" },
+  { name: "Dailyhunt", src: "/logos/dailyhunt-full.png" },
+  { name: "Disrupt", src: "/logos/disrupt.png" },
+];
+
+const acronymItems = [
+  { letter: "A", title: "Artificial Intelligence" },
+  { letter: "M", title: "Marketing" },
+  { letter: "B", title: "Business Operations" },
+  { letter: "E", title: "Entrepreneurship" },
+  { letter: "S", title: "Systems" },
+  { letter: "H", title: "Human Potential" },
 ];
 
 const problems = [
@@ -164,37 +175,35 @@ function HomePage() {
               <Reveal>
                 <span className="inline-flex items-center gap-2 rounded-full border border-rule bg-canvas px-3 py-1 text-xs text-ink-muted">
                   <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--accent)" }} />
-                  Business Systems Consultant · AI Trainer · Founder of BDA Technologies
+                  AI Trainer · Author · Entrepreneur
                 </span>
               </Reveal>
 
               <Reveal delay={80}>
                 <h1 className="mt-6 font-display text-[2.4rem] font-extrabold leading-[1.05] tracking-[-0.03em] text-ink sm:text-5xl md:text-6xl lg:text-[4.25rem]">
-                  Your business should run on{" "}
+                  I make AI simple and help{" "}
                   <span className="relative inline-block">
-                    <span className="font-serif italic font-medium text-ink">systems,</span>
+                    <span className="font-serif italic font-medium text-ink">businesses</span>
                     <span className="absolute -bottom-1 left-0 h-[3px] w-full rounded-full" style={{ background: "var(--accent)" }} />
                   </span>{" "}
-                  <span className="text-gradient-brand animate-gradient">not stress.</span>
+                  <span className="text-gradient-brand animate-gradient">work better.</span>
                 </h1>
               </Reveal>
 
               <Reveal delay={150}>
                 <p className="mt-8 max-w-2xl text-lg leading-[1.6] text-ink-soft md:text-xl">
-                  I help founder-led businesses build clear SOPs, workflows and
-                  reporting systems so the team can work without waiting for the
-                  founder every day. I also help teams use AI in their daily work.
+                  I train teams to use AI in real work, help founders improve how work gets done, and build practical tools that reduce manual work.
                 </p>
               </Reveal>
 
-              <Reveal delay={220}>
+              {/* <Reveal delay={220}>
                 <p className="mt-6 max-w-2xl text-sm text-ink-muted">
                   Founder of <span className="font-semibold text-ink">BDA Technologies</span>.
                   Author of <span className="font-semibold text-ink">Accelerate with AI</span>.
                   Builder of <span className="font-semibold text-ink">LinkAssist</span>.
                   AI trainer to <span className="font-semibold text-ink">5,000+</span> professionals.
                 </p>
-              </Reveal>
+              </Reveal> */}
 
               <Reveal delay={280}>
                 <div className="mt-10 flex flex-col items-start gap-3">
@@ -243,7 +252,7 @@ function HomePage() {
                   <div className="absolute inset-0 flex flex-col justify-between p-8">
                     <div className="flex items-center justify-between">
                       <span className="h-2 w-2 rounded-full" style={{ background: "var(--accent)" }} />
-                      
+
                       <span className="h-2 w-2 rounded-full" style={{ background: "var(--accent)" }} />
                     </div>
                     <div>
@@ -263,7 +272,7 @@ function HomePage() {
           </div>
 
           {/* Stats */}
-          <div className="mt-20 grid gap-px overflow-hidden rounded-2xl border border-rule bg-rule sm:grid-cols-2 lg:grid-cols-4">
+          {/* <div className="mt-20 grid gap-px overflow-hidden rounded-2xl border border-rule bg-rule sm:grid-cols-2 lg:grid-cols-4">
             {heroStats.map((s, i) => (
               <Reveal key={s.l} delay={i * 80}>
                 <div className="h-full bg-canvas p-6 transition-colors hover:bg-sand">
@@ -272,7 +281,7 @@ function HomePage() {
                 </div>
               </Reveal>
             ))}
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -282,7 +291,7 @@ function HomePage() {
         <div className="container-edit">
           <Reveal>
             <p className="text-center text-sm text-ink-muted">
-              Trusted by teams at leading organisations across India, UAE and Africa.
+              Featured In
             </p>
           </Reveal>
           <div className="mt-8">
@@ -295,11 +304,55 @@ function HomePage() {
                   src={l.src}
                   alt={l.name}
                   title={l.name}
-                  className="h-8 w-auto object-contain opacity-80 transition-opacity hover:opacity-100 sm:h-10"
+                  className="h-10 w-auto object-contain opacity-80 transition-opacity hover:opacity-100 sm:h-14"
                   loading="lazy"
                 />
               ))}
             />
+          </div>
+        </div>
+      </section>
+
+      {/* AMBESH AT A GLANCE */}
+      <section className="relative border-b border-rule bg-canvas py-16 md:py-24">
+        <div className="container-edit">
+          <div className="max-w-3xl">
+            <Reveal>
+              <p className="eyebrow">Overview</p>
+              <h2 className="mt-4 font-display text-3xl font-extrabold tracking-[-0.03em] md:text-4xl text-ink">
+                Ambesh at a Glance
+              </h2>
+            </Reveal>
+            <Reveal delay={100}>
+              <p className="mt-6 text-lg text-ink-soft leading-relaxed">
+                For more than a decade, I have worked across business development, sales, marketing, operations, technology and entrepreneurship.
+              </p>
+              <p className="mt-3 text-sm text-ink-muted font-medium">
+                Today, my work sits at the intersection of these areas:
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6 lg:gap-6">
+            {acronymItems.map((item, index) => (
+              <Reveal key={item.letter} delay={150 + index * 50}>
+                <div className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-rule bg-sand/30 p-6 text-center transition-all duration-500 ease-out hover:-translate-y-2 hover:scale-[1.02] hover:border-accent hover:bg-canvas hover:shadow-lift h-full min-h-[160px] md:min-h-[180px]">
+                  {/* Diagonal sweeping shine animation */}
+                  <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/80 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-full pointer-events-none" />
+
+                  <div className="flex-1 flex items-center justify-center">
+                    <span className="font-display text-6xl font-black tracking-tight text-ink transition-all duration-500 ease-out group-hover:scale-115 group-hover:text-accent select-none md:text-7xl">
+                      {item.letter}
+                    </span>
+                  </div>
+                  <div className="mt-3 flex items-center justify-center h-12 relative z-10">
+                    <span className="font-sans text-[0.7rem] font-bold uppercase tracking-wider text-ink-soft md:text-[0.75rem] leading-tight transition-colors duration-500 group-hover:text-ink">
+                      {item.title}
+                    </span>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
@@ -422,7 +475,7 @@ function HomePage() {
       </section>
 
       {/* FOUR-STEP METHOD */}
-      <section className="relative bg-sand py-14 md:py-20">
+      {/* <section className="relative bg-sand py-14 md:py-20">
         <div className="tex-grid tex-fade pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
@@ -449,7 +502,7 @@ function HomePage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* AI TRAINING IN ACTION */}
       <section className="relative overflow-hidden bg-canvas py-14 md:py-20">
@@ -696,7 +749,7 @@ function HomePage() {
                 <BookOpen className="h-3 w-3" /> The Book
               </p>
               <h2 className="mt-4 font-display text-4xl font-extrabold tracking-[-0.03em] md:text-5xl">
-                Accelerate  
+                Accelerate
                 <span className="text-gradient-brand"> With AI</span>
               </h2>
               <p className="mt-3 font-serif text-xl italic text-ink-soft">A simple book for a complicated world.</p>
@@ -727,7 +780,7 @@ function HomePage() {
       </section>
 
       {/* INDIVIDUAL OFF-RAMP */}
-      <section className="relative bg-canvas pb-24 md:pb-32 pt-12">
+      {/* <section className="relative bg-canvas pb-24 md:pb-32 pt-12">
         <div className="container-edit relative">
           <Reveal>
             <div className="flex flex-col items-start justify-between gap-6 rounded-2xl border border-rule bg-sand p-7 md:flex-row md:items-center md:p-8">
@@ -755,7 +808,7 @@ function HomePage() {
             </div>
           </Reveal>
         </div>
-      </section>
+      </section> */}
 
       {/* FINAL CTA */}
       <section className="relative overflow-hidden bg-ink text-canvas">
