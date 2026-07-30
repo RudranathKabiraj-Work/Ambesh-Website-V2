@@ -306,7 +306,7 @@ function HomePage() {
                   <div>
                     <span className="font-mono text-[0.65rem] font-bold uppercase tracking-[0.15em] text-accent">{stage}</span>
                     <h4 className="mt-3 font-display text-lg font-extrabold tracking-tight text-ink">{label}</h4>
-                    <p className="mt-3 text-sm leading-relaxed text-ink-soft">{desc}</p>
+                    <p className="mt-3 text-[15px] leading-[1.65] text-ink-soft">{desc}</p>
                   </div>
                 </div>
               </Reveal>
@@ -451,7 +451,7 @@ function HomePage() {
                           </div>
                         </div>
                         <h3 className="font-display text-lg font-extrabold tracking-tight text-ink leading-snug">{title}</h3>
-                        <p className="mt-3 text-sm leading-relaxed text-ink-soft">{desc}</p>
+                        <p className="mt-3 text-[15px] leading-[1.65] text-ink-soft">{desc}</p>
                       </div>
                     </div>
                   </motion.div>
@@ -507,7 +507,7 @@ function HomePage() {
                     <span className="font-mono text-[0.65rem] font-bold uppercase tracking-[0.15em] text-accent">Case Study {n}</span>
                     <h3 className="mt-3 font-display text-xl font-extrabold tracking-tight text-ink md:text-2xl">{title}</h3>
                     <p className="mt-2 inline-flex w-fit items-center gap-1.5 border-l-2 pl-2.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-accent border-accent">{eyebrow}</p>
-                    <div className="mt-4 space-y-3.5 text-[14px] md:text-base leading-relaxed text-ink-soft">
+                    <div className="mt-4 space-y-3.5 text-[15px] leading-[1.65] text-ink-soft">
                       <p>{desc}</p>
                       {extra && <p className="text-sm border-t border-rule pt-3 text-ink-muted">{extra}</p>}
                     </div>
@@ -551,7 +551,7 @@ function HomePage() {
                     <span className="font-mono text-[0.65rem] font-bold uppercase tracking-[0.15em] text-accent">{n}</span>
                     <h3 className="mt-3 font-display text-xl font-extrabold tracking-tight text-ink md:text-2xl">{title}</h3>
                     <p className="mt-2 inline-flex w-fit items-center gap-1.5 border-l-2 pl-2.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-accent border-accent">{eyebrow}</p>
-                    <p className="mt-4 text-sm leading-relaxed text-ink-soft">{desc}</p>
+                    <p className="mt-4 text-[15px] leading-[1.65] text-ink-soft">{desc}</p>
                   </div>
                   <div className="mt-6 pt-4 border-t border-rule">
                     <a href={link.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm font-semibold text-ink group-hover:text-accent transition-colors">
