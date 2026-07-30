@@ -69,7 +69,7 @@ export function SiteFooter() {
         </div>
 
         {/* Top: Brand + nav columns */}
-        <div className="grid gap-12 md:grid-cols-12 md:gap-10">
+        <div className="grid gap-10 md:grid-cols-12 md:gap-10">
           {/* Brand block */}
           <div className="md:col-span-5">
             <div className="flex items-center gap-2.5">
@@ -101,42 +101,45 @@ export function SiteFooter() {
             </div>
           </div>
 
-          {/* Pages */}
-          <div className="md:col-span-3 md:mx-auto w-fit">
-            <div className="mb-4">
-              <span className="eyebrow eyebrow-indigo">Pages</span>
+          {/* Links Grid: Side-by-side on mobile, and aligned on desktop */}
+          <div className="grid grid-cols-2 gap-6 sm:gap-10 md:col-span-7 md:grid-cols-7 w-full">
+            {/* Pages */}
+            <div className="md:col-span-3 md:mx-auto">
+              <div className="mb-4">
+                <span className="eyebrow eyebrow-indigo">Pages</span>
+              </div>
+              <ul className="space-y-3 text-sm">
+                {pages.map((p) => (
+                  <li key={p.l}>
+                    <Link to={p.to} className="text-ink-soft transition-colors hover:text-ink">
+                      {p.l}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul className="grid grid-cols-2 gap-2.5 text-sm md:grid-cols-1">
-              {pages.map((p) => (
-                <li key={p.l}>
-                  <Link to={p.to} className="text-ink-soft transition-colors hover:text-ink">
-                    {p.l}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
 
-          {/* Brands */}
-          <div className="md:col-span-4 md:ml-auto w-fit">
-            <div className="mb-4">
-              <span className="eyebrow eyebrow-indigo">Brands</span>
+            {/* Brands */}
+            <div className="md:col-span-4 md:ml-auto">
+              <div className="mb-4">
+                <span className="eyebrow eyebrow-indigo">Brands</span>
+              </div>
+              <ul className="space-y-3 text-sm">
+                {brands.map((b) => (
+                  <li key={b.l}>
+                    <a
+                      href={b.h}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 text-ink-soft transition-colors hover:text-ink"
+                    >
+                      {b.l}
+                      <ArrowRight className="h-3 w-3 opacity-50" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul className="space-y-2.5 text-sm">
-              {brands.map((b) => (
-                <li key={b.l}>
-                  <a
-                    href={b.h}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 text-ink-soft transition-colors hover:text-ink"
-                  >
-                    {b.l}
-                    <ArrowRight className="h-3 w-3 opacity-50" />
-                  </a>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
 

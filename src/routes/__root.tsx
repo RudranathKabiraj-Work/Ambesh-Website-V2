@@ -1,8 +1,10 @@
+import { useEffect } from "react";
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { StickyCTABar } from "@/components/StickyCTABar";
 import { useReveal } from "@/hooks/use-reveal";
+import Lenis from "lenis";
 import {
   SITE_URL,
   jsonLd,
@@ -106,6 +108,32 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   useReveal();
+
+  useEffect(() => {
+    // Only run on client-side
+    if (typeof window === "undefined") return;
+
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Custom smooth exponential easing
+      orientation: "vertical",
+      gestureOrientation: "vertical",
+      smoothWheel: true,
+      wheelMultiplier: 1.0,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
   return (
     <div className="flex min-h-screen flex-col bg-canvas text-ink">
       <SiteHeader />

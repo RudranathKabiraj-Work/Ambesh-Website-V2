@@ -1,4 +1,6 @@
+import { useRef, useState, useEffect, useCallback } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { motion, useScroll, useTransform } from "framer-motion";
 import {
   ArrowRight,
   CheckCircle2,
@@ -80,7 +82,43 @@ const problems = [
   "We have too many software tools but poor execution",
 ];
 
+const beliefs = [
+  { n: "01", icon: Workflow, title: "A business should not depend on the founder.", desc: "Founder dependency is structural, not personal. It is resolved with clear accountability, SOPs, and system design." },
+  { n: "02", icon: Sparkles, title: "AI adoption matters more than AI awareness.", desc: "Workshops have limited value unless teams change how they work. Real training requires daily AI adoption rhythms." },
+  { n: "03", icon: Compass, title: "Do not automate a process you do not understand.", desc: "Automation makes clean processes faster, but broken ones fail faster. Map the workflow manually before coding." },
+  { n: "04", icon: Wrench, title: "Technology is only one part of the answer.", desc: "Clear roles and accountability matter more than new tools. Tech accelerates, but human execution is the foundation." },
+];
+
 function HomePage() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end end"],
+  });
+
+  // Card 1 starts at y=0, scales down as others arrive
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, 0]);
+  const scale1 = useTransform(scrollYProgress, [0, 0.4, 0.7, 1.0], [1, 0.95, 0.90, 0.85]);
+
+  // Card 2
+  const y2 = useTransform(scrollYProgress, [0, 0.1, 0.4], [800, 800, 20]);
+  const scale2 = useTransform(scrollYProgress, [0.4, 0.7, 1.0], [1, 0.95, 0.90]);
+
+  // Card 3
+  const y3 = useTransform(scrollYProgress, [0, 0.4, 0.7], [800, 800, 40]);
+  const scale3 = useTransform(scrollYProgress, [0.7, 1.0], [1, 0.95]);
+
+  // Card 4
+  const y4 = useTransform(scrollYProgress, [0, 0.7, 1.0], [800, 800, 60]);
+  const scale4 = useTransform(scrollYProgress, [1.0], [1]);
+
+  const cardsTransforms = [
+    { y: y1, scale: scale1 },
+    { y: y2, scale: scale2 },
+    { y: y3, scale: scale3 },
+    { y: y4, scale: scale4 },
+  ];
+
   return (
     <>
       {/* HERO */}
@@ -232,7 +270,7 @@ function HomePage() {
       </section>
 
       {/* MY APPROACH & EASE FRAMEWORK */}
-      <section className="relative overflow-hidden bg-canvas py-16 md:py-24 optimize-render">
+      <section className="relative overflow-hidden bg-canvas py-16 md:py-24">
         <div className="container-edit relative">
           <div className="grid gap-6 md:grid-cols-12 md:items-end md:gap-12 mb-12">
             <Reveal className="md:col-span-7">
@@ -286,7 +324,7 @@ function HomePage() {
       </section>
 
       {/* HOW I HELP */}
-      <section id="services" className="relative overflow-hidden bg-canvas bg-premium-side-gradient py-16 md:py-24 optimize-render">
+      <section id="services" className="relative overflow-hidden bg-canvas bg-premium-side-gradient py-16 md:py-24">
         <div className="container-edit relative">
           <div className="grid gap-6 md:grid-cols-12 md:items-end md:gap-12">
             <Reveal className="md:col-span-7">
@@ -360,52 +398,73 @@ function HomePage() {
       </section>
 
       {/* HOW I THINK */}
-      <section id="beliefs" className="relative overflow-hidden bg-canvas py-12 md:py-16 optimize-render">
-        <div className="container-edit relative">
-          <div className="grid gap-6 md:grid-cols-12 md:items-end md:gap-12 mb-12">
-            <Reveal className="md:col-span-7">
+      <section
+        id="beliefs"
+        ref={sectionRef}
+        className="relative h-[400vh] bg-canvas"
+      >
+        <div className="relative sticky top-[88px] h-[calc(100vh-88px)] flex items-center overflow-hidden">
+          <div className="container-edit w-full grid gap-12 md:grid-cols-12 items-start">
+
+            {/* Left Column (Header) */}
+            <div className="md:col-span-5 pb-8 md:pb-0">
               <p className="eyebrow eyebrow-indigo">How I Think</p>
               <h2 className="mt-4 font-display text-[2.2rem] font-extrabold leading-[1.1] tracking-[-0.03em] sm:text-4xl md:text-5xl text-ink">
                 Ideas that guide <span className="font-serif italic font-medium text-gradient-brand">my work.</span>
               </h2>
-            </Reveal>
-            <Reveal delay={100} className="md:col-span-5">
-              <p className="text-base leading-[1.6] text-ink-soft md:text-lg">
+              <p className="mt-6 text-base leading-[1.6] text-ink-soft md:text-lg">
                 These core beliefs shape how I help founders automate operations, scale teams, and build self-managing companies.
               </p>
-            </Reveal>
-          </div>
+            </div>
 
-          <div className="grid gap-5 sm:grid-cols-2">
-            {[
-              { n: "01", icon: Workflow, title: "A business should not depend on the founder.", desc: "Founder dependency is a structural issue, not a personal one. It is resolved by setting clear accountability, SOPs, and system design." },
-              { n: "02", icon: Sparkles, title: "AI adoption matters more than AI awareness.", desc: "A workshop has limited value unless the team changes how they work. Real training requires ongoing execution and daily AI adoption rhythms." },
-              { n: "03", icon: Compass, title: "Do not automate a process you do not understand.", desc: "Automation makes a clean process faster, but makes a broken one fail faster. We must map out the workflow manually before writing any code." },
-              { n: "04", icon: Wrench, title: "Technology is only one part of the answer.", desc: "Clear roles, metrics, and accountability matter more than new tools. Technology is a strong accelerator, but human execution is the foundation." },
-            ].map(({ n, icon: Icon, title, desc }, i) => (
-              <Reveal key={n} delay={100}>
-                <div className="custom-theme-card group relative flex h-full flex-col justify-between overflow-hidden rounded-[20px] backdrop-blur-md p-6">
-                  <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-[1100ms] ease-out group-hover:translate-x-full pointer-events-none" />
-                  <div className="pointer-events-none absolute -top-24 -right-24 h-48 w-48 rounded-full opacity-0 blur-3xl transition-opacity duration-[850ms] ease-out group-hover:opacity-50" style={{ background: "var(--accent-soft)" }} aria-hidden />
-                  <div>
-                    <div className="flex items-center justify-between mb-5">
-                      <span className="inline-flex items-center rounded-full px-2.5 py-0.5 font-mono text-[0.65rem] font-bold uppercase tracking-[0.15em] text-accent bg-accent-soft">Belief {n}</span>
-                      <div className="icon-box flex h-10 w-10 items-center justify-center rounded-xl border border-rule transition-colors">
-                        <Icon className="h-5 w-5" />
+            {/* Stacking Cards Right Column */}
+            <div className="md:col-span-7 relative flex items-center justify-center md:mt-0">
+              {/* Absolutely positioned stacking cards driven by viewport scroll */}
+              <div className="relative h-[380px] w-full max-w-2xl mt-4 md:mt-[135px]">
+                {[
+                  { n: "01", icon: Workflow, title: "A business should not depend on the founder.", desc: "Founder dependency is structural, not personal. It is resolved with clear accountability, SOPs, and system design." },
+                  { n: "02", icon: Sparkles, title: "AI adoption matters more than AI awareness.", desc: "Workshops have limited value unless teams change how they work. Real training requires daily AI adoption rhythms." },
+                  { n: "03", icon: Compass, title: "Do not automate a process you do not understand.", desc: "Automation makes clean processes faster, but broken ones fail faster. Map the workflow manually before coding." },
+                  { n: "04", icon: Wrench, title: "Technology is only one part of the answer.", desc: "Clear roles and accountability matter more than new tools. Tech accelerates, but human execution is the foundation." },
+                ].map(({ n, icon: Icon, title, desc }, idx) => (
+                  <motion.div
+                    key={n}
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      y: cardsTransforms[idx].y,
+                      scale: cardsTransforms[idx].scale,
+                      zIndex: 20 + idx,
+                      transformOrigin: "top center",
+                    }}
+                  >
+                    <div className="custom-theme-card group relative flex flex-col justify-between overflow-hidden rounded-[20px] backdrop-blur-md p-6 !bg-canvas !shadow-xl">
+                      <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-[1100ms] ease-out group-hover:translate-x-full pointer-events-none" />
+                      <div className="pointer-events-none absolute -top-24 -right-24 h-48 w-48 rounded-full opacity-0 blur-3xl transition-opacity duration-[850ms] ease-out group-hover:opacity-50" style={{ background: "var(--accent-soft)" }} aria-hidden />
+                      <div>
+                        <div className="flex items-center justify-between mb-5">
+                          <span className="inline-flex items-center rounded-full px-2.5 py-0.5 font-mono text-[0.65rem] font-bold uppercase tracking-[0.15em] text-accent bg-accent-soft">Belief {n}</span>
+                          <div className="icon-box flex h-10 w-10 items-center justify-center rounded-xl border border-rule transition-colors">
+                            <Icon className="h-5 w-5" />
+                          </div>
+                        </div>
+                        <h3 className="font-display text-lg font-extrabold tracking-tight text-ink leading-snug">{title}</h3>
+                        <p className="mt-3 text-sm leading-relaxed text-ink-soft">{desc}</p>
                       </div>
                     </div>
-                    <h3 className="font-display text-lg font-extrabold tracking-tight text-ink leading-snug">{title}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-ink-soft">{desc}</p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
       {/* SELECTED WORK */}
-      <section id="work" className="relative overflow-hidden bg-canvas bg-premium-side-gradient py-16 md:py-24 optimize-render">
+      <section id="work" className="relative overflow-hidden bg-canvas bg-premium-side-gradient py-16 md:py-24">
         <div className="container-edit relative">
           <div className="grid gap-6 md:grid-cols-12 md:items-end md:gap-12">
             <Reveal className="md:col-span-7">

@@ -888,10 +888,8 @@
   .custom-theme-card {
     --card-accent: var(--accent);
     --card-accent-soft: var(--accent-soft);
-    background-color: oklch(0.97 0.004 260 / 0.6) !important;
+    background-color: oklch(0.97 0.004 260) !important;
     background-image: none !important;
-    backdrop-filter: blur(14px) saturate(1.4) !important;
-    -webkit-backdrop-filter: blur(14px) saturate(1.4) !important;
     border: 0.8px solid oklch(0.15 0.01 260 / 0.1) !important;
     border-radius: 20px !important;
     color: var(--ink);
@@ -967,10 +965,8 @@
   .custom-theme-card-static {
     --card-accent: var(--accent);
     --card-accent-soft: var(--accent-soft);
-    background-color: oklch(0.97 0.004 260 / 0.6) !important;
+    background-color: oklch(0.97 0.004 260) !important;
     background-image: none !important;
-    backdrop-filter: blur(14px) saturate(1.4) !important;
-    -webkit-backdrop-filter: blur(14px) saturate(1.4) !important;
     border: 0.8px solid oklch(0.15 0.01 260 / 0.1) !important;
     border-radius: 20px !important;
     color: var(--ink) !important;
@@ -1130,5 +1126,26 @@
   a.btn-premium {
     border-radius: 9999px !important;
   }
+}
+
+/* Lenis Smooth Scroll Configuration */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
 
