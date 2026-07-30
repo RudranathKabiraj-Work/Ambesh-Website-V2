@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useEffect, useState, type FormEvent } from "react";
-import { ArrowRight, Calendar, Clock, ShieldCheck, Sparkles, Plus, Minus, Mail, MessageCircle, CheckCircle2, X } from "lucide-react";
+import { ArrowUpRight, Calendar, Clock, ShieldCheck, Sparkles, Plus, Minus, Mail, MessageCircle, CheckCircle2, X } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { buildMeta, jsonLd, breadcrumbSchema, faqSchema, SITE_URL } from "@/lib/seo";
 import { whatsappUrl, WA_MESSAGES } from "@/lib/wa";
@@ -88,19 +88,11 @@ function ContactPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [service, setService] = useState("");
   const [type, setType] = useState("");
-  const [format, setFormat] = useState("");
 
   useEffect(() => {
     const q = readQuery();
     setService(q.service);
     setType(q.type);
-    if (q.service === "training") {
-      setFormat("Workshop (half-day to multi-day)");
-    } else if (q.service === "strategy") {
-      setFormat("Strategy sprint");
-    } else if (q.service === "automation") {
-      setFormat("Implementation build");
-    }
   }, []);
 
   const serviceLabel = (service as ServiceKey) in SERVICE_LABELS ? SERVICE_LABELS[service as ServiceKey] : "";
@@ -232,12 +224,8 @@ function ContactPage() {
                     <Mail className="h-4 w-4 text-accent" />
                   </span>
                   <div>
-                    <h2 className="text-xl font-bold tracking-tight">
-                      {isPodcast ? "Pitch your episode" : "Tell us about your team"}
-                    </h2>
-                    <p className="text-sm text-ink-muted">
-                      {isPodcast ? "What should we talk about?" : "The more honest, the more useful the call."}
-                    </p>
+                    <h2 className="text-xl font-bold tracking-tight">Tell us about your team</h2>
+                    <p className="text-sm text-ink-muted">The more honest, the more useful the call.</p>
                   </div>
                 </div>
 
@@ -247,30 +235,19 @@ function ContactPage() {
                   <Field label="Company" name="company" required />
                   <Field label="Designation" name="designation" required />
                   <SelectField label="Team size" name="teamSize" options={["1 to 10", "10 to 50", "50 to 200", "200 to 1,000", "1,000+"]} />
-                  <SelectField
-                    label="Preferred format"
-                    name="format"
-                    value={format}
-                    onChange={setFormat}
-                    options={["Keynote", "Workshop (half-day to multi-day)", "Strategy sprint", "Implementation build", "Not sure yet"]}
-                  />
+                  <SelectField label="Preferred format" name="format" options={["Keynote", "Workshop (half-day to multi-day)", "Strategy sprint", "Implementation build", "Not sure yet"]} />
                   <SelectField label="Timeline" name="timeline" options={["This month", "Next 60 days", "Next quarter", "Exploring"]} />
                 </div>
 
                 <div className="mt-6">
                   <label className="mb-2 block text-xs font-semibold uppercase tracking-wider text-ink-muted font-mono-label">
-                    {isPodcast
-                      ? "What is the core topic, story, or lesson you want to share?"
-                      : "Where is your team losing the most time right now?"}
+                    Where is your team losing the most time right now?
                   </label>
                   <textarea
                     name="challenge"
                     rows={5}
                     required
-                    placeholder={isPodcast
-                      ? "Please share a brief summary of what you would like to talk about and any background context."
-                      : "Reporting, follow-ups, research, documentation, content, internal coordination, decision-making, or something else."
-                    }
+                    placeholder="Reporting, follow-ups, research, documentation, content, internal coordination, decision-making, or something else."
                     className="w-full rounded-xl border border-rule bg-canvas px-4 py-3 text-base transition-all focus:border-accent focus:outline-none focus:ring-4 focus:ring-accent/15"
                   />
                 </div>
@@ -281,7 +258,7 @@ function ContactPage() {
                   className="btn-premium group mt-8 inline-flex h-14 w-full items-center justify-center gap-2 rounded-full text-base font-semibold disabled:opacity-60"
                 >
                   {submitting ? "Sending..." : "Send inquiry"}
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </button>
 
                 <p className="mt-4 text-center text-xs text-ink-muted">
@@ -456,19 +433,7 @@ function Field({ label, name, required, type = "text" }: { label: string; name: 
   );
 }
 
-function SelectField({
-  label,
-  name,
-  options,
-  value,
-  onChange,
-}: {
-  label: string;
-  name: string;
-  options: string[];
-  value?: string;
-  onChange?: (v: string) => void;
-}) {
+function SelectField({ label, name, options }: { label: string; name: string; options: string[] }) {
   return (
     <div>
       <label className="mb-2 block text-xs font-semibold uppercase tracking-wider text-ink-muted font-mono-label">
@@ -477,8 +442,6 @@ function SelectField({
       <select
         name={name}
         required
-        value={value}
-        onChange={onChange ? (e) => onChange(e.target.value) : undefined}
         className="h-12 w-full rounded-xl border border-rule bg-canvas px-4 text-base transition-all focus:border-accent focus:outline-none focus:ring-4 focus:ring-accent/15"
       >
         <option value="">Select...</option>

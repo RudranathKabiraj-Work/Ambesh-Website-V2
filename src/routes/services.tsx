@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import {
-  ArrowRight, Layers, Plus, Minus, Check, Compass, Cog, GraduationCap,
+  ArrowUpRight, Layers, Plus, Minus, Check, Compass, Cog, GraduationCap,
 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { buildMeta, jsonLd, breadcrumbSchema, faqSchema, SITE_URL } from "@/lib/seo";
@@ -20,9 +20,9 @@ export const Route = createFileRoute("/services")({
   head: () => {
     const m = buildMeta({
       path: "/services",
-      title: "Services | Practical AI Adoption & Workflow Strategy | Ambesh",
+      title: "Business OS for Founder-Led Companies | Ambesh",
       description:
-        "Build an AI-powered Operating System for your founder-led business. Systems across sales, delivery, operations and hiring, with practical AI leverage.",
+        "Build an AI-powered Operating System for your founder-led business. Systems across sales, delivery, operations and hiring, with AI leverage.",
       keywords:
         "Business Operating System, founder-led business systems, AI-powered business systems India, business systemisation, business scaling advisor",
     });
@@ -53,10 +53,10 @@ export const Route = createFileRoute("/services")({
 });
 
 const heroStats = [
-  { n: "8 to 12", l: "Week engagements" },
+  { n: "8-12", l: "Week engagements" },
   { n: "50+", l: "Organisations served" },
   { n: "5,000+", l: "Team members trained" },
-  { n: "9.5/10", l: "Average NPS rating" },
+  { n: "9.5", l: "Average NPS" },
 ];
 
 const pillars = [
@@ -73,7 +73,7 @@ const pillars = [
       "Prioritised list of what to fix first",
     ],
     cta: "Book a Business Systems Diagnostic",
-    search: { service: "diagnostic" },
+    href: "/contact?service=diagnostic",
   },
   {
     icon: Layers,
@@ -88,7 +88,7 @@ const pillars = [
       "Tooling stays lean and vendor-neutral",
     ],
     cta: "Talk about the OS",
-    search: { service: "strategy" },
+    href: "/contact?service=strategy",
   },
   {
     icon: Cog,
@@ -103,7 +103,7 @@ const pillars = [
       "Handover so the business owns everything",
     ],
     cta: "Plan the adoption",
-    search: { service: "training" },
+    href: "/contact?service=training",
   },
 ];
 
@@ -157,40 +157,39 @@ function BusinessOSPage() {
       {/* HERO */}
       <section className="premium-canvas relative isolate overflow-hidden">
         <div className="absolute inset-0 tex-dots-soft tex-fade pointer-events-none" aria-hidden />
-        <div className="container-edit relative pt-10 pb-20 md:pt-14 md:pb-24">
-          <Reveal eager><p className="eyebrow eyebrow-indigo">Business OS</p></Reveal>
-          <Reveal delay={100} eager>
+        <div className="container-edit relative pt-20 pb-20 md:pt-28 md:pb-24">
+          <Reveal><p className="eyebrow">Business OS</p></Reveal>
+          <Reveal delay={100}>
             <h1 className="mt-6 max-w-5xl font-display text-[2.4rem] font-extrabold leading-[1.05] tracking-[-0.03em] text-ink sm:text-5xl md:text-6xl lg:text-[4.25rem]">
-              Build the operating system your business needs to{" "}
-              <span className="text-gradient-brand animate-gradient">scale without you.</span>
+              Build the operating system your business needs{" "}
+              <span className="text-gradient-brand">before it can scale.</span>
             </h1>
           </Reveal>
-          <Reveal delay={250} eager>
+          <Reveal delay={250}>
             <p className="mt-8 max-w-2xl text-lg text-ink-soft">
-              A structured, hands-on partnership for founder-led companies. We design your workflow strategy, document functional SOPs, and install practical AI tools directly into your team so operations run smoothly.
+              A structured engagement for founder-led businesses. Systems across
+              sales, delivery, operations and hiring. AI leverage installed
+              inside the team. Handed over so the business runs without founder
+              dependency.
             </p>
           </Reveal>
-          <Reveal delay={320} eager>
+          <Reveal delay={320}>
             <div className="mt-10 flex flex-wrap gap-3">
-              <Link
-                to="/contact"
-                search={{ service: "diagnostic" }}
-                className="btn-premium inline-flex h-14 items-center gap-2 rounded-full px-8 text-base font-semibold"
-              >
+              <a href="/contact?service=diagnostic" className="btn-premium inline-flex h-14 items-center gap-2 rounded-full px-8 text-base font-semibold">
                 <span className="relative z-10 flex items-center gap-2">
-                  Book a Business Systems Diagnostic <ArrowRight className="h-5 w-5" />
+                  Book a Business Systems Diagnostic <ArrowUpRight className="h-5 w-5" />
                 </span>
-              </Link>
+              </a>
               <Link to="/training" className="inline-flex h-14 items-center gap-2 rounded-full border border-ink/15 bg-canvas/80 px-8 text-base font-semibold text-ink hover:border-ink/40">
                 See AI Training
               </Link>
             </div>
           </Reveal>
 
-          <Reveal delay={400} eager>
+          <Reveal delay={400}>
             <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {heroStats.map((s) => (
-                <div key={s.l} className="rounded-2xl custom-theme-card-static p-5 backdrop-blur shadow-soft">
+                <div key={s.l} className="rounded-2xl border border-rule bg-canvas/70 p-5 backdrop-blur shadow-soft">
                   <p className="text-3xl font-extrabold tracking-tight text-ink md:text-4xl">
                     <span className="text-gradient-brand">{s.n}</span>
                   </p>
@@ -218,8 +217,8 @@ function BusinessOSPage() {
 
           <div className="mt-16 grid gap-6 lg:grid-cols-3">
             {pillars.map((p, i) => (
-              <Reveal key={p.n} delay={100}>
-                <div className="custom-theme-card group relative flex h-full flex-col overflow-hidden rounded-3xl p-8 transition-all hover:-translate-y-1 hover:shadow-glow">
+              <Reveal key={p.n} delay={i * 100}>
+                <div className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-rule bg-canvas p-8 transition-all hover:-translate-y-1 hover:shadow-glow">
                   <div className="flex items-start justify-between">
                     <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-brand text-white shadow-glow animate-gradient">
                       <p.icon className="h-5 w-5" />
@@ -236,15 +235,14 @@ function BusinessOSPage() {
                       </li>
                     ))}
                   </ul>
-                  <Link
-                    to="/contact"
-                    search={p.search}
+                  <a
+                    href={p.href}
                     className="btn-premium mt-8 inline-flex h-11 w-full items-center justify-center gap-2 rounded-full text-sm font-semibold"
                   >
                     <span className="relative z-10 flex items-center gap-2">
-                      {p.cta} <ArrowRight className="h-4 w-4" />
+                      {p.cta} <ArrowUpRight className="h-4 w-4" />
                     </span>
-                  </Link>
+                  </a>
                 </div>
               </Reveal>
             ))}
@@ -289,7 +287,7 @@ function BusinessOSPage() {
           <div className="md:col-span-5">
             <ul className="space-y-4">
               {a.bullets.map((b) => (
-                <li key={b} className="custom-theme-card-static flex items-start gap-3 rounded-2xl p-5">
+                <li key={b} className="flex items-start gap-3 rounded-2xl border border-rule bg-sand p-5">
                   <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-brand text-white">
                     <Check className="h-3.5 w-3.5" />
                   </span>
@@ -317,7 +315,7 @@ function BusinessOSPage() {
           <div className="relative mt-16 grid gap-8 md:grid-cols-4">
             <div className="absolute left-0 right-0 top-8 hidden h-px bg-gradient-brand md:block" />
             {process.map((p, i) => (
-              <Reveal key={p.step} delay={100} className="relative">
+              <Reveal key={p.step} delay={i * 100} className="relative">
                 <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-brand text-xl font-black text-white shadow-glow animate-gradient">{p.step}</div>
                 <h3 className="mt-6 text-2xl font-bold">{p.title}</h3>
                 <p className="mt-3 text-sm text-ink-muted">{p.body}</p>
@@ -330,7 +328,7 @@ function BusinessOSPage() {
       {/* TRAINING CROSSLINK */}
       <section className="container-edit py-14">
         <Reveal>
-          <div className="grid gap-8 rounded-3xl custom-theme-card-static p-8 md:grid-cols-12 md:items-center md:gap-12 md:p-12">
+          <div className="grid gap-8 rounded-3xl border border-rule bg-canvas p-8 md:grid-cols-12 md:items-center md:gap-12 md:p-12">
             <div className="md:col-span-7">
               <p className="eyebrow flex items-center gap-2"><GraduationCap className="h-3 w-3" /> AI Training</p>
               <h2 className="mt-3 text-3xl font-extrabold tracking-tight md:text-4xl">
@@ -342,7 +340,7 @@ function BusinessOSPage() {
             </div>
             <div className="md:col-span-5 md:text-right">
               <Link to="/training" className="inline-flex h-12 items-center gap-2 rounded-full border border-ink bg-canvas px-6 text-sm font-semibold text-ink hover:bg-ink hover:text-canvas">
-                Explore AI Training <ArrowRight className="h-4 w-4" />
+                Explore AI Training <ArrowUpRight className="h-4 w-4" />
               </Link>
             </div>
           </div>
@@ -398,15 +396,14 @@ function BusinessOSPage() {
           </Reveal>
           <Reveal delay={300}>
             <div className="mt-10 flex flex-col items-center gap-4">
-              <Link
-                to="/contact"
-                search={{ service: "diagnostic" }}
+              <a
+                href="/contact?service=diagnostic"
                 className="btn-premium inline-flex h-14 items-center gap-2 rounded-full px-8 text-base font-semibold"
               >
                 <span className="relative z-10 flex items-center gap-2">
-                  Book a Business Systems Diagnostic <ArrowRight className="h-5 w-5" />
+                  Book a Business Systems Diagnostic <ArrowUpRight className="h-5 w-5" />
                 </span>
-              </Link>
+              </a>
               <p className="text-xs text-ink-muted">Responds within 24 hours · No sales script · Just a real conversation.</p>
             </div>
           </Reveal>

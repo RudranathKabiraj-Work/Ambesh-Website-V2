@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, X } from "lucide-react";
-import { StrategyCallButton } from "./StrategyCallButton";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 
 const nav = [
   { to: "/about", label: "About" },
-  { to: "/services", label: "Work" },
-  { to: "/training", label: "Training" },
+  { to: "/services", label: "Business OS" },
+  { to: "/training", label: "AI Training" },
+  { to: "/clients", label: "Clients" },
   { to: "/book", label: "Book" },
   { to: "/podcast", label: "Podcast" },
-  { to: "/insights", label: "Insights" },
 ] as const;
 
 export function SiteHeader() {
@@ -17,113 +16,91 @@ export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 16);
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 w-full p-3 md:px-10 md:py-4 pointer-events-none">
-      <div
-        style={{
-          willChange: "width, max-width, padding",
-          backgroundImage: open
-            ? "linear-gradient(135deg, oklch(0.995 0.002 250 / 0.55) 0%, oklch(0.98 0.005 260 / 0.40) 50%, oklch(0.995 0.002 250 / 0.55) 100%)"
-            : scrolled
-              ? "linear-gradient(135deg, oklch(0.995 0.002 250 / 0.50) 0%, oklch(0.97 0.006 260 / 0.35) 50%, oklch(0.995 0.002 250 / 0.50) 100%)"
-              : "linear-gradient(135deg, oklch(0.995 0.002 250 / 0.35) 0%, oklch(0.97 0.006 260 / 0.22) 50%, oklch(0.995 0.002 250 / 0.35) 100%)",
-          boxShadow: scrolled
-            ? "0 4px 32px -4px oklch(0.18 0.04 260 / 0.18), 0 1px 0 0 oklch(1 0 0 / 0.7) inset, 0 -1px 0 0 oklch(0.9 0.01 260 / 0.15) inset"
-            : "0 2px 20px -4px oklch(0.18 0.04 260 / 0.10), 0 1px 0 0 oklch(1 0 0 / 0.6) inset",
-        }}
-        className={`mx-auto w-full pointer-events-auto border transition-[width,max-width,padding,border-color] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] backdrop-blur-[28px] [-webkit-backdrop-filter:blur(28px)_saturate(200%)_brightness(1.08)] [backdrop-filter:blur(28px)_saturate(200%)_brightness(1.08)] ${
-          open
-            ? "max-w-2xl rounded-2xl p-5 border-white/40"
-            : scrolled
-              ? "max-w-4xl rounded-full py-2 px-4 md:px-6 border-white/40"
-              : "max-w-[70rem] rounded-full py-3.5 px-6 md:px-8 border-white/25"
-        }`}
-      >
-        <div className="flex items-center justify-between">
-          <Link
-            to="/"
-            onClick={() => setOpen(false)}
-            className="group flex items-center gap-2.5"
-          >
-            <img
-              src="/atlogo.jpeg"
-              alt="Ambesh Tiwari logo"
-              className={`h-9 w-9 shrink-0 rounded-lg object-contain transition-transform duration-500 group-hover:scale-105 ${
-                scrolled ? "scale-85" : "scale-100"
-              }`}
-            />
-            <span className="font-display text-sm font-bold tracking-tight text-ink md:text-base">
-              Ambesh Tiwari
-            </span>
-          </Link>
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "border-b border-rule/80 bg-canvas/85 shadow-sm backdrop-blur-xl"
+          : "border-b border-transparent bg-canvas/60 backdrop-blur-md"
+      }`}
+    >
+      <div className="container-edit flex h-16 items-center justify-between xl:h-20">
+        <Link to="/" onClick={() => setOpen(false)} className="group flex items-center gap-2.5">
+          <img
+            src="/atlogo.jpeg"
+            alt="Ambesh Tiwari logo"
+            className="h-9 w-9 shrink-0 rounded-lg object-contain transition-transform duration-300 group-hover:scale-105"
+          />
+          <span className="font-display text-base font-bold tracking-tight text-ink">
+            Ambesh Tiwari
+          </span>
+        </Link>
 
-          <nav className="hidden items-center gap-0.5 lg:flex">
+        <nav className="hidden items-center gap-0.5 rounded-full bg-sand/40 p-1 xl:flex">
+          {nav.map((item) => (
+            <Link
+              key={item.to}
+              to={item.to}
+              activeProps={{ className: "bg-gradient-brand text-canvas shadow-lift font-semibold" }}
+              inactiveProps={{ className: "text-ink-soft hover:text-ink hover:bg-canvas/80" }}
+              className="whitespace-nowrap rounded-full px-3.5 py-2 text-[14px] font-medium transition-all"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        <a
+          href="/contact?service=diagnostic"
+          className="hidden shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full bg-gradient-brand px-4 py-2.5 text-[13px] font-semibold text-canvas shadow-lift transition-all hover:-translate-y-0.5 hover:shadow-xl xl:inline-flex"
+        >
+          Book a Business Systems Diagnostic <ArrowUpRight className="h-3.5 w-3.5" />
+        </a>
+
+
+
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          className="rounded-full p-1.5 text-ink transition-colors hover:bg-sand xl:hidden"
+          aria-label="Toggle menu"
+        >
+          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        </button>
+      </div>
+
+      {open && (
+        <div className="border-t border-rule bg-canvas xl:hidden">
+          <nav className="container-edit flex flex-col gap-1 py-4">
             {nav.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
-                activeProps={{
-                  className: "bg-gradient-brand text-canvas shadow-lift font-semibold",
-                }}
-                inactiveProps={{
-                  className: "text-ink-soft hover:text-ink hover:bg-canvas/80",
-                }}
-                className="whitespace-nowrap rounded-full px-3 py-1.5 lg:px-3.5 lg:py-2 text-[13px] font-medium transition-all duration-300"
+                onClick={() => setOpen(false)}
+                activeProps={{ className: "bg-gradient-brand text-canvas shadow-lift font-semibold" }}
+                inactiveProps={{ className: "text-ink hover:bg-sand" }}
+                className="rounded-lg px-4 py-3 text-base font-medium transition-all"
               >
                 {item.label}
               </Link>
             ))}
+            <a
+              href="/contact?service=diagnostic"
+              onClick={() => setOpen(false)}
+              className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-brand px-5 py-3 text-sm font-semibold text-canvas shadow-lift"
+            >
+              Book a Business Systems Diagnostic <ArrowUpRight className="h-4 w-4" />
+            </a>
+
           </nav>
-
-          <div className="hidden lg:block shrink-0">
-            <StrategyCallButton size="sm" />
-          </div>
-
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            className="rounded-full p-1.5 text-ink transition-colors hover:bg-sand lg:hidden"
-            aria-label="Toggle menu"
-          >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
         </div>
-
-        {/* Mobile Dropdown Menu */}
-        <div
-          className={`overflow-hidden transition-all duration-300 ease-in-out lg:hidden ${
-            open ? "mt-4 max-h-[400px] opacity-100" : "max-h-0 opacity-0"
-          }`}
-        >
-          <div className="border-t border-rule/60 pt-4">
-            <nav className="flex flex-col gap-1 py-1">
-              {nav.map((item) => (
-                <Link
-                  key={item.to}
-                  to={item.to}
-                  onClick={() => setOpen(false)}
-                  activeProps={{
-                    className: "bg-gradient-brand text-canvas shadow-lift font-semibold",
-                  }}
-                  inactiveProps={{ className: "text-ink hover:bg-sand" }}
-                  className="rounded-lg px-4 py-2.5 text-[15px] font-medium transition-all"
-                >
-                  {item.label}
-                </Link>
-              ))}
-              <div className="mt-3 flex justify-center">
-                <StrategyCallButton size="md" onClick={() => setOpen(false)} />
-              </div>
-            </nav>
-          </div>
-        </div>
-      </div>
+      )}
     </header>
   );
 }

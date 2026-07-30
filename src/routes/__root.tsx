@@ -66,16 +66,6 @@ export const Route = createRootRoute({
       { property: "og:type", content: "website" },
     ],
     links: [
-      // Preconnect to Google Fonts to eliminate DNS + TCP + TLS round-trips before fonts load
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      // Load the two custom fonts the design system uses
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,600;0,700;0,800;0,900;1,500&family=Inter:wght@400;500;600&family=Fraunces:ital,wght@1,500&display=swap",
-      },
-      // Preload the hero image so the browser fetches it immediately (improves LCP)
-      { rel: "preload", href: "/ambesh-tiwari.jpg", as: "image", fetchPriority: "high" },
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon-32.png", type: "image/png", sizes: "32x32" },
       { rel: "icon", href: "/favicon-512.png", type: "image/png", sizes: "512x512" },
@@ -109,7 +99,7 @@ function RootComponent() {
   return (
     <div className="flex min-h-screen flex-col bg-canvas text-ink">
       <SiteHeader />
-      <main className="flex-1 pt-16 md:pt-20 xl:pt-24">
+      <main className="flex-1">
         <Outlet />
       </main>
       <SiteFooter />

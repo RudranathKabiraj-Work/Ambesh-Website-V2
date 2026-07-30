@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Quote, Mic, BookOpen, Building2, Wrench, ExternalLink, GraduationCap, Compass } from "lucide-react";
+import { ArrowUpRight, Quote, Mic, BookOpen, Building2, Wrench, ExternalLink } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { Monogram } from "@/components/Monogram";
 import { buildMeta, jsonLd, personSchema, breadcrumbSchema } from "@/lib/seo";
@@ -8,11 +8,11 @@ export const Route = createFileRoute("/about")({
   head: () => {
     const m = buildMeta({
       path: "/about",
-      title: "About Ambesh Tiwari | Practical AI & Operations Adoption Partner",
+      title: "About Ambesh Tiwari - AI Trainer, Founder & Author",
       description:
-        "Ambesh Tiwari works with founder-led companies to design operating systems, document SOPs, and install practical AI leverage across departments.",
+        "Entrepreneur, product builder and AI trainer based in Delhi. Founder of BDA Technologies. Author of Accelerate with AI. 5,000+ trained.",
       keywords:
-        "Ambesh Tiwari, business operating systems, AI adoption partner, BDA Technologies founder, Automation School founder, Accelerate with AI author",
+        "Ambesh Tiwari, AI trainer India biography, BDA Technologies founder, Automation School founder, Accelerate with AI author",
 
       ogType: "profile",
     });
@@ -32,47 +32,31 @@ export const Route = createFileRoute("/about")({
   component: AboutPage,
 });
 
-const hiredFor = [
-  {
-    icon: GraduationCap,
-    label: "01",
-    title: "AI Training & Workshops",
-    body: "Hands-on, department-specific training programs designed to turn technology confusion into immediate daily usage. Built around your team's real workflows and actual tasks.",
-  },
-  {
-    icon: Compass,
-    label: "02",
-    title: "Workflow & Systems Strategy",
-    body: "Designing the operating cadence, documenting SOPs, and building management tracking systems so operations run smoothly without founder bottlenecks.",
-  },
-  {
-    icon: Wrench,
-    label: "03",
-    title: "Custom AI & Automation Install",
-    body: "Building lean, custom AI integrations and automation flows - supported by BDA Technologies - to eliminate repetitive manual work across departments.",
-  },
-];
-
 const beliefs = [
   {
     n: "01",
-    h: "AI needs a process, not just tools.",
-    b: "An LLM is only as good as the workflow it sits in. If the process is broken, AI just makes mistakes faster.",
+    h: "AI is powerful, but tools alone do not transform a business.",
+    b: "",
   },
   {
     n: "02",
-    h: "Founders should not be the operating system.",
-    b: "A business scales when decisions, guidelines and reviews are documented and owned by the team, not trapped in the founder's head.",
+    h: "Founders should not be the only source of clarity inside the company.",
+    b: "",
   },
   {
     n: "03",
-    h: "Lean technology stacks beat complex ones.",
-    b: "Most companies do not need expensive new enterprise software. They need their existing tools connected with simple, smart automation.",
+    h: "A business scales better when work is visible, owned, reviewed, and improved consistently.",
+    b: "",
   },
   {
     n: "04",
-    h: "Adoption happens inside real work.",
-    b: "Training is useless if the team does not apply it to their actual tasks in the first week. Every workshop must be built around live projects.",
+    h: "Systems are not bureaucracy when designed well. They create freedom.",
+    b: "",
+  },
+  {
+    n: "05",
+    h: "The best AI adoption happens inside real workflows, not isolated experiments.",
+    b: "",
   },
 ];
 
@@ -133,50 +117,49 @@ const knowables = [
 
 function AboutPage() {
   return (
-    <div className="relative w-full bg-canvas min-h-screen" style={{ backgroundImage: "none" }}>
+    <>
       {/* HERO */}
-      <section className="relative isolate overflow-hidden">
-        {/* Glow Orb (Light blue tint on left) */}
-        <div className="pointer-events-none absolute top-1/2 -left-40 h-[600px] w-[600px] -translate-y-1/2 rounded-full opacity-[0.12] blur-[120px]" style={{ background: "oklch(0.60 0.16 250)" }} aria-hidden />
+      <section className="relative isolate overflow-hidden premium-canvas">
+        <div className="absolute inset-0 tex-dots-soft opacity-60" />
         <div className="container-edit relative grid items-center gap-12 pt-10 pb-24 md:grid-cols-12 md:gap-16 md:pt-14 md:pb-32">
           <div className="md:col-span-7">
-            <Reveal eager>
-              <p className="eyebrow eyebrow-blue">About</p>
+            <Reveal>
+              <p className="eyebrow">About</p>
             </Reveal>
-            <Reveal delay={100} eager>
+            <Reveal delay={100}>
               <h1 className="mt-6 font-display text-4xl font-extrabold leading-[1.1] tracking-[-0.03em] text-ink sm:text-5xl md:text-6xl lg:text-[4.25rem] lg:leading-[1.05]">
                 I help founders turn business chaos{" "}
                 <span className="text-gradient-brand animate-gradient">into systems.</span>
               </h1>
             </Reveal>
-            <Reveal delay={250} eager>
+            <Reveal delay={250}>
               <p className="mt-8 max-w-xl text-lg text-ink-soft">
-                I am Ambesh Tiwari, a practical AI adoption partner, automation strategist, author, and founder of BDA Technologies. My work combines hands-on training, custom workflow design, and process implementation to help organizations run without founder dependency.
+                I am Ambesh Tiwari, AI trainer, automation expert, author, and founder of BDA Technologies. My work sits at the intersection of AI, business systems, automation, and founder-led growth.
               </p>
             </Reveal>
-            <Reveal delay={420} eager className="mt-10">
+            <Reveal delay={420} className="mt-10">
               <Link
                 to="/contact"
-                search={{ service: "strategy" }}
                 className="btn-premium inline-flex h-14 items-center gap-2 rounded-full px-8 text-base font-semibold"
               >
                 <span className="relative z-10 flex items-center gap-2">
-                  Work With Ambesh <ArrowRight className="h-4 w-4" />
+                  Work With Ambesh <ArrowUpRight className="h-4 w-4" />
                 </span>
               </Link>
             </Reveal>
           </div>
-          <Reveal delay={200} eager className="md:col-span-5">
+          <Reveal delay={200} className="md:col-span-5">
             <Monogram className="aspect-[4/5] w-full" since="Building since 2017" />
           </Reveal>
         </div>
       </section>
 
       {/* PULL QUOTE */}
-      <section className="relative bg-transparent py-14 md:py-20">
+      <section className="relative bg-canvas py-14 md:py-20">
+        <div className="absolute inset-0 tex-grid opacity-40" />
         <div className="container-edit relative">
           <Reveal>
-            <p className="eyebrow eyebrow-indigo">A line he keeps coming back to</p>
+            <p className="eyebrow">A line he keeps coming back to</p>
             <Quote className="mt-8 h-12 w-12 text-violet" />
             <blockquote className="mt-6 max-w-5xl font-serif text-4xl font-medium leading-[1.08] tracking-tight text-ink md:text-6xl">
               <span className="italic">"AI will not take your job.</span>{" "}
@@ -189,13 +172,12 @@ function AboutPage() {
       </section>
 
       {/* THE STORY - editorial narrative */}
-      <section className="relative bg-transparent py-14 md:py-16">
-        {/* Glow Orb (Very light blue tint on left) */}
-        <div className="pointer-events-none absolute top-1/2 -left-40 h-[500px] w-[500px] -translate-y-1/2 rounded-full opacity-[0.07] blur-[120px]" style={{ background: "oklch(0.60 0.16 250)" }} aria-hidden />
+      <section className="relative bg-sand py-14 md:py-16">
+        <div className="absolute inset-0 tex-diagonal opacity-50" />
         <div className="container-edit relative grid gap-12 md:grid-cols-12">
           <Reveal className="md:col-span-4">
             <div className="md:sticky md:top-28">
-              <p className="eyebrow eyebrow-cyan">The story</p>
+              <p className="eyebrow">The story</p>
               <h2 className="mt-4 font-serif text-3xl font-semibold leading-[1.1] tracking-tight text-ink md:text-4xl">
                 From small town to building across{" "}
                 <em className="text-gradient-brand animate-gradient">three continents.</em>
@@ -223,64 +205,20 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* WHAT HE IS HIRED FOR */}
-      <section className="relative bg-transparent py-14 md:py-16">
-        <div className="container-edit">
-          <Reveal>
-            <p className="eyebrow eyebrow-blue">Capabilities</p>
-            <h2 className="mt-4 max-w-3xl font-serif text-4xl font-semibold leading-[1.05] tracking-tight text-ink md:text-6xl">
-              What Ambesh is{" "}
-              <span className="text-gradient-brand animate-gradient italic">hired for.</span>
-            </h2>
-            <p className="mt-6 max-w-2xl text-lg text-ink-soft">
-              Providing a complete bridge between workflow strategy, people training, and automated systems implementation.
-            </p>
-          </Reveal>
-          <div className="mt-16 grid gap-6 md:grid-cols-3">
-            {hiredFor.map((h, i) => {
-              const accentClasses = ["card-accent-blue", "card-accent-cyan", "card-accent-indigo"];
-              const accentClass = accentClasses[i % accentClasses.length];
-              return (
-                <Reveal key={h.title} delay={100}>
-                  <div className={`custom-theme-card group h-full rounded-3xl p-8 ${accentClass}`}>
-                    <div
-                      className="flex h-12 w-12 items-center justify-center rounded-xl border border-rule transition-colors duration-300"
-                      style={{ background: "var(--card-accent-soft)", color: "var(--card-accent)" }}
-                    >
-                      <h.icon className="h-5 w-5" />
-                    </div>
-                  <p className="mt-6 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-ink-muted">
-                    {h.label}
-                  </p>
-                  <h3 className="mt-3 text-2xl font-extrabold tracking-tight text-ink">{h.title}</h3>
-                  <p className="mt-4 text-base leading-relaxed text-ink-soft">{h.body}</p>
-                </div>
-              </Reveal>
-            );
-          })}
-          </div>
-        </div>
-      </section>
-
       {/* WHAT HE BELIEVES */}
-      <section className="relative bg-transparent py-14 md:py-16">
-        {/* Glow Orb (Very light blue tint on left) */}
-        <div className="pointer-events-none absolute top-1/2 -left-40 h-[500px] w-[500px] -translate-y-1/2 rounded-full opacity-[0.07] blur-[120px]" style={{ background: "oklch(0.60 0.16 250)" }} aria-hidden />
+      <section className="relative bg-canvas py-14 md:py-16">
         <div className="container-edit">
           <Reveal>
-            <p className="eyebrow eyebrow-indigo">What he believes</p>
+            <p className="eyebrow">What he believes</p>
             <h2 className="mt-4 max-w-3xl font-serif text-4xl font-semibold leading-[1.05] tracking-tight text-ink md:text-6xl">
-              Four beliefs that shape{" "}
+              Five beliefs that shape{" "}
               <span className="text-gradient-brand animate-gradient italic">every engagement.</span>
             </h2>
           </Reveal>
-          <div className="mt-16 grid gap-6 md:grid-cols-2">
-            {beliefs.map((b, i) => {
-              const accentClasses = ["card-accent-blue", "card-accent-cyan", "card-accent-indigo", "card-accent-teal"];
-              const accentClass = accentClasses[i % accentClasses.length];
-              return (
-                <Reveal key={b.n} delay={80}>
-                  <div className={`custom-theme-card group h-full rounded-3xl p-7 ${accentClass}`}>
+          <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {beliefs.map((b, i) => (
+              <Reveal key={b.n} delay={i * 80}>
+                <div className="group h-full rounded-3xl border border-rule bg-sand/50 p-7 transition-all hover:-translate-y-1 hover:border-ink/20 hover:bg-canvas hover:shadow-lift">
                   <p className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-ink-muted">
                     Belief {b.n}
                   </p>
@@ -288,17 +226,17 @@ function AboutPage() {
                   {b.b && <p className="mt-4 text-sm leading-relaxed text-ink-soft">{b.b}</p>}
                 </div>
               </Reveal>
-            );
-          })}
+            ))}
           </div>
         </div>
       </section>
 
       {/* THREE ROLES */}
-      <section className="relative bg-transparent py-14 md:py-16">
+      <section className="relative bg-sand py-14 md:py-16">
+        <div className="absolute inset-0 tex-dots-soft opacity-50" />
         <div className="container-edit relative">
           <Reveal>
-            <p className="eyebrow eyebrow-cyan">Three roles, one thread</p>
+            <p className="eyebrow">Three roles, one thread</p>
             <h2 className="mt-4 max-w-3xl font-serif text-4xl font-semibold leading-[1.05] tracking-tight text-ink md:text-6xl">
               Entrepreneur. Builder.{" "}
               <span className="text-gradient-brand animate-gradient italic">Teacher.</span>
@@ -308,44 +246,29 @@ function AboutPage() {
             </p>
           </Reveal>
           <div className="mt-16 grid gap-6 md:grid-cols-3">
-            {roles.map((r, i) => {
-              const accentClasses = ["card-accent-blue", "card-accent-cyan", "card-accent-indigo"];
-              const accentClass = accentClasses[i % accentClasses.length];
-              return (
-                <Reveal key={r.title} delay={100}>
-                  <div className={`custom-theme-card group h-full rounded-3xl p-8 ${accentClass}`}>
-                    <div className="flex items-center gap-4">
-                      <div
-                        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-rule transition-colors duration-300"
-                        style={{ background: "var(--card-accent-soft)", color: "var(--card-accent)" }}
-                      >
-                        <r.icon className="h-5 w-5" />
-                      </div>
-                      <div>
-                        <p className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-ink-muted">
-                          {r.label}
-                        </p>
-                        <h3 className="text-2xl font-extrabold tracking-tight text-ink leading-tight">
-                          {r.title}
-                        </h3>
-                      </div>
-                    </div>
-                    <p className="mt-5 text-base leading-relaxed text-ink-soft">{r.body}</p>
+            {roles.map((r, i) => (
+              <Reveal key={r.title} delay={i * 100}>
+                <div className="group h-full rounded-3xl border border-rule bg-canvas p-8 transition-all hover:-translate-y-1 hover:shadow-lift">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-brand text-white animate-gradient">
+                    <r.icon className="h-5 w-5" />
                   </div>
-                </Reveal>
-              );
-            })}
+                  <p className="mt-6 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-ink-muted">
+                    {r.label}
+                  </p>
+                  <h3 className="mt-3 text-3xl font-extrabold tracking-tight text-ink">{r.title}</h3>
+                  <p className="mt-4 text-base leading-relaxed text-ink-soft">{r.body}</p>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
       {/* JOURNEY */}
-      <section className="relative bg-transparent py-14 md:py-16">
-        {/* Glow Orb (Very light blue tint on left) */}
-        <div className="pointer-events-none absolute top-1/2 -left-40 h-[500px] w-[500px] -translate-y-1/2 rounded-full opacity-[0.07] blur-[120px]" style={{ background: "oklch(0.60 0.16 250)" }} aria-hidden />
+      <section className="relative bg-canvas py-14 md:py-16">
         <div className="container-edit">
           <Reveal>
-            <p className="eyebrow eyebrow-blue">The journey</p>
+            <p className="eyebrow">The journey</p>
             <h2 className="mt-4 max-w-3xl font-serif text-4xl font-semibold leading-[1.05] tracking-tight text-ink md:text-6xl">
               From small town to training teams across{" "}
               <span className="text-gradient-brand animate-gradient italic">three continents.</span>
@@ -353,8 +276,8 @@ function AboutPage() {
           </Reveal>
           <div className="mt-16 grid gap-px overflow-hidden rounded-3xl border border-rule bg-rule md:grid-cols-2">
             {journey.map((j, i) => (
-              <Reveal key={`${j.year}-${j.t}`} delay={80}>
-                <div className="h-full bg-canvas/40 p-8 transition-colors hover:bg-sand/40">
+              <Reveal key={`${j.year}-${j.t}`} delay={(i % 2) * 80}>
+                <div className="h-full bg-canvas p-8 transition-colors hover:bg-sand">
                   <p className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-ink-muted">
                     {j.year}
                   </p>
@@ -368,10 +291,11 @@ function AboutPage() {
       </section>
 
       {/* WHAT HE HAS BUILT */}
-      <section className="relative bg-transparent py-14 md:py-16">
+      <section className="relative bg-sand py-14 md:py-16">
+        <div className="absolute inset-0 tex-grid opacity-40" />
         <div className="container-edit relative">
           <Reveal>
-            <p className="eyebrow eyebrow-indigo">Built along the way</p>
+            <p className="eyebrow">Built along the way</p>
             <h2 className="mt-4 max-w-3xl font-serif text-4xl font-semibold leading-[1.05] tracking-tight text-ink md:text-6xl">
               One company. One school.{" "}
               <span className="text-gradient-brand animate-gradient italic">Three products.</span>
@@ -381,17 +305,14 @@ function AboutPage() {
             </p>
           </Reveal>
           <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {builds.map((b, i) => {
-              const accentClasses = ["card-accent-blue", "card-accent-cyan", "card-accent-indigo"];
-              const accentClass = accentClasses[i % accentClasses.length];
-              return (
-                <Reveal key={b.name} delay={80}>
-                  <a
-                    href={b.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`custom-theme-card group relative block h-full overflow-hidden rounded-3xl p-8 ${accentClass}`}
-                  >
+            {builds.map((b, i) => (
+              <Reveal key={b.name} delay={i * 70}>
+                <a
+                  href={b.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative block h-full overflow-hidden rounded-3xl border border-rule bg-canvas p-8 transition-all hover:-translate-y-1 hover:border-ink/20 hover:shadow-lift"
+                >
                   <div className="flex items-start justify-between">
                     <div>
                       <h3 className="text-2xl font-extrabold tracking-tight text-ink">{b.name}</h3>
@@ -399,25 +320,22 @@ function AboutPage() {
                         {b.year}
                       </p>
                     </div>
-                    <ExternalLink className="h-4 w-4 text-ink-muted transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--card-accent)]" />
+                    <ExternalLink className="h-4 w-4 text-ink-muted transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-violet" />
                   </div>
                   <p className="mt-5 text-sm leading-relaxed text-ink-soft">{b.desc}</p>
-                  <p className="mt-6 font-mono text-xs text-[var(--card-accent)]">{b.link}</p>
-                  </a>
-                </Reveal>
-              );
-            })}
+                  <p className="mt-6 font-mono text-xs text-violet">{b.link}</p>
+                </a>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="relative bg-transparent py-14 md:py-16">
-        {/* Glow Orb (Very light blue tint on left) */}
-        <div className="pointer-events-none absolute top-1/2 -left-40 h-[500px] w-[500px] -translate-y-1/2 rounded-full opacity-[0.07] blur-[120px]" style={{ background: "oklch(0.60 0.16 250)" }} aria-hidden />
+      <section className="relative bg-canvas py-14 md:py-16">
         <div className="container-edit">
           <Reveal>
-            <p className="eyebrow eyebrow-cyan">What people say</p>
+            <p className="eyebrow">What people say</p>
             <h2 className="mt-4 max-w-3xl font-serif text-4xl font-semibold leading-[1.05] tracking-tight text-ink md:text-6xl">
               About working{" "}
               <span className="text-gradient-brand animate-gradient italic">together.</span>
@@ -429,8 +347,8 @@ function AboutPage() {
           </Reveal>
           <div className="mt-16 grid gap-6 md:grid-cols-3">
             {placeholderTestimonials.map((t, i) => (
-              <Reveal key={i} delay={100}>
-                <div className="custom-theme-card-static h-full rounded-3xl p-8">
+              <Reveal key={i} delay={i * 100}>
+                <div className="h-full rounded-3xl border border-dashed border-rule bg-sand/40 p-8">
                   <Mic className="h-5 w-5 text-ink-muted" />
                   <p className="mt-6 font-serif text-lg italic leading-snug text-ink">
                     "{t.q}"
@@ -446,10 +364,10 @@ function AboutPage() {
       </section>
 
       {/* A FEW THINGS WORTH KNOWING */}
-      <section className="relative bg-transparent py-14 md:py-16">
+      <section className="relative bg-sand py-14 md:py-16">
         <div className="container-edit grid gap-12 md:grid-cols-12">
           <Reveal className="md:col-span-5">
-            <p className="eyebrow eyebrow-blue">A few things worth knowing</p>
+            <p className="eyebrow">A few things worth knowing</p>
             <h2 className="mt-4 font-serif text-3xl font-semibold leading-[1.1] tracking-tight text-ink md:text-4xl">
               Small details that shape{" "}
               <span className="italic text-gradient-brand animate-gradient">how Ambesh works.</span>
@@ -457,7 +375,7 @@ function AboutPage() {
           </Reveal>
           <ul className="md:col-span-7 md:col-start-6 space-y-5">
             {knowables.map((k, i) => (
-              <Reveal key={i} delay={60} as="li">
+              <Reveal key={i} delay={i * 60} as="li">
                 <div className="flex gap-4 border-b border-rule pb-5">
                   <span className="font-mono text-xs text-violet">0{i + 1}</span>
                   <p className="text-base leading-relaxed text-ink-soft">{k}</p>
@@ -469,10 +387,11 @@ function AboutPage() {
       </section>
 
       {/* CLOSING CTA */}
-      <section className="relative isolate overflow-hidden py-14 md:py-16">
+      <section className="relative isolate overflow-hidden premium-canvas py-14 md:py-16">
+        <div className="absolute inset-0 tex-dots-soft opacity-60" />
         <div className="container-edit relative text-center">
           <Reveal>
-            <p className="eyebrow eyebrow-indigo">Final word</p>
+            <p className="eyebrow">Final word</p>
             <h2 className="mx-auto mt-6 max-w-4xl font-serif text-5xl font-semibold leading-[1.05] tracking-tight text-ink md:text-7xl">
               If any of this resonates,{" "}
               <span className="italic text-gradient-brand animate-gradient">
@@ -488,11 +407,10 @@ function AboutPage() {
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 to="/contact"
-                search={{ service: "strategy" }}
                 className="btn-premium inline-flex h-14 items-center gap-2 rounded-full px-8 text-base font-semibold"
               >
                 <span className="relative z-10 flex items-center gap-2">
-                  Book a Strategy Call <ArrowRight className="h-4 w-4" />
+                  Book a 30-minute call <ArrowUpRight className="h-4 w-4" />
                 </span>
               </Link>
               <a
@@ -508,6 +426,6 @@ function AboutPage() {
           </Reveal>
         </div>
       </section>
-    </div>
+    </>
   );
 }
