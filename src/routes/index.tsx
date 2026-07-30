@@ -247,9 +247,9 @@ function HomePage() {
           <div className="grid gap-12 md:grid-cols-12 md:items-start lg:gap-16">
             <Reveal className="md:col-span-5">
               <p className="eyebrow eyebrow-indigo">The Problems I Solve</p>
-              <h2 className="mt-4 font-display text-[2.2rem] sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold leading-[1.1] tracking-[-0.03em] text-ink">
+              <h2 className="mt-4 pb-2 font-display text-[2.2rem] sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold leading-[1.1] tracking-[-0.03em] text-ink">
                 Running a business shouldn't feel like{" "}
-                <span className="font-serif italic font-medium text-gradient-brand">putting out fires every day.</span>
+                <span className="font-serif italic font-medium text-gradient-brand pr-1">putting out fires every day.</span>
               </h2>
             </Reveal>
             <Reveal delay={120} className="md:col-span-7">
@@ -372,7 +372,7 @@ function HomePage() {
                   <p className="mt-3 text-[15px] leading-[1.65] text-ink-soft md:mt-4">{desc}</p>
                   <ul className="mt-5 space-y-3 md:mt-6">
                     {bullets.map((b) => (
-                      <li key={b} className="flex items-start gap-2.5 text-sm leading-[1.5] text-ink-soft">
+                      <li key={b} className="flex items-start gap-2.5 text-[15px] leading-[1.65] text-ink-soft">
                         <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 transition-colors" style={{ color: "var(--accent)" }} />
                         <span>{b}</span>
                       </li>
@@ -409,8 +409,8 @@ function HomePage() {
             {/* Left Column (Header) */}
             <div className="md:col-span-5 pb-8 md:pb-0">
               <p className="eyebrow eyebrow-indigo">How I Think</p>
-              <h2 className="mt-4 font-display text-[2.2rem] font-extrabold leading-[1.1] tracking-[-0.03em] sm:text-4xl md:text-5xl text-ink">
-                Ideas that guide <span className="font-serif italic font-medium text-gradient-brand">my work.</span>
+              <h2 className="mt-4 pb-2 font-display text-[2.2rem] font-extrabold leading-[1.1] tracking-[-0.03em] sm:text-4xl md:text-5xl text-ink">
+                Ideas that guide{" "}<br className="hidden sm:block" /><span className="font-serif italic font-medium text-gradient-brand">my work.</span>
               </h2>
               <p className="mt-6 text-base leading-[1.6] text-ink-soft md:text-lg">
                 These core beliefs shape how I help founders automate operations, scale teams, and build self-managing companies.
@@ -484,7 +484,7 @@ function HomePage() {
             <div className="mt-12 custom-theme-card-static p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div>
                 <p className="text-xs uppercase tracking-wider font-bold text-accent">Core Focus</p>
-                <p className="mt-1 text-sm text-ink-soft">The subject may change, but my role remains similar:</p>
+                <p className="mt-1 text-[15px] leading-[1.65] text-ink-soft">The subject may change, but my role remains similar:</p>
               </div>
               <blockquote className="font-serif text-lg italic md:text-xl text-ink md:max-w-xl md:text-right">
                 &ldquo;Make a complex problem easier to understand and easier to act on.&rdquo;
@@ -520,19 +520,19 @@ function HomePage() {
       </section>
 
       {/* WHAT I HAVE BUILT */}
-      <section id="built" className="relative overflow-hidden bg-canvas py-16 md:py-24">
+      <section id="built" className="relative bg-canvas py-16 md:py-24">
         <div className="container-edit relative">
           <div className="grid gap-6 md:grid-cols-12 md:items-start md:gap-12 mb-12">
             <Reveal className="md:col-span-6">
               <p className="eyebrow eyebrow-indigo">Brands and Products</p>
-              <h2 className="mt-4 font-display text-[2.2rem] font-extrabold leading-[1.1] tracking-[-0.03em] sm:text-4xl md:text-5xl text-ink">
-                I do not only advise. <span className="font-serif italic font-medium text-gradient-brand">I build.</span>
+              <h2 className="mt-4 pb-2 font-display text-[2.2rem] font-extrabold leading-[1.1] tracking-[-0.03em] sm:text-4xl md:text-5xl text-ink">
+                I do not only advise.{" "}<br className="hidden sm:block" /><span className="font-serif italic font-medium text-gradient-brand">I build.</span>
               </h2>
             </Reveal>
             <Reveal delay={100} className="md:col-span-6">
-              <div className="space-y-4 text-base leading-[1.65] text-ink-soft md:text-lg">
+              <div className="space-y-2 text-[15px] leading-[1.5] text-ink-soft md:text-base">
                 <p>Building products has taught me lessons that cannot be learned from presentations.</p>
-                <p className="text-sm text-ink-muted">You have to understand customers, make difficult choices, work with a team, manage costs and make the product useful enough for people to keep using it.</p>
+                <p>You have to understand customers, make difficult choices, work with a team, manage costs and make the product useful enough for people to keep using it.</p>
               </div>
             </Reveal>
           </div>
