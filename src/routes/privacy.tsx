@@ -31,7 +31,7 @@ function PrivacyPage() {
   return (
     <div className="bg-canvas">
       <section className="container-edit pt-24 pb-12 md:pt-32">
-        <Reveal>
+        <Reveal eager>
           <p className="eyebrow">Legal</p>
           <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tighter text-ink md:text-6xl">
             Privacy Policy
@@ -146,7 +146,7 @@ function PrivacyPage() {
               In accordance with the Information Technology Act, 2000 and the DPDP
               Act, 2023, the Grievance Officer for this website is:
             </p>
-            <p className="rounded-lg border border-rule bg-elevated p-4">
+            <p className="rounded-lg custom-theme-card-static p-4">
               <strong>Ambesh Tiwari</strong><br />
               BDA Technologies Pvt. Ltd., Delhi, India<br />
               Email: <a href="mailto:hello@ambesh.com" className="underline">hello@ambesh.com</a>
@@ -177,7 +177,7 @@ function PrivacyPage() {
 
 function LegalIntro({ children }: { children: React.ReactNode }) {
   return (
-    <div className="rounded-2xl border border-rule bg-elevated p-6 text-[15px] leading-[1.7]">
+    <div className="rounded-2xl custom-theme-card-static p-6 text-[15px] leading-[1.7]">
       {children}
     </div>
   );

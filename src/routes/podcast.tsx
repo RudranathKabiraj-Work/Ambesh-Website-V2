@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowUpRight, Headphones, Play, Mail, Mic } from "lucide-react";
+import { ArrowRight, Headphones, Play, Mail, Mic } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { buildMeta, jsonLd, breadcrumbSchema, SITE_URL, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
@@ -111,32 +111,32 @@ function PodcastPage() {
         <div className="absolute inset-0 tex-dots-soft tex-fade-b" aria-hidden />
         <div className="container-edit relative grid gap-12 pt-20 pb-28 md:grid-cols-12 md:gap-16 md:pt-32 md:pb-36">
           <div className="md:col-span-8">
-            <Reveal>
+            <Reveal eager>
               <p className="eyebrow">The podcast</p>
             </Reveal>
-            <Reveal delay={100}>
+            <Reveal delay={100} eager>
               <h1 className="mt-6 text-5xl font-extrabold leading-[0.95] tracking-tighter md:text-7xl lg:text-[7rem]">
                 Inspire with <br />
                 <span className="text-gradient-brand animate-gradient">Ambesh.</span>
               </h1>
             </Reveal>
-            <Reveal delay={250}>
+            <Reveal delay={250} eager>
               <p className="mt-8 max-w-xl text-lg text-ink-muted">
                 Conversations with founders, operators and builders about the
                 things that actually matter: ambition, decisions, setbacks, and
                 what it takes to build something real.
               </p>
             </Reveal>
-            <Reveal delay={350}>
+            <Reveal delay={350} eager>
               <p className="mt-4 max-w-xl font-serif italic text-ink-muted">
                 No predictions. No hot takes. Just field notes from people doing the work.
               </p>
             </Reveal>
-            <Reveal delay={450} className="mt-10">
+            <Reveal delay={450} eager className="mt-10">
               <Waveform />
             </Reveal>
           </div>
-          <Reveal delay={200} className="md:col-span-4">
+          <Reveal delay={200} eager className="md:col-span-4">
             <div className="relative flex aspect-square w-full flex-col items-center justify-center rounded-3xl bg-gradient-brand text-white shadow-glow animate-gradient">
               <div
                 className="absolute inset-0 rounded-3xl opacity-20"
@@ -168,7 +168,7 @@ function PodcastPage() {
             >
               <span className={`h-2 w-2 rounded-full ${p.color}`} />
               {p.name}
-              <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
             </a>
           ))}
         </div>
@@ -189,7 +189,7 @@ function PodcastPage() {
           </Reveal>
           <div className="mt-16 grid gap-5 md:grid-cols-3">
             {featuredEpisodes.map((e, i) => (
-              <Reveal key={e.title} delay={i * 80}>
+              <Reveal key={e.title} delay={80}>
                 <a
                   href="#"
                   className="group flex h-full flex-col rounded-3xl border border-rule bg-canvas p-6 transition-all hover:-translate-y-1 hover:shadow-glow"
@@ -206,7 +206,7 @@ function PodcastPage() {
                   <p className="mt-3 text-sm leading-relaxed text-ink-muted">{e.blurb}</p>
                   <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-violet">
                     Listen
-                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </span>
                 </a>
               </Reveal>
@@ -218,7 +218,7 @@ function PodcastPage() {
               className="group inline-flex items-center gap-2 text-base font-semibold text-ink hover:text-violet"
             >
               See all 30+ episodes
-              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
           </Reveal>
         </div>
@@ -244,7 +244,7 @@ function PodcastPage() {
               </p>
               <div className="mt-8 flex flex-wrap gap-2.5">
                 {topics.map((t, i) => (
-                  <Reveal key={t} delay={i * 40}>
+                  <Reveal key={t} delay={40}>
                     <span className="inline-flex items-center rounded-full border border-rule bg-canvas px-4 py-2 text-sm font-medium text-ink transition-colors hover:border-violet/40 hover:text-violet">
                       {t}
                     </span>
@@ -298,7 +298,7 @@ function PodcastPage() {
                 className="group mt-8 inline-flex items-center gap-2 text-base font-semibold text-ink hover:text-violet"
               >
                 Read the full story
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </Reveal>
           </div>
@@ -368,12 +368,13 @@ function PodcastPage() {
             </p>
           </Reveal>
           <Reveal delay={240}>
-            <a
-              href="mailto:hello@ambesh.com?subject=Pitch%20a%20conversation"
+            <Link
+              to="/contact"
+              search={{ type: "podcast" }}
               className="btn-premium mt-10 inline-flex h-14 items-center justify-center gap-2 rounded-full px-8 text-base font-semibold"
             >
-              <Mail className="h-4 w-4" /> Pitch a conversation
-            </a>
+              <Mic className="h-4 w-4" /> Pitch a conversation
+            </Link>
           </Reveal>
         </div>
       </section>

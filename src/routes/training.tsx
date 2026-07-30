@@ -1,6 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
-  ArrowUpRight,
+  ArrowRight,
   CheckCircle2,
   GraduationCap,
   Users,
@@ -140,14 +140,18 @@ const industries = [
 
 function TrainingPage() {
   return (
-    <>
+    <div className="relative w-full bg-canvas min-h-screen" style={{ backgroundImage: "none" }}>
       {/* HERO */}
-      <section className="premium-canvas relative isolate overflow-hidden">
-        <div className="container-edit pt-20 pb-20 md:pt-28 md:pb-24">
-          <Reveal>
-            <p className="eyebrow">Training</p>
+      <section className="relative isolate overflow-hidden">
+
+        {/* Glow Orb */}
+        <div className="pointer-events-none absolute top-1/2 -left-40 h-[600px] w-[600px] -translate-y-1/2 rounded-full opacity-[0.12] blur-[120px]" style={{ background: "oklch(0.70 0.16 45)" }} aria-hidden />
+
+        <div className="container-edit pt-10 pb-20 md:pt-14 md:pb-24">
+          <Reveal eager>
+            <p className="eyebrow eyebrow-orange">Training</p>
           </Reveal>
-          <Reveal delay={80}>
+          <Reveal delay={80} eager>
             <h1 className="mt-5 max-w-4xl font-display text-[2.4rem] font-extrabold leading-[1.05] tracking-[-0.03em] text-ink sm:text-5xl md:text-6xl lg:text-[4rem]">
               Corporate AI training that turns{" "}
               <span className="font-serif italic font-medium text-gradient-brand animate-gradient">
@@ -155,24 +159,25 @@ function TrainingPage() {
               </span>
             </h1>
           </Reveal>
-          <Reveal delay={150}>
+          <Reveal delay={150} eager>
             <p className="mt-6 max-w-2xl text-lg leading-[1.6] text-ink-soft md:text-xl">
               Hands-on AI workshops for leadership teams, departments and
               professionals who need to use AI inside real work, not just hear
               about it.
             </p>
           </Reveal>
-          <Reveal delay={220}>
+          <Reveal delay={220} eager>
             <div className="mt-10 flex flex-wrap items-center gap-3">
-              <a
-                href="/contact?service=training"
+              <Link
+                to="/contact"
+                search={{ service: "training" }}
                 className="btn-premium inline-flex h-12 items-center gap-2 rounded-full px-6 text-[15px] font-semibold"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   Request a Corporate Training
-                  <ArrowUpRight className="h-4 w-4" />
+                  <ArrowRight className="h-4 w-4" />
                 </span>
-              </a>
+              </Link>
               <a
                 href="#formats"
                 className="inline-flex h-12 items-center gap-2 rounded-full border border-ink/15 bg-canvas/80 px-6 text-[15px] font-semibold text-ink backdrop-blur transition-all hover:border-ink/40 hover:bg-canvas"
@@ -181,11 +186,10 @@ function TrainingPage() {
               </a>
             </div>
           </Reveal>
-
-          <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-rule bg-rule sm:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {heroStats.map((s, i) => (
-              <Reveal key={s.l} delay={i * 60}>
-                <div className="h-full bg-canvas p-6 transition-colors hover:bg-sand">
+              <Reveal key={s.l} delay={60 + i * 60} eager>
+                <div className="h-full custom-theme-card-static p-6 rounded-2xl">
                   <p className="font-display text-2xl font-extrabold tracking-tight text-ink md:text-3xl">
                     {s.v}
                   </p>
@@ -198,8 +202,7 @@ function TrainingPage() {
       </section>
 
       {/* FORMATS */}
-      <section id="formats" className="relative overflow-hidden bg-canvas py-14 md:py-20">
-        <div className="tex-dots-soft tex-fade pointer-events-none absolute inset-0" aria-hidden />
+      <section id="formats" className="relative overflow-hidden bg-transparent py-14 md:py-20">
         <div className="container-edit relative">
           <div className="grid gap-12 md:grid-cols-12 md:items-end">
             <Reveal className="md:col-span-7">
@@ -219,11 +222,10 @@ function TrainingPage() {
               </p>
             </Reveal>
           </div>
-
           <div className="mt-16 grid gap-6 lg:grid-cols-3">
             {formats.map((p, i) => (
-              <Reveal key={p.title} delay={i * 100}>
-                <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-rule bg-canvas p-8 transition-all duration-300 hover:-translate-y-1 hover:border-ink/30 hover:shadow-lift">
+              <Reveal key={p.title} delay={100}>
+                <div className="custom-theme-card group relative flex h-full flex-col overflow-hidden rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
                   <div
                     className="pointer-events-none absolute -top-24 -right-24 h-48 w-48 rounded-full opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-60"
                     style={{ background: "var(--accent-soft)" }}
@@ -256,8 +258,9 @@ function TrainingPage() {
       </section>
 
       {/* NAMED ENGAGEMENTS */}
-      <section className="relative overflow-hidden bg-sand py-14 md:py-20">
-        <div className="tex-grid tex-fade pointer-events-none absolute inset-0" aria-hidden />
+      <section className="relative overflow-hidden bg-transparent py-14 md:py-20">
+        {/* Glow Orb (Very light tint on left) */}
+        <div className="pointer-events-none absolute top-1/2 -left-40 h-[500px] w-[500px] -translate-y-1/2 rounded-full opacity-[0.07] blur-[120px]" style={{ background: "oklch(0.70 0.16 45)" }} aria-hidden />
         <div className="container-edit relative">
           <Reveal>
             <p className="eyebrow">Named engagements</p>
@@ -270,7 +273,7 @@ function TrainingPage() {
           <div className="mt-14 grid gap-6 md:grid-cols-3">
             {engagements.map((e) => (
               <Reveal key={e.name}>
-                <article className="group flex h-full flex-col rounded-2xl border border-rule bg-canvas p-7 transition-all hover:-translate-y-1 hover:shadow-lift">
+                <article className="custom-theme-card group flex h-full flex-col rounded-2xl p-7 transition-all hover:-translate-y-1 hover:shadow-lift">
                   <span className="inline-flex w-fit items-center rounded-full border border-rule bg-sand px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-ink-soft">
                     {e.tag}
                   </span>
@@ -292,8 +295,7 @@ function TrainingPage() {
       </section>
 
       {/* OUTCOMES */}
-      <section className="relative overflow-hidden bg-canvas py-14 md:py-20">
-        <div className="tex-dots-soft tex-fade pointer-events-none absolute inset-0" aria-hidden />
+      <section className="relative overflow-hidden bg-transparent py-14 md:py-20">
         <div className="container-edit relative">
           <Reveal>
             <p className="eyebrow">After the training</p>
@@ -301,11 +303,10 @@ function TrainingPage() {
               Your team should leave with{" "}
               <span className="font-serif italic font-medium">things they can use.</span>
             </h2>
-          </Reveal>
-          <div className="mt-12 grid gap-3 md:grid-cols-2">
+          </Reveal>          <div className="mt-12 grid gap-3 md:grid-cols-2">
             {outcomes.map((o, i) => (
-              <Reveal key={o} delay={(i % 4) * 60}>
-                <div className="flex items-start gap-4 rounded-2xl border border-rule bg-canvas p-5">
+              <Reveal key={o} delay={60}>
+                <div className="custom-theme-card-static flex items-start gap-4 rounded-2xl p-5">
                   <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0" style={{ color: "var(--accent)" }} />
                   <p className="text-base text-ink">{o}</p>
                 </div>
@@ -316,8 +317,9 @@ function TrainingPage() {
       </section>
 
       {/* THEMES */}
-      <section className="relative overflow-hidden bg-sand py-14 md:py-20">
-        <div className="tex-diagonal pointer-events-none absolute inset-0 opacity-70" aria-hidden />
+      <section className="relative overflow-hidden bg-transparent py-14 md:py-20">
+        {/* Glow Orb (Very light tint on left) */}
+        <div className="pointer-events-none absolute top-1/2 -left-40 h-[500px] w-[500px] -translate-y-1/2 rounded-full opacity-[0.07] blur-[120px]" style={{ background: "oklch(0.70 0.16 45)" }} aria-hidden />
         <div className="container-edit relative">
           <Reveal>
             <p className="eyebrow">Feedback</p>
@@ -330,7 +332,7 @@ function TrainingPage() {
           <div className="mt-14 grid gap-6 md:grid-cols-3">
             {themes.map((t) => (
               <Reveal key={t.quote}>
-                <figure className="flex h-full flex-col rounded-2xl border border-rule bg-canvas p-7">
+                <figure className="custom-theme-card-static flex h-full flex-col rounded-2xl p-7">
                   <blockquote className="font-serif text-xl italic leading-snug text-ink">
                     &ldquo;{t.quote}&rdquo;
                   </blockquote>
@@ -355,8 +357,7 @@ function TrainingPage() {
       </section>
 
       {/* INDUSTRIES */}
-      <section className="relative overflow-hidden bg-canvas py-14 md:py-20">
-        <div className="tex-grid-fine tex-fade pointer-events-none absolute inset-0" aria-hidden />
+      <section className="relative overflow-hidden bg-transparent py-14 md:py-20">
         <div className="container-edit relative">
           <Reveal>
             <p className="eyebrow">Industries served</p>
@@ -402,13 +403,14 @@ function TrainingPage() {
               format after a short discovery call.
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
-              <a
-                href="/contact?service=training"
+              <Link
+                to="/contact"
+                search={{ service: "training" }}
                 className="group inline-flex h-14 items-center gap-2 rounded-full bg-canvas px-8 text-base font-semibold text-ink transition-all hover:-translate-y-0.5"
               >
                 Request a Training
-                <ArrowUpRight className="h-4 w-4" />
-              </a>
+                <ArrowRight className="h-4 w-4" />
+              </Link>
               <a
                 href={whatsappUrl(WA_MESSAGES.training)}
                 target="_blank"
@@ -421,6 +423,6 @@ function TrainingPage() {
           </Reveal>
         </div>
       </section>
-    </>
+    </div>
   );
 }

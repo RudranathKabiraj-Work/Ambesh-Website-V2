@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from "react";
 import type { ReactNode, CSSProperties } from "react";
 
 interface RevealProps {
@@ -5,13 +6,78 @@ interface RevealProps {
   delay?: number;
   className?: string;
   as?: "div" | "section" | "li" | "article" | "header" | "footer" | "h1" | "h2" | "h3" | "p" | "span";
+  eager?: boolean;
 }
 
-export function Reveal({ children, delay = 0, className = "", as: Tag = "div" }: RevealProps) {
+// Single shared IntersectionObserver instance to run animations at 60 FPS
+let globalObserver: IntersectionObserver | null = null;
+const observerCallbacks = new Map<Element, () => void>();
+
+function getGlobalObserver() {
+  if (typeof window === "undefined") return null;
+  if (!globalObserver) {
+    globalObserver = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            const callback = observerCallbacks.get(entry.target);
+            if (callback) callback();
+          }
+        }
+      },
+      { threshold: 0.05, rootMargin: "0px 0px 0px 0px" }
+    );
+  }
+  return globalObserver;
+}
+
+export function Reveal({ children, delay = 0, className = "", as: Tag = "div", eager = false }: RevealProps) {
+  const [visible, setVisible] = useState(eager);
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (eager) return;
+
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = getGlobalObserver();
+    if (!observer) {
+      setVisible(true);
+      return;
+    }
+
+    const onIntersect = () => {
+      setVisible(true);
+      observer.unobserve(el);
+      observerCallbacks.delete(el);
+    };
+
+    observerCallbacks.set(el, onIntersect);
+    observer.observe(el);
+
+    return () => {
+      if (el) {
+        observer.unobserve(el);
+        observerCallbacks.delete(el);
+      }
+    };
+  }, [eager]);
+
+  if (eager) {
+    const style: CSSProperties = delay ? { animationDelay: `${delay}ms` } : {};
+    return (
+      <Tag className={`animate-fade-in-up ${className}`} style={style}>
+        {children}
+      </Tag>
+    );
+  }
+
   const style: CSSProperties = delay ? { transitionDelay: `${delay}ms` } : {};
   return (
-    <Tag className={`reveal ${className}`} style={style}>
+    <Tag ref={ref as any} className={`reveal ${visible ? "is-visible" : ""} ${className}`} style={style}>
       {children}
     </Tag>
   );
 }
+
