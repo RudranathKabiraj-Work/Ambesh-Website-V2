@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight, Linkedin, Youtube, Instagram, Facebook, Twitter } from "lucide-react";
+import { ArrowRight, Linkedin, Youtube, Instagram, Facebook, Twitter } from "lucide-react";
 
 export function SiteFooter() {
   const socials = [
@@ -27,9 +27,47 @@ export function SiteFooter() {
   ];
 
 
+  const acronymItems = [
+    { letter: "A", title: "Artificial Intelligence" },
+    { letter: "M", title: "Marketing" },
+    { letter: "B", title: "Branding" },
+    { letter: "E", title: "Entrepreneurship" },
+    { letter: "S", title: "Systems" },
+    { letter: "H", title: "Human Potential" },
+  ];
+
   return (
-    <footer className="mt-24 border-t border-rule bg-canvas">
-      <div className="container-edit py-16 md:py-20">
+    <footer className="bg-canvas">
+      <div className="container-edit pt-8 pb-16 md:pt-10 md:pb-20">
+        {/* Acronym section */}
+        <div className="mb-16 border-b border-rule pb-12">
+          <p className="text-center font-mono text-[0.65rem] font-bold uppercase tracking-[0.25em] text-ink-muted mb-8">
+            The Core Pillars
+          </p>
+          <div className="grid grid-cols-3 gap-4 sm:grid-cols-6 lg:gap-6">
+            {acronymItems.map((item) => (
+              <div 
+                key={item.letter}
+                className="custom-theme-card group relative flex flex-col justify-between overflow-hidden rounded-[20px] p-5 text-center transition-all duration-500 ease-out -translate-y-1.5 shadow-lift hover:translate-y-0 hover:scale-100 hover:shadow-none min-h-[140px] md:min-h-[160px]"
+              >
+                {/* Diagonal sweeping shine animation */}
+                <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/80 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-full pointer-events-none" />
+
+                <div className="flex-1 flex items-center justify-center">
+                  <span className="font-display text-5xl font-black tracking-tight text-ink transition-all duration-500 ease-out group-hover:scale-110 group-hover:text-accent select-none md:text-6xl">
+                    {item.letter}
+                  </span>
+                </div>
+                <div className="mt-3 flex items-center justify-center h-10 relative z-10">
+                  <span className="font-sans text-[0.65rem] font-bold uppercase tracking-wider text-ink-soft md:text-[0.7rem] leading-tight transition-colors duration-500 group-hover:text-ink">
+                    {item.title}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Top: Brand + nav columns */}
         <div className="grid gap-12 md:grid-cols-12 md:gap-10">
           {/* Brand block */}
@@ -64,11 +102,11 @@ export function SiteFooter() {
           </div>
 
           {/* Pages */}
-          <div className="md:col-span-3">
-            <p className="eyebrow">
-              Pages
-            </p>
-            <ul className="mt-5 grid grid-cols-2 gap-2.5 text-sm md:grid-cols-1">
+          <div className="md:col-span-3 md:mx-auto w-fit">
+            <div className="mb-4">
+              <span className="eyebrow eyebrow-indigo">Pages</span>
+            </div>
+            <ul className="grid grid-cols-2 gap-2.5 text-sm md:grid-cols-1">
               {pages.map((p) => (
                 <li key={p.l}>
                   <Link to={p.to} className="text-ink-soft transition-colors hover:text-ink">
@@ -80,11 +118,11 @@ export function SiteFooter() {
           </div>
 
           {/* Brands */}
-          <div className="md:col-span-4">
-            <p className="eyebrow">
-              Brands
-            </p>
-            <ul className="mt-5 space-y-2.5 text-sm">
+          <div className="md:col-span-4 md:ml-auto w-fit">
+            <div className="mb-4">
+              <span className="eyebrow eyebrow-indigo">Brands</span>
+            </div>
+            <ul className="space-y-2.5 text-sm">
               {brands.map((b) => (
                 <li key={b.l}>
                   <a
@@ -94,7 +132,7 @@ export function SiteFooter() {
                     className="inline-flex items-center gap-1.5 text-ink-soft transition-colors hover:text-ink"
                   >
                     {b.l}
-                    <ArrowUpRight className="h-3 w-3 opacity-50" />
+                    <ArrowRight className="h-3 w-3 opacity-50" />
                   </a>
                 </li>
               ))}

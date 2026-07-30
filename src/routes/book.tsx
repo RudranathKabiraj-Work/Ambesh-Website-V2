@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import type { FormEvent } from "react";
-import { ArrowUpRight, BookOpen, Mail, Award, ShoppingBag } from "lucide-react";
+import { ArrowRight, BookOpen, Mail, Award, ShoppingBag } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { buildMeta, jsonLd, breadcrumbSchema, SITE_URL, DEFAULT_OG_IMAGE } from "@/lib/seo";
 import { submitLeadToGHL } from "@/lib/ghl";
@@ -120,10 +120,13 @@ const endorsements = [
 ];
 
 const pressLogos = [
-  { name: "Navbharat Times", src: "/logos/navbharat-times.png" },
-  { name: "Mid-day", src: "/logos/mid-day.png" },
-  { name: "NewsTrack", src: "/logos/newstrack.jpg" },
-  { name: "Dailyhunt", src: "/logos/dailyhunt-icon.png" },
+  { name: "Forbes India", src: "/logos/forbes-india.svg", className: "h-4 sm:h-5" },
+  { name: "Mid-day", src: "/logos/mid-day.png", className: "h-4 sm:h-5" },
+  { name: "Disrupt", src: "/logos/disrupt.png", className: "h-7 sm:h-9" },
+  { name: "Navbharat Times", src: "/logos/navbharat-times.png", className: "h-4 sm:h-5" },
+  { name: "Dailyhunt", src: "/logos/dailyhunt-full.png", className: "h-5 sm:h-7" },
+  { name: "Thrive Global", src: "/logos/thrive-global.svg", className: "h-3 sm:h-4" },
+  { name: "NewsTrack", src: "/logos/newstrack.jpg", className: "h-4 sm:h-5" },
 ];
 
 function BookCover() {
@@ -206,7 +209,7 @@ function BookPage() {
                 className="btn-premium inline-flex h-14 items-center gap-2 rounded-full px-8 text-base font-semibold"
               >
                 <span className="relative z-10 flex items-center gap-2">
-                  Read on Kindle <ArrowUpRight className="h-4 w-4" />
+                  Read on Kindle <ArrowRight className="h-4 w-4" />
                 </span>
               </a>
               <a
@@ -234,7 +237,7 @@ function BookPage() {
                 src={p.src}
                 alt={p.name}
                 title={p.name}
-                className="h-7 w-auto object-contain opacity-80 transition-opacity hover:opacity-100"
+                className={`${p.className} w-auto object-contain opacity-80`}
                 loading="lazy"
               />
             ))}
@@ -253,7 +256,7 @@ function BookPage() {
           </Reveal>
           <div className="mt-16 grid gap-6 md:grid-cols-3">
             {audiences.map((x, i) => (
-              <Reveal key={x.t} delay={i * 100}>
+              <Reveal key={x.t} delay={100}>
                 <div className="group h-full rounded-3xl border border-rule bg-canvas p-8 transition-all hover:-translate-y-1 hover:shadow-glow">
                   <div className={`h-1 w-12 rounded-full bg-gradient-to-r ${x.c}`} />
                   <h3 className="mt-6 text-2xl font-extrabold tracking-tight">{x.t}</h3>
@@ -278,8 +281,8 @@ function BookPage() {
           </Reveal>
           <div className="mt-12 grid gap-3 md:grid-cols-2">
             {takeaways.map((t, i) => (
-              <Reveal key={t} delay={(i % 4) * 60}>
-                <div className="group flex items-start gap-5 rounded-2xl border border-rule bg-canvas p-5 transition-all hover:-translate-y-0.5 hover:border-transparent hover:shadow-glow">
+              <Reveal key={t} delay={60}>
+                <div className="custom-theme-card group flex items-start gap-5 rounded-2xl p-5 transition-all hover:-translate-y-0.5 hover:shadow-glow">
                   <span className="font-mono text-sm text-ink-muted">
                     {String(i + 1).padStart(2, "0")}
                   </span>
@@ -328,7 +331,7 @@ function BookPage() {
           {/* Other endorsements */}
           <div className="mt-6 grid gap-6 md:grid-cols-2">
             {endorsements.map((e, i) => (
-              <Reveal key={e.name} delay={i * 80}>
+              <Reveal key={e.name} delay={80}>
                 <div className="h-full rounded-3xl border border-rule bg-canvas p-8 transition-all hover:-translate-y-1 hover:shadow-glow">
                   <p className="font-serif text-lg italic leading-snug text-ink">"{e.q}"</p>
                   <div className="mt-6">
@@ -362,7 +365,7 @@ function BookPage() {
               to="/about"
               className="mt-8 inline-flex items-center gap-2 text-base font-semibold text-violet hover:text-pink"
             >
-              Read the full story <ArrowUpRight className="h-4 w-4" />
+              Read the full story <ArrowRight className="h-4 w-4" />
             </Link>
           </Reveal>
         </div>

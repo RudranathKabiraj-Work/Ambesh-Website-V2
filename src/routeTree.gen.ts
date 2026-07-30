@@ -17,6 +17,7 @@ import { Route as ResultsRouteImport } from './routes/results'
 import { Route as RefundRouteImport } from './routes/refund'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PodcastRouteImport } from './routes/podcast'
+import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ClientsRouteImport } from './routes/clients'
 import { Route as BookRouteImport } from './routes/book'
@@ -63,6 +64,11 @@ const PodcastRoute = PodcastRouteImport.update({
   path: '/podcast',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InsightsRoute = InsightsRouteImport.update({
+  id: '/insights',
+  path: '/insights',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -95,6 +101,7 @@ export interface FileRoutesByFullPath {
   '/book': typeof BookRoute
   '/clients': typeof ClientsRoute
   '/contact': typeof ContactRoute
+  '/insights': typeof InsightsRoute
   '/podcast': typeof PodcastRoute
   '/privacy': typeof PrivacyRoute
   '/refund': typeof RefundRoute
@@ -110,6 +117,7 @@ export interface FileRoutesByTo {
   '/book': typeof BookRoute
   '/clients': typeof ClientsRoute
   '/contact': typeof ContactRoute
+  '/insights': typeof InsightsRoute
   '/podcast': typeof PodcastRoute
   '/privacy': typeof PrivacyRoute
   '/refund': typeof RefundRoute
@@ -126,6 +134,7 @@ export interface FileRoutesById {
   '/book': typeof BookRoute
   '/clients': typeof ClientsRoute
   '/contact': typeof ContactRoute
+  '/insights': typeof InsightsRoute
   '/podcast': typeof PodcastRoute
   '/privacy': typeof PrivacyRoute
   '/refund': typeof RefundRoute
@@ -143,6 +152,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/clients'
     | '/contact'
+    | '/insights'
     | '/podcast'
     | '/privacy'
     | '/refund'
@@ -158,6 +168,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/clients'
     | '/contact'
+    | '/insights'
     | '/podcast'
     | '/privacy'
     | '/refund'
@@ -173,6 +184,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/clients'
     | '/contact'
+    | '/insights'
     | '/podcast'
     | '/privacy'
     | '/refund'
@@ -189,6 +201,7 @@ export interface RootRouteChildren {
   BookRoute: typeof BookRoute
   ClientsRoute: typeof ClientsRoute
   ContactRoute: typeof ContactRoute
+  InsightsRoute: typeof InsightsRoute
   PodcastRoute: typeof PodcastRoute
   PrivacyRoute: typeof PrivacyRoute
   RefundRoute: typeof RefundRoute
@@ -257,6 +270,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PodcastRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/insights': {
+      id: '/insights'
+      path: '/insights'
+      fullPath: '/insights'
+      preLoaderRoute: typeof InsightsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -301,6 +321,7 @@ const rootRouteChildren: RootRouteChildren = {
   BookRoute: BookRoute,
   ClientsRoute: ClientsRoute,
   ContactRoute: ContactRoute,
+  InsightsRoute: InsightsRoute,
   PodcastRoute: PodcastRoute,
   PrivacyRoute: PrivacyRoute,
   RefundRoute: RefundRoute,

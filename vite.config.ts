@@ -18,9 +18,38 @@ export default defineConfig({
     ],
   },
   optimizeDeps: {
-    include: ["react", "react-dom", "react-dom/client", "react/jsx-runtime", "react/jsx-dev-runtime"],
+    // Explicitly pre-bundle these on startup so the first browser request is instant.
+    // Do NOT add an `exclude` list — Nitro's SSR module runner needs to resolve all
+    // packages and excluding them causes the vite:invoke/getBuiltins timeout.
+    include: [
+      "react",
+      "react-dom",
+      "react-dom/client",
+      "react/jsx-runtime",
+      "react/jsx-dev-runtime",
+      "@tanstack/react-router",
+      "@tanstack/react-query",
+      "lucide-react",
+    ],
   },
-  server: { host: true, port: 8080 },
+  server: {
+    host: true,
+    port: 3000,
+    // Pre-transform the hot-path files before the browser first requests them,
+    // eliminating the waterfall delay on the first page load in dev.
+    warmup: {
+      clientFiles: [
+        "./src/routes/__root.tsx",
+        "./src/routes/index.tsx",
+        "./src/components/HomePageSections.tsx",
+        "./src/components/SiteHeader.tsx",
+        "./src/components/SiteFooter.tsx",
+        "./src/components/Reveal.tsx",
+        "./src/components/Marquee.tsx",
+        "./src/styles.css",
+      ],
+    },
+  },
   plugins: [
     tailwindcss(),
     tsConfigPaths({ projects: ["./tsconfig.json"] }),
