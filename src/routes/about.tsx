@@ -133,7 +133,7 @@ const knowables = [
 
 function AboutPage() {
   return (
-    <div className="relative w-full bg-canvas min-h-screen" style={{ backgroundImage: "none" }}>
+    <div className="min-h-screen w-full relative bg-canvas">
       {/* HERO */}
       <section className="relative isolate overflow-hidden">
         {/* Glow Orb (Light blue tint on left) */}
@@ -249,15 +249,15 @@ function AboutPage() {
                     >
                       <h.icon className="h-5 w-5" />
                     </div>
-                  <p className="mt-6 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-ink-muted">
-                    {h.label}
-                  </p>
-                  <h3 className="mt-3 text-2xl font-extrabold tracking-tight text-ink">{h.title}</h3>
-                  <p className="mt-4 text-base leading-relaxed text-ink-soft">{h.body}</p>
-                </div>
-              </Reveal>
-            );
-          })}
+                    <p className="mt-6 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-ink-muted">
+                      {h.label}
+                    </p>
+                    <h3 className="mt-3 text-2xl font-extrabold tracking-tight text-ink">{h.title}</h3>
+                    <p className="mt-4 text-base leading-relaxed text-ink-soft">{h.body}</p>
+                  </div>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -281,15 +281,15 @@ function AboutPage() {
               return (
                 <Reveal key={b.n} delay={80}>
                   <div className={`custom-theme-card group h-full rounded-3xl p-7 ${accentClass}`}>
-                  <p className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-ink-muted">
-                    Belief {b.n}
-                  </p>
-                  <h3 className="mt-4 text-xl font-bold leading-snug text-ink">{b.h}</h3>
-                  {b.b && <p className="mt-4 text-sm leading-relaxed text-ink-soft">{b.b}</p>}
-                </div>
-              </Reveal>
-            );
-          })}
+                    <p className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-ink-muted">
+                      Belief {b.n}
+                    </p>
+                    <h3 className="mt-4 text-xl font-bold leading-snug text-ink">{b.h}</h3>
+                    {b.b && <p className="mt-4 text-sm leading-relaxed text-ink-soft">{b.b}</p>}
+                  </div>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -392,17 +392,17 @@ function AboutPage() {
                     rel="noopener noreferrer"
                     className={`custom-theme-card group relative block h-full overflow-hidden rounded-3xl p-8 ${accentClass}`}
                   >
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <h3 className="text-2xl font-extrabold tracking-tight text-ink">{b.name}</h3>
-                      <p className="mt-1 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-ink-muted">
-                        {b.year}
-                      </p>
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <h3 className="text-2xl font-extrabold tracking-tight text-ink">{b.name}</h3>
+                        <p className="mt-1 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-ink-muted">
+                          {b.year}
+                        </p>
+                      </div>
+                      <ExternalLink className="h-4 w-4 text-ink-muted transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--card-accent)]" />
                     </div>
-                    <ExternalLink className="h-4 w-4 text-ink-muted transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--card-accent)]" />
-                  </div>
-                  <p className="mt-5 text-sm leading-relaxed text-ink-soft">{b.desc}</p>
-                  <p className="mt-6 font-mono text-xs text-[var(--card-accent)]">{b.link}</p>
+                    <p className="mt-5 text-sm leading-relaxed text-ink-soft">{b.desc}</p>
+                    <p className="mt-6 font-mono text-xs text-[var(--card-accent)]">{b.link}</p>
                   </a>
                 </Reveal>
               );

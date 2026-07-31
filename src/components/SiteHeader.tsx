@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { StrategyCallButton } from "./StrategyCallButton";
+import { ThemeToggle } from "./ThemeToggle";
 
 const nav = [
   { to: "/about", label: "About" },
@@ -29,13 +30,11 @@ export function SiteHeader() {
         style={{
           willChange: "width, max-width, padding",
           backgroundImage: open
-            ? "linear-gradient(135deg, oklch(0.995 0.002 250 / 0.55) 0%, oklch(0.98 0.005 260 / 0.40) 50%, oklch(0.995 0.002 250 / 0.55) 100%)"
+            ? "var(--header-bg-open)"
             : scrolled
-              ? "linear-gradient(135deg, oklch(0.995 0.002 250 / 0.50) 0%, oklch(0.97 0.006 260 / 0.35) 50%, oklch(0.995 0.002 250 / 0.50) 100%)"
-              : "linear-gradient(135deg, oklch(0.995 0.002 250 / 0.35) 0%, oklch(0.97 0.006 260 / 0.22) 50%, oklch(0.995 0.002 250 / 0.35) 100%)",
-          boxShadow: scrolled
-            ? "0 4px 32px -4px oklch(0.18 0.04 260 / 0.18), 0 1px 0 0 oklch(1 0 0 / 0.7) inset, 0 -1px 0 0 oklch(0.9 0.01 260 / 0.15) inset"
-            : "0 2px 20px -4px oklch(0.18 0.04 260 / 0.10), 0 1px 0 0 oklch(1 0 0 / 0.6) inset",
+              ? "var(--header-bg-scrolled)"
+              : "var(--header-bg-top)",
+          boxShadow: scrolled ? "var(--header-shadow)" : "var(--header-shadow-top)",
         }}
         className={`mx-auto w-full pointer-events-auto border transition-[width,max-width,padding,border-color] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] backdrop-blur-[28px] [-webkit-backdrop-filter:blur(28px)_saturate(200%)_brightness(1.08)] [backdrop-filter:blur(28px)_saturate(200%)_brightness(1.08)] ${
           open
@@ -69,30 +68,33 @@ export function SiteHeader() {
                 key={item.to}
                 to={item.to}
                 activeProps={{
-                  className: "bg-gradient-brand text-canvas shadow-lift font-semibold",
+                  className:
+                    "nav-glass-active bg-gradient-brand text-canvas shadow-lift font-semibold",
                 }}
                 inactiveProps={{
                   className: "text-ink-soft hover:text-ink hover:bg-canvas/80",
                 }}
-                className="whitespace-nowrap rounded-full px-3 py-1.5 lg:px-3.5 lg:py-2 text-[13px] font-medium transition-all duration-300"
+                className="whitespace-nowrap rounded-full border border-transparent px-3 py-1.5 lg:px-3.5 lg:py-2 text-[13px] font-medium transition-all duration-300"
               >
                 {item.label}
               </Link>
             ))}
           </nav>
 
-          <div className="hidden lg:block shrink-0">
-            <StrategyCallButton size="sm" />
+          <div className="flex shrink-0 items-center gap-2">
+            <ThemeToggle />
+            <div className="hidden lg:block">
+              <StrategyCallButton size="sm" />
+            </div>
+            <button
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+              className="rounded-full p-1.5 text-ink transition-colors hover:bg-sand lg:hidden"
+              aria-label="Toggle menu"
+            >
+              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
           </div>
-
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            className="rounded-full p-1.5 text-ink transition-colors hover:bg-sand lg:hidden"
-            aria-label="Toggle menu"
-          >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
         </div>
 
         {/* Mobile Dropdown Menu */}
@@ -109,10 +111,11 @@ export function SiteHeader() {
                   to={item.to}
                   onClick={() => setOpen(false)}
                   activeProps={{
-                    className: "bg-gradient-brand text-canvas shadow-lift font-semibold",
+                    className:
+                      "nav-glass-active bg-gradient-brand text-canvas shadow-lift font-semibold",
                   }}
                   inactiveProps={{ className: "text-ink hover:bg-sand" }}
-                  className="rounded-lg px-4 py-2.5 text-[15px] font-medium transition-all"
+                  className="rounded-lg border border-transparent px-4 py-2.5 text-[15px] font-medium transition-all"
                 >
                   {item.label}
                 </Link>

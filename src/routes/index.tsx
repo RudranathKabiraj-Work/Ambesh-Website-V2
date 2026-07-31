@@ -199,7 +199,8 @@ function HomePage() {
       {/* STATS STRIP */}
       <section className="relative bg-canvas pt-4 pb-10 md:pt-6 md:pb-14">
         <div className="container-edit">
-          <div className="grid gap-8 md:gap-12 sm:grid-cols-3 max-w-5xl mx-auto">
+          {/* Light mode: original stat cards */}
+          <div className="grid gap-8 md:gap-12 sm:grid-cols-3 max-w-5xl mx-auto dark:hidden">
             {[
               { v: "13+", l: "Years of Experience" },
               { v: "100+", l: "Businesses Scaled" },
@@ -212,6 +213,52 @@ function HomePage() {
                 </div>
               </Reveal>
             ))}
+          </div>
+
+          {/* Dark mode: terminal card replaces the stat cards */}
+          <div className="mx-auto hidden w-full max-w-2xl dark:block">
+            <div className="overflow-hidden rounded-[14px] border border-white/10 bg-[#161b22] shadow-[0_24px_60px_-28px_rgba(0,0,0,0.6)]">
+              <div className="flex items-center gap-[7px] border-b border-white/10 bg-[#1c2230] px-[14px] py-[11px]">
+                <span className="h-3 w-3 rounded-full bg-[#ff5f56]" />
+                <span className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
+                <span className="h-3 w-3 rounded-full bg-[#27c93f]" />
+                <span className="ml-1.5 font-mono text-[0.75rem] text-[#5a5a6e]">
+                  ambesh — systems-consult
+                </span>
+              </div>
+              <div className="px-[19px] py-[17px] font-mono text-[0.95rem] leading-[1.75]">
+                <p className="whitespace-pre-wrap">
+                  <span className="text-[#a855f7]">$</span> <span className="text-[#e6e6ef]">ambesh</span>
+                </p>
+                <p className="whitespace-pre-wrap">
+                  <span className="text-[#8b8b9e]">▸</span> strategy-call <span className="text-[#5a5a6e]">......</span>{" "}
+                  <span className="text-[#22c55e]">✓</span>
+                </p>
+                <p className="whitespace-pre-wrap">
+                  <span className="text-[#8b8b9e]">▸</span> <span className="text-[#22c55e]">next slot → /contact</span>
+                </p>
+                <div className="mt-4 grid grid-cols-3 gap-3 border-t border-white/10 pt-4">
+                  <div className="text-center">
+                    <p className="text-xl font-bold text-[#e54d5e] md:text-2xl">13+</p>
+                    <p className="mt-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-[#8b8b9e]">
+                      Years of<br />Experience
+                    </p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-xl font-bold text-[#a855f7] md:text-2xl">100+</p>
+                    <p className="mt-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-[#8b8b9e]">
+                      Businesses<br />Scaled
+                    </p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-xl font-bold text-[#22c55e] md:text-2xl">5,000+</p>
+                    <p className="mt-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-[#8b8b9e]">
+                      Professionals<br />Trained
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -248,8 +295,12 @@ function HomePage() {
             <Reveal className="md:col-span-5">
               <p className="eyebrow eyebrow-indigo">The Problems I Solve</p>
               <h2 className="mt-4 pb-2 font-display text-[2.2rem] sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold leading-[1.1] tracking-[-0.03em] text-ink">
-                Running a business shouldn't feel like{" "}
-                <span className="font-serif italic font-medium text-gradient-brand pr-1">putting out fires every day.</span>
+                Running a business<br />
+                shouldn't feel like<br />
+                <span className="font-serif italic font-medium text-gradient-brand pr-1">
+                  putting out fires<br />
+                  every day.
+                </span>
               </h2>
             </Reveal>
             <Reveal delay={120} className="md:col-span-7">
@@ -420,7 +471,7 @@ function HomePage() {
             {/* Stacking Cards Right Column */}
             <div className="md:col-span-7 relative flex items-center justify-center md:mt-0">
               {/* Absolutely positioned stacking cards driven by viewport scroll */}
-              <div className="relative h-[380px] w-full max-w-2xl mt-4 md:mt-[135px]">
+              <div className="relative h-[380px] w-full max-w-2xl mt-4 md:mt-[45px]">
                 {[
                   { n: "01", icon: Workflow, title: "A business should not depend on the founder.", desc: "Founder dependency is structural, not personal. It is resolved with clear accountability, SOPs, and system design." },
                   { n: "02", icon: Sparkles, title: "AI adoption matters more than AI awareness.", desc: "Workshops have limited value unless teams change how they work. Real training requires daily AI adoption rhythms." },
@@ -649,18 +700,18 @@ function HomePage() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="relative overflow-hidden bg-ink text-canvas">
+      <section className="cta-dark relative overflow-hidden">
         <div className="pointer-events-none absolute -top-40 left-1/2 h-[40rem] w-[40rem] -translate-x-1/2 rounded-full opacity-30 blur-3xl" style={{ background: "var(--accent)" }} aria-hidden />
         <div className="container-edit relative py-16 md:py-24">
           <Reveal>
-            <p className="font-mono text-[0.7rem] uppercase tracking-[0.25em] text-canvas/50">
+            <p className="font-mono text-[0.7rem] uppercase tracking-[0.25em] text-white/50">
               <Sparkles className="mr-2 inline h-3.5 w-3.5" />
               Final CTA
             </p>
-            <h2 className="mt-6 max-w-4xl font-display text-4xl font-extrabold leading-[1.1] tracking-[-0.03em] text-canvas sm:text-5xl md:text-7xl">
+            <h2 className="mt-6 max-w-4xl font-display text-4xl font-extrabold leading-[1.1] tracking-[-0.03em] text-white sm:text-5xl md:text-7xl">
               Ready to Build a Business <span className="font-serif italic font-medium text-gradient-brand">That Runs Better?</span>
             </h2>
-            <p className="mt-8 max-w-2xl text-base leading-[1.65] text-canvas/70 md:text-xl">
+            <p className="mt-8 max-w-2xl text-base leading-[1.65] text-white/70 md:text-xl">
               Let&rsquo;s talk about your business, your goals, and where AI and better systems can create the biggest impact.
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
@@ -672,11 +723,11 @@ function HomePage() {
                 Book a Strategy Call
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </Link>
-              <a href="https://wa.me/918929465115?text=Hi%20Ambesh%2C%20I%20want%20to%20book%20a%20strategy%20call." target="_blank" rel="noopener noreferrer" className="inline-flex h-14 items-center gap-2 rounded-full border border-canvas/20 px-8 text-base font-semibold text-canvas transition-all hover:bg-canvas/10">
+              <a href="https://wa.me/918929465115?text=Hi%20Ambesh%2C%20I%20want%20to%20book%20a%20strategy%20call." target="_blank" rel="noopener noreferrer" className="inline-flex h-14 items-center gap-2 rounded-full border border-white/20 px-8 text-base font-semibold text-white transition-all hover:bg-white/10">
                 WhatsApp Ambesh
               </a>
             </div>
-            <p className="mt-5 text-xs text-canvas/50">Responds within 24 hours. No sales script. Just a real conversation.</p>
+            <p className="mt-5 text-xs text-white/50">Responds within 24 hours. No sales script. Just a real conversation.</p>
           </Reveal>
         </div>
       </section>

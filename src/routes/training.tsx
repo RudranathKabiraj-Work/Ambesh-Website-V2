@@ -382,7 +382,7 @@ function TrainingPage() {
       </section>
 
       {/* CTA */}
-      <section className="relative overflow-hidden bg-ink text-canvas">
+      <section className="cta-dark relative overflow-hidden">
         <div
           className="pointer-events-none absolute -top-40 left-1/2 h-[40rem] w-[40rem] -translate-x-1/2 rounded-full opacity-30 blur-3xl"
           style={{ background: "var(--accent)" }}
@@ -390,15 +390,15 @@ function TrainingPage() {
         />
         <div className="container-edit relative py-14 md:py-20">
           <Reveal>
-            <p className="font-mono text-[0.7rem] uppercase tracking-[0.25em] text-canvas/50">
+            <p className="font-mono text-[0.7rem] uppercase tracking-[0.25em] text-white/50">
               <Sparkles className="mr-2 inline h-3 w-3" />
               Bring training to your team
             </p>
-            <h2 className="mt-6 max-w-4xl font-display text-5xl font-extrabold leading-[1.02] tracking-[-0.03em] text-canvas md:text-7xl">
+            <h2 className="mt-6 max-w-4xl font-display text-5xl font-extrabold leading-[1.02] tracking-[-0.03em] text-white md:text-7xl">
               Bring practical AI training{" "}
               <span className="font-serif italic font-medium">to your team.</span>
             </h2>
-            <p className="mt-8 max-w-2xl text-lg leading-[1.6] text-canvas/70 md:text-xl">
+            <p className="mt-8 max-w-2xl text-lg leading-[1.6] text-white/70 md:text-xl">
               Share your team size, department and goal. We will suggest the right
               format after a short discovery call.
             </p>
@@ -415,7 +415,7 @@ function TrainingPage() {
                 href={whatsappUrl(WA_MESSAGES.training)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-14 items-center gap-2 rounded-full border border-canvas/20 px-8 text-base font-semibold text-canvas transition-all hover:bg-canvas/10"
+                className="inline-flex h-14 items-center gap-2 rounded-full border border-white/20 px-8 text-base font-semibold text-white transition-all hover:bg-white/10"
               >
                 WhatsApp Ambesh
               </a>
