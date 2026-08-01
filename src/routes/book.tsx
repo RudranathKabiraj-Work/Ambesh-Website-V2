@@ -3,6 +3,7 @@ import { useServerFn } from "@tanstack/react-start";
 import type { FormEvent } from "react";
 import { ArrowRight, BookOpen, Mail, Award, ShoppingBag } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
+import { Marquee } from "@/components/Marquee";
 import { buildMeta, jsonLd, breadcrumbSchema, SITE_URL, DEFAULT_OG_IMAGE } from "@/lib/seo";
 import { submitLeadToGHL } from "@/lib/ghl";
 
@@ -169,7 +170,7 @@ function BookPage() {
   }
 
   return (
-    <div className="premium-canvas">
+    <div className="premium-canvas book-page">
       {/* HERO */}
       <section className="premium-canvas relative isolate overflow-hidden">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-dots opacity-40" aria-hidden />
@@ -226,27 +227,35 @@ function BookPage() {
             <BookCover />
           </Reveal>
         </div>
+      </section>
 
-        {/* Press strip */}
-        <div className="border-y border-rule bg-canvas/60 backdrop-blur">
-          <div className="container-edit flex flex-wrap items-center justify-center gap-x-12 gap-y-3 py-6 text-ink-muted">
-            <span className="font-mono text-[0.65rem] uppercase tracking-[0.25em]">As featured on</span>
-            {pressLogos.map((p) => (
-              <img
-                key={p.name}
-                src={p.src}
-                alt={p.name}
-                title={p.name}
-                className={`${p.className} w-auto object-contain opacity-80 ${p.solid ? "featured-logo-solid" : "featured-logo"}`}
-                loading="lazy"
-              />
-            ))}
+      {/* LOGO BAR */}
+      <section className="relative bg-ink py-6 featured-bar">
+        <div className="container-edit">
+          <Reveal eager>
+            <p className="text-center text-xs uppercase tracking-widest text-ink-muted">Featured In</p>
+          </Reveal>
+          <div className="mt-4">
+            <Marquee
+              fade={0}
+              speed={60}
+              items={pressLogos.map((l) => (
+                <img
+                  key={l.name}
+                  src={l.src}
+                  alt={l.name}
+                  title={l.name}
+                  className={`${l.className} w-auto object-contain opacity-80 ${l.solid ? "featured-logo-solid" : "featured-logo"}`}
+                  loading="lazy"
+                />
+              ))}
+            />
           </div>
         </div>
       </section>
 
       {/* WHO IT'S FOR */}
-      <section className="tex-dots-soft py-16">
+      <section className="book-section-b tex-dots-soft py-16">
         <div className="container-edit">
           <Reveal>
             <p className="eyebrow">Who it is for</p>
@@ -269,7 +278,7 @@ function BookPage() {
       </section>
 
       {/* WHAT THE BOOK COVERS */}
-      <section className="tex-grid py-16">
+      <section className="book-section-a tex-grid py-16">
         <div className="container-edit">
           <Reveal>
             <p className="eyebrow">Inside the book</p>
@@ -297,7 +306,7 @@ function BookPage() {
       </section>
 
       {/* WHAT EXPERTS SAY */}
-      <section className="tex-diagonal py-16">
+      <section className="book-section-b tex-diagonal py-16">
         <div className="container-edit">
           <Reveal>
             <p className="eyebrow">What experts say</p>
@@ -346,8 +355,9 @@ function BookPage() {
       </section>
 
       {/* ABOUT THE AUTHOR */}
-      <section className="container-edit py-16">
-        <div className="grid gap-12 md:grid-cols-12 md:gap-20">
+      <section className="book-section-a py-16">
+        <div className="container-edit">
+          <div className="grid gap-12 md:grid-cols-12 md:gap-20">
           <Reveal className="md:col-span-4">
             <p className="eyebrow">About the author</p>
           </Reveal>
@@ -368,13 +378,15 @@ function BookPage() {
               Read the full story <ArrowRight className="h-4 w-4" />
             </Link>
           </Reveal>
+          </div>
         </div>
       </section>
 
       {/* CLOSING CTA */}
-      <section className="container-edit pb-24">
-        <Reveal>
-          <div className="cta-dark overflow-hidden rounded-3xl p-12 md:p-16">
+      <section className="book-section-b pb-24">
+        <div className="container-edit">
+          <Reveal>
+            <div className="cta-dark overflow-hidden rounded-3xl p-12 md:p-16">
             <div className="grid gap-10 md:grid-cols-2 md:items-center">
               <div>
                 <p className="font-mono text-xs uppercase tracking-[0.25em] text-white/50">Free</p>
@@ -411,7 +423,8 @@ function BookPage() {
               </form>
             </div>
           </div>
-        </Reveal>
+          </Reveal>
+        </div>
       </section>
     </div>
   );

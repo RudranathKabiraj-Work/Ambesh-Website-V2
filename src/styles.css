@@ -130,7 +130,7 @@
   color-scheme: dark;
 
   /* Dark surfaces — deep navy-blue scale */
-  --canvas: #1b262c;
+  --canvas: #071123;
   --ink: #bbe0fa;
   --ink-soft: rgba(187, 224, 250, 0.8);
   --ink-muted: rgba(187, 224, 250, 0.6);
@@ -171,9 +171,9 @@
   --ring: var(--accent);
 
   /* Floating header glass — deep navy, blue-lit */
-  --header-bg-open: linear-gradient(135deg, rgba(27, 38, 44, 0.85) 0%, rgba(14, 76, 117, 0.72) 50%, rgba(27, 38, 44, 0.85) 100%);
-  --header-bg-scrolled: linear-gradient(135deg, rgba(27, 38, 44, 0.72) 0%, rgba(14, 76, 117, 0.6) 50%, rgba(27, 38, 44, 0.72) 100%);
-  --header-bg-top: linear-gradient(135deg, rgba(27, 38, 44, 0.55) 0%, rgba(14, 76, 117, 0.42) 50%, rgba(27, 38, 44, 0.55) 100%);
+  --header-bg-open: linear-gradient(135deg, rgba(7, 17, 35, 0.85) 0%, rgba(14, 76, 117, 0.72) 50%, rgba(7, 17, 35, 0.85) 100%);
+  --header-bg-scrolled: linear-gradient(135deg, rgba(7, 17, 35, 0.72) 0%, rgba(14, 76, 117, 0.6) 50%, rgba(7, 17, 35, 0.72) 100%);
+  --header-bg-top: linear-gradient(135deg, rgba(7, 17, 35, 0.55) 0%, rgba(14, 76, 117, 0.42) 50%, rgba(7, 17, 35, 0.55) 100%);
   --header-shadow: 0 4px 32px -4px rgba(0, 0, 0, 0.6), 0 1px 0 0 rgba(255, 255, 255, 0.06) inset;
   --header-shadow-top: 0 2px 20px -4px rgba(0, 0, 0, 0.5);
 
@@ -251,11 +251,11 @@
   }
 
   .dark html {
-    background-color: #1b262c;
+    background-color: #071123;
   }
 
   .dark body {
-    background-color: #1b262c;
+    background-color: #071123;
     background-image: none;
     color: var(--color-ink);
   }
@@ -1268,15 +1268,52 @@ html.lenis, html.lenis body {
     opacity: 0.95;
   }
 
-  /* Graph-paper grid wallpaper on the app shell — removed, keep it clean #1b262c */
+  /* Graph-paper grid wallpaper on the app shell — removed, keep it clean #071123 */
 
   /* Alternate sections get a whisper of surface tint so the page has the
      same subtle rhythm as omniroute's section--alt (grid still shows).
      Skip .container-edit sections — they carry max-width/margin auto, so
      tinting them would draw a floating box instead of a full-bleed band.
      !important to beat the transparent override on bg-canvas/bg-sand. */
-  .dark main section:not(.container-edit):nth-of-type(2n) {
+  .dark main section:not(.container-edit):not(.featured-bar):not(.book-section-a):not(.book-section-b):nth-of-type(2n) {
     background-color: var(--section-alt) !important;
+  }
+
+  /* Book page: explicit alternating full-bleed section tones (canvas / sand)
+     so the page rhythm is visible in both light and dark mode. */
+  main.book-page section.book-section-a {
+    background-color: var(--canvas);
+  }
+
+  main.book-page section.book-section-b {
+    background-color: var(--sand);
+  }
+
+  /* Book page featured bar on the ink band (matches the final CTA).
+     In light mode the band is deep navy, so logos become white silhouettes;
+     in dark mode the band flips to light, so logos return to natural color. */
+  main.book-page .featured-bar.bg-ink .featured-logo {
+    filter: brightness(0) invert(1);
+    opacity: 0.85;
+  }
+
+  main.book-page .featured-bar.bg-ink .featured-logo-solid {
+    background: #ffffff;
+    padding: 4px 8px;
+    border-radius: 6px;
+    opacity: 0.95;
+  }
+
+  .dark main.book-page .featured-bar.bg-ink .featured-logo {
+    filter: none;
+    opacity: 0.8;
+  }
+
+  .dark main.book-page .featured-bar.bg-ink .featured-logo-solid {
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    opacity: 0.8;
   }
 
   /* Active nav pill in dark mode — solid accent pill, no glass. */
@@ -1390,20 +1427,20 @@ html.lenis, html.lenis body {
 
   /* premium-canvas sections are opaque by default, which hides the dark
      body background. Make them transparent so every section shares the
-     same clean #1b262c background. */
+     same clean #071123 background. */
   .dark .premium-canvas {
     background-color: transparent;
   }
 
   /* Premium canvas aurora -> flat, matching the rest of the dark page
-     (the palette keeps every section on the same clean #1b262c) */
+     (the palette keeps every section on the same clean #071123) */
   .dark .premium-canvas::before,
   .dark .premium-canvas::after {
     background: none;
     opacity: 0;
   }
 
-  /* Textures -> hidden in dark mode so the single clean #1b262c
+  /* Textures -> hidden in dark mode so the single clean #071123
      background stays uncluttered. */
   .dark .bg-dots,
   .dark .tex-grid,
@@ -1451,13 +1488,13 @@ html.lenis, html.lenis body {
   }
 
   .dark ::-webkit-scrollbar-track {
-    background: #1b262c;
+    background: #071123;
   }
 
   .dark ::-webkit-scrollbar-thumb {
     background: #0e4c75;
     border-radius: 9999px;
-    border: 2px solid #1b262c;
+    border: 2px solid #071123;
   }
 
   .dark ::-webkit-scrollbar-thumb:hover {
