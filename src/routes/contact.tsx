@@ -228,7 +228,7 @@ function ContactPage() {
                 className="rounded-3xl border border-rule bg-canvas p-6 shadow-lift md:p-10"
               >
                 <div className="mb-6 flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-brand-soft border border-rule">
+                  <span className="icon-box flex h-10 w-10 items-center justify-center rounded-full border border-rule">
                     <Mail className="h-4 w-4 text-accent" />
                   </span>
                   <div>
@@ -409,7 +409,7 @@ function ContactPage() {
             >
               <X className="h-4 w-4" />
             </button>
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gradient-brand-soft">
+            <div className="icon-box mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-rule">
               <CheckCircle2 className="h-8 w-8 text-accent" />
             </div>
             <h3 className="mt-5 text-2xl font-extrabold tracking-tight">Inquiry sent!</h3>

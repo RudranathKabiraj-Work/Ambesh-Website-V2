@@ -44,22 +44,22 @@ export function SiteFooter() {
           <p className="text-center font-mono text-[0.65rem] font-bold uppercase tracking-[0.25em] text-ink-muted mb-8">
             The Core Pillars
           </p>
-          <div className="grid grid-cols-3 gap-4 sm:grid-cols-6 lg:gap-6">
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-6 sm:gap-4 lg:gap-6">
             {acronymItems.map((item) => (
               <div 
                 key={item.letter}
-                className="custom-theme-card group relative flex flex-col justify-between overflow-hidden rounded-[20px] p-5 text-center transition-all duration-500 ease-out -translate-y-1.5 shadow-lift hover:translate-y-0 hover:scale-100 hover:shadow-none min-h-[140px] md:min-h-[160px]"
+                className="custom-theme-card group relative flex flex-col items-center justify-center overflow-hidden rounded-[16px] px-4 py-4 text-center sm:rounded-[20px] sm:p-5 sm:min-h-[140px] md:min-h-[160px]"
               >
                 {/* Diagonal sweeping shine animation */}
                 <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/80 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-full pointer-events-none" />
 
-                <div className="flex-1 flex items-center justify-center">
-                  <span className="font-display text-5xl font-black tracking-tight text-ink transition-all duration-500 ease-out group-hover:scale-110 group-hover:text-accent select-none md:text-6xl">
+                <div className="flex items-center justify-center">
+                  <span className="font-display text-3xl font-black tracking-tight text-ink transition-all duration-500 ease-out group-hover:scale-110 group-hover:text-accent select-none sm:text-5xl md:text-6xl">
                     {item.letter}
                   </span>
                 </div>
-                <div className="mt-3 flex items-center justify-center h-10 relative z-10">
-                  <span className="font-sans text-[0.65rem] font-bold uppercase tracking-wider text-ink-soft md:text-[0.7rem] leading-tight transition-colors duration-500 group-hover:text-ink">
+                <div className="mt-1 flex items-center justify-center relative z-10">
+                  <span className="font-sans text-xs font-bold uppercase tracking-wide text-ink-soft sm:text-[0.65rem] sm:tracking-wider md:text-[0.7rem] leading-tight transition-colors duration-500 group-hover:text-ink">
                     {item.title}
                   </span>
                 </div>

@@ -145,7 +145,7 @@ function InsightsPage() {
             {filteredArticles.length > 0 ? (
               filteredArticles.map((article, index) => (
                 <Reveal key={article.slug} delay={100}>
-                  <article className="custom-theme-card group flex h-full flex-col justify-between rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
+                  <article className="custom-theme-card group flex h-full flex-col justify-between rounded-2xl p-7">
                     <div>
                       <div className="flex items-center justify-between">
                         <span className="inline-flex items-center rounded-full border border-rule bg-sand px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-ink-soft">

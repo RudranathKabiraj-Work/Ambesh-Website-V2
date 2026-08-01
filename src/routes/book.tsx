@@ -120,13 +120,13 @@ const endorsements = [
 ];
 
 const pressLogos = [
-  { name: "Forbes India", src: "/logos/forbes-india.svg", className: "h-4 sm:h-5" },
-  { name: "Mid-day", src: "/logos/mid-day.png", className: "h-4 sm:h-5" },
-  { name: "Disrupt", src: "/logos/disrupt.png", className: "h-7 sm:h-9" },
-  { name: "Navbharat Times", src: "/logos/navbharat-times.png", className: "h-4 sm:h-5" },
-  { name: "Dailyhunt", src: "/logos/dailyhunt-full.png", className: "h-5 sm:h-7" },
-  { name: "Thrive Global", src: "/logos/thrive-global.svg", className: "h-3 sm:h-4" },
-  { name: "NewsTrack", src: "/logos/newstrack.jpg", className: "h-4 sm:h-5" },
+  { name: "Forbes India", src: "/logos/forbes-india.svg", className: "h-5 sm:h-8" },
+  { name: "Mid-day", src: "/logos/mid-day.png", className: "h-5 sm:h-8" },
+  { name: "Disrupt", src: "/logos/disrupt.png", className: "h-10 sm:h-14" },
+  { name: "Navbharat Times", src: "/logos/navbharat-times.png", className: "h-5 sm:h-8" },
+  { name: "Dailyhunt", src: "/logos/dailyhunt-full.png", className: "h-8 sm:h-16" },
+  { name: "Thrive Global", src: "/logos/thrive-global.svg", className: "h-4 sm:h-6" },
+  { name: "NewsTrack", src: "/logos/newstrack.jpg", className: "h-5 sm:h-8", solid: true },
 ];
 
 function BookCover() {
@@ -237,7 +237,7 @@ function BookPage() {
                 src={p.src}
                 alt={p.name}
                 title={p.name}
-                className={`${p.className} w-auto object-contain opacity-80`}
+                className={`${p.className} w-auto object-contain opacity-80 ${p.solid ? "featured-logo-solid" : "featured-logo"}`}
                 loading="lazy"
               />
             ))}
@@ -257,7 +257,7 @@ function BookPage() {
           <div className="mt-16 grid gap-6 md:grid-cols-3">
             {audiences.map((x, i) => (
               <Reveal key={x.t} delay={100}>
-                <div className="group h-full rounded-3xl border border-rule bg-canvas p-8 transition-all hover:-translate-y-1 hover:shadow-glow">
+                <div className="custom-theme-card group h-full rounded-3xl p-8">
                   <div className={`h-1 w-12 rounded-full bg-gradient-to-r ${x.c}`} />
                   <h3 className="mt-6 text-2xl font-extrabold tracking-tight">{x.t}</h3>
                   <p className="mt-4 text-base text-ink-muted">{x.b}</p>
@@ -282,7 +282,7 @@ function BookPage() {
           <div className="mt-12 grid gap-3 md:grid-cols-2">
             {takeaways.map((t, i) => (
               <Reveal key={t} delay={60}>
-                <div className="custom-theme-card group flex items-start gap-5 rounded-2xl p-5 transition-all hover:-translate-y-0.5 hover:shadow-glow">
+                <div className="custom-theme-card group flex items-start gap-5 rounded-2xl p-5">
                   <span className="font-mono text-sm text-ink-muted">
                     {String(i + 1).padStart(2, "0")}
                   </span>
@@ -332,7 +332,7 @@ function BookPage() {
           <div className="mt-6 grid gap-6 md:grid-cols-2">
             {endorsements.map((e, i) => (
               <Reveal key={e.name} delay={80}>
-                <div className="h-full rounded-3xl border border-rule bg-canvas p-8 transition-all hover:-translate-y-1 hover:shadow-glow">
+                <div className="custom-theme-card h-full rounded-3xl p-8">
                   <p className="font-serif text-lg italic leading-snug text-ink">"{e.q}"</p>
                   <div className="mt-6">
                     <p className="text-base font-bold tracking-tight">{e.name}</p>
@@ -374,11 +374,11 @@ function BookPage() {
       {/* CLOSING CTA */}
       <section className="container-edit pb-24">
         <Reveal>
-          <div className="overflow-hidden rounded-3xl bg-night p-12 text-white md:p-16">
+          <div className="cta-dark overflow-hidden rounded-3xl p-12 md:p-16">
             <div className="grid gap-10 md:grid-cols-2 md:items-center">
               <div>
                 <p className="font-mono text-xs uppercase tracking-[0.25em] text-white/50">Free</p>
-                <h3 className="mt-4 text-4xl font-extrabold leading-tight tracking-tighter md:text-5xl">
+                <h3 className="mt-4 text-4xl font-extrabold leading-tight tracking-tighter text-white md:text-5xl">
                   Get <span className="text-gradient-brand animate-gradient">Chapter 1</span> on us.
                 </h3>
                 <p className="mt-4 text-white/70">

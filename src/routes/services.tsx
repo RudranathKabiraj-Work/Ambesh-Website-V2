@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import {
-  ArrowRight, Layers, Plus, Minus, Check, Compass, Cog, GraduationCap,
+  ArrowRight, Layers, Plus, Minus, Check, Compass, Users, GraduationCap,
 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { buildMeta, jsonLd, breadcrumbSchema, faqSchema, SITE_URL } from "@/lib/seo";
@@ -91,7 +91,7 @@ const pillars = [
     search: { service: "strategy" },
   },
   {
-    icon: Cog,
+    icon: Users,
     n: "03",
     name: "Team Adoption",
     tagline: "The Operating System is worthless if the team does not run it.",
@@ -217,37 +217,39 @@ function BusinessOSPage() {
           </Reveal>
 
           <div className="mt-16 grid gap-6 lg:grid-cols-3">
-            {pillars.map((p, i) => (
-              <Reveal key={p.n} delay={100}>
-                <div className="custom-theme-card group relative flex h-full flex-col overflow-hidden rounded-3xl p-8 transition-all hover:-translate-y-1 hover:shadow-glow">
-                  <div className="flex items-start justify-between">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-brand text-white shadow-glow animate-gradient">
-                      <p.icon className="h-5 w-5" />
+            {pillars.map((p, i) => {
+              return (
+                <Reveal key={p.n} delay={100}>
+                  <div className="custom-theme-card group relative flex h-full flex-col overflow-hidden rounded-3xl p-8">
+                    <div className="flex items-start justify-between">
+                      <div className="icon-box flex h-12 w-12 items-center justify-center rounded-2xl border border-rule">
+                        <p.icon className="h-5 w-5" />
+                      </div>
+                      <span className="font-mono text-xs text-ink-muted">{p.n}</span>
                     </div>
-                    <span className="font-mono text-xs text-ink-muted">{p.n}</span>
+                    <h3 className="mt-6 text-2xl font-extrabold tracking-tight text-ink">{p.name}</h3>
+                    <p className="mt-3 text-base font-semibold text-ink">{p.tagline}</p>
+                    <p className="mt-3 text-sm text-ink-muted">{p.body}</p>
+                    <ul className="mt-6 space-y-2 border-t border-rule pt-6">
+                      {p.points.map((pt) => (
+                        <li key={pt} className="flex items-start gap-2 text-sm text-ink-soft">
+                          <Check className="mt-0.5 h-4 w-4 shrink-0" style={{ color: "var(--accent)" }} /> {pt}
+                        </li>
+                      ))}
+                    </ul>
+                    <Link
+                      to="/contact"
+                      search={p.search}
+                      className="btn-premium mt-8 inline-flex h-11 w-full items-center justify-center gap-2 rounded-full text-sm font-semibold"
+                    >
+                      <span className="relative z-10 flex items-center gap-2">
+                        {p.cta} <ArrowRight className="h-4 w-4" />
+                      </span>
+                    </Link>
                   </div>
-                  <h3 className="mt-6 text-2xl font-extrabold tracking-tight text-ink">{p.name}</h3>
-                  <p className="mt-3 text-base font-semibold text-ink">{p.tagline}</p>
-                  <p className="mt-3 text-sm text-ink-muted">{p.body}</p>
-                  <ul className="mt-6 space-y-2 border-t border-rule pt-6">
-                    {p.points.map((pt) => (
-                      <li key={pt} className="flex items-start gap-2 text-sm text-ink-soft">
-                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-violet" /> {pt}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link
-                    to="/contact"
-                    search={p.search}
-                    className="btn-premium mt-8 inline-flex h-11 w-full items-center justify-center gap-2 rounded-full text-sm font-semibold"
-                  >
-                    <span className="relative z-10 flex items-center gap-2">
-                      {p.cta} <ArrowRight className="h-4 w-4" />
-                    </span>
-                  </Link>
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>

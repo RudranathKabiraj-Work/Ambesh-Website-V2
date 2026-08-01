@@ -41,7 +41,7 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "theme-color", content: "#0A0A0F" },
+      { name: "theme-color", content: "#1b262c" },
       { name: "format-detection", content: "telephone=no" },
       { httpEquiv: "x-ua-compatible", content: "IE=edge" },
 

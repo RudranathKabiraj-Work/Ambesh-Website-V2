@@ -129,24 +129,24 @@
 .dark {
   color-scheme: dark;
 
-  /* Dark surfaces (mirrors omniroute.online tokens.css) */
-  --canvas: #0b0e14;
-  --ink: #e6e6ef;
-  --ink-soft: #9a9ab0;
-  --ink-muted: #8b8b9e;
-  --sand: #161b22;
-  --sand-deep: #1c2230;
-  --rule: rgba(255, 255, 255, 0.08);
-  --section-alt: rgba(255, 255, 255, 0.018);
+  /* Dark surfaces — deep navy-blue scale */
+  --canvas: #1b262c;
+  --ink: #bbe0fa;
+  --ink-soft: rgba(187, 224, 250, 0.8);
+  --ink-muted: rgba(187, 224, 250, 0.6);
+  --sand: #0e4c75;
+  --sand-deep: #115c8c;
+  --rule: rgba(187, 224, 250, 0.14);
+  --section-alt: rgba(187, 224, 250, 0.025);
 
-  /* Brand: coral primary -> purple gradient, green success marks */
-  --accent: #e54d5e;
+  /* Brand: ocean-blue primary -> sky-blue gradient, green success marks */
+  --accent: #3282b7;
   --accent-foreground: #ffffff;
-  --accent-soft: rgba(229, 77, 94, 0.12);
+  --accent-soft: rgba(50, 130, 183, 0.16);
   --success: #22c55e;
   --warning: #f59e0b;
-  --accent-purple: #a855f7;
-  --accent-indigo: #6366f1;
+  --accent-purple: #3282b7;
+  --accent-indigo: #3282b7;
   --tl-red: #ff5f56;
   --tl-yellow: #ffbd2e;
   --tl-green: #27c93f;
@@ -170,23 +170,34 @@
   --input: var(--rule);
   --ring: var(--accent);
 
-  /* Floating header glass — dark, coral-lit */
-  --header-bg-open: linear-gradient(135deg, rgba(11, 14, 20, 0.85) 0%, rgba(17, 21, 32, 0.72) 50%, rgba(11, 14, 20, 0.85) 100%);
-  --header-bg-scrolled: linear-gradient(135deg, rgba(11, 14, 20, 0.72) 0%, rgba(17, 21, 32, 0.6) 50%, rgba(11, 14, 20, 0.72) 100%);
-  --header-bg-top: linear-gradient(135deg, rgba(11, 14, 20, 0.55) 0%, rgba(17, 21, 32, 0.42) 50%, rgba(11, 14, 20, 0.55) 100%);
+  /* Floating header glass — deep navy, blue-lit */
+  --header-bg-open: linear-gradient(135deg, rgba(27, 38, 44, 0.85) 0%, rgba(14, 76, 117, 0.72) 50%, rgba(27, 38, 44, 0.85) 100%);
+  --header-bg-scrolled: linear-gradient(135deg, rgba(27, 38, 44, 0.72) 0%, rgba(14, 76, 117, 0.6) 50%, rgba(27, 38, 44, 0.72) 100%);
+  --header-bg-top: linear-gradient(135deg, rgba(27, 38, 44, 0.55) 0%, rgba(14, 76, 117, 0.42) 50%, rgba(27, 38, 44, 0.55) 100%);
   --header-shadow: 0 4px 32px -4px rgba(0, 0, 0, 0.6), 0 1px 0 0 rgba(255, 255, 255, 0.06) inset;
   --header-shadow-top: 0 2px 20px -4px rgba(0, 0, 0, 0.5);
 
   /* Gradients & shadows */
-  --gradient-brand: linear-gradient(135deg, #e54d5e 0%, #a855f7 100%);
-  --gradient-brand-soft: linear-gradient(135deg, rgba(229, 77, 94, 0.12) 0%, rgba(168, 85, 247, 0.12) 100%);
+  --gradient-brand: linear-gradient(135deg, #0e4c75 0%, #3282b7 100%);
+  --gradient-brand-soft: linear-gradient(135deg, rgba(14, 76, 117, 0.3) 0%, rgba(50, 130, 183, 0.16) 100%);
   --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px -12px rgba(0, 0, 0, 0.5);
   --shadow-lift: 0 1px 2px rgba(0, 0, 0, 0.5), 0 20px 40px -20px rgba(0, 0, 0, 0.6);
-  --shadow-glow: 0 20px 50px -20px rgba(229, 77, 94, 0.4);
+  --shadow-glow: 0 20px 50px -20px rgba(50, 130, 183, 0.4);
   --shadow-glow-pink: var(--shadow-glow);
 }
 
 @layer base {
+  /* Kill all CSS transitions/animations for one frame during a theme
+     switch so light<->dark is instant, then it is removed by JS. */
+  .theme-switching,
+  .theme-switching *,
+  .theme-switching *::before,
+  .theme-switching *::after {
+    transition: none !important;
+    animation: none !important;
+    transition-delay: 0ms !important;
+  }
+
   * {
     border-color: var(--color-border);
   }
@@ -240,11 +251,12 @@
   }
 
   .dark html {
-    background-color: #0b0e14;
+    background-color: #1b262c;
   }
 
   .dark body {
-    background-color: #0b0e14;
+    background-color: #1b262c;
+    background-image: none;
     color: var(--color-ink);
   }
 
@@ -751,46 +763,29 @@
     z-index: 1;
   }
 
-  /* Light section textures - subtle, premium, prints-on-paper feel */
+  /* Light section textures - removed entirely, no grids/dots/diagonals anywhere */
   .bg-dots {
-    background-image: radial-gradient(oklch(0.18 0.04 260 / 0.08) 1px, transparent 1px);
-    background-size: 20px 20px;
+    background-image: none;
   }
 
   .tex-grid {
-    background-image:
-      linear-gradient(to right, oklch(0.18 0.04 260 / 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, oklch(0.18 0.04 260 / 0.05) 1px, transparent 1px);
-    background-size: 56px 56px;
-    background-position: -1px -1px;
+    background-image: none;
   }
 
   .tex-grid-fine {
-    background-image:
-      linear-gradient(to right, oklch(0.18 0.04 260 / 0.04) 1px, transparent 1px),
-      linear-gradient(to bottom, oklch(0.18 0.04 260 / 0.04) 1px, transparent 1px);
-    background-size: 28px 28px;
+    background-image: none;
   }
 
   .tex-dots-soft {
-    background-image: radial-gradient(oklch(0.18 0.04 260 / 0.06) 1px, transparent 1.2px);
-    background-size: 22px 22px;
+    background-image: none;
   }
 
   .tex-diagonal {
-    background-image: repeating-linear-gradient(135deg,
-        oklch(0.18 0.04 260 / 0.035) 0,
-        oklch(0.18 0.04 260 / 0.035) 1px,
-        transparent 1px,
-        transparent 14px);
+    background-image: none;
   }
 
   .tex-noise {
-    background-image:
-      radial-gradient(oklch(0.18 0.04 260 / 0.05) 1px, transparent 1px),
-      radial-gradient(oklch(0.18 0.04 260 / 0.04) 1px, transparent 1px);
-    background-size: 24px 24px, 40px 40px;
-    background-position: 0 0, 12px 12px;
+    background-image: none;
   }
 
   /* Soft radial vignette so textures fade into clean center */
@@ -1021,6 +1016,14 @@
     transition: color 0.85s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.85s cubic-bezier(0.25, 1, 0.5, 1);
   }
 
+  /* Unify card body text across all pages to match the home page cards:
+     every card reads at 15px / 1.65 regardless of page. */
+  .custom-theme-card :is(p, li, figcaption, blockquote):not(.font-display):not(.font-serif):not(.font-mono):not([class*="text-xs"]):not([class*="text-[0."]) {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+
   /* Hover state — border highlight + inner glow, no movement (Desktop hover only) */
   @media (hover: hover) {
     .custom-theme-card:hover,
@@ -1061,8 +1064,15 @@
     box-shadow: 0 4px 12px -2px oklch(0.18 0.04 260 / 0.04) !important;
   }
 
-  /* Preset Accent Cards matching everfresh-ai.lovable.app */
-  .custom-theme-card .icon-box {
+  /* Preset Accent Cards matching everfresh-ai.lovable.app
+     Icon boxes: soft tinted surface + accent-colored logo.
+     Applied site-wide via .icon-box on any card icon container.
+     NOTE: keep the selector at single-class specificity so the
+     .card-accent-* classes (also single-class) can override the
+     --card-accent variables when applied to the same box. */
+  .icon-box {
+    --card-accent: var(--accent);
+    --card-accent-soft: var(--accent-soft);
     background-color: var(--card-accent-soft) !important;
     color: var(--card-accent) !important;
     border-color: oklch(from var(--card-accent) l c h / 0.15) !important;
@@ -1242,14 +1252,23 @@ html.lenis, html.lenis body {
    Only active when `.dark` is present on <html>.
    ========================================== */
 @layer utilities {
-  /* Graph-paper grid wallpaper on the app shell (matches omniroute body::before) */
-  .dark .app-shell {
-    background-image:
-      linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-    background-size: 32px 32px;
-    background-attachment: fixed;
+  /* Featured In / press logos: dark logos vanish on the dark canvas, so
+     render them as white silhouettes in dark mode (logo-wall treatment).
+     Logos with a solid background (e.g. JPG) get a white logo card instead
+     of the invert filter, so they stay visible and legible. */
+  .dark .featured-logo {
+    filter: brightness(0) invert(1);
+    opacity: 0.85;
   }
+
+  .dark .featured-logo-solid {
+    background: #ffffff;
+    padding: 4px 8px;
+    border-radius: 6px;
+    opacity: 0.95;
+  }
+
+  /* Graph-paper grid wallpaper on the app shell — removed, keep it clean #1b262c */
 
   /* Alternate sections get a whisper of surface tint so the page has the
      same subtle rhythm as omniroute's section--alt (grid still shows).
@@ -1260,33 +1279,11 @@ html.lenis, html.lenis body {
     background-color: var(--section-alt) !important;
   }
 
-  /* Active nav pill in dark mode — iOS Liquid Glass treatment.
-     Overrides the light-mode gradient pill (bg-gradient-brand) in dark. */
-  .dark .nav-glass-active {
-    background-image: linear-gradient(
-        115deg,
-        rgba(255, 255, 255, 0.22) 0%,
-        rgba(255, 255, 255, 0.06) 28%,
-        rgba(255, 255, 255, 0.02) 55%,
-        rgba(255, 255, 255, 0.14) 100%
-      ),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 100%) !important;
-    background-color: rgba(255, 255, 255, 0.06) !important;
-    border-color: rgba(255, 255, 255, 0.22) !important;
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.35),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.08),
-      inset 0 0 14px rgba(255, 255, 255, 0.05),
-      0 4px 20px -6px rgba(0, 0, 0, 0.5) !important;
-    backdrop-filter: blur(28px) saturate(200%);
-    -webkit-backdrop-filter: blur(28px) saturate(200%);
-    color: #fff !important;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-  }
+  /* Active nav pill in dark mode — solid accent pill, no glass. */
 
-  /* Headline / brand gradient text -> coral -> purple */
+  /* Headline / brand gradient text -> deep blue -> sky blue (dark to light) */
   .dark .text-gradient-brand {
-    background-image: var(--gradient-brand);
+    background-image: linear-gradient(135deg, #0e4c75 0%, #3282b7 55%, #bbe0fa 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -1298,7 +1295,7 @@ html.lenis, html.lenis body {
     color: #fff;
   }
 
-  /* Eyebrows -> coral, uppercase mono chip like section__eyebrow */
+  /* Eyebrows -> sky-blue, uppercase mono chip like section__eyebrow */
   .dark .eyebrow,
   .dark .eyebrow-indigo,
   .dark .eyebrow-amber,
@@ -1308,9 +1305,9 @@ html.lenis, html.lenis body {
   .dark .eyebrow-rose,
   .dark .eyebrow-orange,
   .dark .eyebrow-cyan {
-    color: #e54d5e !important;
-    border-color: rgba(229, 77, 94, 0.32) !important;
-    background-color: rgba(229, 77, 94, 0.08) !important;
+    color: #bbe0fa !important;
+    border-color: rgba(50, 130, 183, 0.45) !important;
+    background-color: rgba(14, 76, 117, 0.35) !important;
   }
 
   .dark .eyebrow::before,
@@ -1322,15 +1319,15 @@ html.lenis, html.lenis body {
   .dark .eyebrow-rose::before,
   .dark .eyebrow-orange::before,
   .dark .eyebrow-cyan::before {
-    background-color: #e54d5e !important;
+    background-color: #3282b7 !important;
   }
 
-  /* Cards -> opaque OmniRoute surface with hairline border */
+  /* Cards -> deep ocean-blue surface with hairline border */
   .dark .custom-theme-card,
   .dark .custom-theme-card-static {
-    background-color: #161b22 !important;
+    background-color: #0e4c75 !important;
     background-image: none !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(187, 224, 250, 0.14) !important;
     box-shadow: 0 24px 60px -28px rgba(0, 0, 0, 0.55) !important;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
@@ -1339,11 +1336,11 @@ html.lenis, html.lenis body {
   @media (hover: hover) {
     .dark .custom-theme-card:hover,
     .dark .custom-theme-card:active {
-      background-color: #1c2230 !important;
-      border-color: rgba(229, 77, 94, 0.5) !important;
+      background-color: #115c8c !important;
+      border-color: rgba(187, 224, 250, 0.4) !important;
       box-shadow:
-        0 0 0 1px rgba(229, 77, 94, 0.12),
-        0 8px 32px -8px rgba(229, 77, 94, 0.22) !important;
+        0 0 0 1px rgba(50, 130, 183, 0.12),
+        0 8px 32px -8px rgba(50, 130, 183, 0.25) !important;
     }
   }
 
@@ -1355,28 +1352,28 @@ html.lenis, html.lenis body {
   .dark main div.rounded-3xl.border.border-rule,
   .dark main div.rounded-2xl.border.border-rule,
   .dark main div.rounded-\[20px\].border.border-rule {
-    background-color: #161b22 !important;
-    border-color: rgba(255, 255, 255, 0.08) !important;
+    background-color: #0e4c75 !important;
+    border-color: rgba(187, 224, 250, 0.14) !important;
   }
 
   /* Glass surfaces */
   .dark .glass {
-    background: #161b22;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #0e4c75;
+    border: 1px solid rgba(187, 224, 250, 0.14);
   }
 
-  /* Buttons -> coral primary with soft coral glow (btn--primary) */
+  /* Buttons -> ocean-blue primary with soft blue glow (btn--primary) */
   .dark .btn-premium {
-    background: #e54d5e;
+    background: #3282b7;
     background-size: auto;
     background-position: initial;
     color: #fff;
-    box-shadow: 0 6px 20px -8px #e54d5e;
+    box-shadow: 0 6px 20px -8px #3282b7;
   }
 
   .dark .btn-premium:hover {
-    background: #c93d4e;
-    box-shadow: 0 10px 28px -8px #c93d4e;
+    background: #0e4c75;
+    box-shadow: 0 10px 28px -8px #0e4c75;
   }
 
   /* Kill the light side-gradient wash on dark */
@@ -1386,29 +1383,28 @@ html.lenis, html.lenis body {
     background-image: none !important;
   }
 
-  /* Hero glow orbs (hardcoded light oklch in markup) -> coral so they blend */
+  /* Hero glow orbs (hardcoded light oklch in markup) -> ocean blue so they blend */
   .dark .blur-\[120px\] {
-    background: radial-gradient(circle at 50% 50%, rgba(229, 77, 94, 0.5) 0%, rgba(168, 85, 247, 0.32) 60%, transparent 100%) !important;
+    background: radial-gradient(circle at 50% 50%, rgba(50, 130, 183, 0.5) 0%, rgba(14, 76, 117, 0.4) 60%, transparent 100%) !important;
   }
 
-  /* premium-canvas sections are opaque by default, which hides the grid
-     and makes the first section look different. Make them transparent in
-     dark so every section shares the same grid background. */
+  /* premium-canvas sections are opaque by default, which hides the dark
+     body background. Make them transparent so every section shares the
+     same clean #1b262c background. */
   .dark .premium-canvas {
     background-color: transparent;
   }
 
   /* Premium canvas aurora -> flat, matching the rest of the dark page
-     (OmniRoute keeps every section on the same #0b0e14 + grid) */
+     (the palette keeps every section on the same clean #1b262c) */
   .dark .premium-canvas::before,
   .dark .premium-canvas::after {
     background: none;
     opacity: 0;
   }
 
-  /* Textures -> hidden in dark mode so the single graph-paper grid
-     on .app-shell is the only grid visible. Sections are transparent
-     in dark, so leaving these on paints a second, misaligned grid. */
+  /* Textures -> hidden in dark mode so the single clean #1b262c
+     background stays uncluttered. */
   .dark .bg-dots,
   .dark .tex-grid,
   .dark .tex-grid-fine,
@@ -1445,7 +1441,7 @@ html.lenis, html.lenis body {
 
   .dark .cta-dark .bg-canvas {
     background-color: #fff;
-    color: #e54d5e;
+    color: #0e4c75;
   }
 
   /* Dark scrollbar */
@@ -1455,17 +1451,17 @@ html.lenis, html.lenis body {
   }
 
   .dark ::-webkit-scrollbar-track {
-    background: #0b0e14;
+    background: #1b262c;
   }
 
   .dark ::-webkit-scrollbar-thumb {
-    background: #2a3140;
+    background: #0e4c75;
     border-radius: 9999px;
-    border: 2px solid #0b0e14;
+    border: 2px solid #1b262c;
   }
 
   .dark ::-webkit-scrollbar-thumb:hover {
-    background: #3a4254;
+    background: #3282b7;
   }
 }
 

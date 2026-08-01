@@ -27,11 +27,21 @@ export function useTheme() {
 
   useEffect(() => {
     const root = document.documentElement;
+    // Disable CSS transitions while the theme class flips, so switching
+    // between light/dark is instant (no laggy 850ms card color animations).
+    root.classList.add("theme-switching");
     if (theme === "dark") {
       root.classList.add("dark");
     } else {
       root.classList.remove("dark");
     }
+    // Remove the no-transition guard on the next frame so normal hover
+    // transitions work again.
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        root.classList.remove("theme-switching");
+      });
+    });
     try {
       window.localStorage.setItem(STORAGE_KEY, theme);
     } catch {

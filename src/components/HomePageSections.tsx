@@ -181,7 +181,7 @@ export default function HomePageSections() {
                   <div className="pointer-events-none absolute -top-24 -right-24 h-48 w-48 rounded-full opacity-60 blur-3xl transition-opacity duration-500 group-hover:opacity-0" style={{ background: "var(--accent-soft)" }} aria-hidden />
                   <div className="flex items-center justify-between">
                     <h3 className="font-display text-2xl font-extrabold tracking-[-0.02em] leading-[1.2] text-ink md:text-[1.85rem]">{title}</h3>
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-rule" style={{ background: "var(--accent-soft)", color: "var(--accent)" }}>
+                    <div className="icon-box flex h-12 w-12 items-center justify-center rounded-xl border border-rule">
                       <Icon className="h-5 w-5" />
                     </div>
                   </div>
@@ -263,7 +263,7 @@ export default function HomePageSections() {
                       <span className="inline-flex items-center rounded-full bg-accent-soft px-2.5 py-0.5 font-mono text-[0.65rem] font-bold uppercase tracking-[0.15em]" style={{ color: "var(--accent)" }}>
                         Belief {n}
                       </span>
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-rule" style={{ background: "var(--accent-soft)", color: "var(--accent)" }}>
+                      <div className="icon-box flex h-10 w-10 items-center justify-center rounded-xl border border-rule">
                         <Icon className="h-5 w-5" />
                       </div>
                     </div>

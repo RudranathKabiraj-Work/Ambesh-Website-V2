@@ -4,7 +4,7 @@ import {
   CheckCircle2,
   GraduationCap,
   Users,
-  Layers,
+  Workflow,
   MapPin,
   Sparkles,
   Star,
@@ -81,7 +81,7 @@ const formats = [
     ],
   },
   {
-    icon: Layers,
+    icon: Workflow,
     title: "AI Workflow Bootcamp",
     tagline: "For teams that need deeper hands-on practice.",
     body: "A longer engagement covering prompts, workflows, automation and internal use cases your team will keep using.",
@@ -223,36 +223,37 @@ function TrainingPage() {
             </Reveal>
           </div>
           <div className="mt-16 grid gap-6 lg:grid-cols-3">
-            {formats.map((p, i) => (
-              <Reveal key={p.title} delay={100}>
-                <div className="custom-theme-card group relative flex h-full flex-col overflow-hidden rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
-                  <div
-                    className="pointer-events-none absolute -top-24 -right-24 h-48 w-48 rounded-full opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-60"
-                    style={{ background: "var(--accent-soft)" }}
-                    aria-hidden
-                  />
-                  <div
-                    className="flex h-12 w-12 items-center justify-center rounded-xl border border-rule"
-                    style={{ background: "var(--accent-soft)", color: "var(--accent)" }}
-                  >
-                    <p.icon className="h-5 w-5" />
+            {formats.map((p, i) => {
+              return (
+                <Reveal key={p.title} delay={100}>
+                  <div className="custom-theme-card group relative flex h-full flex-col overflow-hidden rounded-2xl p-8">
+                    <div
+                      className="pointer-events-none absolute -top-24 -right-24 h-48 w-48 rounded-full opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-60"
+                      style={{ background: "var(--accent-soft)" }}
+                      aria-hidden
+                    />
+                    <div
+                      className="icon-box flex h-12 w-12 items-center justify-center rounded-xl border border-rule"
+                    >
+                      <p.icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="mt-7 font-display text-[1.65rem] font-extrabold tracking-[-0.025em] leading-[1.15] text-ink md:text-[1.85rem]">
+                      {p.title}
+                    </h3>
+                    <p className="mt-3 font-serif text-base italic text-ink-soft">{p.tagline}</p>
+                    <p className="mt-4 text-[15px] leading-[1.65] text-ink-soft">{p.body}</p>
+                    <ul className="mt-6 space-y-2.5">
+                      {p.bullets.map((b) => (
+                        <li key={b} className="flex items-start gap-2.5 text-sm text-ink-soft">
+                          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" style={{ color: "var(--accent)" }} />
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <h3 className="mt-7 font-display text-[1.65rem] font-extrabold tracking-[-0.025em] leading-[1.15] text-ink md:text-[1.85rem]">
-                    {p.title}
-                  </h3>
-                  <p className="mt-3 font-serif text-base italic text-ink-soft">{p.tagline}</p>
-                  <p className="mt-4 text-[15px] leading-[1.65] text-ink-soft">{p.body}</p>
-                  <ul className="mt-6 space-y-2.5">
-                    {p.bullets.map((b) => (
-                      <li key={b} className="flex items-start gap-2.5 text-sm text-ink-soft">
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" style={{ color: "var(--accent)" }} />
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -273,7 +274,7 @@ function TrainingPage() {
           <div className="mt-14 grid gap-6 md:grid-cols-3">
             {engagements.map((e) => (
               <Reveal key={e.name}>
-                <article className="custom-theme-card group flex h-full flex-col rounded-2xl p-7 transition-all hover:-translate-y-1 hover:shadow-lift">
+                <article className="custom-theme-card group flex h-full flex-col rounded-2xl p-7">
                   <span className="inline-flex w-fit items-center rounded-full border border-rule bg-sand px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-ink-soft">
                     {e.tag}
                   </span>

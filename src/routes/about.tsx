@@ -237,27 +237,22 @@ function AboutPage() {
             </p>
           </Reveal>
           <div className="mt-16 grid gap-6 md:grid-cols-3">
-            {hiredFor.map((h, i) => {
-              const accentClasses = ["card-accent-blue", "card-accent-cyan", "card-accent-indigo"];
-              const accentClass = accentClasses[i % accentClasses.length];
-              return (
+            {hiredFor.map((h) => (
                 <Reveal key={h.title} delay={100}>
-                  <div className={`custom-theme-card group h-full rounded-3xl p-8 ${accentClass}`}>
-                    <div
-                      className="flex h-12 w-12 items-center justify-center rounded-xl border border-rule transition-colors duration-300"
-                      style={{ background: "var(--card-accent-soft)", color: "var(--card-accent)" }}
-                    >
-                      <h.icon className="h-5 w-5" />
+                  <div className="custom-theme-card group h-full rounded-3xl p-8">
+                    <div className="flex items-start justify-between">
+                      <div
+                        className="icon-box flex h-12 w-12 items-center justify-center rounded-xl border border-rule transition-colors duration-300"
+                      >
+                        <h.icon className="h-5 w-5" />
+                      </div>
+                      <span className="font-mono text-xs text-ink-muted">{h.label}</span>
                     </div>
-                    <p className="mt-6 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-ink-muted">
-                      {h.label}
-                    </p>
-                    <h3 className="mt-3 text-2xl font-extrabold tracking-tight text-ink">{h.title}</h3>
+                    <h3 className="mt-6 text-2xl font-extrabold tracking-tight text-ink">{h.title}</h3>
                     <p className="mt-4 text-base leading-relaxed text-ink-soft">{h.body}</p>
                   </div>
                 </Reveal>
-              );
-            })}
+              ))}
           </div>
         </div>
       </section>
@@ -275,15 +270,16 @@ function AboutPage() {
             </h2>
           </Reveal>
           <div className="mt-16 grid gap-6 md:grid-cols-2">
-            {beliefs.map((b, i) => {
-              const accentClasses = ["card-accent-blue", "card-accent-cyan", "card-accent-indigo", "card-accent-teal"];
-              const accentClass = accentClasses[i % accentClasses.length];
+            {beliefs.map((b) => {
               return (
                 <Reveal key={b.n} delay={80}>
-                  <div className={`custom-theme-card group h-full rounded-3xl p-7 ${accentClass}`}>
-                    <p className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-ink-muted">
-                      Belief {b.n}
-                    </p>
+                  <div className="custom-theme-card group h-full rounded-3xl p-7">
+                    <div className="flex items-start justify-between">
+                      <p className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-ink-muted">
+                        Belief
+                      </p>
+                      <span className="font-mono text-xs text-ink-muted">{b.n}</span>
+                    </div>
                     <h3 className="mt-4 text-xl font-bold leading-snug text-ink">{b.h}</h3>
                     {b.b && <p className="mt-4 text-sm leading-relaxed text-ink-soft">{b.b}</p>}
                   </div>
@@ -308,33 +304,29 @@ function AboutPage() {
             </p>
           </Reveal>
           <div className="mt-16 grid gap-6 md:grid-cols-3">
-            {roles.map((r, i) => {
-              const accentClasses = ["card-accent-blue", "card-accent-cyan", "card-accent-indigo"];
-              const accentClass = accentClasses[i % accentClasses.length];
-              return (
+            {roles.map((r) => (
                 <Reveal key={r.title} delay={100}>
-                  <div className={`custom-theme-card group h-full rounded-3xl p-8 ${accentClass}`}>
-                    <div className="flex items-center gap-4">
-                      <div
-                        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-rule transition-colors duration-300"
-                        style={{ background: "var(--card-accent-soft)", color: "var(--card-accent)" }}
-                      >
-                        <r.icon className="h-5 w-5" />
+                  <div className="custom-theme-card group h-full rounded-3xl p-8">
+                    <div className="flex items-start justify-between">
+                      <div className="flex items-center gap-4">
+                        <div
+                          className="icon-box flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-rule transition-colors duration-300"
+                        >
+                          <r.icon className="h-5 w-5" />
+                        </div>
+                        <div>
+                          <h3 className="text-2xl font-extrabold tracking-tight text-ink leading-tight">
+                            {r.title}
+                          </h3>
+                        </div>
                       </div>
-                      <div>
-                        <p className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-ink-muted">
-                          {r.label}
-                        </p>
-                        <h3 className="text-2xl font-extrabold tracking-tight text-ink leading-tight">
-                          {r.title}
-                        </h3>
-                      </div>
+                      <span className="font-mono text-xs text-ink-muted">{r.label}</span>
                     </div>
                     <p className="mt-5 text-base leading-relaxed text-ink-soft">{r.body}</p>
                   </div>
                 </Reveal>
-              );
-            })}
+              )
+            )}
           </div>
         </div>
       </section>
@@ -381,32 +373,29 @@ function AboutPage() {
             </p>
           </Reveal>
           <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {builds.map((b, i) => {
-              const accentClasses = ["card-accent-blue", "card-accent-cyan", "card-accent-indigo"];
-              const accentClass = accentClasses[i % accentClasses.length];
-              return (
+            {builds.map((b) => (
                 <Reveal key={b.name} delay={80}>
                   <a
                     href={b.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`custom-theme-card group relative block h-full overflow-hidden rounded-3xl p-8 ${accentClass}`}
+                    className="custom-theme-card group relative block h-full overflow-hidden rounded-3xl p-8"
                   >
                     <div className="flex items-start justify-between">
                       <div>
                         <h3 className="text-2xl font-extrabold tracking-tight text-ink">{b.name}</h3>
-                        <p className="mt-1 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-ink-muted">
-                          {b.year}
-                        </p>
                       </div>
-                      <ExternalLink className="h-4 w-4 text-ink-muted transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--card-accent)]" />
+                      <span className="font-mono text-xs text-ink-muted">{b.year}</span>
                     </div>
                     <p className="mt-5 text-sm leading-relaxed text-ink-soft">{b.desc}</p>
-                    <p className="mt-6 font-mono text-xs text-[var(--card-accent)]">{b.link}</p>
+                    <div className="mt-6 flex items-center justify-between">
+                      <p className="font-mono text-xs text-accent">{b.link}</p>
+                      <ExternalLink className="h-4 w-4 text-ink-muted transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
+                    </div>
                   </a>
                 </Reveal>
-              );
-            })}
+              )
+            )}
           </div>
         </div>
       </section>

@@ -69,10 +69,10 @@ export function SiteHeader() {
                 to={item.to}
                 activeProps={{
                   className:
-                    "nav-glass-active bg-gradient-brand text-canvas shadow-lift font-semibold",
+                    "bg-accent text-accent-foreground shadow-lift font-semibold",
                 }}
                 inactiveProps={{
-                  className: "text-ink-soft hover:text-ink hover:bg-canvas/80",
+                  className: "text-ink-soft hover:text-ink hover:bg-accent/10",
                 }}
                 className="whitespace-nowrap rounded-full border border-transparent px-3 py-1.5 lg:px-3.5 lg:py-2 text-[13px] font-medium transition-all duration-300"
               >
@@ -112,9 +112,9 @@ export function SiteHeader() {
                   onClick={() => setOpen(false)}
                   activeProps={{
                     className:
-                      "nav-glass-active bg-gradient-brand text-canvas shadow-lift font-semibold",
+                      "bg-accent text-accent-foreground shadow-lift font-semibold",
                   }}
-                  inactiveProps={{ className: "text-ink hover:bg-sand" }}
+                  inactiveProps={{ className: "text-ink hover:bg-accent/10" }}
                   className="rounded-lg border border-transparent px-4 py-2.5 text-[15px] font-medium transition-all"
                 >
                   {item.label}

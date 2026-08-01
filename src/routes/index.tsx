@@ -70,7 +70,7 @@ const proofLogos = [
   { name: "Navbharat Times", src: "/logos/navbharat-times.png", className: "h-5 sm:h-8" },
   { name: "Dailyhunt", src: "/logos/dailyhunt-full.png", className: "h-8 sm:h-16" },
   { name: "Thrive Global", src: "/logos/thrive-global.svg", className: "h-4 sm:h-6" },
-  { name: "NewsTrack", src: "/logos/newstrack.jpg", className: "h-5 sm:h-8" },
+  { name: "NewsTrack", src: "/logos/newstrack.jpg", className: "h-5 sm:h-8", solid: true },
 ];
 
 const problems = [
@@ -199,8 +199,8 @@ function HomePage() {
       {/* STATS STRIP */}
       <section className="relative bg-canvas pt-4 pb-10 md:pt-6 md:pb-14">
         <div className="container-edit">
-          {/* Light mode: original stat cards */}
-          <div className="grid gap-8 md:gap-12 sm:grid-cols-3 max-w-5xl mx-auto dark:hidden">
+          {/* Stat cards — shown in both light and dark */}
+          <div className="grid gap-8 md:gap-12 sm:grid-cols-3 max-w-5xl mx-auto">
             {[
               { v: "13+", l: "Years of Experience" },
               { v: "100+", l: "Businesses Scaled" },
@@ -214,57 +214,11 @@ function HomePage() {
               </Reveal>
             ))}
           </div>
-
-          {/* Dark mode: terminal card replaces the stat cards */}
-          <div className="mx-auto hidden w-full max-w-2xl dark:block">
-            <div className="overflow-hidden rounded-[14px] border border-white/10 bg-[#161b22] shadow-[0_24px_60px_-28px_rgba(0,0,0,0.6)]">
-              <div className="flex items-center gap-[7px] border-b border-white/10 bg-[#1c2230] px-[14px] py-[11px]">
-                <span className="h-3 w-3 rounded-full bg-[#ff5f56]" />
-                <span className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
-                <span className="h-3 w-3 rounded-full bg-[#27c93f]" />
-                <span className="ml-1.5 font-mono text-[0.75rem] text-[#5a5a6e]">
-                  ambesh — systems-consult
-                </span>
-              </div>
-              <div className="px-[19px] py-[17px] font-mono text-[0.95rem] leading-[1.75]">
-                <p className="whitespace-pre-wrap">
-                  <span className="text-[#a855f7]">$</span> <span className="text-[#e6e6ef]">ambesh</span>
-                </p>
-                <p className="whitespace-pre-wrap">
-                  <span className="text-[#8b8b9e]">▸</span> strategy-call <span className="text-[#5a5a6e]">......</span>{" "}
-                  <span className="text-[#22c55e]">✓</span>
-                </p>
-                <p className="whitespace-pre-wrap">
-                  <span className="text-[#8b8b9e]">▸</span> <span className="text-[#22c55e]">next slot → /contact</span>
-                </p>
-                <div className="mt-4 grid grid-cols-3 gap-3 border-t border-white/10 pt-4">
-                  <div className="text-center">
-                    <p className="text-xl font-bold text-[#e54d5e] md:text-2xl">13+</p>
-                    <p className="mt-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-[#8b8b9e]">
-                      Years of<br />Experience
-                    </p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-xl font-bold text-[#a855f7] md:text-2xl">100+</p>
-                    <p className="mt-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-[#8b8b9e]">
-                      Businesses<br />Scaled
-                    </p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-xl font-bold text-[#22c55e] md:text-2xl">5,000+</p>
-                    <p className="mt-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-[#8b8b9e]">
-                      Professionals<br />Trained
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
       {/* LOGO BAR */}
-      <section className="relative bg-canvas py-6">
+      <section className="relative bg-canvas py-6 featured-bar">
         <div className="container-edit">
           <Reveal eager>
             <p className="text-center text-xs uppercase tracking-widest text-ink-muted">Featured In</p>
@@ -279,7 +233,7 @@ function HomePage() {
                   src={l.src}
                   alt={l.name}
                   title={l.name}
-                  className={`${l.className} w-auto object-contain opacity-80`}
+                  className={`${l.className} w-auto object-contain opacity-80 ${l.solid ? "featured-logo-solid" : "featured-logo"}`}
                   loading="lazy"
                 />
               ))}
@@ -350,18 +304,18 @@ function HomePage() {
               { stage: "Stage 03", label: "Streamline", desc: "Connect people, processes, and technology." },
               { stage: "Stage 04", label: "Execute", desc: "Turn ideas into consistent business results." },
             ].map(({ stage, label, desc }, i) => (
-              <Reveal key={label} delay={80}>
-                <div className="custom-theme-card group relative flex h-full flex-col justify-between overflow-hidden rounded-[20px] backdrop-blur-md p-6">
-                  <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-[1100ms] ease-out group-hover:translate-x-full pointer-events-none" />
-                  <div className="pointer-events-none absolute -top-20 -right-20 h-44 w-44 rounded-full opacity-0 blur-3xl transition-opacity duration-[850ms] ease-out group-hover:opacity-50" style={{ background: "var(--accent-soft)" }} aria-hidden />
-                  <div>
-                    <span className="font-mono text-[0.65rem] font-bold uppercase tracking-[0.15em] text-accent">{stage}</span>
-                    <h4 className="mt-3 font-display text-lg font-extrabold tracking-tight text-ink">{label}</h4>
-                    <p className="mt-3 text-[15px] leading-[1.65] text-ink-soft">{desc}</p>
+                <Reveal key={label} delay={80}>
+                  <div className="custom-theme-card group relative flex h-full flex-col justify-between overflow-hidden rounded-[20px] backdrop-blur-md p-6">
+                    <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-[1100ms] ease-out group-hover:translate-x-full pointer-events-none" />
+                    <div className="pointer-events-none absolute -top-20 -right-20 h-44 w-44 rounded-full opacity-0 blur-3xl transition-opacity duration-[850ms] ease-out group-hover:opacity-50" style={{ background: "var(--accent-soft)" }} aria-hidden />
+                    <div>
+                      <span className="font-mono text-[0.65rem] font-bold uppercase tracking-[0.15em] text-accent">{stage}</span>
+                      <h4 className="mt-3 font-display text-lg font-extrabold tracking-tight text-ink">{label}</h4>
+                      <p className="mt-3 text-[15px] leading-[1.65] text-ink-soft">{desc}</p>
+                    </div>
                   </div>
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              ))}
           </div>
 
           <Reveal delay={300}>
@@ -408,30 +362,32 @@ function HomePage() {
                 desc: "I help teams & professionals to use AI in their daily work, not only learn about new tools.",
                 bullets: ["Custom team AI training", "Real-world AI workflows", "Weekly AI adoption rhythms"],
               },
-            ].map(({ title, icon: Icon, eyebrow, desc, bullets }, i) => (
-              <Reveal key={title} delay={120}>
-                <div className="custom-theme-card group relative flex h-full flex-col overflow-hidden rounded-[20px] backdrop-blur-md p-7 md:p-8">
-                  <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-[1100ms] ease-out group-hover:translate-x-full pointer-events-none" />
-                  <div className="pointer-events-none absolute -top-24 -right-24 h-48 w-48 rounded-full opacity-0 blur-3xl transition-opacity duration-[850ms] ease-out group-hover:opacity-50" style={{ background: "var(--accent-soft)" }} aria-hidden />
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-display text-2xl font-extrabold tracking-[-0.02em] leading-[1.2] text-ink md:text-[1.85rem]">{title}</h3>
-                    <div className="icon-box flex h-12 w-12 items-center justify-center rounded-xl border border-rule transition-colors">
-                      <Icon className="h-5 w-5" />
+            ].map(({ title, icon: Icon, eyebrow, desc, bullets }, i) => {
+              return (
+                <Reveal key={title} delay={120}>
+                  <div className="custom-theme-card group relative flex h-full flex-col overflow-hidden rounded-[20px] backdrop-blur-md p-7 md:p-8">
+                    <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-[1100ms] ease-out group-hover:translate-x-full pointer-events-none" />
+                    <div className="pointer-events-none absolute -top-24 -right-24 h-48 w-48 rounded-full opacity-0 blur-3xl transition-opacity duration-[850ms] ease-out group-hover:opacity-50" style={{ background: "var(--accent-soft)" }} aria-hidden />
+                    <div className="flex items-center justify-between">
+                      <h3 className="font-display text-2xl font-extrabold tracking-[-0.02em] leading-[1.2] text-ink md:text-[1.85rem]">{title}</h3>
+                      <div className="icon-box flex h-12 w-12 items-center justify-center rounded-xl border border-rule transition-colors">
+                        <Icon className="h-5 w-5" />
+                      </div>
                     </div>
+                    <p className="mt-6 inline-flex w-fit items-center gap-1.5 border-l-2 pl-2.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-accent border-accent">{eyebrow}</p>
+                    <p className="mt-3 text-[15px] leading-[1.65] text-ink-soft md:mt-4">{desc}</p>
+                    <ul className="mt-5 space-y-3 md:mt-6">
+                      {bullets.map((b) => (
+                        <li key={b} className="flex items-start gap-2.5 text-[15px] leading-[1.65] text-ink-soft">
+                          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 transition-colors" style={{ color: "var(--accent)" }} />
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <p className="mt-6 inline-flex w-fit items-center gap-1.5 border-l-2 pl-2.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-accent border-accent">{eyebrow}</p>
-                  <p className="mt-3 text-[15px] leading-[1.65] text-ink-soft md:mt-4">{desc}</p>
-                  <ul className="mt-5 space-y-3 md:mt-6">
-                    {bullets.map((b) => (
-                      <li key={b} className="flex items-start gap-2.5 text-[15px] leading-[1.65] text-ink-soft">
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 transition-colors" style={{ color: "var(--accent)" }} />
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              );
+            })}
           </div>
 
           {/* Stats strip */}
@@ -477,7 +433,8 @@ function HomePage() {
                   { n: "02", icon: Sparkles, title: "AI adoption matters more than AI awareness.", desc: "Workshops have limited value unless teams change how they work. Real training requires daily AI adoption rhythms." },
                   { n: "03", icon: Compass, title: "Do not automate a process you do not understand.", desc: "Automation makes clean processes faster, but broken ones fail faster. Map the workflow manually before coding." },
                   { n: "04", icon: Wrench, title: "Technology is only one part of the answer.", desc: "Clear roles and accountability matter more than new tools. Tech accelerates, but human execution is the foundation." },
-                ].map(({ n, icon: Icon, title, desc }, idx) => (
+                ].map(({ n, icon: Icon, title, desc }, idx) => {
+                  return (
                   <motion.div
                     key={n}
                     style={{
@@ -506,7 +463,8 @@ function HomePage() {
                       </div>
                     </div>
                   </motion.div>
-                ))}
+                  );
+                })}
               </div>
             </div>
 
@@ -551,7 +509,7 @@ function HomePage() {
               { n: "04", title: "Ministry of Finance, Tanzania", eyebrow: "AI awareness & practical use", color: "to-violet-500/15", desc: "Delivered an AI enablement program helping professionals understand the practical and responsible use of AI." },
             ].map(({ n, title, eyebrow, color, desc, extra }: { n: string; title: string; eyebrow: string; color: string; desc: string; extra?: string }, i) => (
               <Reveal key={n} delay={100}>
-                <div className={`custom-theme-card group relative flex h-full flex-col justify-between overflow-hidden rounded-[20px] backdrop-blur-md p-7 md:p-8`}>
+                <div className="custom-theme-card group relative flex h-full flex-col justify-between overflow-hidden rounded-[20px] backdrop-blur-md p-7 md:p-8">
                   <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-[1100ms] ease-out group-hover:translate-x-full pointer-events-none" />
                   <div className="pointer-events-none absolute -top-24 -right-24 h-48 w-48 rounded-full opacity-0 blur-3xl transition-opacity duration-[850ms] ease-out group-hover:opacity-50" style={{ background: "var(--accent-soft)" }} aria-hidden />
                   <div>
@@ -595,7 +553,7 @@ function HomePage() {
               { n: "03 / Platform", title: "Automation School", eyebrow: "AI Training For Professionals", color: "to-amber-500/15", desc: "Practical AI training courses and customized corporate programs designed for hands-on operational adoption.", link: { href: "https://automationschool.in/", label: "Explore Automation School" } },
             ].map(({ n, title, eyebrow, color, desc, link }, i) => (
               <Reveal key={n} delay={100}>
-                <div className={`custom-theme-card group relative flex h-full flex-col justify-between overflow-hidden rounded-[20px] backdrop-blur-md p-7 md:p-8`}>
+                <div className="custom-theme-card group relative flex h-full flex-col justify-between overflow-hidden rounded-[20px] backdrop-blur-md p-7 md:p-8">
                   <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-[1100ms] ease-out group-hover:translate-x-full pointer-events-none" />
                   <div className="pointer-events-none absolute -top-24 -right-24 h-48 w-48 rounded-full opacity-0 blur-3xl transition-opacity duration-[850ms] ease-out group-hover:opacity-50" style={{ background: "var(--accent-soft)" }} aria-hidden />
                   <div>

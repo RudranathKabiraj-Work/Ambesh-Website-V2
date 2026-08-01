@@ -192,7 +192,7 @@ function PodcastPage() {
               <Reveal key={e.title} delay={80}>
                 <a
                   href="#"
-                  className="group flex h-full flex-col rounded-3xl border border-rule bg-canvas p-6 transition-all hover:-translate-y-1 hover:shadow-glow"
+                  className="custom-theme-card group flex h-full flex-col rounded-3xl p-6"
                 >
                   <div
                     className={`relative flex h-32 w-full items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br ${e.color} text-white shadow-glow`}
