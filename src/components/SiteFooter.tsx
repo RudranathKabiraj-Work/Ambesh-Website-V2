@@ -40,7 +40,7 @@ export function SiteFooter() {
     <footer className="bg-canvas">
       <div className="container-edit pt-8 pb-16 md:pt-10 md:pb-20">
         {/* Acronym section */}
-        <div className="mb-16 border-b border-rule pb-12">
+        <div className="mb-16 pb-12">
           <p className="text-center font-mono text-[0.65rem] font-bold uppercase tracking-[0.25em] text-ink-muted mb-8">
             The Core Pillars
           </p>

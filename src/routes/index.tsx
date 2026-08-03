@@ -1,8 +1,9 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import {
   ArrowRight,
+  ArrowUpRight,
   CheckCircle2,
   GraduationCap,
   Workflow,
@@ -14,6 +15,7 @@ import {
 import { Reveal } from "@/components/Reveal";
 import { StrategyCallButton } from "@/components/StrategyCallButton";
 import { Marquee } from "@/components/Marquee";
+import { ServiceCarousel } from "@/components/ServiceCarousel";
 import { buildMeta, jsonLd, breadcrumbSchema, SITE_URL } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
@@ -90,6 +92,18 @@ const beliefs = [
 ];
 
 function HomePage() {
+  const [hoveredService, setHoveredService] = useState<number | null>(null);
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -133,10 +147,10 @@ function HomePage() {
                 </span>
               </div>
 
-              <h1 className="animate-fade-in-up delay-80 mt-6 font-display text-[2.4rem] font-extrabold leading-[1.05] tracking-[-0.03em] text-ink sm:text-5xl md:text-6xl lg:text-[4rem]">
+              <h1 className="animate-fade-in-up delay-80 mt-6 font-display text-[2.4rem] font-extrabold leading-[1.05] tracking-[-0.03em] text-ink dark:text-white sm:text-5xl md:text-6xl lg:text-[4rem]">
                 I Help Founders Scale Their{" "}
                 <span className="relative inline-block">
-                  <span className="font-serif italic font-medium text-ink">Service Business</span>
+                  <span className="font-serif italic font-medium text-ink dark:text-white">Service Business</span>
                   <span className="absolute -bottom-1 left-0 h-[3px] w-full rounded-full" style={{ background: "var(--accent)" }} />
                 </span>{" "}
                 <span className="font-serif italic font-medium text-gradient-brand">Without Depending on Them.</span>
@@ -190,29 +204,38 @@ function HomePage() {
                   </div>
                 </div>
                 <div className="absolute -bottom-4 -right-4 -z-10 h-full w-full rounded-[20px]" style={{ background: "var(--accent-soft)" }} aria-hidden />
+
+                {/* Floating circle 1: 13+ Years (Bottom-left) */}
+                <motion.div
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -bottom-8 -left-12 z-20 w-[84px] h-[84px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center"
+                >
+                  <span className="font-display text-[15px] md:text-lg font-extrabold text-gradient-brand animate-gradient">13+</span>
+                  <span className="text-[7.5px] md:text-[8px] uppercase tracking-wider font-extrabold text-ink leading-tight mt-1 max-w-[70px] md:max-w-[80px]">Years of Experience</span>
+                </motion.div>
+
+                {/* Floating circle 2: 100+ Businesses (Bottom-right) */}
+                <motion.div
+                  animate={{ y: [0, 10, 0] }}
+                  transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -bottom-10 -right-8 z-20 w-[84px] h-[84px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center"
+                >
+                  <span className="font-display text-[15px] md:text-lg font-extrabold text-gradient-brand animate-gradient">100+</span>
+                  <span className="text-[7.5px] md:text-[8px] uppercase tracking-wider font-extrabold text-ink leading-tight mt-1 max-w-[70px] md:max-w-[80px]">Businesses Scaled</span>
+                </motion.div>
+
+                {/* Floating circle 3: 5,000+ Trained (Right side middle) */}
+                <motion.div
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute top-[35%] -right-12 z-20 w-[84px] h-[84px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center"
+                >
+                  <span className="font-display text-[15px] md:text-lg font-extrabold text-gradient-brand animate-gradient">5,000+</span>
+                  <span className="text-[7.5px] md:text-[8px] uppercase tracking-wider font-extrabold text-ink leading-tight mt-1 max-w-[70px] md:max-w-[80px]">Professionals Trained</span>
+                </motion.div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* STATS STRIP */}
-      <section className="relative bg-canvas pt-4 pb-10 md:pt-6 md:pb-14">
-        <div className="container-edit">
-          {/* Stat cards — shown in both light and dark */}
-          <div className="grid gap-8 md:gap-12 sm:grid-cols-3 max-w-5xl mx-auto">
-            {[
-              { v: "13+", l: "Years of Experience" },
-              { v: "100+", l: "Businesses Scaled" },
-              { v: "5,000+", l: "Professionals Trained" },
-            ].map(({ v, l }, i) => (
-              <Reveal key={l} delay={80 + i * 80} eager>
-                <div className="custom-theme-card p-6 text-center">
-                  <p className="font-display text-3xl font-extrabold tracking-tight text-gradient-brand animate-gradient md:text-4xl">{v}</p>
-                  <p className="mt-2 text-xs uppercase tracking-wider font-semibold text-ink-muted">{l}</p>
-                </div>
-              </Reveal>
-            ))}
           </div>
         </div>
       </section>
@@ -275,7 +298,7 @@ function HomePage() {
       </section>
 
       {/* MY APPROACH & EASE FRAMEWORK */}
-      <section className="relative overflow-hidden bg-canvas py-16 md:py-24">
+      <section className="relative overflow-hidden bg-canvas bg-premium-side-gradient py-16 md:py-24">
         <div className="container-edit relative">
           <div className="grid gap-6 md:grid-cols-12 md:items-end md:gap-12 mb-12">
             <Reveal className="md:col-span-7">
@@ -304,18 +327,18 @@ function HomePage() {
               { stage: "Stage 03", label: "Streamline", desc: "Connect people, processes, and technology." },
               { stage: "Stage 04", label: "Execute", desc: "Turn ideas into consistent business results." },
             ].map(({ stage, label, desc }, i) => (
-                <Reveal key={label} delay={80}>
-                  <div className="custom-theme-card group relative flex h-full flex-col justify-between overflow-hidden rounded-[20px] backdrop-blur-md p-6">
-                    <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-[1100ms] ease-out group-hover:translate-x-full pointer-events-none" />
-                    <div className="pointer-events-none absolute -top-20 -right-20 h-44 w-44 rounded-full opacity-0 blur-3xl transition-opacity duration-[850ms] ease-out group-hover:opacity-50" style={{ background: "var(--accent-soft)" }} aria-hidden />
-                    <div>
-                      <span className="font-mono text-[0.65rem] font-bold uppercase tracking-[0.15em] text-accent">{stage}</span>
-                      <h4 className="mt-3 font-display text-lg font-extrabold tracking-tight text-ink">{label}</h4>
-                      <p className="mt-3 text-[15px] leading-[1.65] text-ink-soft">{desc}</p>
-                    </div>
+              <Reveal key={label} delay={80}>
+                <div className="custom-theme-card group relative flex h-full flex-col justify-between overflow-hidden rounded-[20px] backdrop-blur-md p-6">
+                  <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-[1100ms] ease-out group-hover:translate-x-full pointer-events-none" />
+                  <div className="pointer-events-none absolute -top-20 -right-20 h-44 w-44 rounded-full opacity-0 blur-3xl transition-opacity duration-[850ms] ease-out group-hover:opacity-50" style={{ background: "var(--accent-soft)" }} aria-hidden />
+                  <div>
+                    <span className="font-mono text-[0.65rem] font-bold uppercase tracking-[0.15em] text-accent">{stage}</span>
+                    <h4 className="mt-3 font-display text-lg font-extrabold tracking-tight text-ink">{label}</h4>
+                    <p className="mt-3 text-[15px] leading-[1.65] text-ink-soft">{desc}</p>
                   </div>
-                </Reveal>
-              ))}
+                </div>
+              </Reveal>
+            ))}
           </div>
 
           <Reveal delay={300}>
@@ -329,7 +352,7 @@ function HomePage() {
       </section>
 
       {/* HOW I HELP */}
-      <section id="services" className="relative overflow-hidden bg-canvas bg-premium-side-gradient py-16 md:py-24">
+      <section id="services" className="relative overflow-hidden bg-canvas py-16 md:py-24">
         <div className="container-edit relative">
           <div className="grid gap-6 md:grid-cols-12 md:items-end md:gap-12">
             <Reveal className="md:col-span-7">
@@ -345,61 +368,97 @@ function HomePage() {
             </Reveal>
           </div>
 
-          <div className="mt-14 grid gap-6 md:mt-20 lg:grid-cols-3">
+          <div className="mt-12 flex flex-col gap-4 md:mt-16 lg:h-[460px] lg:flex-row w-full">
             {[
               {
-                title: "Build", icon: Workflow, eyebrow: "Operating Systems",
+                num: "01",
+                title: "Build",
+                eyebrow: "Operating Systems",
                 desc: "I build practical AI products to turn messy business operations into systems people actually use.",
-                bullets: ["Founder & executive scorecards", "Custom workflow automations", "Custom internal AI assistants"],
+                image: "/service-os.jpg",
+                href: "/services",
               },
               {
-                title: "Advice", icon: Compass, eyebrow: "Better Ways of Working",
+                num: "02",
+                title: "Advice",
+                eyebrow: "Better Ways of Working",
                 desc: "I help founders improve systems, align execution rhythms, and drive practical AI adoption across the team.",
-                bullets: ["Process & bottleneck audits", "SOPs & accountability setup", "Sales, ops & marketing alignment"],
+                image: "/service-transformation.jpg",
+                href: "/services",
               },
               {
-                title: "Train", icon: GraduationCap, eyebrow: "Practical AI Training",
+                num: "03",
+                title: "Train",
+                eyebrow: "Practical AI Training",
                 desc: "I help teams & professionals to use AI in their daily work, not only learn about new tools.",
-                bullets: ["Custom team AI training", "Real-world AI workflows", "Weekly AI adoption rhythms"],
+                image: "/service-ai-training.jpg",
+                href: "/services",
               },
-            ].map(({ title, icon: Icon, eyebrow, desc, bullets }, i) => {
+            ].map(({ num, title, eyebrow, desc, image, href }, i) => {
+              const isHovered = hoveredService === i;
               return (
-                <Reveal key={title} delay={120}>
-                  <div className="custom-theme-card group relative flex h-full flex-col overflow-hidden rounded-[20px] backdrop-blur-md p-7 md:p-8">
-                    <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-[1100ms] ease-out group-hover:translate-x-full pointer-events-none" />
-                    <div className="pointer-events-none absolute -top-24 -right-24 h-48 w-48 rounded-full opacity-0 blur-3xl transition-opacity duration-[850ms] ease-out group-hover:opacity-50" style={{ background: "var(--accent-soft)" }} aria-hidden />
-                    <div className="flex items-center justify-between">
-                      <h3 className="font-display text-2xl font-extrabold tracking-[-0.02em] leading-[1.2] text-ink md:text-[1.85rem]">{title}</h3>
-                      <div className="icon-box flex h-12 w-12 items-center justify-center rounded-xl border border-rule transition-colors">
-                        <Icon className="h-5 w-5" />
-                      </div>
+                <Link
+                  key={title}
+                  to={href}
+                  onMouseEnter={() => setHoveredService(i)}
+                  onMouseLeave={() => setHoveredService(null)}
+                  onFocus={() => setHoveredService(i)}
+                  onBlur={() => setHoveredService(null)}
+                  className="group relative flex min-h-[300px] flex-col justify-end overflow-hidden rounded-3xl border border-white/10 shadow-soft transition-all duration-700 ease-out sm:min-h-[360px] lg:min-h-0 w-full"
+                  style={{
+                    flexGrow: isHovered ? 2.4 : 1,
+                    flexBasis: 0,
+                    transition: "flex-grow 700ms cubic-bezier(0.16, 1, 0.3, 1)",
+                  }}
+                >
+                  {/* Background Image */}
+                  <img
+                    src={image}
+                    alt={title}
+                    loading="lazy"
+                    className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out ${isHovered ? "scale-100" : "scale-105"
+                      }`}
+                  />
+
+                  {/* Gradient Overlay */}
+                  <div
+                    className={`absolute inset-0 transition-opacity duration-700 ${isHovered
+                      ? "bg-gradient-to-t from-black/95 via-black/55 to-black/15"
+                      : "bg-gradient-to-t from-black/95 via-black/75 to-black/40"
+                      }`}
+                  />
+
+                  {/* Service Number Badge */}
+                  <span className="absolute left-6 top-6 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[10px] font-semibold tracking-[0.18em] text-white backdrop-blur-sm md:left-8 md:top-8">
+                    {num}
+                  </span>
+
+                  {/* Card Content */}
+                  <div className="relative p-6 md:p-8 w-full">
+                    <p className="inline-flex w-fit items-center gap-1.5 border-l-2 pl-2.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-white/70 mb-2" style={{ borderColor: "var(--accent)" }}>
+                      {eyebrow}
+                    </p>
+
+                    <h3 className={`font-display leading-tight tracking-tight text-white transition-all duration-500 ${isHovered ? "text-2xl md:text-[30px] font-extrabold" : "text-xl md:text-2xl font-bold"
+                      }`}>
+                      {title}
+                    </h3>
+
+                    <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/80 transition-all duration-500 md:text-base">
+                      {desc}
+                    </p>
+
+                    {/* Bottom row CTA */}
+                    <div className="mt-6 flex items-center gap-3 text-sm font-medium text-white">
+                      <span className="transition-opacity duration-500">Explore Service</span>
+                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/20 text-white transition-all duration-300 group-hover:rotate-45 group-hover:bg-white group-hover:text-black">
+                        <ArrowUpRight className="h-4 w-4" />
+                      </span>
                     </div>
-                    <p className="mt-6 inline-flex w-fit items-center gap-1.5 border-l-2 pl-2.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-accent border-accent">{eyebrow}</p>
-                    <p className="mt-3 text-[15px] leading-[1.65] text-ink-soft md:mt-4">{desc}</p>
-                    <ul className="mt-5 space-y-3 md:mt-6">
-                      {bullets.map((b) => (
-                        <li key={b} className="flex items-start gap-2.5 text-[15px] leading-[1.65] text-ink-soft">
-                          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 transition-colors" style={{ color: "var(--accent)" }} />
-                          <span>{b}</span>
-                        </li>
-                      ))}
-                    </ul>
                   </div>
-                </Reveal>
+                </Link>
               );
             })}
-          </div>
-
-          {/* Stats strip */}
-          <div className="mt-12 md:mt-16 grid gap-6 grid-cols-2 md:grid-cols-4 max-w-5xl mx-auto">
-            {heroStats.map((s, i) => (
-              <Reveal key={s.l} delay={120}>
-                <div className="custom-theme-card p-5 h-full text-center">
-                  <p className="font-display text-2xl font-extrabold tracking-tight text-gradient-brand animate-gradient md:text-3xl">{s.v}</p>
-                  <p className="mt-2 text-xs uppercase tracking-wider font-semibold text-ink-muted leading-tight">{s.l}</p>
-                </div>
-              </Reveal>
-            ))}
           </div>
         </div>
       </section>
@@ -408,9 +467,9 @@ function HomePage() {
       <section
         id="beliefs"
         ref={sectionRef}
-        className="relative h-[400vh] bg-canvas"
+        className="relative h-[250vh] bg-canvas bg-premium-side-gradient"
       >
-        <div className="relative sticky top-[88px] h-[calc(100vh-88px)] flex items-center overflow-hidden">
+        <div className="relative sticky top-[100px] h-[480px] md:h-[520px] flex items-center overflow-hidden">
           <div className="container-edit w-full grid gap-12 md:grid-cols-12 items-start">
 
             {/* Left Column (Header) */}
@@ -435,34 +494,34 @@ function HomePage() {
                   { n: "04", icon: Wrench, title: "Technology is only one part of the answer.", desc: "Clear roles and accountability matter more than new tools. Tech accelerates, but human execution is the foundation." },
                 ].map(({ n, icon: Icon, title, desc }, idx) => {
                   return (
-                  <motion.div
-                    key={n}
-                    style={{
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      y: cardsTransforms[idx].y,
-                      scale: cardsTransforms[idx].scale,
-                      zIndex: 20 + idx,
-                      transformOrigin: "top center",
-                    }}
-                  >
-                    <div className="custom-theme-card group relative flex flex-col justify-between overflow-hidden rounded-[20px] backdrop-blur-md p-6 !bg-canvas !shadow-xl">
-                      <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-[1100ms] ease-out group-hover:translate-x-full pointer-events-none" />
-                      <div className="pointer-events-none absolute -top-24 -right-24 h-48 w-48 rounded-full opacity-0 blur-3xl transition-opacity duration-[850ms] ease-out group-hover:opacity-50" style={{ background: "var(--accent-soft)" }} aria-hidden />
-                      <div>
-                        <div className="flex items-center justify-between mb-5">
-                          <span className="inline-flex items-center rounded-full px-2.5 py-0.5 font-mono text-[0.65rem] font-bold uppercase tracking-[0.15em] text-accent bg-accent-soft">Belief {n}</span>
-                          <div className="icon-box flex h-10 w-10 items-center justify-center rounded-xl border border-rule transition-colors">
-                            <Icon className="h-5 w-5" />
+                    <motion.div
+                      key={n}
+                      style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        y: cardsTransforms[idx].y,
+                        scale: cardsTransforms[idx].scale,
+                        zIndex: 20 + idx,
+                        transformOrigin: "top center",
+                      }}
+                    >
+                      <div className="custom-theme-card group relative flex flex-col justify-between overflow-hidden rounded-[20px] backdrop-blur-md p-6 !bg-canvas !shadow-xl">
+                        <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-[1100ms] ease-out group-hover:translate-x-full pointer-events-none" />
+                        <div className="pointer-events-none absolute -top-24 -right-24 h-48 w-48 rounded-full opacity-0 blur-3xl transition-opacity duration-[850ms] ease-out group-hover:opacity-50" style={{ background: "var(--accent-soft)" }} aria-hidden />
+                        <div>
+                          <div className="flex items-center justify-between mb-5">
+                            <span className="inline-flex items-center rounded-full px-2.5 py-0.5 font-mono text-[0.65rem] font-bold uppercase tracking-[0.15em] text-accent bg-accent-soft">Belief {n}</span>
+                            <div className="icon-box flex h-10 w-10 items-center justify-center rounded-xl border border-rule transition-colors">
+                              <Icon className="h-5 w-5" />
+                            </div>
                           </div>
+                          <h3 className="font-display text-lg font-extrabold tracking-tight text-ink leading-snug">{title}</h3>
+                          <p className="mt-3 text-[15px] leading-[1.65] text-ink-soft">{desc}</p>
                         </div>
-                        <h3 className="font-display text-lg font-extrabold tracking-tight text-ink leading-snug">{title}</h3>
-                        <p className="mt-3 text-[15px] leading-[1.65] text-ink-soft">{desc}</p>
                       </div>
-                    </div>
-                  </motion.div>
+                    </motion.div>
                   );
                 })}
               </div>
@@ -472,61 +531,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* SELECTED WORK */}
-      <section id="work" className="relative overflow-hidden bg-canvas bg-premium-side-gradient py-16 md:py-24">
-        <div className="container-edit relative">
-          <div className="grid gap-6 md:grid-cols-12 md:items-end md:gap-12">
-            <Reveal className="md:col-span-7">
-              <p className="eyebrow eyebrow-indigo">Selected Work</p>
-              <h2 className="mt-4 font-display text-[2.2rem] font-extrabold leading-[1.1] tracking-[-0.03em] sm:text-4xl md:text-5xl">
-                Work across companies, <span className="font-serif italic font-medium text-gradient-brand">teams and institutions.</span>
-              </h2>
-            </Reveal>
-            <Reveal delay={100} className="md:col-span-5">
-              <p className="text-base leading-[1.6] text-ink-soft md:text-lg">
-                I have worked with founders, corporate teams, professional bodies, educational institutions and government organisations.
-              </p>
-            </Reveal>
-          </div>
-
-          <Reveal delay={120}>
-            <div className="mt-12 custom-theme-card-static p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
-              <div>
-                <p className="text-xs uppercase tracking-wider font-bold text-accent">Core Focus</p>
-                <p className="mt-1 text-[15px] leading-[1.65] text-ink-soft">The subject may change, but my role remains similar:</p>
-              </div>
-              <blockquote className="font-serif text-lg italic md:text-xl text-ink md:max-w-xl md:text-right">
-                &ldquo;Make a complex problem easier to understand and easier to act on.&rdquo;
-              </blockquote>
-            </div>
-          </Reveal>
-
-          <div className="mt-12 grid gap-4 md:grid-cols-2">
-            {[
-              { n: "01", title: "Landmark Group, Dubai", eyebrow: "Practical AI & automation training", color: "to-amber-500/15", desc: "Designed and delivered an AI and automation program for a team of 40 non-technical professionals." },
-              { n: "02", title: "TATA Digital", eyebrow: "AI Consulting & Training", color: "to-blue-500/15", desc: "Research & Build Assignments - Capstone projects for AI Course on TATA Digital platform and live sessions on AI." },
-              { n: "03", title: "NICASA of NIRC of ICAI", eyebrow: "AI training for finance professionals", color: "to-emerald-500/15", desc: "Delivered practical sessions on using AI for research, communication, analysis and professional productivity." },
-              { n: "04", title: "Ministry of Finance, Tanzania", eyebrow: "AI awareness & practical use", color: "to-violet-500/15", desc: "Delivered an AI enablement program helping professionals understand the practical and responsible use of AI." },
-            ].map(({ n, title, eyebrow, color, desc, extra }: { n: string; title: string; eyebrow: string; color: string; desc: string; extra?: string }, i) => (
-              <Reveal key={n} delay={100}>
-                <div className="custom-theme-card group relative flex h-full flex-col justify-between overflow-hidden rounded-[20px] backdrop-blur-md p-7 md:p-8">
-                  <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-[1100ms] ease-out group-hover:translate-x-full pointer-events-none" />
-                  <div className="pointer-events-none absolute -top-24 -right-24 h-48 w-48 rounded-full opacity-0 blur-3xl transition-opacity duration-[850ms] ease-out group-hover:opacity-50" style={{ background: "var(--accent-soft)" }} aria-hidden />
-                  <div>
-                    <span className="font-mono text-[0.65rem] font-bold uppercase tracking-[0.15em] text-accent">Case Study {n}</span>
-                    <h3 className="mt-3 font-display text-xl font-extrabold tracking-tight text-ink md:text-2xl">{title}</h3>
-                    <p className="mt-2 inline-flex w-fit items-center gap-1.5 border-l-2 pl-2.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-accent border-accent">{eyebrow}</p>
-                    <div className="mt-4 space-y-3.5 text-[15px] leading-[1.65] text-ink-soft">
-                      <p>{desc}</p>
-                      {extra && <p className="text-sm border-t border-rule pt-3 text-ink-muted">{extra}</p>}
-                    </div>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* WHAT I HAVE BUILT */}
       <section id="built" className="relative bg-canvas py-16 md:py-24">
@@ -575,7 +579,7 @@ function HomePage() {
       </section>
 
       {/* ABOUT */}
-      <section className="relative overflow-hidden bg-canvas bg-premium-side-gradient py-12 md:py-16">
+      <section className="relative overflow-hidden bg-canvas py-12 md:py-16">
         <div className="container-edit relative">
           <div className="grid gap-12 md:grid-cols-12 md:gap-16">
             <Reveal className="md:col-span-5">
@@ -657,16 +661,55 @@ function HomePage() {
         </div>
       </section>
 
+      {/* SELECTED WORK */}
+      <section id="work" className="relative overflow-hidden bg-canvas py-16 md:py-24">
+        <div className="container-edit relative">
+          <div className="grid gap-6 md:grid-cols-12 md:items-end md:gap-12">
+            <Reveal className="md:col-span-7">
+              <p className="eyebrow eyebrow-indigo">Selected Work</p>
+              <h2 className="mt-4 font-display text-[2.2rem] font-extrabold leading-[1.1] tracking-[-0.03em] sm:text-4xl md:text-5xl">
+                Work across companies, <span className="font-serif italic font-medium text-gradient-brand">teams and institutions.</span>
+              </h2>
+            </Reveal>
+            <Reveal delay={100} className="md:col-span-5">
+              <p className="text-base leading-[1.6] text-ink-soft md:text-lg">
+                I have worked with founders, corporate teams, professional bodies, educational institutions and government organisations.
+              </p>
+            </Reveal>
+          </div>
+
+          {/* 3D Service Carousel */}
+          <ServiceCarousel
+            cards={[
+              { badge: "FEATURED", accent: "#f59e0b", title: "Landmark Group, Dubai", desc: "Practical AI & automation training for retail operations teams.", image: "/training/landmark-group-dubai.jpg", href: "/services" },
+              { badge: "POPULAR", accent: "#6366f1", title: "TATA Digital", desc: "AI consulting & training program for cross-functional digital teams.", image: "/service-transformation.jpg", href: "/services" },
+              { badge: "GLOBAL", accent: "#10b981", title: "NICASA of NIRC of ICAI", desc: "AI training for finance professionals across ICAI chapters.", image: "/training/icai-nirc-new-delhi.jpg", href: "/services" },
+              { badge: "IMPACT", accent: "#8b5cf6", title: "Ministry of Finance, Tanzania", desc: "AI awareness & practical use program for government officials.", image: "/training/ministry-of-finance-tanzania.jpg", href: "/services" },
+            ]}
+          />
+
+          {/* Training/Speaking Stats Strip */}
+          <div className="mt-8">
+            <div className="grid gap-6 grid-cols-2 md:grid-cols-4 max-w-5xl mx-auto">
+              {heroStats.map((s, i) => (
+                <Reveal key={s.l} delay={120}>
+                  <div className="custom-theme-card p-5 h-full text-center">
+                    <p className="font-display text-2xl font-extrabold tracking-tight text-gradient-brand animate-gradient md:text-3xl">{s.v}</p>
+                    <p className="mt-2 text-xs uppercase tracking-wider font-semibold text-ink-muted leading-tight">{s.l}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FINAL CTA */}
       <section className="cta-dark relative overflow-hidden">
         <div className="pointer-events-none absolute -top-40 left-1/2 h-[40rem] w-[40rem] -translate-x-1/2 rounded-full opacity-30 blur-3xl" style={{ background: "var(--accent)" }} aria-hidden />
         <div className="container-edit relative py-16 md:py-24">
           <Reveal>
-            <p className="font-mono text-[0.7rem] uppercase tracking-[0.25em] text-white/50">
-              <Sparkles className="mr-2 inline h-3.5 w-3.5" />
-              Final CTA
-            </p>
-            <h2 className="mt-6 max-w-4xl font-display text-4xl font-extrabold leading-[1.1] tracking-[-0.03em] text-white sm:text-5xl md:text-7xl">
+            <h2 className="max-w-4xl font-display text-4xl font-extrabold leading-[1.1] tracking-[-0.03em] text-white sm:text-5xl md:text-7xl">
               Ready to Build a Business <span className="font-serif italic font-medium text-gradient-brand">That Runs Better?</span>
             </h2>
             <p className="mt-8 max-w-2xl text-base leading-[1.65] text-white/70 md:text-xl">

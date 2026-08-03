@@ -172,9 +172,9 @@ function BookPage() {
   return (
     <div className="premium-canvas book-page">
       {/* HERO */}
-      <section className="premium-canvas relative isolate overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 -z-10 bg-dots opacity-40" aria-hidden />
-        <div className="container-edit grid items-center gap-16 pt-10 pb-16 md:grid-cols-12 md:gap-16 md:pt-14 md:pb-20">
+      <section className="premium-canvas bg-premium-side-gradient relative isolate overflow-hidden">
+        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
+        <div className="container-edit relative grid items-center gap-16 pt-10 pb-16 md:grid-cols-12 md:gap-16 md:pt-14 md:pb-20">
           <div className="md:col-span-7">
             <Reveal>
               <p className="eyebrow">The book</p>
@@ -230,14 +230,14 @@ function BookPage() {
       </section>
 
       {/* LOGO BAR */}
-      <section className="relative bg-ink py-6 featured-bar">
+      <section className="relative bg-canvas py-6 featured-bar">
         <div className="container-edit">
           <Reveal eager>
             <p className="text-center text-xs uppercase tracking-widest text-ink-muted">Featured In</p>
           </Reveal>
           <div className="mt-4">
             <Marquee
-              fade={0}
+              fade={32}
               speed={60}
               items={pressLogos.map((l) => (
                 <img
@@ -255,8 +255,9 @@ function BookPage() {
       </section>
 
       {/* WHO IT'S FOR */}
-      <section className="book-section-b tex-dots-soft py-16">
-        <div className="container-edit">
+      <section className="relative isolate overflow-hidden bg-premium-side-gradient py-16">
+        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
+        <div className="container-edit relative">
           <Reveal>
             <p className="eyebrow">Who it is for</p>
             <h2 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-6xl">
@@ -278,8 +279,8 @@ function BookPage() {
       </section>
 
       {/* WHAT THE BOOK COVERS */}
-      <section className="book-section-a tex-grid py-16">
-        <div className="container-edit">
+      <section className="relative bg-canvas py-16">
+        <div className="container-edit relative">
           <Reveal>
             <p className="eyebrow">Inside the book</p>
             <h2 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-6xl">
@@ -306,8 +307,9 @@ function BookPage() {
       </section>
 
       {/* WHAT EXPERTS SAY */}
-      <section className="book-section-b tex-diagonal py-16">
-        <div className="container-edit">
+      <section className="relative isolate overflow-hidden bg-premium-side-gradient py-16">
+        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
+        <div className="container-edit relative">
           <Reveal>
             <p className="eyebrow">What experts say</p>
             <h2 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-6xl">
@@ -355,8 +357,8 @@ function BookPage() {
       </section>
 
       {/* ABOUT THE AUTHOR */}
-      <section className="book-section-a py-16">
-        <div className="container-edit">
+      <section className="relative bg-canvas py-16">
+        <div className="container-edit relative">
           <div className="grid gap-12 md:grid-cols-12 md:gap-20">
           <Reveal className="md:col-span-4">
             <p className="eyebrow">About the author</p>
@@ -383,8 +385,9 @@ function BookPage() {
       </section>
 
       {/* CLOSING CTA */}
-      <section className="book-section-b pb-24">
-        <div className="container-edit">
+      <section className="relative isolate overflow-hidden bg-premium-side-gradient pb-24 pt-16">
+        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
+        <div className="container-edit relative">
           <Reveal>
             <div className="cta-dark overflow-hidden rounded-3xl p-12 md:p-16">
             <div className="grid gap-10 md:grid-cols-2 md:items-center">

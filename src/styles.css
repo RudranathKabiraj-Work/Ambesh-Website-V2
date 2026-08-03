@@ -178,8 +178,8 @@
   --header-shadow-top: 0 2px 20px -4px rgba(0, 0, 0, 0.5);
 
   /* Gradients & shadows */
-  --gradient-brand: linear-gradient(135deg, #0e4c75 0%, #3282b7 100%);
-  --gradient-brand-soft: linear-gradient(135deg, rgba(14, 76, 117, 0.3) 0%, rgba(50, 130, 183, 0.16) 100%);
+  --gradient-brand: linear-gradient(135deg, #3282b7 0%, #0e4c75 100%);
+  --gradient-brand-soft: linear-gradient(135deg, rgba(50, 130, 183, 0.3) 0%, rgba(14, 76, 117, 0.16) 100%);
   --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px -12px rgba(0, 0, 0, 0.5);
   --shadow-lift: 0 1px 2px rgba(0, 0, 0, 0.5), 0 20px 40px -20px rgba(0, 0, 0, 0.6);
   --shadow-glow: 0 20px 50px -20px rgba(50, 130, 183, 0.4);
@@ -187,6 +187,7 @@
 }
 
 @layer base {
+
   /* Kill all CSS transitions/animations for one frame during a theme
      switch so light<->dark is instant, then it is removed by JS. */
   .theme-switching,
@@ -203,7 +204,16 @@
   }
 
   /* Remove tap highlight on non-interactive elements (mobile WebKit) */
-  li, p, span, div, section, article, header, footer, ul, ol {
+  li,
+  p,
+  span,
+  div,
+  section,
+  article,
+  header,
+  footer,
+  ul,
+  ol {
     -webkit-tap-highlight-color: transparent;
   }
 
@@ -214,8 +224,8 @@
 
   body {
     background-color: oklch(0.99 0.002 260);
-    background-image: 
-      radial-gradient(circle at 50% 45%, oklch(0.62 0.17 158 / 0.18), rgba(0, 0, 0, 0) 34%), 
+    background-image:
+      radial-gradient(circle at 50% 45%, oklch(0.62 0.17 158 / 0.18), rgba(0, 0, 0, 0) 34%),
       linear-gradient(135deg, oklch(0.62 0.17 158 / 0.18), rgba(0, 0, 0, 0) 32%, oklch(0.58 0.15 220 / 0.18) 66%, oklch(0.66 0.18 45 / 0.14));
     background-attachment: scroll;
     color: var(--color-ink);
@@ -258,6 +268,10 @@
     background-color: #071123;
     background-image: none;
     color: var(--color-ink);
+  }
+
+  .dark :is(h1, h2, h3, h4, h5) {
+    color: #ffffff !important;
   }
 
   .dark ::selection {
@@ -313,6 +327,7 @@
     border-color: oklch(0.46 0.18 268 / 0.18) !important;
     background-color: oklch(0.94 0.04 268 / 0.08) !important;
   }
+
   .eyebrow-indigo::before {
     background-color: oklch(0.46 0.18 268) !important;
   }
@@ -322,6 +337,7 @@
     border-color: oklch(0.79 0.15 65 / 0.22) !important;
     background-color: oklch(0.97 0.03 65 / 0.1) !important;
   }
+
   .eyebrow-amber::before {
     background-color: oklch(0.79 0.15 65) !important;
   }
@@ -331,6 +347,7 @@
     border-color: oklch(0.60 0.16 250 / 0.22) !important;
     background-color: oklch(0.95 0.03 250 / 0.08) !important;
   }
+
   .eyebrow-blue::before {
     background-color: oklch(0.60 0.16 250) !important;
   }
@@ -340,6 +357,7 @@
     border-color: oklch(0.62 0.17 150 / 0.22) !important;
     background-color: oklch(0.95 0.03 150 / 0.08) !important;
   }
+
   .eyebrow-emerald::before {
     background-color: oklch(0.62 0.17 150) !important;
   }
@@ -349,6 +367,7 @@
     border-color: oklch(0.55 0.18 290 / 0.22) !important;
     background-color: oklch(0.95 0.04 290 / 0.08) !important;
   }
+
   .eyebrow-violet::before {
     background-color: oklch(0.55 0.18 290) !important;
   }
@@ -358,6 +377,7 @@
     border-color: oklch(0.60 0.18 15 / 0.22) !important;
     background-color: oklch(0.96 0.03 15 / 0.08) !important;
   }
+
   .eyebrow-rose::before {
     background-color: oklch(0.60 0.18 15) !important;
   }
@@ -367,6 +387,7 @@
     border-color: oklch(0.70 0.16 45 / 0.22) !important;
     background-color: oklch(0.96 0.03 45 / 0.08) !important;
   }
+
   .eyebrow-orange::before {
     background-color: oklch(0.70 0.16 45) !important;
   }
@@ -376,6 +397,7 @@
     border-color: oklch(0.65 0.14 200 / 0.22) !important;
     background-color: oklch(0.95 0.03 200 / 0.08) !important;
   }
+
   .eyebrow-cyan::before {
     background-color: oklch(0.65 0.14 200) !important;
   }
@@ -587,7 +609,8 @@
     position: relative;
     background: var(--gradient-brand);
     background-size: 200% 200%;
-    background-position: 100% 50%; /* Start at the bright end */
+    background-position: 100% 50%;
+    /* Start at the bright end */
     color: var(--canvas);
     overflow: hidden;
     box-shadow:
@@ -612,7 +635,8 @@
 
   .btn-premium:hover {
     transform: translateY(-2px);
-    background-position: 0% 0%; /* Hover shifts to the dark end */
+    background-position: 0% 0%;
+    /* Hover shifts to the dark end */
     box-shadow:
       0 1px 0 oklch(1 0 0 / 0.12) inset,
       0 0 0 1px oklch(0.25 0.08 268 / 0.4),
@@ -792,6 +816,22 @@
   .tex-fade {
     -webkit-mask-image: radial-gradient(ellipse 80% 70% at center, #000 40%, transparent 100%);
     mask-image: radial-gradient(ellipse 80% 70% at center, #000 40%, transparent 100%);
+  }
+
+  /* Light-mode-only background grid for alternating home sections.
+     Hidden in dark mode so the theme stays clean. */
+  .home-grid-light {
+    background-image:
+      linear-gradient(to right, oklch(0.18 0.04 260 / 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, oklch(0.18 0.04 260 / 0.06) 1px, transparent 1px);
+    background-size: 56px 56px;
+    background-position: -1px -1px;
+    -webkit-mask-image: radial-gradient(ellipse 78% 68% at center, #000 35%, transparent 88%);
+    mask-image: radial-gradient(ellipse 78% 68% at center, #000 35%, transparent 88%);
+  }
+
+  .dark .home-grid-light {
+    background-image: none;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -976,10 +1016,10 @@
     border: 0.8px solid oklch(0.15 0.01 260 / 0.1) !important;
     border-radius: 20px !important;
     color: var(--ink);
-    transition: transform 0.85s cubic-bezier(0.25, 1, 0.5, 1), 
-                border-color 0.85s cubic-bezier(0.25, 1, 0.5, 1), 
-                box-shadow 0.85s cubic-bezier(0.25, 1, 0.5, 1), 
-                background-color 0.85s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    transition: transform 0.85s cubic-bezier(0.25, 1, 0.5, 1),
+      border-color 0.85s cubic-bezier(0.25, 1, 0.5, 1),
+      box-shadow 0.85s cubic-bezier(0.25, 1, 0.5, 1),
+      background-color 0.85s cubic-bezier(0.25, 1, 0.5, 1) !important;
     box-shadow: 0 4px 12px -2px oklch(0.18 0.04 260 / 0.04) !important;
     will-change: transform, border-color, box-shadow, background-color;
     transform: translate3d(0, 0, 0);
@@ -1026,6 +1066,7 @@
 
   /* Hover state — border highlight + inner glow, no movement (Desktop hover only) */
   @media (hover: hover) {
+
     .custom-theme-card:hover,
     .custom-theme-card:active {
       background-color: oklch(0.978 0.003 260 / 0.9) !important;
@@ -1082,34 +1123,42 @@
     --card-accent: oklch(0.79 0.15 65);
     --card-accent-soft: oklch(0.97 0.03 65 / 0.8);
   }
+
   .card-accent-blue {
     --card-accent: oklch(0.60 0.16 250);
     --card-accent-soft: oklch(0.95 0.03 250 / 0.8);
   }
+
   .card-accent-emerald {
     --card-accent: oklch(0.62 0.17 150);
     --card-accent-soft: oklch(0.95 0.03 150 / 0.8);
   }
+
   .card-accent-violet {
     --card-accent: oklch(0.55 0.18 290);
     --card-accent-soft: oklch(0.95 0.04 290 / 0.8);
   }
+
   .card-accent-cyan {
     --card-accent: oklch(0.65 0.14 200);
     --card-accent-soft: oklch(0.95 0.03 200 / 0.8);
   }
+
   .card-accent-rose {
     --card-accent: oklch(0.60 0.18 15);
     --card-accent-soft: oklch(0.96 0.03 15 / 0.8);
   }
+
   .card-accent-orange {
     --card-accent: oklch(0.70 0.16 45);
     --card-accent-soft: oklch(0.96 0.03 45 / 0.8);
   }
+
   .card-accent-teal {
     --card-accent: oklch(0.60 0.15 170);
     --card-accent-soft: oklch(0.95 0.03 170 / 0.8);
   }
+
   .card-accent-indigo {
     --card-accent: oklch(0.46 0.18 268);
     --card-accent-soft: oklch(0.94 0.04 268 / 0.8);
@@ -1117,6 +1166,7 @@
 
   /* Target colors for cards inside hover states (Desktop hover only) */
   @media (hover: hover) {
+
     .custom-theme-card[class*="card-accent-"]:hover,
     .custom-theme-card[class*="card-accent-"]:active {
       border-color: oklch(from var(--card-accent) l c h / 0.6) !important;
@@ -1148,13 +1198,14 @@
     border-radius: 20px !important;
     box-shadow: 0 4px 12px -2px oklch(0.18 0.04 260 / 0.04) !important;
     transition: transform 0.85s cubic-bezier(0.25, 1, 0.5, 1),
-                box-shadow 0.85s cubic-bezier(0.25, 1, 0.5, 1),
-                border-color 0.85s cubic-bezier(0.25, 1, 0.5, 1),
-                background-color 0.85s cubic-bezier(0.25, 1, 0.5, 1) !important;
+      box-shadow 0.85s cubic-bezier(0.25, 1, 0.5, 1),
+      border-color 0.85s cubic-bezier(0.25, 1, 0.5, 1),
+      background-color 0.85s cubic-bezier(0.25, 1, 0.5, 1) !important;
   }
 
   /* For devices with no hover capability (touch devices/mobiles), show the hover styles natively and keep them static */
   @media (hover: none) {
+
     /* Show the glow/active visual by default on touch devices */
     .custom-theme-card {
       transform: translate3d(0, 0, 0) !important;
@@ -1194,7 +1245,7 @@
     }
 
     /* Hide the shimmer sweep overlay on mobile completely */
-    .custom-theme-card > .pointer-events-none.-translate-x-full {
+    .custom-theme-card>.pointer-events-none.-translate-x-full {
       display: none !important;
     }
 
@@ -1227,7 +1278,8 @@
 }
 
 /* Lenis Smooth Scroll Configuration */
-html.lenis, html.lenis body {
+html.lenis,
+html.lenis body {
   height: auto;
 }
 
@@ -1252,6 +1304,7 @@ html.lenis, html.lenis body {
    Only active when `.dark` is present on <html>.
    ========================================== */
 @layer utilities {
+
   /* Featured In / press logos: dark logos vanish on the dark canvas, so
      render them as white silhouettes in dark mode (logo-wall treatment).
      Logos with a solid background (e.g. JPG) get a white logo card instead
@@ -1318,9 +1371,23 @@ html.lenis, html.lenis body {
 
   /* Active nav pill in dark mode — solid accent pill, no glass. */
 
-  /* Headline / brand gradient text -> deep blue -> sky blue (dark to light) */
+  /* Dark mode header text -> pure white (keep the header gradient untouched) */
+  .dark header .text-ink,
+  .dark header .text-ink-soft,
+  .dark header .text-ink-muted,
+  .dark header nav a,
+  .dark header button.transform,
+  .dark header>div>div a {
+    color: #ffffff !important;
+  }
+
+  .dark header nav a.inactive,
+  .dark header nav a:hover {
+    color: #ffffff !important;
+  }
+
   .dark .text-gradient-brand {
-    background-image: linear-gradient(135deg, #0e4c75 0%, #3282b7 55%, #bbe0fa 100%);
+    background-image: linear-gradient(135deg, #ffffff 0%, #3282b7 40%, #0e4c75 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -1371,6 +1438,7 @@ html.lenis, html.lenis body {
   }
 
   @media (hover: hover) {
+
     .dark .custom-theme-card:hover,
     .dark .custom-theme-card:active {
       background-color: #115c8c !important;
@@ -1501,4 +1569,3 @@ html.lenis, html.lenis body {
     background: #3282b7;
   }
 }
-

@@ -91,8 +91,8 @@ function InsightsPage() {
 
   return (
     <>
-      <section className="relative overflow-hidden py-14 md:py-20 bg-canvas">
-        <div className="tex-dots-soft tex-fade pointer-events-none absolute inset-0" aria-hidden />
+      <section className="relative isolate overflow-hidden bg-premium-side-gradient py-14 md:py-20">
+        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
             <p className="eyebrow">Insights</p>
@@ -190,8 +190,7 @@ function InsightsPage() {
       </section>
 
       {/* Newsletter signup banner */}
-      <section className="relative overflow-hidden bg-sand py-16 md:py-20 border-t border-rule">
-        <div className="tex-diagonal pointer-events-none absolute inset-0 opacity-70" aria-hidden />
+      <section className="relative overflow-hidden bg-canvas py-16 md:py-20 border-t border-rule">
         <div className="container-edit relative max-w-3xl text-center">
           <Reveal>
             <p className="eyebrow">Newsletter</p>

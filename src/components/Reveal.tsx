@@ -7,6 +7,7 @@ interface RevealProps {
   className?: string;
   as?: "div" | "section" | "li" | "article" | "header" | "footer" | "h1" | "h2" | "h3" | "p" | "span";
   eager?: boolean;
+  style?: CSSProperties;
 }
 
 // Single shared IntersectionObserver instance to run animations at 60 FPS
@@ -31,7 +32,7 @@ function getGlobalObserver() {
   return globalObserver;
 }
 
-export function Reveal({ children, delay = 0, className = "", as: Tag = "div", eager = false }: RevealProps) {
+export function Reveal({ children, delay = 0, className = "", as: Tag = "div", eager = false, style }: RevealProps) {
   const [visible, setVisible] = useState(eager);
   const ref = useRef<HTMLElement>(null);
 
@@ -65,17 +66,23 @@ export function Reveal({ children, delay = 0, className = "", as: Tag = "div", e
   }, [eager]);
 
   if (eager) {
-    const style: CSSProperties = delay ? { animationDelay: `${delay}ms` } : {};
+    const eagerStyle: CSSProperties = {
+      ...style,
+      ...(delay ? { animationDelay: `${delay}ms` } : {}),
+    };
     return (
-      <Tag className={`animate-fade-in-up ${className}`} style={style}>
+      <Tag className={`animate-fade-in-up ${className}`} style={eagerStyle}>
         {children}
       </Tag>
     );
   }
 
-  const style: CSSProperties = delay ? { transitionDelay: `${delay}ms` } : {};
+  const revealStyle: CSSProperties = {
+    ...style,
+    ...(delay ? { transitionDelay: `${delay}ms` } : {}),
+  };
   return (
-    <Tag ref={ref as any} className={`reveal ${visible ? "is-visible" : ""} ${className}`} style={style}>
+    <Tag ref={ref as any} className={`reveal ${visible ? "is-visible" : ""} ${className}`} style={revealStyle}>
       {children}
     </Tag>
   );

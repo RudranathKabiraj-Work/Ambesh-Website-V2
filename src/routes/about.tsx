@@ -135,9 +135,8 @@ function AboutPage() {
   return (
     <div className="min-h-screen w-full relative bg-canvas">
       {/* HERO */}
-      <section className="relative isolate overflow-hidden">
-        {/* Glow Orb (Light blue tint on left) */}
-        <div className="pointer-events-none absolute top-1/2 -left-40 h-[600px] w-[600px] -translate-y-1/2 rounded-full opacity-[0.12] blur-[120px]" style={{ background: "oklch(0.60 0.16 250)" }} aria-hidden />
+      <section className="relative isolate overflow-hidden bg-premium-side-gradient">
+        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative grid items-center gap-12 pt-10 pb-24 md:grid-cols-12 md:gap-16 md:pt-14 md:pb-32">
           <div className="md:col-span-7">
             <Reveal eager>
@@ -173,7 +172,7 @@ function AboutPage() {
       </section>
 
       {/* PULL QUOTE */}
-      <section className="relative bg-transparent py-14 md:py-20">
+      <section className="relative bg-canvas py-14 md:py-20">
         <div className="container-edit relative">
           <Reveal>
             <p className="eyebrow eyebrow-indigo">A line he keeps coming back to</p>
@@ -189,9 +188,8 @@ function AboutPage() {
       </section>
 
       {/* THE STORY - editorial narrative */}
-      <section className="relative bg-transparent py-14 md:py-16">
-        {/* Glow Orb (Very light blue tint on left) */}
-        <div className="pointer-events-none absolute top-1/2 -left-40 h-[500px] w-[500px] -translate-y-1/2 rounded-full opacity-[0.07] blur-[120px]" style={{ background: "oklch(0.60 0.16 250)" }} aria-hidden />
+      <section className="relative isolate overflow-hidden bg-premium-side-gradient py-14 md:py-16">
+        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative grid gap-12 md:grid-cols-12">
           <Reveal className="md:col-span-4">
             <div className="md:sticky md:top-28">
@@ -224,7 +222,7 @@ function AboutPage() {
       </section>
 
       {/* WHAT HE IS HIRED FOR */}
-      <section className="relative bg-transparent py-14 md:py-16">
+      <section className="relative bg-canvas py-14 md:py-16">
         <div className="container-edit">
           <Reveal>
             <p className="eyebrow eyebrow-blue">Capabilities</p>
@@ -258,10 +256,9 @@ function AboutPage() {
       </section>
 
       {/* WHAT HE BELIEVES */}
-      <section className="relative bg-transparent py-14 md:py-16">
-        {/* Glow Orb (Very light blue tint on left) */}
-        <div className="pointer-events-none absolute top-1/2 -left-40 h-[500px] w-[500px] -translate-y-1/2 rounded-full opacity-[0.07] blur-[120px]" style={{ background: "oklch(0.60 0.16 250)" }} aria-hidden />
-        <div className="container-edit">
+      <section className="relative isolate overflow-hidden bg-premium-side-gradient py-14 md:py-16">
+        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
+        <div className="container-edit relative">
           <Reveal>
             <p className="eyebrow eyebrow-indigo">What he believes</p>
             <h2 className="mt-4 max-w-3xl font-serif text-4xl font-semibold leading-[1.05] tracking-tight text-ink md:text-6xl">
@@ -291,7 +288,7 @@ function AboutPage() {
       </section>
 
       {/* THREE ROLES */}
-      <section className="relative bg-transparent py-14 md:py-16">
+      <section className="relative bg-canvas py-14 md:py-16">
         <div className="container-edit relative">
           <Reveal>
             <p className="eyebrow eyebrow-cyan">Three roles, one thread</p>
@@ -332,10 +329,9 @@ function AboutPage() {
       </section>
 
       {/* JOURNEY */}
-      <section className="relative bg-transparent py-14 md:py-16">
-        {/* Glow Orb (Very light blue tint on left) */}
-        <div className="pointer-events-none absolute top-1/2 -left-40 h-[500px] w-[500px] -translate-y-1/2 rounded-full opacity-[0.07] blur-[120px]" style={{ background: "oklch(0.60 0.16 250)" }} aria-hidden />
-        <div className="container-edit">
+      <section className="relative isolate overflow-hidden bg-premium-side-gradient py-14 md:py-16">
+        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
+        <div className="container-edit relative">
           <Reveal>
             <p className="eyebrow eyebrow-blue">The journey</p>
             <h2 className="mt-4 max-w-3xl font-serif text-4xl font-semibold leading-[1.05] tracking-tight text-ink md:text-6xl">
@@ -360,7 +356,7 @@ function AboutPage() {
       </section>
 
       {/* WHAT HE HAS BUILT */}
-      <section className="relative bg-transparent py-14 md:py-16">
+      <section className="relative bg-canvas py-14 md:py-16">
         <div className="container-edit relative">
           <Reveal>
             <p className="eyebrow eyebrow-indigo">Built along the way</p>
@@ -401,10 +397,9 @@ function AboutPage() {
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="relative bg-transparent py-14 md:py-16">
-        {/* Glow Orb (Very light blue tint on left) */}
-        <div className="pointer-events-none absolute top-1/2 -left-40 h-[500px] w-[500px] -translate-y-1/2 rounded-full opacity-[0.07] blur-[120px]" style={{ background: "oklch(0.60 0.16 250)" }} aria-hidden />
-        <div className="container-edit">
+      <section className="relative isolate overflow-hidden bg-premium-side-gradient py-14 md:py-16">
+        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
+        <div className="container-edit relative">
           <Reveal>
             <p className="eyebrow eyebrow-cyan">What people say</p>
             <h2 className="mt-4 max-w-3xl font-serif text-4xl font-semibold leading-[1.05] tracking-tight text-ink md:text-6xl">
@@ -435,7 +430,7 @@ function AboutPage() {
       </section>
 
       {/* A FEW THINGS WORTH KNOWING */}
-      <section className="relative bg-transparent py-14 md:py-16">
+      <section className="relative bg-canvas py-14 md:py-16">
         <div className="container-edit grid gap-12 md:grid-cols-12">
           <Reveal className="md:col-span-5">
             <p className="eyebrow eyebrow-blue">A few things worth knowing</p>
@@ -458,7 +453,8 @@ function AboutPage() {
       </section>
 
       {/* CLOSING CTA */}
-      <section className="relative isolate overflow-hidden py-14 md:py-16">
+      <section className="relative isolate overflow-hidden bg-premium-side-gradient py-14 md:py-16">
+        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative text-center">
           <Reveal>
             <p className="eyebrow eyebrow-indigo">Final word</p>

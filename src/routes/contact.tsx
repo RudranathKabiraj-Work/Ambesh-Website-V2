@@ -186,8 +186,8 @@ function ContactPage() {
   return (
     <>
       {/* HERO */}
-      <section className="premium-canvas relative isolate overflow-hidden">
-        <div className="absolute inset-0 tex-dots-soft tex-fade opacity-70" aria-hidden />
+      <section className="premium-canvas bg-premium-side-gradient relative isolate overflow-hidden">
+        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative pt-12 pb-16 md:pt-16 md:pb-20">
           <Reveal>
             <p className="eyebrow">Contact</p>
@@ -219,7 +219,6 @@ function ContactPage() {
 
       {/* FORM + SIDEBAR */}
       <section className="relative bg-canvas">
-        <div className="absolute inset-0 tex-grid-fine opacity-60" aria-hidden />
         <div className="container-edit relative pb-28 -mt-6 md:-mt-12">
           <div className="grid gap-8 md:grid-cols-12">
             <Reveal className="md:col-span-7">
@@ -349,8 +348,8 @@ function ContactPage() {
       </section>
 
       {/* FAQ */}
-      <section className="relative bg-sand py-16">
-        <div className="absolute inset-0 tex-diagonal opacity-80" aria-hidden />
+      <section className="relative isolate overflow-hidden bg-canvas bg-premium-side-gradient py-16">
+        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative grid gap-12 md:grid-cols-12 md:gap-16">
           <Reveal className="md:col-span-4">
             <p className="eyebrow">FAQ</p>

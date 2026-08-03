@@ -155,8 +155,8 @@ function BusinessOSPage() {
   return (
     <>
       {/* HERO */}
-      <section className="premium-canvas relative isolate overflow-hidden">
-        <div className="absolute inset-0 tex-dots-soft tex-fade pointer-events-none" aria-hidden />
+      <section className="premium-canvas bg-premium-side-gradient relative isolate overflow-hidden">
+        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative pt-10 pb-20 md:pt-14 md:pb-24">
           <Reveal eager><p className="eyebrow eyebrow-indigo">Business OS</p></Reveal>
           <Reveal delay={100} eager>
@@ -203,8 +203,7 @@ function BusinessOSPage() {
       </section>
 
       {/* PILLARS */}
-      <section className="relative overflow-hidden py-14 md:py-20">
-        <div className="absolute inset-0 tex-dots-soft tex-fade pointer-events-none" aria-hidden />
+      <section className="relative overflow-hidden py-14 md:py-20 bg-canvas">
         <div className="container-edit relative">
           <Reveal>
             <p className="eyebrow">What gets built</p>
@@ -255,50 +254,53 @@ function BusinessOSPage() {
       </section>
 
       {/* AUDIENCES */}
-      <section className="container-edit py-14 md:py-20">
-        <Reveal>
-          <p className="eyebrow">Who this is for</p>
-          <h2 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-6xl">
-            Built for founder-led{" "}
-            <span className="text-gradient-brand">businesses.</span>
-          </h2>
-          <p className="mt-6 max-w-2xl text-lg text-ink-muted">
-            The Business OS is not for early-stage startups looking for
-            product-market fit, and not for large corporates with layers of
-            structure. It is for founder-led businesses that have grown past
-            what one person can hold together.
-          </p>
-        </Reveal>
+      <section className="relative isolate overflow-hidden bg-canvas bg-premium-side-gradient py-14 md:py-20">
+        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
+        <div className="container-edit relative">
+          <Reveal>
+            <p className="eyebrow">Who this is for</p>
+            <h2 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-6xl">
+              Built for founder-led{" "}
+              <span className="text-gradient-brand">businesses.</span>
+            </h2>
+            <p className="mt-6 max-w-2xl text-lg text-ink-muted">
+              The Business OS is not for early-stage startups looking for
+              product-market fit, and not for large corporates with layers of
+              structure. It is for founder-led businesses that have grown past
+              what one person can hold together.
+            </p>
+          </Reveal>
 
-        <div className="mt-12 flex flex-wrap gap-2 border-b border-rule">
-          {(Object.keys(audiences) as Array<keyof typeof audiences>).map((key) => (
-            <button
-              key={key}
-              onClick={() => setAudience(key)}
-              className={`relative rounded-t-xl px-5 py-3 text-sm font-semibold transition-colors ${audience === key ? "text-ink" : "text-ink-muted hover:text-ink"}`}
-            >
-              {audiences[key].label}
-              {audience === key && <span className="absolute inset-x-0 -bottom-px h-0.5 bg-gradient-brand animate-gradient" />}
-            </button>
-          ))}
-        </div>
-
-        <div key={audience} className="mt-12 grid animate-[fade-in_0.4s_ease-out] gap-12 md:grid-cols-12">
-          <div className="md:col-span-7">
-            <h3 className="text-3xl font-extrabold leading-tight tracking-tight md:text-5xl">{a.title}</h3>
-            <p className="mt-6 text-lg text-ink-soft">{a.body}</p>
+          <div className="mt-12 flex flex-wrap gap-2 border-b border-rule">
+            {(Object.keys(audiences) as Array<keyof typeof audiences>).map((key) => (
+              <button
+                key={key}
+                onClick={() => setAudience(key)}
+                className={`relative rounded-t-xl px-5 py-3 text-sm font-semibold transition-colors ${audience === key ? "text-ink" : "text-ink-muted hover:text-ink"}`}
+              >
+                {audiences[key].label}
+                {audience === key && <span className="absolute inset-x-0 -bottom-px h-0.5 bg-gradient-brand animate-gradient" />}
+              </button>
+            ))}
           </div>
-          <div className="md:col-span-5">
-            <ul className="space-y-4">
-              {a.bullets.map((b) => (
-                <li key={b} className="custom-theme-card-static flex items-start gap-3 rounded-2xl p-5">
-                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-brand text-white">
-                    <Check className="h-3.5 w-3.5" />
-                  </span>
-                  <span className="text-base font-medium">{b}</span>
-                </li>
-              ))}
-            </ul>
+
+          <div key={audience} className="mt-12 grid animate-[fade-in_0.4s_ease-out] gap-12 md:grid-cols-12">
+            <div className="md:col-span-7">
+              <h3 className="text-3xl font-extrabold leading-tight tracking-tight md:text-5xl">{a.title}</h3>
+              <p className="mt-6 text-lg text-ink-soft">{a.body}</p>
+            </div>
+            <div className="md:col-span-5">
+              <ul className="space-y-4">
+                {a.bullets.map((b) => (
+                  <li key={b} className="custom-theme-card-static flex items-start gap-3 rounded-2xl p-5">
+                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-brand text-white">
+                      <Check className="h-3.5 w-3.5" />
+                    </span>
+                    <span className="text-base font-medium">{b}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -352,8 +354,9 @@ function BusinessOSPage() {
       </section>
 
       {/* FAQ */}
-      <section className="container-edit py-16">
-        <div className="grid gap-12 md:grid-cols-12 md:gap-16">
+      <section className="relative isolate overflow-hidden bg-canvas bg-premium-side-gradient py-16">
+        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
+        <div className="container-edit relative grid gap-12 md:grid-cols-12 md:gap-16">
           <Reveal className="md:col-span-4">
             <p className="eyebrow">Common questions</p>
             <h2 className="mt-4 text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-5xl">
@@ -383,8 +386,8 @@ function BusinessOSPage() {
       </section>
 
       {/* CLOSING CTA */}
-      <section className="premium-canvas relative isolate overflow-hidden">
-        <div className="absolute inset-0 tex-grid tex-fade pointer-events-none" aria-hidden />
+      <section className="premium-canvas bg-premium-side-gradient relative isolate overflow-hidden">
+        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative py-14 md:py-20 text-center">
           <Reveal><p className="eyebrow">Start with a diagnosis</p></Reveal>
           <Reveal delay={100}>

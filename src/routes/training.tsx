@@ -142,17 +142,14 @@ function TrainingPage() {
   return (
     <div className="relative w-full bg-canvas min-h-screen" style={{ backgroundImage: "none" }}>
       {/* HERO */}
-      <section className="relative isolate overflow-hidden">
-
-        {/* Glow Orb */}
-        <div className="pointer-events-none absolute top-1/2 -left-40 h-[600px] w-[600px] -translate-y-1/2 rounded-full opacity-[0.12] blur-[120px]" style={{ background: "oklch(0.70 0.16 45)" }} aria-hidden />
-
-        <div className="container-edit pt-10 pb-20 md:pt-14 md:pb-24">
+      <section className="relative isolate overflow-hidden bg-premium-side-gradient">
+        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
+        <div className="container-edit relative pt-10 pb-20 md:pt-14 md:pb-24">
           <Reveal eager>
             <p className="eyebrow eyebrow-orange">Training</p>
           </Reveal>
           <Reveal delay={80} eager>
-            <h1 className="mt-5 max-w-4xl font-display text-[2.4rem] font-extrabold leading-[1.05] tracking-[-0.03em] text-ink sm:text-5xl md:text-6xl lg:text-[4rem]">
+            <h1 className="mt-5 max-w-4xl font-display text-[2.4rem] font-extrabold leading-[1.05] tracking-[-0.03em] text-ink dark:text-white sm:text-5xl md:text-6xl lg:text-[4rem]">
               Corporate AI training that turns{" "}
               <span className="font-serif italic font-medium text-gradient-brand animate-gradient">
                 confusion into daily use.
@@ -202,14 +199,14 @@ function TrainingPage() {
       </section>
 
       {/* FORMATS */}
-      <section id="formats" className="relative overflow-hidden bg-transparent py-14 md:py-20">
+      <section id="formats" className="relative overflow-hidden bg-canvas py-14 md:py-20">
         <div className="container-edit relative">
           <div className="grid gap-12 md:grid-cols-12 md:items-end">
             <Reveal className="md:col-span-7">
               <p className="eyebrow">Formats</p>
               <h2 className="mt-4 font-display text-4xl font-extrabold tracking-[-0.03em] md:text-5xl">
                 Three training formats.{" "}
-                <span className="font-serif italic font-medium">
+                <span className="font-serif italic font-medium text-gradient-brand animate-gradient">
                   One practical method.
                 </span>
               </h2>
@@ -259,15 +256,14 @@ function TrainingPage() {
       </section>
 
       {/* NAMED ENGAGEMENTS */}
-      <section className="relative overflow-hidden bg-transparent py-14 md:py-20">
-        {/* Glow Orb (Very light tint on left) */}
-        <div className="pointer-events-none absolute top-1/2 -left-40 h-[500px] w-[500px] -translate-y-1/2 rounded-full opacity-[0.07] blur-[120px]" style={{ background: "oklch(0.70 0.16 45)" }} aria-hidden />
+      <section className="relative isolate overflow-hidden bg-premium-side-gradient py-14 md:py-20">
+        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
             <p className="eyebrow">Named engagements</p>
             <h2 className="mt-4 max-w-3xl font-display text-4xl font-extrabold tracking-[-0.03em] md:text-5xl">
               Recognisable rooms.{" "}
-              <span className="font-serif italic font-medium">Real teams.</span>
+              <span className="font-serif italic font-medium text-gradient-brand animate-gradient">Real teams.</span>
             </h2>
           </Reveal>
 
@@ -296,15 +292,16 @@ function TrainingPage() {
       </section>
 
       {/* OUTCOMES */}
-      <section className="relative overflow-hidden bg-transparent py-14 md:py-20">
+      <section className="relative overflow-hidden bg-canvas py-14 md:py-20">
         <div className="container-edit relative">
           <Reveal>
             <p className="eyebrow">After the training</p>
             <h2 className="mt-4 max-w-3xl font-display text-4xl font-extrabold tracking-[-0.03em] md:text-5xl">
               Your team should leave with{" "}
-              <span className="font-serif italic font-medium">things they can use.</span>
+              <span className="font-serif italic font-medium text-gradient-brand animate-gradient">things they can use.</span>
             </h2>
-          </Reveal>          <div className="mt-12 grid gap-3 md:grid-cols-2">
+          </Reveal>
+          <div className="mt-12 grid gap-3 md:grid-cols-2">
             {outcomes.map((o, i) => (
               <Reveal key={o} delay={60}>
                 <div className="custom-theme-card-static flex items-start gap-4 rounded-2xl p-5">
@@ -318,15 +315,14 @@ function TrainingPage() {
       </section>
 
       {/* THEMES */}
-      <section className="relative overflow-hidden bg-transparent py-14 md:py-20">
-        {/* Glow Orb (Very light tint on left) */}
-        <div className="pointer-events-none absolute top-1/2 -left-40 h-[500px] w-[500px] -translate-y-1/2 rounded-full opacity-[0.07] blur-[120px]" style={{ background: "oklch(0.70 0.16 45)" }} aria-hidden />
+      <section className="relative isolate overflow-hidden bg-premium-side-gradient py-14 md:py-20">
+        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
             <p className="eyebrow">Feedback</p>
             <h2 className="mt-4 max-w-3xl font-display text-4xl font-extrabold tracking-[-0.03em] md:text-5xl">
               The feedback teams share,{" "}
-              <span className="font-serif italic font-medium">session after session.</span>
+              <span className="font-serif italic font-medium text-gradient-brand animate-gradient">session after session.</span>
             </h2>
           </Reveal>
 
@@ -358,13 +354,13 @@ function TrainingPage() {
       </section>
 
       {/* INDUSTRIES */}
-      <section className="relative overflow-hidden bg-transparent py-14 md:py-20">
+      <section className="relative overflow-hidden bg-canvas py-14 md:py-20">
         <div className="container-edit relative">
           <Reveal>
             <p className="eyebrow">Industries served</p>
             <h2 className="mt-4 max-w-3xl font-display text-4xl font-extrabold tracking-[-0.03em] md:text-5xl">
               11 industries.{" "}
-              <span className="font-serif italic font-medium">One playbook.</span>
+              <span className="font-serif italic font-medium text-gradient-brand animate-gradient">One playbook.</span>
             </h2>
           </Reveal>
           <Reveal>
@@ -397,7 +393,7 @@ function TrainingPage() {
             </p>
             <h2 className="mt-6 max-w-4xl font-display text-5xl font-extrabold leading-[1.02] tracking-[-0.03em] text-white md:text-7xl">
               Bring practical AI training{" "}
-              <span className="font-serif italic font-medium">to your team.</span>
+              <span className="font-serif italic font-medium text-gradient-brand">to your team.</span>
             </h2>
             <p className="mt-8 max-w-2xl text-lg leading-[1.6] text-white/70 md:text-xl">
               Share your team size, department and goal. We will suggest the right

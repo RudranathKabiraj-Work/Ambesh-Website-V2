@@ -30,14 +30,17 @@ function TermsPage() {
   const updated = "April 19, 2026";
   return (
     <div className="bg-canvas">
-      <section className="container-edit pt-24 pb-12 md:pt-32">
-        <Reveal eager>
-          <p className="eyebrow">Legal</p>
-          <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tighter text-ink md:text-6xl">
-            Terms of Use
-          </h1>
-          <p className="mt-4 text-sm text-ink-muted">Last updated: {updated}</p>
-        </Reveal>
+      <section className="relative isolate overflow-hidden bg-premium-side-gradient pt-24 pb-12 md:pt-32">
+        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
+        <div className="container-edit relative">
+          <Reveal eager>
+            <p className="eyebrow">Legal</p>
+            <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tighter text-ink md:text-6xl">
+              Terms of Use
+            </h1>
+            <p className="mt-4 text-sm text-ink-muted">Last updated: {updated}</p>
+          </Reveal>
+        </div>
       </section>
 
       <section className="container-edit pb-24">

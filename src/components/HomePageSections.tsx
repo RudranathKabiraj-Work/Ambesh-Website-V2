@@ -1,13 +1,8 @@
-/**
- * HomePageSections — lazily loaded below-the-fold content.
- * Extracted from index.tsx so the critical hero section is not blocked
- * by parsing 1500 lines of JSX on the initial render.
- *
- * Imported via React.lazy() in src/routes/index.tsx.
- */
+import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import {
   ArrowRight,
+  ArrowUpRight,
   CheckCircle2,
   Star,
   GraduationCap,
@@ -46,6 +41,7 @@ const credibility = [
 ];
 
 export default function HomePageSections() {
+  const [hoveredService, setHoveredService] = useState<number | null>(null);
   return (
     <>
       {/* PROBLEM */}
@@ -148,56 +144,126 @@ export default function HomePageSections() {
             </Reveal>
           </div>
 
-          <div className="mt-14 grid gap-6 md:mt-20 lg:grid-cols-3">
+          <div className="mt-12 flex flex-col gap-4 md:mt-16 lg:h-[520px] lg:flex-row">
             {[
               {
+                num: "01",
                 title: "Build",
-                icon: Workflow,
                 eyebrow: "Operating Systems",
                 desc: "I build practical AI products to turn messy business operations into systems people actually use.",
                 bullets: ["Founder & executive scorecards", "Custom workflow automations", "Custom internal AI assistants"],
-                color: "to-cyan-500/15",
+                image: "/service-os.jpg",
+                href: "/services",
               },
               {
+                num: "02",
                 title: "Advice",
-                icon: Compass,
                 eyebrow: "Better Ways of Working",
                 desc: "I help founders improve systems, align execution rhythms, and drive practical AI adoption across the team.",
                 bullets: ["Process & bottleneck audits", "SOPs & accountability setup", "Sales, ops & marketing alignment"],
-                color: "to-violet-500/15",
+                image: "/service-transformation.jpg",
+                href: "/services",
               },
               {
+                num: "03",
                 title: "Train",
-                icon: GraduationCap,
                 eyebrow: "Practical AI Training",
                 desc: "I help teams & professionals to use AI in their daily work, not only learn about new tools.",
                 bullets: ["Custom team AI training", "Real-world AI workflows", "Weekly AI adoption rhythms"],
-                color: "to-rose-500/15",
+                image: "/service-ai-training.jpg",
+                href: "/services",
               },
-            ].map(({ title, icon: Icon, eyebrow, desc, bullets, color }, i) => (
-              <Reveal key={title} delay={i * 80}>
-                <div className={`group relative flex h-full flex-col overflow-hidden rounded-[20px] border border-ink/15 bg-gradient-to-r from-sand/90 via-sand/35 ${color} backdrop-blur-md p-7 transition-all duration-500 ease-out -translate-y-1.5 shadow-lift hover:translate-y-0 hover:scale-100 hover:border-ink/35 hover:bg-none hover:bg-canvas hover:shadow-none md:p-8`}>
-                  <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/80 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-full pointer-events-none" />
-                  <div className="pointer-events-none absolute -top-24 -right-24 h-48 w-48 rounded-full opacity-60 blur-3xl transition-opacity duration-500 group-hover:opacity-0" style={{ background: "var(--accent-soft)" }} aria-hidden />
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-display text-2xl font-extrabold tracking-[-0.02em] leading-[1.2] text-ink md:text-[1.85rem]">{title}</h3>
-                    <div className="icon-box flex h-12 w-12 items-center justify-center rounded-xl border border-rule">
-                      <Icon className="h-5 w-5" />
+            ].map(({ num, title, eyebrow, desc, bullets, image, href }, i) => {
+              const isHovered = hoveredService === i;
+              return (
+                <Reveal
+                  key={title}
+                  delay={i * 80}
+                  className="w-full h-full flex"
+                  style={{
+                    flexGrow: isHovered ? 2.4 : 1,
+                    flexBasis: 0,
+                    transition: "flex-grow 700ms cubic-bezier(0.16, 1, 0.3, 1)",
+                  }}
+                >
+                  <Link
+                    to={href}
+                    onMouseEnter={() => setHoveredService(i)}
+                    onMouseLeave={() => setHoveredService(null)}
+                    onFocus={() => setHoveredService(i)}
+                    onBlur={() => setHoveredService(null)}
+                    className="group relative flex min-h-[360px] w-full flex-col justify-end overflow-hidden rounded-3xl border border-white/10 shadow-soft transition-all duration-700 ease-out sm:min-h-[420px] lg:min-h-0"
+                  >
+                    {/* Background Image */}
+                    <img
+                      src={image}
+                      alt={title}
+                      loading="lazy"
+                      className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out ${
+                        isHovered ? "scale-100" : "scale-105"
+                      }`}
+                    />
+
+                    {/* Gradient Overlay */}
+                    <div
+                      className={`absolute inset-0 transition-opacity duration-700 ${
+                        isHovered
+                          ? "bg-gradient-to-t from-black/95 via-black/55 to-black/15"
+                          : "bg-gradient-to-t from-black/95 via-black/75 to-black/40"
+                      }`}
+                    />
+
+                    {/* Service Number Badge */}
+                    <span className="absolute left-6 top-6 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[10px] font-semibold tracking-[0.18em] text-white backdrop-blur-sm md:left-8 md:top-8">
+                      {num}
+                    </span>
+
+                    {/* Card Content */}
+                    <div className="relative p-6 md:p-8 w-full">
+                      <p className="inline-flex w-fit items-center gap-1.5 border-l-2 pl-2.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-white/70 mb-2" style={{ borderColor: "var(--accent)" }}>
+                        {eyebrow}
+                      </p>
+
+                      <h3 className={`font-display leading-tight tracking-tight text-white transition-all duration-500 ${
+                        isHovered ? "text-2xl md:text-[30px] font-extrabold" : "text-xl md:text-2xl font-bold"
+                      }`}>
+                        {title}
+                      </h3>
+
+                      <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/80 transition-all duration-500 md:text-base">
+                        {desc}
+                      </p>
+
+                      {/* Bullet list sliding open */}
+                      <div
+                        className={`grid transition-all duration-500 ease-in-out ${
+                          isHovered
+                            ? "grid-rows-[1fr] opacity-100 mt-4"
+                            : "grid-rows-[0fr] opacity-0 h-0 overflow-hidden"
+                        }`}
+                      >
+                        <ul className="space-y-2">
+                          {bullets.map((b) => (
+                            <li key={b} className="flex items-start gap-2.5 text-xs leading-[1.5] text-white/95">
+                              <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-white" style={{ color: "var(--accent)" }} />
+                              <span>{b}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Bottom row CTA */}
+                      <div className="mt-6 flex items-center gap-3 text-sm font-medium text-white">
+                        <span className="transition-opacity duration-500">Explore Service</span>
+                        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/20 text-white transition-all duration-300 group-hover:rotate-45 group-hover:bg-white group-hover:text-black">
+                          <ArrowUpRight className="h-4 w-4" />
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                  <p className="mt-6 inline-flex w-fit items-center gap-1.5 border-l-2 pl-2.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.15em]" style={{ borderColor: "var(--accent)", color: "var(--accent)" }}>{eyebrow}</p>
-                  <p className="mt-3 text-[15px] leading-[1.65] text-ink-soft md:mt-4">{desc}</p>
-                  <ul className="mt-5 space-y-3 md:mt-6">
-                    {bullets.map((b) => (
-                      <li key={b} className="flex items-start gap-2.5 text-sm leading-[1.5] text-ink-soft">
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" style={{ color: "var(--accent)" }} />
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </Reveal>
-            ))}
+                  </Link>
+                </Reveal>
+              );
+            })}
           </div>
 
           {/* Stats strip */}
