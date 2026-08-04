@@ -140,7 +140,8 @@ function RootComponent() {
   }, []);
 
   return (
-    <div className="app-shell flex min-h-screen flex-col bg-canvas text-ink">
+    <div className="app-shell relative flex min-h-screen flex-col bg-canvas text-ink">
+      <div className="home-top-grey pointer-events-none absolute top-0 left-0 right-0 z-40 h-16 md:h-20 xl:h-24" aria-hidden />
       <SiteHeader />
       <main className="flex-1 pt-16 md:pt-20 xl:pt-24">
         <Outlet />

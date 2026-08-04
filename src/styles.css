@@ -819,8 +819,14 @@
   }
 
   /* Light-mode-only background grid for alternating home sections.
-     Hidden in dark mode so the theme stays clean. */
+     The light grey fill separates grid sections from the plain canvas sections. */
   .home-grid-light {
+    background-color: oklch(0.975 0.005 250);
+  }
+  .home-grid-light::after {
+    content: "";
+    position: absolute;
+    inset: 0;
     background-image:
       linear-gradient(to right, oklch(0.18 0.04 260 / 0.06) 1px, transparent 1px),
       linear-gradient(to bottom, oklch(0.18 0.04 260 / 0.06) 1px, transparent 1px);
@@ -832,6 +838,20 @@
 
   .dark .home-grid-light {
     background-image: none;
+    background-color: transparent;
+  }
+
+  .dark .home-grid-light::after {
+    display: none;
+  }
+
+  /* Plain grey strip behind the fixed navbar (no grid lines) */
+  .home-top-grey {
+    background-color: oklch(0.975 0.005 250);
+  }
+
+  .dark .home-top-grey {
+    background-color: transparent;
   }
 
   @media (prefers-reduced-motion: reduce) {

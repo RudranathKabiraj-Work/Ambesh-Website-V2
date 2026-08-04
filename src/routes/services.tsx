@@ -386,9 +386,8 @@ function BusinessOSPage() {
       </section>
 
       {/* CLOSING CTA */}
-      <section className="premium-canvas bg-premium-side-gradient relative isolate overflow-hidden">
-        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
-        <div className="container-edit relative py-14 md:py-20 text-center">
+      <section className="relative overflow-hidden bg-canvas py-14 md:py-20 text-center">
+        <div className="container-edit relative">
           <Reveal><p className="eyebrow">Start with a diagnosis</p></Reveal>
           <Reveal delay={100}>
             <h2 className="mx-auto mt-6 max-w-4xl text-4xl font-extrabold leading-[1.05] tracking-tighter text-ink md:text-6xl">
