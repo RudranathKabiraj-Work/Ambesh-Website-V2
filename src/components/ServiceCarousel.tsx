@@ -40,8 +40,8 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
 
   const count = cards.length;
   const angleStep = 360 / count;
-  const cardW = isMobile ? 310 : 365;
-  const cardH = isMobile ? 245 : 255;
+  const cardW = isMobile ? 290 : 365;
+  const cardH = isMobile ? 230 : 255;
   // Distance from the hexagon centre to each face; slightly larger than a tight
   // hexagon so there is a small, even gap between every card.
   const radius = (cardW / (2 * Math.tan(Math.PI / count))) * 1.08;
@@ -209,14 +209,7 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
 
       {/* Mobile arrows */}
       {isMobile && (
-        <div className="mt-4 flex items-center justify-center gap-8 sm:gap-4">
-          <button
-            onClick={goPrev}
-            aria-label="Previous card"
-            className="grid h-10 w-10 place-items-center rounded-full border border-white/20 bg-black/50 text-white"
-          >
-            <ChevronLeft className="h-4 w-4" />
-          </button>
+        <div className="mt-0 flex items-center justify-center">
           <div className="flex items-center gap-1.5">
             {cards.map((_, idx) => (
               <button
@@ -238,13 +231,6 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
               </button>
             ))}
           </div>
-          <button
-            onClick={goNext}
-            aria-label="Next card"
-            className="grid h-10 w-10 place-items-center rounded-full border border-white/20 bg-black/50 text-white"
-          >
-            <ChevronRight className="h-4 w-4" />
-          </button>
         </div>
       )}
     </div>

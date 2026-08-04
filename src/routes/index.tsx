@@ -470,7 +470,7 @@ function HomePage() {
       <section
         id="beliefs"
         ref={sectionRef}
-        className="relative h-[200vh] md:h-[250vh] bg-canvas bg-premium-side-gradient"
+        className="relative h-[115vh] md:h-[250vh] bg-canvas bg-premium-side-gradient"
       >
         <div className="relative sticky top-[80px] md:top-[100px] h-[calc(100vh-80px)] md:h-[520px] flex md:items-center overflow-hidden">
           <div className="container-edit w-full h-full flex flex-col justify-center gap-20 pb-10 md:h-auto md:grid md:grid-cols-12 md:gap-12 md:items-start md:pb-0">
@@ -536,7 +536,7 @@ function HomePage() {
 
 
       {/* WHAT I HAVE BUILT */}
-      <section id="built" className="relative overflow-hidden bg-canvas py-16 md:py-24">
+      <section id="built" className="relative overflow-hidden bg-canvas pt-8 pb-16 md:py-24">
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <div className="grid gap-6 md:grid-cols-12 md:items-start md:gap-12 mb-12">
