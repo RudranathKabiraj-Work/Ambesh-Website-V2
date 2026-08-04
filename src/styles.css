@@ -1587,13 +1587,8 @@ html.lenis body {
   padding: 2px;
   background: conic-gradient(
     from var(--card-21-gr),
-    #ff4d6d,
-    #ffa64d,
-    #ffe14d,
-    #4dffa6,
-    #4dd2ff,
-    #b04dff,
-    #ff4d6d
+    #2f6bff,
+    #2f6bff
   );
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
@@ -1601,4 +1596,49 @@ html.lenis body {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   animation: card-21-spin 4s linear infinite paused;
+}
+
+/* Opposite, cooler palette for the ring in dark mode */
+.dark .card-21-ring {
+  background: conic-gradient(
+    from var(--card-21-gr),
+    #ffffff,
+    #ffffff
+  );
+}
+
+/* Carousel dot countdown — the active dot fills to show auto-rotation progress */
+@keyframes carousel-dot-progress {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.carousel-dot-progress {
+  width: 100%;
+  transform-origin: left center;
+  animation: carousel-dot-progress 5s linear forwards;
+  will-change: transform;
+}
+
+/* Progress fill colour: blue in light mode, white in dark mode */
+.carousel-dot-fill {
+  background-color: #2f6bff;
+}
+
+.dark .carousel-dot-fill {
+  background-color: #ffffff;
+}
+
+/* Active dot track so the fill reads clearly on a light page */
+.carousel-dot-track {
+  background-color: rgba(0, 0, 0, 0.18);
+}
+
+.dark .carousel-dot-track {
+  background-color: rgba(255, 255, 255, 0.25);
 }

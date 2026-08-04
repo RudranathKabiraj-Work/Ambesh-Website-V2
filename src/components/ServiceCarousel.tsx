@@ -32,14 +32,20 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
     return () => mq.removeEventListener("change", check);
   }, []);
 
+  // Auto-rotate to the next card; resets after any manual navigation.
+  useEffect(() => {
+    const timer = setTimeout(goNext, 5000);
+    return () => clearTimeout(timer);
+  }, [activeIndex]);
+
   const count = cards.length;
   const angleStep = 360 / count;
-  const cardW = isMobile ? 290 : 365;
-  const cardH = isMobile ? 230 : 255;
+  const cardW = isMobile ? 310 : 365;
+  const cardH = isMobile ? 245 : 255;
   // Distance from the hexagon centre to each face; slightly larger than a tight
   // hexagon so there is a small, even gap between every card.
   const radius = (cardW / (2 * Math.tan(Math.PI / count))) * 1.08;
-  const containerH = cardH * 1.5;
+  const containerH = cardH * 1.7;
 
   const goNext = () => {
     setRotation((r) => r + angleStep);
@@ -66,13 +72,13 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
           borderRadius: 22,
           backgroundColor: "#0a0a0a",
           boxShadow: isActive
-            ? "0 32px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.1)"
-            : "0 16px 48px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.06)",
+            ? "0 10px 28px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.1)"
+            : "0 5px 16px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.06)",
         }}
       >
         {/* Gradient-rotate ring (CodeFronts card-21) — fades in and spins on hover */}
         <div
-          className="card-21-ring pointer-events-none absolute inset-0 rounded-[22px] opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-hover:[animation-play-state:running]"
+          className="card-21-ring pointer-events-none absolute inset-0 z-20 rounded-[22px] opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-hover:[animation-play-state:running]"
           aria-hidden
         />
         {/* Full-bleed image — object-cover always fills 100%, leaving absolutely zero left or right borders */}
@@ -103,7 +109,7 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
         </h3>
         <p className="mt-1 text-white/70 leading-snug text-[0.72rem]">{card.desc}</p>
 
-        {isActive && (
+        {isActive && !isMobile && (
           <div className="mt-2.5 flex items-center gap-1.5">
             {cards.map((_, idx) => (
               <button
@@ -113,12 +119,19 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
                   goTo(idx);
                 }}
                 aria-label={`Go to slide ${idx + 1}`}
-                className="h-1 rounded-full transition-all duration-300"
+                className={`relative h-1 cursor-pointer overflow-hidden rounded-full transition-all duration-300 ${
+                  activeIndex === idx ? "carousel-dot-track" : ""
+                }`}
                 style={{
                   width: activeIndex === idx ? 18 : 5,
-                  backgroundColor: activeIndex === idx ? "#fff" : "rgba(255,255,255,0.35)",
+                  backgroundColor:
+                    activeIndex === idx ? undefined : "rgba(255,255,255,0.35)",
                 }}
-              />
+              >
+                {activeIndex === idx && (
+                  <span className="carousel-dot-progress carousel-dot-fill absolute inset-y-0 left-0 rounded-full" />
+                )}
+              </button>
             ))}
           </div>
         )}
@@ -128,7 +141,7 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
   );
 
   return (
-    <div className={`mt-14 ${className}`}>
+    <div className={`mt-7 md:mt-14 ${className}`}>
       {/* Hexagonal 3D stage */}
       <div
         className="relative mx-auto"
@@ -196,7 +209,7 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
 
       {/* Mobile arrows */}
       {isMobile && (
-        <div className="mt-4 flex items-center justify-center gap-4">
+        <div className="mt-4 flex items-center justify-center gap-8 sm:gap-4">
           <button
             onClick={goPrev}
             aria-label="Previous card"
@@ -210,12 +223,19 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
                 key={idx}
                 onClick={() => goTo(idx)}
                 aria-label={`Go to slide ${idx + 1}`}
-                className="h-1.5 rounded-full transition-all duration-300"
+                className={`relative h-1.5 overflow-hidden rounded-full transition-all duration-300 ${
+                  activeIndex === idx ? "carousel-dot-track" : ""
+                }`}
                 style={{
                   width: activeIndex === idx ? 20 : 6,
-                  backgroundColor: activeIndex === idx ? "var(--accent)" : "var(--ink-muted)",
+                  backgroundColor:
+                    activeIndex === idx ? undefined : "var(--ink-muted)",
                 }}
-              />
+              >
+                {activeIndex === idx && (
+                  <span className="carousel-dot-progress carousel-dot-fill absolute inset-y-0 left-0 rounded-full" />
+                )}
+              </button>
             ))}
           </div>
           <button

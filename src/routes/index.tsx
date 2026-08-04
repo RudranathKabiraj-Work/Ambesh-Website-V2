@@ -606,7 +606,7 @@ function HomePage() {
                 <p>The problem was the gap between people, process and technology.</p>
                 <p className="text-ink font-semibold">Today, I help businesses close that gap. I help founders build businesses that are simpler to run and easier to grow.</p>
               </div>
-              <div className="mt-8">
+          <div className="mt-8">
                 <Link
                   to="/about"
                   className="btn-premium group inline-flex h-12 items-center gap-2 rounded-full px-6 text-sm font-semibold"
@@ -691,7 +691,7 @@ function HomePage() {
           />
 
           {/* Training/Speaking Stats Strip */}
-          <div className="mt-8">
+          <div className="mt-20 md:mt-8">
             <div className="grid gap-6 grid-cols-2 md:grid-cols-4 max-w-5xl mx-auto">
               {heroStats.map((s, i) => (
                 <Reveal key={s.l} delay={120}>
