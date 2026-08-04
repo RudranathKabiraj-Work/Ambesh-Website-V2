@@ -467,18 +467,18 @@ function HomePage() {
       <section
         id="beliefs"
         ref={sectionRef}
-        className="relative h-[250vh] bg-canvas bg-premium-side-gradient"
+        className="relative h-[200vh] md:h-[250vh] bg-canvas bg-premium-side-gradient"
       >
-        <div className="relative sticky top-[100px] h-[480px] md:h-[520px] flex items-center overflow-hidden">
-          <div className="container-edit w-full grid gap-12 md:grid-cols-12 items-start">
+        <div className="relative sticky top-[80px] md:top-[100px] h-[calc(100vh-80px)] md:h-[520px] flex md:items-center overflow-hidden">
+          <div className="container-edit w-full h-full flex flex-col justify-center gap-20 pb-10 md:h-auto md:grid md:grid-cols-12 md:gap-12 md:items-start md:pb-0">
 
             {/* Left Column (Header) */}
-            <div className="md:col-span-5 pb-8 md:pb-0">
+            <div className="md:col-span-5 pb-4 md:pb-0">
               <p className="eyebrow eyebrow-indigo">How I Think</p>
-              <h2 className="mt-4 pb-2 font-display text-[2.2rem] font-extrabold leading-[1.1] tracking-[-0.03em] sm:text-4xl md:text-5xl text-ink">
+              <h2 className="mt-4 pb-2 font-display text-[1.8rem] sm:text-2xl md:text-[2.2rem] font-extrabold leading-[1.15] tracking-[-0.03em] md:leading-[1.1] md:text-5xl text-ink">
                 Ideas that guide{" "}<br className="hidden sm:block" /><span className="font-serif italic font-medium text-gradient-brand">my work.</span>
               </h2>
-              <p className="mt-6 text-base leading-[1.6] text-ink-soft md:text-lg">
+              <p className="mt-3 md:mt-6 text-sm md:text-lg leading-[1.5] md:leading-[1.6] text-ink-soft">
                 These core beliefs shape how I help founders automate operations, scale teams, and build self-managing companies.
               </p>
             </div>
@@ -486,7 +486,7 @@ function HomePage() {
             {/* Stacking Cards Right Column */}
             <div className="md:col-span-7 relative flex items-center justify-center md:mt-0">
               {/* Absolutely positioned stacking cards driven by viewport scroll */}
-              <div className="relative h-[380px] w-full max-w-2xl mt-4 md:mt-[45px]">
+              <div className="relative h-[300px] md:h-[380px] w-full max-w-2xl mt-2 md:mt-[45px]">
                 {[
                   { n: "01", icon: Workflow, title: "A business should not depend on the founder.", desc: "Founder dependency is structural, not personal. It is resolved with clear accountability, SOPs, and system design." },
                   { n: "02", icon: Sparkles, title: "AI adoption matters more than AI awareness.", desc: "Workshops have limited value unless teams change how they work. Real training requires daily AI adoption rhythms." },
@@ -681,10 +681,12 @@ function HomePage() {
           {/* 3D Service Carousel */}
           <ServiceCarousel
             cards={[
-              { badge: "FEATURED", accent: "#f59e0b", title: "Landmark Group, Dubai", desc: "Practical AI & automation training for retail operations teams.", image: "/training/landmark-group-dubai.jpg", href: "/services" },
-              { badge: "POPULAR", accent: "#6366f1", title: "TATA Digital", desc: "AI consulting & training program for cross-functional digital teams.", image: "/service-transformation.jpg", href: "/services" },
-              { badge: "GLOBAL", accent: "#10b981", title: "NICASA of NIRC of ICAI", desc: "AI training for finance professionals across ICAI chapters.", image: "/training/icai-nirc-new-delhi.jpg", href: "/services" },
-              { badge: "IMPACT", accent: "#8b5cf6", title: "Ministry of Finance, Tanzania", desc: "AI awareness & practical use program for government officials.", image: "/training/ministry-of-finance-tanzania.jpg", href: "/services" },
+              { title: "Landmark Group, Dubai", desc: "Practical AI & automation training for retail operations teams.", image: "/training/landmark-group-dubai.jpg", href: "/services" },
+              { title: "TATA Digital", desc: "AI consulting & training program for cross-functional digital teams.", image: "/service-transformation.jpg", href: "/services" },
+              { title: "NICASA of NIRC of ICAI", desc: "AI training for finance professionals across ICAI chapters.", image: "/training/icai-nirc-new-delhi.jpg", href: "/services" },
+              { title: "Ministry of Finance, Tanzania", desc: "AI awareness & practical use program for government officials.", image: "/training/ministry-of-finance-tanzania.jpg", href: "/services" },
+              { title: "Future Engagements", desc: "New case studies and training programs are added regularly.", image: "/service-os.jpg", href: "/services" },
+              { title: "Recent Workshops", desc: "Fresh AI workshops and consulting across emerging industries.", image: "/service-ai-training.jpg", href: "/services" },
             ]}
           />
 

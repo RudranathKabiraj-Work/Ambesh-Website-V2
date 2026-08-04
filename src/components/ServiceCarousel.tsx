@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "@tanstack/react-router";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export type ServiceCarouselCard = {
@@ -18,8 +17,11 @@ type ServiceCarouselProps = {
   className?: string;
 };
 
+const HEX_ROTATE_SPRING = { type: "spring", stiffness: 110, damping: 20, mass: 0.9 } as const;
+
 export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [rotation, setRotation] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -31,183 +33,145 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
   }, []);
 
   const count = cards.length;
-  const goNext = () => setActiveIndex((p) => (p + 1) % count);
-  const goPrev = () => setActiveIndex((p) => (p - 1 + count) % count);
-  const goTo = (i: number) => setActiveIndex(i);
+  const angleStep = 360 / count;
+  const cardW = isMobile ? 290 : 365;
+  const cardH = isMobile ? 230 : 255;
+  // Distance from the hexagon centre to each face; slightly larger than a tight
+  // hexagon so there is a small, even gap between every card.
+  const radius = (cardW / (2 * Math.tan(Math.PI / count))) * 1.08;
+  const containerH = cardH * 1.5;
 
-  // Card dimensions — slightly larger overall
-  const cardW = isMobile ? 300 : 420;
-  const cardH = isMobile ? 220 : 300;
-
-  // Layout constants
-  const sideScale = 0.92; // scale down slightly to offset 3D rotation bulge as center
-  const sideRotateY = 28; // stronger outward tilt for more perspective
-  const sideOffset = isMobile ? 0 : cardW * 0.90; // even smaller offset for tighter gap
-
-  const getCardState = (cardIndex: number) => {
-    const offset = (((cardIndex - activeIndex) % count) + count) % count;
-
-    if (offset === 0) {
-      // Active (center) card
-      return {
-        x: 0,
-        rotateY: 0,
-        scale: 1,
-        opacity: 1,
-        zIndex: 30,
-        visible: true,
-        isActive: true,
-        isSide: false,
-      };
-    } else if (offset === 1) {
-      // Card to the right — tilts outward
-      return {
-        x: sideOffset,
-        rotateY: sideRotateY,
-        scale: sideScale,
-        opacity: 0.85,
-        zIndex: 20,
-        visible: true,
-        isActive: false,
-        isSide: true,
-      };
-    } else if (offset === count - 1) {
-      // Card to the left — tilts outward
-      return {
-        x: -sideOffset,
-        rotateY: -sideRotateY,
-        scale: sideScale,
-        opacity: 0.85,
-        zIndex: 20,
-        visible: true,
-        isActive: false,
-        isSide: true,
-      };
-    } else {
-      // Back / background card — sits behind center card, scaled down
-      return {
-        x: 0,
-        rotateY: 0,
-        scale: 0.72,
-        opacity: 0.3,
-        zIndex: 10,
-        visible: false,
-        isActive: false,
-        isSide: false,
-      };
-    }
+  const goNext = () => {
+    setRotation((r) => r + angleStep);
+    setActiveIndex((p) => (p + 1) % count);
+  };
+  const goPrev = () => {
+    setRotation((r) => r - angleStep);
+    setActiveIndex((p) => (p - 1 + count) % count);
+  };
+  const goTo = (i: number) => {
+    if (i === activeIndex) return;
+    let delta = i - activeIndex;
+    if (delta > count / 2) delta -= count;
+    if (delta < -count / 2) delta += count;
+    setRotation((r) => r + delta * angleStep);
+    setActiveIndex(i);
   };
 
-  const containerH = cardH + 80;
+  const renderCardShell = (card: ServiceCarouselCard, isActive: boolean) => (
+    <div className="group relative h-full w-full">
+      <div
+        className="relative h-full w-full overflow-hidden"
+        style={{
+          borderRadius: 22,
+          backgroundColor: "#0a0a0a",
+          boxShadow: isActive
+            ? "0 32px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.1)"
+            : "0 16px 48px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.06)",
+        }}
+      >
+        {/* Gradient-rotate ring (CodeFronts card-21) — fades in and spins on hover */}
+        <div
+          className="card-21-ring pointer-events-none absolute inset-0 rounded-[22px] opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-hover:[animation-play-state:running]"
+          aria-hidden
+        />
+        {/* Full-bleed image — object-cover always fills 100%, leaving absolutely zero left or right borders */}
+        <img
+          src={card.image}
+          alt={card.title}
+          loading="lazy"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+
+      {/* Subtle gradient only at very bottom for text legibility */}
+      <div
+        className="absolute inset-x-0 bottom-0"
+        style={{
+          height: "55%",
+          background:
+            "linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.5) 50%, transparent 100%)",
+        }}
+      />
+
+      {/* Text overlaid at bottom */}
+      <div className="absolute inset-x-0 bottom-0 px-4 pb-4">
+        <h3
+          className="font-display font-extrabold leading-tight tracking-tight text-white"
+          style={{ fontSize: isActive ? "1rem" : "0.875rem" }}
+        >
+          {card.title}
+        </h3>
+        <p className="mt-1 text-white/70 leading-snug text-[0.72rem]">{card.desc}</p>
+
+        {isActive && (
+          <div className="mt-2.5 flex items-center gap-1.5">
+            {cards.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  goTo(idx);
+                }}
+                aria-label={`Go to slide ${idx + 1}`}
+                className="h-1 rounded-full transition-all duration-300"
+                style={{
+                  width: activeIndex === idx ? 18 : 5,
+                  backgroundColor: activeIndex === idx ? "#fff" : "rgba(255,255,255,0.35)",
+                }}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+    </div>
+  );
 
   return (
     <div className={`mt-14 ${className}`}>
-      {/* 3D Stage */}
+      {/* Hexagonal 3D stage */}
       <div
-        className="relative mx-auto select-none"
+        className="relative mx-auto"
         style={{
           width: "100%",
-          maxWidth: isMobile ? cardW + 32 : cardW * 3,
+          maxWidth: isMobile ? cardW * 2 : cardW * 2.6,
           height: containerH,
-          perspective: 1200,
-          perspectiveOrigin: "50% 50%",
+          perspective: 1400,
         }}
       >
-        {cards.map((card, index) => {
-          const state = getCardState(index);
-          if (isMobile && !state.isActive) return null;
-          const accent = card.accent ?? "var(--accent)";
-
-          return (
-            <motion.div
-              key={index}
+        {/* Rotating hexagon — each card is a face of the hexagon */}
+        <motion.div
+          className="absolute"
+          style={{
+            width: cardW,
+            height: cardH,
+            left: "50%",
+            top: "50%",
+            marginLeft: -cardW / 2,
+            marginTop: -cardH / 2,
+            transformStyle: "preserve-3d",
+          }}
+          animate={{ rotateY: -rotation }}
+          transition={HEX_ROTATE_SPRING}
+        >
+          {cards.map((card, i) => (
+            <div
+              key={i}
               className="absolute cursor-pointer"
               style={{
-                width: cardW,
-                height: cardH,
-                left: "50%",
-                top: 0,
-                marginLeft: -cardW / 2,
-                transformStyle: "preserve-3d",
-                pointerEvents: state.visible ? "auto" : "none",
+                inset: 0,
+                transform: `rotateY(${i * angleStep}deg) translateZ(${radius}px)`,
+                backfaceVisibility: "hidden",
+                WebkitBackfaceVisibility: "hidden",
               }}
-              initial={false}
-              animate={{
-                x: state.x,
-                rotateY: state.rotateY,
-                scale: state.scale,
-                opacity: state.opacity,
-                zIndex: state.zIndex,
-              }}
-              transition={{ type: "spring", stiffness: 130, damping: 22, mass: 0.85 }}
-              onClick={() => !state.isActive && goTo(index)}
+              onClick={() => goTo(i)}
             >
-              {/* Card shell — image fills 100% of card, zero black bars */}
-              <div
-                className="relative h-full w-full overflow-hidden"
-                style={{
-                  borderRadius: 22,
-                  backgroundColor: "#0a0a0a",
-                  boxShadow: state.isActive
-                    ? "0 32px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.1)"
-                    : "0 16px 48px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.06)",
-                }}
-              >
-                {/* Full-bleed image — object-cover always fills 100%, leaving absolutely zero left or right borders */}
-                <img
-                  src={card.image}
-                  alt={card.title}
-                  loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
+              {renderCardShell(card, i === activeIndex)}
+            </div>
+          ))}
+        </motion.div>
 
-                {/* Subtle gradient only at very bottom for text legibility */}
-                <div
-                  className="absolute inset-x-0 bottom-0"
-                  style={{
-                    height: "55%",
-                    background: "linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.5) 50%, transparent 100%)",
-                  }}
-                />
-
-                {/* Text overlaid at bottom */}
-                <div className="absolute inset-x-0 bottom-0 px-4 pb-4">
-                  <h3
-                    className="font-display font-extrabold leading-tight tracking-tight text-white"
-                    style={{ fontSize: state.isActive ? "1rem" : "0.875rem" }}
-                  >
-                    {card.title}
-                  </h3>
-                  <p className="mt-1 text-white/70 leading-snug text-[0.72rem]">
-                    {card.desc}
-                  </p>
-
-                  {state.isActive && (
-                    <div className="flex items-center gap-1.5 mt-2.5">
-                      {cards.map((_, idx) => (
-                        <button
-                          key={idx}
-                          onClick={(e) => { e.stopPropagation(); goTo(idx); }}
-                          aria-label={`Go to slide ${idx + 1}`}
-                          className="h-1 rounded-full transition-all duration-300"
-                          style={{
-                            width: activeIndex === idx ? 18 : 5,
-                            backgroundColor: activeIndex === idx ? "#fff" : "rgba(255,255,255,0.35)",
-                          }}
-                        />
-                      ))}
-                    </div>
-                  )}
-
-                </div>
-              </div>
-
-
-            </motion.div>
-          );
-        })}
-
-        {/* Left arrow — outside left edge */}
+        {/* Left arrow — outside left edge (desktop) */}
         {!isMobile && (
           <>
             <button
