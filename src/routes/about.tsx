@@ -177,10 +177,10 @@ function AboutPage() {
           <Reveal>
             <p className="eyebrow eyebrow-indigo">A line he keeps coming back to</p>
             <Quote className="mt-8 h-12 w-12 text-violet" />
-            <blockquote className="mt-6 max-w-5xl font-serif text-4xl font-medium leading-[1.08] tracking-tight text-ink md:text-6xl">
-              <span className="italic">"AI will not take your job.</span>{" "}
+            <blockquote className="mt-6 max-w-5xl font-serif text-3xl font-medium leading-[1.2] tracking-tight text-ink md:text-5xl">
+              <span className="italic">"You don't need to be perfect in everything to achieve your dreams.</span>{" "}
               <span className="text-gradient-brand animate-gradient italic">
-                Someone using AI better than you, will."
+                You just have to find someone who knows what you don't."
               </span>
             </blockquote>
           </Reveal>

@@ -27,47 +27,9 @@ export function SiteFooter() {
   ];
 
 
-  const acronymItems = [
-    { letter: "A", title: "Artificial Intelligence" },
-    { letter: "M", title: "Marketing" },
-    { letter: "B", title: "Branding" },
-    { letter: "E", title: "Entrepreneurship" },
-    { letter: "S", title: "Systems" },
-    { letter: "H", title: "Human Potential" },
-  ];
-
   return (
     <footer className="bg-canvas">
       <div className="container-edit pt-8 pb-16 md:pt-10 md:pb-20">
-        {/* Acronym section */}
-        <div className="mb-16 pb-12">
-          <p className="text-center font-mono text-[0.65rem] font-bold uppercase tracking-[0.25em] text-ink-muted mb-8">
-            The Core Pillars
-          </p>
-          <div className="grid grid-cols-1 gap-2 sm:grid-cols-6 sm:gap-4 lg:gap-6">
-            {acronymItems.map((item) => (
-              <div 
-                key={item.letter}
-                className="custom-theme-card group relative flex flex-col items-center justify-center overflow-hidden rounded-[16px] px-4 py-4 text-center sm:rounded-[20px] sm:p-5 sm:min-h-[140px] md:min-h-[160px]"
-              >
-                {/* Diagonal sweeping shine animation */}
-                <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/80 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-full pointer-events-none" />
-
-                <div className="flex items-center justify-center">
-                  <span className="font-display text-3xl font-black tracking-tight text-ink transition-all duration-500 ease-out group-hover:scale-110 group-hover:text-accent select-none sm:text-5xl md:text-6xl">
-                    {item.letter}
-                  </span>
-                </div>
-                <div className="mt-1 flex items-center justify-center relative z-10">
-                  <span className="font-sans text-xs font-bold uppercase tracking-wide text-ink-soft sm:text-[0.65rem] sm:tracking-wider md:text-[0.7rem] leading-tight transition-colors duration-500 group-hover:text-ink">
-                    {item.title}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* Top: Brand + nav columns */}
         <div className="grid gap-10 md:grid-cols-12 md:gap-10">
           {/* Brand block */}
@@ -141,17 +103,6 @@ export function SiteFooter() {
               </ul>
             </div>
           </div>
-        </div>
-
-        {/* Quote */}
-        <div className="mt-14 border-t border-rule pt-10 md:mt-16">
-          <blockquote className="mx-auto max-w-3xl text-center font-serif text-lg italic leading-snug text-ink-soft md:text-2xl">
-            "You don't need to be perfect in everything to achieve your dreams.
-            You just have to find someone who knows what you don't."
-          </blockquote>
-          <p className="mt-4 text-center font-mono text-[0.65rem] uppercase tracking-[0.25em] text-ink-muted">
-            Ambesh Tiwari
-          </p>
         </div>
 
         {/* Bottom legal */}

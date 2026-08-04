@@ -854,6 +854,16 @@
     background-color: transparent;
   }
 
+  /* Featured bar edge fade matches the bar's background in dark mode so the
+     marquee logos fade into the tinted bar instead of into a dark navy band. */
+  .featured-bar {
+    --featured-fade: var(--canvas);
+  }
+
+  .dark .featured-bar {
+    --featured-fade: rgba(50, 130, 183, 0.09);
+  }
+
   @media (prefers-reduced-motion: reduce) {
 
     .reveal,
@@ -1352,6 +1362,13 @@ html.lenis body {
     background-color: var(--section-alt) !important;
   }
 
+  /* Homepage: grey-grid sections get a visible alternating navy tone in dark
+     mode so every section reads as alternating (light grey grid vs white). */
+  .dark main section.home-section-alt {
+    background-color: rgba(50, 130, 183, 0.07) !important;
+    background-image: none !important;
+  }
+
   /* Book page: explicit alternating full-bleed section tones (canvas / sand)
      so the page rhythm is visible in both light and dark mode. */
   main.book-page section.book-section-a {
@@ -1411,6 +1428,12 @@ html.lenis body {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+  }
+
+  /* Hero floating stat (5,000+) in the first section: solid white in dark mode */
+  .dark .hero-stat-solid-white {
+    background-image: none;
+    color: #ffffff;
   }
 
   /* Stats strip below Selected Work: keep light-theme colours, pure white in dark */

@@ -91,6 +91,15 @@ const beliefs = [
   { n: "04", icon: Wrench, title: "Technology is only one part of the answer.", desc: "Clear roles and accountability matter more than new tools. Tech accelerates, but human execution is the foundation." },
 ];
 
+const acronymItems = [
+  { letter: "A", title: "Artificial Intelligence" },
+  { letter: "M", title: "Marketing" },
+  { letter: "B", title: "Branding" },
+  { letter: "E", title: "Entrepreneurship" },
+  { letter: "S", title: "Systems" },
+  { letter: "H", title: "Human Potential" },
+];
+
 function HomePage() {
   const [hoveredService, setHoveredService] = useState<number | null>(null);
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
@@ -112,19 +121,19 @@ function HomePage() {
 
   // Card 1 starts at y=0, scales down as others arrive
   const y1 = useTransform(scrollYProgress, [0, 1], [0, 0]);
-  const scale1 = useTransform(scrollYProgress, [0, 0.4, 0.7, 1.0], [1, 0.95, 0.90, 0.85]);
+  const scale1 = useTransform(scrollYProgress, [0, 0.38, 0.70, 0.98, 1.0], [1, 0.95, 0.90, 0.85, 0.85]);
 
   // Card 2
-  const y2 = useTransform(scrollYProgress, [0, 0.15, 0.55], [800, 800, 20]);
-  const scale2 = useTransform(scrollYProgress, [0.4, 0.7, 1.0], [1, 0.95, 0.90]);
+  const y2 = useTransform(scrollYProgress, [0, 0.05, 0.38], [800, 800, 20]);
+  const scale2 = useTransform(scrollYProgress, [0.38, 0.70, 0.98, 1.0], [1, 0.95, 0.90, 0.90]);
 
   // Card 3
-  const y3 = useTransform(scrollYProgress, [0, 0.4, 0.8], [800, 800, 40]);
-  const scale3 = useTransform(scrollYProgress, [0.7, 1.0], [1, 0.95]);
+  const y3 = useTransform(scrollYProgress, [0, 0.38, 0.70], [800, 800, 40]);
+  const scale3 = useTransform(scrollYProgress, [0.70, 0.98, 1.0], [1, 0.95, 0.95]);
 
   // Card 4
-  const y4 = useTransform(scrollYProgress, [0, 0.65, 1.0], [800, 800, 60]);
-  const scale4 = useTransform(scrollYProgress, [1.0], [1]);
+  const y4 = useTransform(scrollYProgress, [0, 0.70, 0.98, 1.0], [800, 800, 60, 60]);
+  const scale4 = useTransform(scrollYProgress, [0, 0.98, 1.0], [1, 1, 1]);
 
   const cardsTransforms = [
     { y: y1, scale: scale1 },
@@ -204,36 +213,34 @@ function HomePage() {
                     </div>
                   </div>
                 </div>
-                <div className="absolute -bottom-4 -right-4 -z-10 h-full w-full rounded-[20px]" style={{ background: "var(--accent-soft)" }} aria-hidden />
-
-                {/* Floating circle 1: 13+ Years (Bottom-left) */}
+                <div className="absolute -bottom-4 -right-4 -z-10 h-full w-full rounded-[20px]" style={{ background: "var(--accent-soft)" }} aria-hidden />                  {/* Floating circle 1: 13+ Years (Bottom-left) */}
                 <motion.div
                   animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -bottom-8 -left-12 z-20 w-[84px] h-[84px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center"
+                  className="absolute top-[22%] -left-3 md:-left-12 z-20 w-[70px] h-[70px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center"
                 >
-                  <span className="font-display text-[15px] md:text-lg font-extrabold text-gradient-brand animate-gradient">13+</span>
-                  <span className="text-[7.5px] md:text-[8px] uppercase tracking-wider font-extrabold text-ink leading-tight mt-1 max-w-[70px] md:max-w-[80px]">Years of Experience</span>
+                  <span className="font-display text-[12px] md:text-lg font-extrabold text-gradient-brand animate-gradient hero-stat-solid-white">13+</span>
+                  <span className="text-[6px] md:text-[8px] uppercase tracking-wider font-extrabold text-ink leading-tight mt-1 max-w-[58px] md:max-w-[80px]">Years of Experience</span>
                 </motion.div>
 
                 {/* Floating circle 2: 100+ Businesses (Bottom-right) */}
                 <motion.div
                   animate={{ y: [0, 10, 0] }}
                   transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -bottom-10 -right-8 z-20 w-[84px] h-[84px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center"
+                  className="absolute -bottom-8 -right-2 md:-bottom-10 md:-right-12 z-20 w-[70px] h-[70px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center"
                 >
-                  <span className="font-display text-[15px] md:text-lg font-extrabold text-gradient-brand animate-gradient">100+</span>
-                  <span className="text-[7.5px] md:text-[8px] uppercase tracking-wider font-extrabold text-ink leading-tight mt-1 max-w-[70px] md:max-w-[80px]">Businesses Scaled</span>
+                  <span className="font-display text-[12px] md:text-lg font-extrabold text-gradient-brand animate-gradient hero-stat-solid-white">100+</span>
+                  <span className="text-[6px] md:text-[8px] uppercase tracking-wider font-extrabold text-ink leading-tight mt-1 max-w-[58px] md:max-w-[80px]">Businesses Scaled</span>
                 </motion.div>
 
                 {/* Floating circle 3: 5,000+ Trained (Right side middle) */}
                 <motion.div
                   animate={{ y: [0, -8, 0] }}
                   transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute top-[35%] -right-12 z-20 w-[84px] h-[84px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center"
+                  className="absolute top-[35%] -right-3 md:-right-12 z-20 w-[70px] h-[70px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center"
                 >
-                  <span className="font-display text-[15px] md:text-lg font-extrabold text-gradient-brand animate-gradient">5,000+</span>
-                  <span className="text-[7.5px] md:text-[8px] uppercase tracking-wider font-extrabold text-ink leading-tight mt-1 max-w-[70px] md:max-w-[80px]">Professionals Trained</span>
+                  <span className="font-display text-[12px] md:text-lg font-extrabold text-gradient-brand animate-gradient hero-stat-solid-white">5,000+</span>
+                  <span className="text-[6px] md:text-[8px] uppercase tracking-wider font-extrabold text-ink leading-tight mt-1 max-w-[58px] md:max-w-[80px]">Professionals Trained</span>
                 </motion.div>
               </div>
             </div>
@@ -242,7 +249,7 @@ function HomePage() {
       </section>
 
       {/* LOGO BAR */}
-      <section className="relative bg-canvas py-6 featured-bar">
+      <section className="relative bg-canvas py-6 featured-bar home-section-alt">
         <div className="container-edit">
           <Reveal eager>
             <p className="text-center text-xs uppercase tracking-widest text-ink-muted">Featured In</p>
@@ -251,6 +258,7 @@ function HomePage() {
             <Marquee
               fade={32}
               speed={60}
+              fadeColor="var(--featured-fade)"
               items={proofLogos.map((l) => (
                 <img
                   key={l.name}
@@ -300,7 +308,7 @@ function HomePage() {
       </section>
 
       {/* MY APPROACH & EASE FRAMEWORK */}
-      <section className="relative overflow-hidden bg-canvas bg-premium-side-gradient py-16 md:py-24">
+      <section className="relative overflow-hidden bg-canvas py-16 md:py-24 home-section-alt">
         <div className="container-edit relative">
           <div className="grid gap-6 md:grid-cols-12 md:items-end md:gap-12 mb-12">
             <Reveal className="md:col-span-7">
@@ -354,7 +362,7 @@ function HomePage() {
       </section>
 
       {/* HOW I HELP */}
-      <section id="services" className="relative overflow-hidden bg-canvas py-16 md:py-24">
+      <section id="services" className="relative overflow-hidden bg-canvas bg-premium-side-gradient py-16 md:py-24">
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <div className="grid gap-6 md:grid-cols-12 md:items-end md:gap-12">
@@ -438,14 +446,14 @@ function HomePage() {
 
                   {/* Card Content */}
                   <div className="relative p-6 md:p-8 w-full">
-                    <p className="inline-flex w-fit items-center gap-1.5 border-l-2 pl-2.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-white/70 mb-2" style={{ borderColor: "var(--accent)" }}>
-                      {eyebrow}
-                    </p>
-
                     <h3 className={`font-display leading-tight tracking-tight text-white transition-all duration-1000 ${isHovered ? "text-2xl md:text-[30px] font-extrabold" : "text-xl md:text-2xl font-bold"
                       }`}>
                       {title}
                     </h3>
+
+                    <p className="mt-2 inline-flex w-fit items-center gap-1.5 border-l-2 pl-2.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-white/70" style={{ borderColor: "var(--accent)" }}>
+                      {eyebrow}
+                    </p>
 
                     <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/80 transition-all duration-1000 md:text-base">
                       {desc}
@@ -470,7 +478,7 @@ function HomePage() {
       <section
         id="beliefs"
         ref={sectionRef}
-        className="relative h-[300vh] md:h-[250vh] bg-canvas bg-premium-side-gradient"
+        className="relative h-[320vh] md:h-[420vh] bg-canvas home-section-alt"
       >
         <div className="relative sticky top-[80px] md:top-[100px] h-[calc(100vh-80px)] md:h-[520px] flex md:items-center overflow-hidden">
           <div className="container-edit w-full h-full flex flex-col justify-center gap-20 pb-10 md:h-auto md:grid md:grid-cols-12 md:gap-12 md:items-start md:pb-0">
@@ -536,7 +544,7 @@ function HomePage() {
 
 
       {/* WHAT I HAVE BUILT */}
-      <section id="built" className="relative overflow-hidden bg-canvas pt-8 pb-16 md:py-24">
+      <section id="built" className="relative overflow-hidden bg-canvas bg-premium-side-gradient pt-8 pb-16 md:py-24">
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <div className="grid gap-6 md:grid-cols-12 md:items-start md:gap-12 mb-12">
@@ -582,92 +590,8 @@ function HomePage() {
         </div>
       </section>
 
-      {/* ABOUT */}
-      <section className="relative overflow-hidden bg-canvas py-12 md:py-16">
-        <div className="container-edit relative">
-          <div className="grid gap-12 md:grid-cols-12 md:gap-16">
-            <Reveal className="md:col-span-5">
-              <p className="eyebrow eyebrow-indigo">About</p>
-              <h2 className="mt-4 font-display text-4xl font-extrabold tracking-[-0.03em] md:text-5xl text-ink">
-                Meet <span className="font-serif italic font-medium text-gradient-brand">Ambesh.</span>
-              </h2>
-            </Reveal>
-            <Reveal delay={120} className="md:col-span-7">
-              <p className="text-base text-ink leading-relaxed font-semibold">
-                I am Ambesh Tiwari, an AI Trainer, Business Systems Consultant, author and founder of BDA Technologies.
-              </p>
-              <hr className="border-rule my-3" />
-              <div className="space-y-3.5 text-[15px] md:text-base leading-[1.6] text-ink-soft">
-                <p>I started my career in business development and marketing.</p>
-                <p>Over time, I realised that most business problems weren't caused by technology.</p>
-                <blockquote className="border-l-2 pl-4 font-serif text-lg md:text-xl italic leading-snug text-ink my-3" style={{ borderColor: "var(--accent)" }}>
-                  &ldquo;They were caused by unclear systems and inconsistent execution.&rdquo;
-                </blockquote>
-                <p>This taught me how founders think, how teams work and how businesses grow.</p>
-                <p>I saw the same problem again and again.</p>
-                <p>Companies were buying more tools, but people were still working through WhatsApp, spreadsheets and repeated follow-ups.</p>
-                <p>The problem was often not a lack of technology.</p>
-                <p>The problem was the gap between people, process and technology.</p>
-                <p className="text-ink font-semibold">Today, I help businesses close that gap. I help founders build businesses that are simpler to run and easier to grow.</p>
-              </div>
-          <div className="mt-8">
-                <Link
-                  to="/about"
-                  className="btn-premium group inline-flex h-12 items-center gap-2 rounded-full px-6 text-sm font-semibold"
-                >
-                  <span className="relative z-10 flex items-center gap-2">
-                    Read My Story
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </span>
-                </Link>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* BOOK */}
-      <section className="relative overflow-hidden bg-canvas py-16 md:py-24">
-        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
-        <div className="container-edit relative">
-          <div className="grid gap-12 rounded-[20px] custom-theme-card-static p-8 md:grid-cols-12 md:items-center md:gap-16 md:p-14 shadow-sm">
-            <Reveal className="md:col-span-5">
-              <div className="relative mx-auto w-full max-w-[280px]">
-                <div className="aspect-2/3 overflow-hidden rounded-r-md rounded-l shadow-lift">
-                  <img
-                    src="https://acceleratewithai.in/wp-content/uploads/2023/11/Kindle-cover-1600-x-2500-px-1.jpg"
-                    alt="Accelerate with AI - book cover by Ambesh Tiwari"
-                    className="h-full w-full object-cover"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="absolute -bottom-3 -right-3 -z-10 h-full w-full rounded-r-md rounded-l bg-accent-soft" aria-hidden />
-              </div>
-            </Reveal>
-            <Reveal delay={120} className="md:col-span-7">
-              <p className="eyebrow eyebrow-indigo flex items-center gap-2"><BookOpen className="h-3.5 w-3.5" /> THE BOOK</p>
-              <h2 className="mt-4 font-display text-4xl font-extrabold tracking-[-0.03em] md:text-5xl text-ink">
-                Accelerate <span className="font-serif italic font-medium text-gradient-brand">with AI.</span>
-              </h2>
-              <p className="mt-3 font-serif text-xl italic text-ink-soft">A simple guide to using AI in business.</p>
-              <div className="mt-6 max-w-xl text-[15px] md:text-base leading-[1.65] text-ink-soft space-y-4">
-                <p><span className="italic font-medium text-ink">Accelerate with AI</span> helps founders and professionals understand what AI can do and how they can start using it in practical work.</p>
-              </div>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <a href="https://www.amazon.in/dp/B0CLKZK6JS" target="_blank" rel="noopener noreferrer" className="btn-premium group inline-flex h-12 items-center gap-2 rounded-full px-6 text-sm font-semibold">
-                  <span className="relative z-10 flex items-center gap-2">Get the Book <ArrowRight className="h-4 w-4" /></span>
-                </a>
-                <Link to="/book" className="inline-flex h-12 items-center gap-2 rounded-full border border-rule bg-canvas px-6 text-sm font-semibold text-ink hover:bg-sand transition-colors">
-                  See What Is Inside
-                </Link>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
       {/* SELECTED WORK */}
-      <section id="work" className="relative overflow-hidden bg-canvas py-16 md:py-24">
+      <section id="work" className="relative overflow-hidden bg-canvas py-16 md:py-24 home-section-alt">
         <div className="container-edit relative">
           <div className="grid gap-6 md:grid-cols-12 md:items-end md:gap-12">
             <Reveal className="md:col-span-7">
@@ -711,6 +635,90 @@ function HomePage() {
         </div>
       </section>
 
+      {/* ABOUT */}
+      <section className="relative overflow-hidden bg-canvas bg-premium-side-gradient py-12 md:py-16">
+        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
+        <div className="container-edit relative">
+          <div className="grid gap-12 md:grid-cols-12 md:gap-16">
+            <Reveal className="md:col-span-5">
+              <p className="eyebrow eyebrow-indigo">About</p>
+              <h2 className="mt-4 font-display text-4xl font-extrabold tracking-[-0.03em] md:text-5xl text-ink">
+                Meet <span className="font-serif italic font-medium text-gradient-brand">Ambesh.</span>
+              </h2>
+            </Reveal>
+            <Reveal delay={120} className="md:col-span-7">
+              <p className="text-base text-ink leading-relaxed font-semibold">
+                I am Ambesh Tiwari, an AI Trainer, Business Systems Consultant, author and founder of BDA Technologies.
+              </p>
+              <hr className="border-rule my-3" />
+              <div className="space-y-3.5 text-[15px] md:text-base leading-[1.6] text-ink-soft">
+                <p>I started my career in business development and marketing.</p>
+                <p>Over time, I realised that most business problems weren't caused by technology.</p>
+                <blockquote className="border-l-2 pl-4 font-serif text-lg md:text-xl italic leading-snug text-ink my-3" style={{ borderColor: "var(--accent)" }}>
+                  &ldquo;They were caused by unclear systems and inconsistent execution.&rdquo;
+                </blockquote>
+                <p>This taught me how founders think, how teams work and how businesses grow.</p>
+                <p>I saw the same problem again and again.</p>
+                <p>Companies were buying more tools, but people were still working through WhatsApp, spreadsheets and repeated follow-ups.</p>
+                <p>The problem was often not a lack of technology.</p>
+                <p>The problem was the gap between people, process and technology.</p>
+                <p className="text-ink font-semibold">Today, I help businesses close that gap. I help founders build businesses that are simpler to run and easier to grow.</p>
+              </div>
+              <div className="mt-8">
+                <Link
+                  to="/about"
+                  className="btn-premium group inline-flex h-12 items-center gap-2 rounded-full px-6 text-sm font-semibold"
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                    Read My Story
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </span>
+                </Link>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* BOOK */}
+      <section className="relative overflow-hidden bg-canvas py-16 md:py-24 home-section-alt">
+        <div className="container-edit relative">
+          <div className="grid gap-12 rounded-[20px] custom-theme-card-static p-8 md:grid-cols-12 md:items-center md:gap-16 md:p-14 shadow-sm">
+            <Reveal className="md:col-span-5">
+              <div className="relative mx-auto w-full max-w-[280px]">
+                <div className="aspect-2/3 overflow-hidden rounded-r-md rounded-l shadow-lift">
+                  <img
+                    src="https://acceleratewithai.in/wp-content/uploads/2023/11/Kindle-cover-1600-x-2500-px-1.jpg"
+                    alt="Accelerate with AI - book cover by Ambesh Tiwari"
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="absolute -bottom-3 -right-3 -z-10 h-full w-full rounded-r-md rounded-l bg-accent-soft" aria-hidden />
+              </div>
+            </Reveal>
+            <Reveal delay={120} className="md:col-span-7">
+              <p className="eyebrow eyebrow-indigo flex items-center gap-2"><BookOpen className="h-3.5 w-3.5" /> THE BOOK</p>
+              <h2 className="mt-4 font-display text-4xl font-extrabold tracking-[-0.03em] md:text-5xl text-ink">
+                Accelerate <span className="font-serif italic font-medium text-gradient-brand">with AI.</span>
+              </h2>
+              <p className="mt-3 font-serif text-xl italic text-ink-soft">A simple guide to using AI in business.</p>
+              <div className="mt-6 max-w-xl text-[15px] md:text-base leading-[1.65] text-ink-soft space-y-4">
+                <p><span className="italic font-medium text-ink">Accelerate with AI</span> helps founders and professionals understand what AI can do and how they can start using it in practical work.</p>
+              </div>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a href="https://www.amazon.in/dp/B0CLKZK6JS" target="_blank" rel="noopener noreferrer" className="btn-premium group inline-flex h-12 items-center gap-2 rounded-full px-6 text-sm font-semibold">
+                  <span className="relative z-10 flex items-center gap-2">Get the Book <ArrowRight className="h-4 w-4" /></span>
+                </a>
+                <Link to="/book" className="inline-flex h-12 items-center gap-2 rounded-full border border-rule bg-canvas px-6 text-sm font-semibold text-ink hover:bg-sand transition-colors">
+                  See What Is Inside
+                </Link>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
       {/* FINAL CTA */}
       <section className="cta-dark relative overflow-hidden">
         <div className="pointer-events-none absolute -top-40 left-1/2 h-[40rem] w-[40rem] -translate-x-1/2 rounded-full opacity-30 blur-3xl" style={{ background: "var(--accent)" }} aria-hidden />
@@ -737,6 +745,38 @@ function HomePage() {
             </div>
             <p className="mt-5 text-xs text-white/50">Responds within 24 hours. No sales script. Just a real conversation.</p>
           </Reveal>
+        </div>
+      </section>
+
+      {/* CORE PILLARS (A-M-B-E-S-H) */}
+      <section className="relative overflow-hidden bg-canvas py-16 md:py-24 border-t border-rule home-section-alt">
+        <div className="container-edit relative">
+          <Reveal>
+            <p className="text-center font-mono text-[0.65rem] font-bold uppercase tracking-[0.25em] text-ink-muted mb-8">
+              The Core Pillars
+            </p>
+          </Reveal>
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-6 sm:gap-4 lg:gap-6">
+            {acronymItems.map((item, i) => (
+              <Reveal key={item.letter} delay={i * 80}>
+                <div className="custom-theme-card group relative flex flex-col items-center justify-center overflow-hidden rounded-[16px] px-4 py-4 text-center sm:rounded-[20px] sm:p-5 sm:min-h-[140px] md:min-h-[160px]">
+                  {/* Diagonal sweeping shine animation */}
+                  <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/80 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-full pointer-events-none" />
+
+                  <div className="flex items-center justify-center">
+                    <span className="font-display text-3xl font-black tracking-tight text-ink transition-all duration-500 ease-out group-hover:scale-110 group-hover:text-accent select-none sm:text-5xl md:text-6xl">
+                      {item.letter}
+                    </span>
+                  </div>
+                  <div className="mt-1 flex items-center justify-center relative z-10">
+                    <span className="font-sans text-xs font-bold uppercase tracking-wide text-ink-soft sm:text-[0.65rem] sm:tracking-wider md:text-[0.7rem] leading-tight transition-colors duration-500 group-hover:text-ink">
+                      {item.title}
+                    </span>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
     </>
