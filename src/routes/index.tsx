@@ -115,15 +115,15 @@ function HomePage() {
   const scale1 = useTransform(scrollYProgress, [0, 0.4, 0.7, 1.0], [1, 0.95, 0.90, 0.85]);
 
   // Card 2
-  const y2 = useTransform(scrollYProgress, [0, 0.1, 0.4], [800, 800, 20]);
+  const y2 = useTransform(scrollYProgress, [0, 0.15, 0.55], [800, 800, 20]);
   const scale2 = useTransform(scrollYProgress, [0.4, 0.7, 1.0], [1, 0.95, 0.90]);
 
   // Card 3
-  const y3 = useTransform(scrollYProgress, [0, 0.4, 0.7], [800, 800, 40]);
+  const y3 = useTransform(scrollYProgress, [0, 0.4, 0.8], [800, 800, 40]);
   const scale3 = useTransform(scrollYProgress, [0.7, 1.0], [1, 0.95]);
 
   // Card 4
-  const y4 = useTransform(scrollYProgress, [0, 0.7, 1.0], [800, 800, 60]);
+  const y4 = useTransform(scrollYProgress, [0, 0.65, 1.0], [800, 800, 60]);
   const scale4 = useTransform(scrollYProgress, [1.0], [1]);
 
   const cardsTransforms = [
@@ -470,7 +470,7 @@ function HomePage() {
       <section
         id="beliefs"
         ref={sectionRef}
-        className="relative h-[260vh] md:h-[250vh] bg-canvas bg-premium-side-gradient"
+        className="relative h-[300vh] md:h-[250vh] bg-canvas bg-premium-side-gradient"
       >
         <div className="relative sticky top-[80px] md:top-[100px] h-[calc(100vh-80px)] md:h-[520px] flex md:items-center overflow-hidden">
           <div className="container-edit w-full h-full flex flex-col justify-center gap-20 pb-10 md:h-auto md:grid md:grid-cols-12 md:gap-12 md:items-start md:pb-0">
