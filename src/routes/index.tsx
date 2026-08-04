@@ -470,7 +470,7 @@ function HomePage() {
       <section
         id="beliefs"
         ref={sectionRef}
-        className="relative h-[180vh] md:h-[250vh] bg-canvas bg-premium-side-gradient"
+        className="relative h-[260vh] md:h-[250vh] bg-canvas bg-premium-side-gradient"
       >
         <div className="relative sticky top-[80px] md:top-[100px] h-[calc(100vh-80px)] md:h-[520px] flex md:items-center overflow-hidden">
           <div className="container-edit w-full h-full flex flex-col justify-center gap-20 pb-10 md:h-auto md:grid md:grid-cols-12 md:gap-12 md:items-start md:pb-0">
