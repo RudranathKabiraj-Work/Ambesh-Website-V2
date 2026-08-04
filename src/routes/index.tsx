@@ -407,11 +407,11 @@ function HomePage() {
                   onMouseLeave={() => setHoveredService(null)}
                   onFocus={() => setHoveredService(i)}
                   onBlur={() => setHoveredService(null)}
-                  className="group relative flex min-h-[300px] flex-col justify-end overflow-hidden rounded-3xl border border-white/10 shadow-soft transition-all duration-700 ease-out sm:min-h-[360px] lg:min-h-0 w-full"
+                  className="group relative flex min-h-[300px] flex-col justify-end overflow-hidden rounded-3xl border border-white/10 shadow-soft transition-all duration-1500 ease-out sm:min-h-[360px] lg:min-h-0 w-full"
                   style={{
                     flexGrow: isHovered ? 2.4 : 1,
                     flexBasis: 0,
-                    transition: "flex-grow 700ms cubic-bezier(0.16, 1, 0.3, 1)",
+                    transition: "flex-grow 1500ms cubic-bezier(0.22, 1, 0.36, 1)",
                   }}
                 >
                   {/* Background Image */}
@@ -419,13 +419,13 @@ function HomePage() {
                     src={image}
                     alt={title}
                     loading="lazy"
-                    className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out ${isHovered ? "scale-100" : "scale-105"
+                    className={`absolute inset-0 h-full w-full object-cover transition-all duration-1500 ease-out ${isHovered ? "scale-100" : "scale-105"
                       }`}
                   />
 
                   {/* Gradient Overlay */}
                   <div
-                    className={`absolute inset-0 transition-opacity duration-700 ${isHovered
+                    className={`absolute inset-0 transition-opacity duration-1500 ${isHovered
                       ? "bg-gradient-to-t from-black/95 via-black/55 to-black/15"
                       : "bg-gradient-to-t from-black/95 via-black/75 to-black/40"
                       }`}
@@ -442,18 +442,18 @@ function HomePage() {
                       {eyebrow}
                     </p>
 
-                    <h3 className={`font-display leading-tight tracking-tight text-white transition-all duration-500 ${isHovered ? "text-2xl md:text-[30px] font-extrabold" : "text-xl md:text-2xl font-bold"
+                    <h3 className={`font-display leading-tight tracking-tight text-white transition-all duration-1000 ${isHovered ? "text-2xl md:text-[30px] font-extrabold" : "text-xl md:text-2xl font-bold"
                       }`}>
                       {title}
                     </h3>
 
-                    <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/80 transition-all duration-500 md:text-base">
+                    <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/80 transition-all duration-1000 md:text-base">
                       {desc}
                     </p>
 
                     {/* Bottom row CTA */}
                     <div className="mt-6 flex items-center gap-3 text-sm font-medium text-white">
-                      <span className="transition-opacity duration-500">Explore Service</span>
+                      <span className="transition-opacity duration-1000">Explore Service</span>
                       <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/20 text-white transition-all duration-300 group-hover:rotate-45 group-hover:bg-white group-hover:text-black">
                         <ArrowUpRight className="h-4 w-4" />
                       </span>
