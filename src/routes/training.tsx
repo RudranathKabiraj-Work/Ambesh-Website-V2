@@ -187,10 +187,10 @@ function TrainingPage() {
             {heroStats.map((s, i) => (
               <Reveal key={s.l} delay={60 + i * 60} eager>
                 <div className="h-full custom-theme-card-static p-6 rounded-2xl">
-                  <p className="font-display text-2xl font-extrabold tracking-tight text-ink md:text-3xl">
+                  <p className="stats-value font-display text-2xl font-extrabold tracking-tight text-gradient-brand animate-gradient md:text-3xl">
                     {s.v}
                   </p>
-                  <p className="mt-2 text-xs text-ink-muted">{s.l}</p>
+                  <p className="stats-label mt-2 text-xs text-ink-muted">{s.l}</p>
                 </div>
               </Reveal>
             ))}

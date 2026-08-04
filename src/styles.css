@@ -1393,6 +1393,17 @@ html.lenis body {
     color: transparent;
   }
 
+  /* Stats strip below Selected Work: keep light-theme colours, pure white in dark */
+  .dark .stats-value {
+    background-image: none;
+    -webkit-text-fill-color: #ffffff;
+    color: #ffffff;
+  }
+
+  .dark .stats-label {
+    color: #ffffff;
+  }
+
   /* Text-on-gradient surfaces should stay white, not go transparent */
   .dark .bg-gradient-brand.text-canvas,
   .dark .bg-gradient-brand .text-canvas {

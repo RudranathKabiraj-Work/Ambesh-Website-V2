@@ -192,9 +192,9 @@ function BusinessOSPage() {
               {heroStats.map((s) => (
                 <div key={s.l} className="rounded-2xl custom-theme-card-static p-5 backdrop-blur shadow-soft">
                   <p className="text-3xl font-extrabold tracking-tight text-ink md:text-4xl">
-                    <span className="text-gradient-brand">{s.n}</span>
+                    <span className="stats-value text-gradient-brand">{s.n}</span>
                   </p>
-                  <p className="mt-2 text-xs uppercase tracking-wider text-ink-muted">{s.l}</p>
+                  <p className="stats-label mt-2 text-xs uppercase tracking-wider text-ink-muted">{s.l}</p>
                 </div>
               ))}
             </div>

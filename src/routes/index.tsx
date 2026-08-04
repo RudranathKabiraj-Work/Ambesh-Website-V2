@@ -137,6 +137,7 @@ function HomePage() {
     <>
       {/* HERO */}
       <section className="premium-canvas bg-premium-side-gradient relative isolate overflow-hidden">
+        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit pt-10 pb-20 md:pt-14 md:pb-24">
           <div className="grid items-center gap-16 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-7">
@@ -267,6 +268,7 @@ function HomePage() {
 
       {/* PROBLEM */}
       <section className="relative overflow-hidden bg-canvas bg-premium-side-gradient py-20 md:py-32 lg:py-36 optimize-render">
+        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <div className="grid gap-12 md:grid-cols-12 md:items-start lg:gap-16">
             <Reveal className="md:col-span-5">
@@ -353,6 +355,7 @@ function HomePage() {
 
       {/* HOW I HELP */}
       <section id="services" className="relative overflow-hidden bg-canvas py-16 md:py-24">
+        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <div className="grid gap-6 md:grid-cols-12 md:items-end md:gap-12">
             <Reveal className="md:col-span-7">
@@ -368,7 +371,7 @@ function HomePage() {
             </Reveal>
           </div>
 
-          <div className="mt-12 flex flex-col gap-4 md:mt-16 lg:h-[460px] lg:flex-row w-full">
+          <div className="mt-12 flex flex-col gap-4 md:mt-16 lg:h-[430px] lg:flex-row w-full">
             {[
               {
                 num: "01",
@@ -533,7 +536,8 @@ function HomePage() {
 
 
       {/* WHAT I HAVE BUILT */}
-      <section id="built" className="relative bg-canvas py-16 md:py-24">
+      <section id="built" className="relative overflow-hidden bg-canvas py-16 md:py-24">
+        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <div className="grid gap-6 md:grid-cols-12 md:items-start md:gap-12 mb-12">
             <Reveal className="md:col-span-6">
@@ -624,6 +628,7 @@ function HomePage() {
 
       {/* BOOK */}
       <section className="relative overflow-hidden bg-canvas py-16 md:py-24">
+        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <div className="grid gap-12 rounded-[20px] custom-theme-card-static p-8 md:grid-cols-12 md:items-center md:gap-16 md:p-14 shadow-sm">
             <Reveal className="md:col-span-5">
@@ -696,8 +701,8 @@ function HomePage() {
               {heroStats.map((s, i) => (
                 <Reveal key={s.l} delay={120}>
                   <div className="custom-theme-card p-5 h-full text-center">
-                    <p className="font-display text-2xl font-extrabold tracking-tight text-gradient-brand animate-gradient md:text-3xl">{s.v}</p>
-                    <p className="mt-2 text-xs uppercase tracking-wider font-semibold text-ink-muted leading-tight">{s.l}</p>
+                    <p className="stats-value font-display text-2xl font-extrabold tracking-tight text-gradient-brand animate-gradient md:text-3xl">{s.v}</p>
+                    <p className="stats-label mt-2 text-xs uppercase tracking-wider font-semibold text-ink-muted leading-tight">{s.l}</p>
                   </div>
                 </Reveal>
               ))}
