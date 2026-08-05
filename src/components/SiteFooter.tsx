@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Linkedin, Youtube, Instagram, Facebook, Twitter } from "lucide-react";
+import { Reveal } from "@/components/Reveal";
 
 export function SiteFooter() {
   const socials = [
@@ -29,7 +30,8 @@ export function SiteFooter() {
 
   return (
     <footer className="bg-canvas">
-      <div className="container-edit pt-8 pb-16 md:pt-10 md:pb-20">
+      <Reveal>
+        <div className="container-edit relative pt-8 pb-16 md:pt-10 md:pb-20">
         {/* Top: Brand + nav columns */}
         <div className="grid gap-10 md:grid-cols-12 md:gap-10">
           {/* Brand block */}
@@ -124,8 +126,8 @@ export function SiteFooter() {
             </Link>
           </nav>
         </div>
-
-      </div>
+        </div>
+      </Reveal>
     </footer>
   );
 }

@@ -105,6 +105,11 @@
   --input: var(--rule);
   --ring: var(--accent);
 
+  /* Core pillar cards */
+  --pillar-card-bg: oklch(0.93 0.01 260);
+  --pillar-card-border: oklch(0.3 0.03 260 / 0.2);
+  --pillar-card-shadow: 0 8px 24px -10px oklch(0.18 0.04 260 / 0.18);
+
   /* Subtle tonal "gradient" - just an indigo wash, not rainbow */
   --gradient-brand: linear-gradient(135deg, oklch(0.22 0.04 265) 0%, oklch(0.46 0.18 268) 100%);
   --gradient-brand-soft: linear-gradient(135deg, oklch(0.46 0.18 268 / 0.08) 0%, oklch(0.46 0.18 268 / 0.02) 100%);
@@ -169,6 +174,11 @@
   --border: var(--rule);
   --input: var(--rule);
   --ring: var(--accent);
+
+  /* Core pillar cards */
+  --pillar-card-bg: rgba(187, 224, 250, 0.06);
+  --pillar-card-border: rgba(187, 224, 250, 0.14);
+  --pillar-card-shadow: none;
 
   /* Floating header glass — deep navy, blue-lit */
   --header-bg-open: linear-gradient(135deg, rgba(7, 17, 35, 0.85) 0%, rgba(14, 76, 117, 0.72) 50%, rgba(7, 17, 35, 0.85) 100%);

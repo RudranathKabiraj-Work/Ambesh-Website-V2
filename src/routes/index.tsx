@@ -13,6 +13,7 @@ import {
   Wrench,
 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
+import { CorePillars } from "@/components/CorePillars";
 import { StrategyCallButton } from "@/components/StrategyCallButton";
 import { Marquee } from "@/components/Marquee";
 import { ServiceCarousel } from "@/components/ServiceCarousel";
@@ -89,15 +90,6 @@ const beliefs = [
   { n: "02", icon: Sparkles, title: "AI adoption matters more than AI awareness.", desc: "Workshops have limited value unless teams change how they work. Real training requires daily AI adoption rhythms." },
   { n: "03", icon: Compass, title: "Do not automate a process you do not understand.", desc: "Automation makes clean processes faster, but broken ones fail faster. Map the workflow manually before coding." },
   { n: "04", icon: Wrench, title: "Technology is only one part of the answer.", desc: "Clear roles and accountability matter more than new tools. Tech accelerates, but human execution is the foundation." },
-];
-
-const acronymItems = [
-  { letter: "A", title: "Artificial Intelligence" },
-  { letter: "M", title: "Marketing" },
-  { letter: "B", title: "Branding" },
-  { letter: "E", title: "Entrepreneurship" },
-  { letter: "S", title: "Systems" },
-  { letter: "H", title: "Human Potential" },
 ];
 
 function HomePage() {
@@ -749,36 +741,7 @@ function HomePage() {
       </section>
 
       {/* CORE PILLARS (A-M-B-E-S-H) */}
-      <section className="relative overflow-hidden bg-canvas py-16 md:py-24 border-t border-rule home-section-alt">
-        <div className="container-edit relative">
-          <Reveal>
-            <p className="text-center font-mono text-[0.65rem] font-bold uppercase tracking-[0.25em] text-ink-muted mb-8">
-              The Core Pillars
-            </p>
-          </Reveal>
-          <div className="grid grid-cols-1 gap-2 sm:grid-cols-6 sm:gap-4 lg:gap-6">
-            {acronymItems.map((item, i) => (
-              <Reveal key={item.letter} delay={i * 80}>
-                <div className="custom-theme-card group relative flex flex-col items-center justify-center overflow-hidden rounded-[16px] px-4 py-4 text-center sm:rounded-[20px] sm:p-5 sm:min-h-[140px] md:min-h-[160px]">
-                  {/* Diagonal sweeping shine animation */}
-                  <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/80 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-full pointer-events-none" />
-
-                  <div className="flex items-center justify-center">
-                    <span className="font-display text-3xl font-black tracking-tight text-ink transition-all duration-500 ease-out group-hover:scale-110 group-hover:text-accent select-none sm:text-5xl md:text-6xl">
-                      {item.letter}
-                    </span>
-                  </div>
-                  <div className="mt-1 flex items-center justify-center relative z-10">
-                    <span className="font-sans text-xs font-bold uppercase tracking-wide text-ink-soft sm:text-[0.65rem] sm:tracking-wider md:text-[0.7rem] leading-tight transition-colors duration-500 group-hover:text-ink">
-                      {item.title}
-                    </span>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <CorePillars />
     </>
   );
 }
