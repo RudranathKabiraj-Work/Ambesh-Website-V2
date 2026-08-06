@@ -27,7 +27,7 @@ export function Monogram({
       <div className="absolute -bottom-24 -left-16 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
 
       <img
-        src="https://www.automationschool.in/AmbeshImage.png"
+        src="/ambesh-image.png"
         alt={name}
         className="absolute bottom-0 left-0 w-full h-auto object-contain object-bottom scale-125 translate-y-8 transition-transform duration-500 group-hover:scale-130 group-hover:translate-y-7 origin-bottom"
         loading="lazy"

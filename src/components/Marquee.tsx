@@ -11,7 +11,13 @@ interface Props {
   fadeColor?: string;
 }
 
-export function Marquee({ items, className = "", fade = 48, speed = 50, fadeColor = "var(--canvas)" }: Props) {
+export function Marquee({
+  items,
+  className = "",
+  fade = 48,
+  speed = 50,
+  fadeColor = "var(--featured-fade, var(--canvas))",
+}: Props) {
   return (
     <div className={`group relative overflow-hidden ${className}`}>
       {fade > 0 && (
@@ -20,16 +26,14 @@ export function Marquee({ items, className = "", fade = 48, speed = 50, fadeColo
             className="pointer-events-none absolute inset-y-0 left-0 z-10"
             style={{
               width: fade,
-              background:
-                `linear-gradient(to right, ${fadeColor}, transparent)`,
+              background: `linear-gradient(to right, ${fadeColor}, transparent)`,
             }}
           />
           <div
             className="pointer-events-none absolute inset-y-0 right-0 z-10"
             style={{
               width: fade,
-              background:
-                `linear-gradient(to left, ${fadeColor}, transparent)`,
+              background: `linear-gradient(to left, ${fadeColor}, transparent)`,
             }}
           />
         </>

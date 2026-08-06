@@ -11,7 +11,10 @@ interface Props {
 export function MeshBackground({ variant = "dark", className = "" }: Props) {
   const isDark = variant === "dark";
   return (
-    <div className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`} aria-hidden>
+    <div
+      className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}
+      aria-hidden
+    >
       {isDark && <div className="absolute inset-0 bg-night" />}
       <div
         className="absolute -left-32 -top-32 h-[40rem] w-[40rem] rounded-full opacity-40 blur-3xl"

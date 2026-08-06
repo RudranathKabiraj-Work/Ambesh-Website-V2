@@ -20,7 +20,6 @@ export const WA_MESSAGES = {
     "Hi Ambesh, we want to discuss implementation through BDA Technologies. Please share the next steps.",
   contact:
     "Hi Ambesh, I want to talk about building clear systems for my business. Please share the next steps.",
-  podcast:
-    "Hi Ambesh, I would like to pitch a guest for the Inspire with Ambesh podcast.",
+  podcast: "Hi Ambesh, I would like to pitch a guest for the Inspire with Ambesh podcast.",
   book: "Hi Ambesh, I would like a bulk order or signed copy of Accelerate with AI.",
 };

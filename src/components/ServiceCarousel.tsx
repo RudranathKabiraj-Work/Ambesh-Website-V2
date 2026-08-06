@@ -89,54 +89,53 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
           className="absolute inset-0 h-full w-full object-cover"
         />
 
-      {/* Subtle gradient only at very bottom for text legibility */}
-      <div
-        className="absolute inset-x-0 bottom-0"
-        style={{
-          height: "55%",
-          background:
-            "linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.5) 50%, transparent 100%)",
-        }}
-      />
+        {/* Subtle gradient only at very bottom for text legibility */}
+        <div
+          className="absolute inset-x-0 bottom-0"
+          style={{
+            height: "55%",
+            background:
+              "linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.5) 50%, transparent 100%)",
+          }}
+        />
 
-      {/* Text overlaid at bottom */}
-      <div className="absolute inset-x-0 bottom-0 px-4 pb-4">
-        <h3
-          className="font-display font-extrabold leading-tight tracking-tight text-white"
-          style={{ fontSize: isActive ? "1rem" : "0.875rem" }}
-        >
-          {card.title}
-        </h3>
-        <p className="mt-1 text-white/70 leading-snug text-[0.72rem]">{card.desc}</p>
+        {/* Text overlaid at bottom */}
+        <div className="absolute inset-x-0 bottom-0 px-4 pb-4">
+          <h3
+            className="font-display font-extrabold leading-tight tracking-tight text-white"
+            style={{ fontSize: isActive ? "1rem" : "0.875rem" }}
+          >
+            {card.title}
+          </h3>
+          <p className="mt-1 text-white/70 leading-snug text-[0.72rem]">{card.desc}</p>
 
-        {isActive && !isMobile && (
-          <div className="mt-2.5 flex items-center gap-1.5">
-            {cards.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  goTo(idx);
-                }}
-                aria-label={`Go to slide ${idx + 1}`}
-                className={`relative h-1 cursor-pointer overflow-hidden rounded-full transition-all duration-300 ${
-                  activeIndex === idx ? "carousel-dot-track" : ""
-                }`}
-                style={{
-                  width: activeIndex === idx ? 18 : 5,
-                  backgroundColor:
-                    activeIndex === idx ? undefined : "rgba(255,255,255,0.35)",
-                }}
-              >
-                {activeIndex === idx && (
-                  <span className="carousel-dot-progress carousel-dot-fill absolute inset-y-0 left-0 rounded-full" />
-                )}
-              </button>
-            ))}
-          </div>
-        )}
+          {isActive && !isMobile && (
+            <div className="mt-2.5 flex items-center gap-1.5">
+              {cards.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    goTo(idx);
+                  }}
+                  aria-label={`Go to slide ${idx + 1}`}
+                  className={`relative h-1 cursor-pointer overflow-hidden rounded-full transition-all duration-300 ${
+                    activeIndex === idx ? "carousel-dot-track" : ""
+                  }`}
+                  style={{
+                    width: activeIndex === idx ? 18 : 5,
+                    backgroundColor: activeIndex === idx ? undefined : "rgba(255,255,255,0.35)",
+                  }}
+                >
+                  {activeIndex === idx && (
+                    <span className="carousel-dot-progress carousel-dot-fill absolute inset-y-0 left-0 rounded-full" />
+                  )}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
-    </div>
     </div>
   );
 
@@ -221,8 +220,7 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
                 }`}
                 style={{
                   width: activeIndex === idx ? 20 : 6,
-                  backgroundColor:
-                    activeIndex === idx ? undefined : "var(--ink-muted)",
+                  backgroundColor: activeIndex === idx ? undefined : "var(--ink-muted)",
                 }}
               >
                 {activeIndex === idx && (

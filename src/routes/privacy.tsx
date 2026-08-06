@@ -46,30 +46,52 @@ function PrivacyPage() {
       <section className="container-edit pb-24">
         <article className="prose-legal mx-auto max-w-3xl space-y-8 text-[15px] leading-[1.75] text-ink-soft">
           <LegalIntro>
-            This Privacy Policy explains how BDA Technologies Pvt. Ltd. ("we", "us",
-            "our"), based in Delhi, India, collects, uses, stores and protects your
-            personal information when you visit{" "}
-            <a href={SITE_URL} className="underline">ambeshtiwari.com</a>{" "}
+            This Privacy Policy explains how BDA Technologies Pvt. Ltd. ("we", "us", "our"), based
+            in Delhi, India, collects, uses, stores and protects your personal information when you
+            visit{" "}
+            <a href={SITE_URL} className="underline">
+              ambeshtiwari.com
+            </a>{" "}
             and the related properties{" "}
-            <a href="https://ambesh.com" className="underline">ambesh.com</a>,{" "}
-            <a href="https://ambesh.in" className="underline">ambesh.in</a> and{" "}
-            <a href="https://acceleratewithai.in" className="underline">acceleratewithai.in</a>,{" "}
-            or engage with services offered through these websites. This policy is
-            governed by the laws of India, including the Digital Personal Data
-            Protection Act, 2023 (DPDP Act) and the Information Technology Act, 2000.
+            <a href="https://ambesh.com" className="underline">
+              ambesh.com
+            </a>
+            ,{" "}
+            <a href="https://ambesh.in" className="underline">
+              ambesh.in
+            </a>{" "}
+            and{" "}
+            <a href="https://acceleratewithai.in" className="underline">
+              acceleratewithai.in
+            </a>
+            , or engage with services offered through these websites. This policy is governed by the
+            laws of India, including the Digital Personal Data Protection Act, 2023 (DPDP Act) and
+            the Information Technology Act, 2000.
           </LegalIntro>
 
           <Section title="1. Information we collect">
             <p>We collect the following categories of information:</p>
             <ul className="ml-5 list-disc space-y-1">
-              <li><strong>Information you provide:</strong> name, email, phone number, company, role and message content submitted through contact, booking or training enquiry forms.</li>
-              <li><strong>Automatic information:</strong> IP address, browser type, device type, pages visited, referring URL and timestamps via standard server logs and analytics tools.</li>
-              <li><strong>Cookies:</strong> small text files used to remember preferences and measure traffic. You can disable cookies in your browser settings.</li>
+              <li>
+                <strong>Information you provide:</strong> name, email, phone number, company, role
+                and message content submitted through contact, booking or training enquiry forms.
+              </li>
+              <li>
+                <strong>Automatic information:</strong> IP address, browser type, device type, pages
+                visited, referring URL and timestamps via standard server logs and analytics tools.
+              </li>
+              <li>
+                <strong>Cookies:</strong> small text files used to remember preferences and measure
+                traffic. You can disable cookies in your browser settings.
+              </li>
             </ul>
           </Section>
 
           <Section title="2. How we use your information">
-            <p>Personal data is used strictly for the purposes for which it was collected, including to:</p>
+            <p>
+              Personal data is used strictly for the purposes for which it was collected, including
+              to:
+            </p>
             <ul className="ml-5 list-disc space-y-1">
               <li>respond to enquiries and schedule discovery calls;</li>
               <li>deliver corporate training, consulting and related services;</li>
@@ -81,17 +103,19 @@ function PrivacyPage() {
 
           <Section title="3. Legal basis (DPDP Act, 2023)">
             <p>
-              Personal data is processed on the basis of your consent (provided when
-              you submit a form or engage our services) or for the performance of a
-              contract with you. You may withdraw consent at any time by writing to
-              the email address listed in Section 10.
+              Personal data is processed on the basis of your consent (provided when you submit a
+              form or engage our services) or for the performance of a contract with you. You may
+              withdraw consent at any time by writing to the email address listed in Section 10.
             </p>
           </Section>
 
           <Section title="4. Sharing and disclosure">
             <p>We do not sell or rent your personal data. Limited sharing happens only with:</p>
             <ul className="ml-5 list-disc space-y-1">
-              <li>service providers we rely on to operate the website and deliver services (hosting, email, scheduling, payments, analytics);</li>
+              <li>
+                service providers we rely on to operate the website and deliver services (hosting,
+                email, scheduling, payments, analytics);
+              </li>
               <li>professional advisors (legal, accounting) bound by confidentiality; and</li>
               <li>government authorities when required by Indian law or a valid court order.</li>
             </ul>
@@ -99,20 +123,19 @@ function PrivacyPage() {
 
           <Section title="5. Data storage and security">
             <p>
-              Data is stored on secure servers operated by reputable cloud providers.
-              Reasonable security practices are followed in line with Rule 8 of the
-              Information Technology (Reasonable Security Practices and Procedures and
-              Sensitive Personal Data or Information) Rules, 2011. No method of
-              transmission over the internet is 100% secure; we cannot guarantee
-              absolute security.
+              Data is stored on secure servers operated by reputable cloud providers. Reasonable
+              security practices are followed in line with Rule 8 of the Information Technology
+              (Reasonable Security Practices and Procedures and Sensitive Personal Data or
+              Information) Rules, 2011. No method of transmission over the internet is 100% secure;
+              we cannot guarantee absolute security.
             </p>
           </Section>
 
           <Section title="6. Data retention">
             <p>
-              Personal data is retained only as long as necessary to fulfil the
-              purpose for which it was collected and to comply with statutory
-              retention requirements, after which it is deleted or anonymised.
+              Personal data is retained only as long as necessary to fulfil the purpose for which it
+              was collected and to comply with statutory retention requirements, after which it is
+              deleted or anonymised.
             </p>
           </Section>
 
@@ -122,54 +145,63 @@ function PrivacyPage() {
               <li>access the personal data we hold about you;</li>
               <li>request correction or erasure of inaccurate or unnecessary data;</li>
               <li>withdraw consent for future processing; and</li>
-              <li>nominate another individual to exercise rights on your behalf in case of incapacity or death.</li>
+              <li>
+                nominate another individual to exercise rights on your behalf in case of incapacity
+                or death.
+              </li>
             </ul>
-            <p>Requests can be made to the contact in Section 10 and will be addressed within a reasonable timeframe.</p>
+            <p>
+              Requests can be made to the contact in Section 10 and will be addressed within a
+              reasonable timeframe.
+            </p>
           </Section>
 
           <Section title="8. Third-party links">
             <p>
-              The website may contain links to third-party sites (LinkedIn, YouTube,
-              payment gateways, calendar tools). We are not responsible for the
-              privacy practices of those sites. Please review their policies
-              separately.
+              The website may contain links to third-party sites (LinkedIn, YouTube, payment
+              gateways, calendar tools). We are not responsible for the privacy practices of those
+              sites. Please review their policies separately.
             </p>
           </Section>
 
           <Section title="9. Children">
             <p>
-              The services are intended for working professionals and are not directed
-              at individuals under 18. Personal data of minors is not knowingly
-              collected without verifiable parental consent as required by the DPDP Act.
+              The services are intended for working professionals and are not directed at
+              individuals under 18. Personal data of minors is not knowingly collected without
+              verifiable parental consent as required by the DPDP Act.
             </p>
           </Section>
 
           <Section title="10. Grievance officer">
             <p>
-              In accordance with the Information Technology Act, 2000 and the DPDP
-              Act, 2023, the Grievance Officer for this website is:
+              In accordance with the Information Technology Act, 2000 and the DPDP Act, 2023, the
+              Grievance Officer for this website is:
             </p>
             <p className="rounded-lg custom-theme-card-static p-4">
-              <strong>Ambesh Tiwari</strong><br />
-              BDA Technologies Pvt. Ltd., Delhi, India<br />
-              Email: <a href="mailto:hello@ambesh.com" className="underline">hello@ambesh.com</a>
+              <strong>Ambesh Tiwari</strong>
+              <br />
+              BDA Technologies Pvt. Ltd., Delhi, India
+              <br />
+              Email:{" "}
+              <a href="mailto:hello@ambesh.com" className="underline">
+                hello@ambesh.com
+              </a>
             </p>
             <p>Grievances are acknowledged within 48 hours and resolved within 30 days.</p>
           </Section>
 
           <Section title="11. Changes to this policy">
             <p>
-              This policy may be updated periodically. The "Last updated" date at the
-              top of this page reflects the most recent revision. Continued use of the
-              website after changes are posted constitutes acceptance of the revised
-              policy.
+              This policy may be updated periodically. The "Last updated" date at the top of this
+              page reflects the most recent revision. Continued use of the website after changes are
+              posted constitutes acceptance of the revised policy.
             </p>
           </Section>
 
           <Section title="12. Governing law and jurisdiction">
             <p>
-              This Privacy Policy is governed by the laws of India. All disputes are
-              subject to the exclusive jurisdiction of the courts at Delhi, India.
+              This Privacy Policy is governed by the laws of India. All disputes are subject to the
+              exclusive jurisdiction of the courts at Delhi, India.
             </p>
           </Section>
         </article>

@@ -1,5 +1,3 @@
-
-
 /**
  * Adds `.is-visible` to any element with `.reveal` once it scrolls into view.
  * Mounted once at the app root.

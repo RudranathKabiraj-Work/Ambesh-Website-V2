@@ -122,9 +122,8 @@ function PodcastPage() {
             </Reveal>
             <Reveal delay={250} eager>
               <p className="mt-8 max-w-xl text-lg text-ink-muted">
-                Conversations with founders, operators and builders about the
-                things that actually matter: ambition, decisions, setbacks, and
-                what it takes to build something real.
+                Conversations with founders, operators and builders about the things that actually
+                matter: ambition, decisions, setbacks, and what it takes to build something real.
               </p>
             </Reveal>
             <Reveal delay={350} eager>
@@ -181,7 +180,8 @@ function PodcastPage() {
           <Reveal>
             <p className="eyebrow">Featured conversations</p>
             <h2 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-6xl">
-              A few worth <span className="text-gradient-brand animate-gradient">starting with.</span>
+              A few worth{" "}
+              <span className="text-gradient-brand animate-gradient">starting with.</span>
             </h2>
             <p className="mt-6 max-w-2xl text-lg text-ink-muted">
               If you are new here, these three conversations are a good way in.
@@ -236,10 +236,9 @@ function PodcastPage() {
             </Reveal>
             <Reveal delay={120} className="md:col-span-7">
               <p className="text-lg text-ink-muted">
-                This is not an AI podcast. It is a podcast about building things,
-                making decisions, and staying honest about what that costs. AI
-                shows up because it is part of the world now. But the
-                conversations are always about the people, not the tools.
+                This is not an AI podcast. It is a podcast about building things, making decisions,
+                and staying honest about what that costs. AI shows up because it is part of the
+                world now. But the conversations are always about the people, not the tools.
               </p>
               <div className="mt-8 flex flex-wrap gap-2.5">
                 {topics.map((t, i) => (
@@ -286,10 +285,9 @@ function PodcastPage() {
               </h2>
               <p className="mt-6 text-lg text-ink-muted">
                 Entrepreneur, AI trainer, author of{" "}
-                <span className="font-semibold text-ink">Accelerate with AI</span>,
-                and founder of BDA Technologies. Ambesh started this podcast
-                because the most useful things he has learned came from
-                conversations, not courses. This is his way of sharing those
+                <span className="font-semibold text-ink">Accelerate with AI</span>, and founder of
+                BDA Technologies. Ambesh started this podcast because the most useful things he has
+                learned came from conversations, not courses. This is his way of sharing those
                 conversations with everyone who could not be in the room.
               </p>
               <Link
@@ -317,15 +315,14 @@ function PodcastPage() {
                   <span className="text-gradient-brand animate-gradient">In your inbox.</span>
                 </h3>
                 <p className="mt-4 text-ink-muted">
-                  No schedule. No spam. Just a note when a new conversation
-                  drops, and occasionally a short idea worth your time.
+                  No schedule. No spam. Just a note when a new conversation drops, and occasionally
+                  a short idea worth your time.
                 </p>
               </div>
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
-                  const email =
-                    (new FormData(e.currentTarget).get("email") as string) || "";
+                  const email = (new FormData(e.currentTarget).get("email") as string) || "";
                   window.location.href = `mailto:hello@ambesh.com?subject=Subscribe%20to%20podcast%20updates&body=Subscribe%20${encodeURIComponent(email)}`;
                 }}
                 className="flex flex-col gap-3 sm:flex-row"
@@ -355,15 +352,15 @@ function PodcastPage() {
         <div className="container-edit relative py-16 text-center">
           <Reveal>
             <h2 className="mx-auto max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-6xl">
-              Got a story <span className="text-gradient-brand animate-gradient">worth sharing?</span>
+              Got a story{" "}
+              <span className="text-gradient-brand animate-gradient">worth sharing?</span>
             </h2>
           </Reveal>
           <Reveal delay={120}>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-ink-muted">
-              If you have built something interesting, lived through something
-              worth telling, or have a perspective most people have not heard,
-              Ambesh would love to talk. The best episodes come from people he
-              was not expecting.
+              If you have built something interesting, lived through something worth telling, or
+              have a perspective most people have not heard, Ambesh would love to talk. The best
+              episodes come from people he was not expecting.
             </p>
           </Reveal>
           <Reveal delay={240}>

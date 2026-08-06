@@ -17,6 +17,7 @@ import { CorePillars } from "@/components/CorePillars";
 import { StrategyCallButton } from "@/components/StrategyCallButton";
 import { Marquee } from "@/components/Marquee";
 import { ServiceCarousel } from "@/components/ServiceCarousel";
+import { BookStickySection } from "@/components/BookStickySection";
 import { buildMeta, jsonLd, breadcrumbSchema, SITE_URL } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
@@ -86,10 +87,30 @@ const problems = [
 ];
 
 const beliefs = [
-  { n: "01", icon: Workflow, title: "A business should not depend on the founder.", desc: "Founder dependency is structural, not personal. It is resolved with clear accountability, SOPs, and system design." },
-  { n: "02", icon: Sparkles, title: "AI adoption matters more than AI awareness.", desc: "Workshops have limited value unless teams change how they work. Real training requires daily AI adoption rhythms." },
-  { n: "03", icon: Compass, title: "Do not automate a process you do not understand.", desc: "Automation makes clean processes faster, but broken ones fail faster. Map the workflow manually before coding." },
-  { n: "04", icon: Wrench, title: "Technology is only one part of the answer.", desc: "Clear roles and accountability matter more than new tools. Tech accelerates, but human execution is the foundation." },
+  {
+    n: "01",
+    icon: Workflow,
+    title: "A business should not depend on the founder.",
+    desc: "Founder dependency is structural, not personal. It is resolved with clear accountability, SOPs, and system design.",
+  },
+  {
+    n: "02",
+    icon: Sparkles,
+    title: "AI adoption matters more than AI awareness.",
+    desc: "Workshops have limited value unless teams change how they work. Real training requires daily AI adoption rhythms.",
+  },
+  {
+    n: "03",
+    icon: Compass,
+    title: "Do not automate a process you do not understand.",
+    desc: "Automation makes clean processes faster, but broken ones fail faster. Map the workflow manually before coding.",
+  },
+  {
+    n: "04",
+    icon: Wrench,
+    title: "Technology is only one part of the answer.",
+    desc: "Clear roles and accountability matter more than new tools. Tech accelerates, but human execution is the foundation.",
+  },
 ];
 
 function HomePage() {
@@ -113,18 +134,22 @@ function HomePage() {
 
   // Card 1 starts at y=0, scales down as others arrive
   const y1 = useTransform(scrollYProgress, [0, 1], [0, 0]);
-  const scale1 = useTransform(scrollYProgress, [0, 0.38, 0.70, 0.98, 1.0], [1, 0.95, 0.90, 0.85, 0.85]);
+  const scale1 = useTransform(
+    scrollYProgress,
+    [0, 0.38, 0.7, 0.98, 1.0],
+    [1, 0.95, 0.9, 0.85, 0.85],
+  );
 
   // Card 2
   const y2 = useTransform(scrollYProgress, [0, 0.05, 0.38], [800, 800, 20]);
-  const scale2 = useTransform(scrollYProgress, [0.38, 0.70, 0.98, 1.0], [1, 0.95, 0.90, 0.90]);
+  const scale2 = useTransform(scrollYProgress, [0.38, 0.7, 0.98, 1.0], [1, 0.95, 0.9, 0.9]);
 
   // Card 3
-  const y3 = useTransform(scrollYProgress, [0, 0.38, 0.70], [800, 800, 40]);
-  const scale3 = useTransform(scrollYProgress, [0.70, 0.98, 1.0], [1, 0.95, 0.95]);
+  const y3 = useTransform(scrollYProgress, [0, 0.38, 0.7], [800, 800, 40]);
+  const scale3 = useTransform(scrollYProgress, [0.7, 0.98, 1.0], [1, 0.95, 0.95]);
 
   // Card 4
-  const y4 = useTransform(scrollYProgress, [0, 0.70, 0.98, 1.0], [800, 800, 60, 60]);
+  const y4 = useTransform(scrollYProgress, [0, 0.7, 0.98, 1.0], [800, 800, 60, 60]);
   const scale4 = useTransform(scrollYProgress, [0, 0.98, 1.0], [1, 1, 1]);
 
   const cardsTransforms = [
@@ -144,7 +169,10 @@ function HomePage() {
             <div className="lg:col-span-7">
               <div className="animate-fade-in-up">
                 <span className="inline-flex items-center gap-2 rounded-full border border-rule bg-canvas px-3 py-1 text-xs text-ink-muted">
-                  <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--accent)" }} />
+                  <span
+                    className="h-1.5 w-1.5 rounded-full"
+                    style={{ background: "var(--accent)" }}
+                  />
                   AI Strategist · Author · Entrepreneur
                 </span>
               </div>
@@ -152,14 +180,24 @@ function HomePage() {
               <h1 className="animate-fade-in-up delay-80 mt-6 font-display text-[2.4rem] font-extrabold leading-[1.05] tracking-[-0.03em] text-ink dark:text-white sm:text-5xl md:text-6xl lg:text-[4rem]">
                 I Help Founders Scale Their{" "}
                 <span className="relative inline-block">
-                  <span className="font-serif italic font-medium text-ink dark:text-white">Service Business</span>
-                  <span className="absolute -bottom-1 left-0 h-[3px] w-full rounded-full" style={{ background: "var(--accent)" }} />
+                  <span className="font-serif italic font-medium text-ink dark:text-white">
+                    Service Business
+                  </span>
+                  <span
+                    className="absolute -bottom-1 left-0 h-[3px] w-full rounded-full"
+                    style={{ background: "var(--accent)" }}
+                  />
                 </span>{" "}
-                <span className="font-serif italic font-medium text-gradient-brand">Without Depending on Them.</span>
+                <span className="font-serif italic font-medium text-gradient-brand">
+                  Without Depending on Them.
+                </span>
               </h1>
 
               <p className="animate-fade-in-up delay-150 mt-4 max-w-2xl text-base leading-[1.6] text-ink-soft md:text-lg">
-                For over 13 years, I've worked across business development, sales, marketing, branding, operations, technology, and entrepreneurship. Today, I help founders simplify their business, build better systems, and use AI where it creates real business value.
+                For over 13 years, I've worked across business development, sales, marketing,
+                branding, operations, technology, and entrepreneurship. Today, I help founders
+                simplify their business, build better systems, and use AI where it creates real
+                business value.
               </p>
 
               <div className="animate-fade-in-up delay-280 mt-6 flex flex-col items-start">
@@ -188,16 +226,26 @@ function HomePage() {
                     loading="eager"
                     fetchPriority="high"
                   />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-black/0" aria-hidden />
+                  <div
+                    className="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-black/0"
+                    aria-hidden
+                  />
                   <div className="absolute inset-0 flex flex-col justify-between p-8">
                     <div className="flex items-center justify-between">
-                      <span className="h-2 w-2 rounded-full" style={{ background: "var(--accent)" }} />
-                      <span className="h-2 w-2 rounded-full" style={{ background: "var(--accent)" }} />
+                      <span
+                        className="h-2 w-2 rounded-full"
+                        style={{ background: "var(--accent)" }}
+                      />
+                      <span
+                        className="h-2 w-2 rounded-full"
+                        style={{ background: "var(--accent)" }}
+                      />
                     </div>
                     <div>
                       <div className="h-px w-16 bg-white/40" />
                       <p className="mt-4 font-serif text-xl italic text-white/90">
-                        &ldquo;A business that only runs when the founder pushes it, is a job with extra steps.&rdquo;
+                        &ldquo;A business that only runs when the founder pushes it, is a job with
+                        extra steps.&rdquo;
                       </p>
                       <p className="mt-3 font-mono text-[0.65rem] font-bold uppercase tracking-[0.25em] text-white">
                         Ambesh Tiwari
@@ -205,34 +253,49 @@ function HomePage() {
                     </div>
                   </div>
                 </div>
-                <div className="absolute -bottom-4 -right-4 -z-10 h-full w-full rounded-[20px]" style={{ background: "var(--accent-soft)" }} aria-hidden />                  {/* Floating circle 1: 13+ Years (Bottom-left) */}
+                <div
+                  className="absolute -bottom-4 -right-4 -z-10 h-full w-full rounded-[20px]"
+                  style={{ background: "var(--accent-soft)" }}
+                  aria-hidden
+                />{" "}
+                {/* Floating circle 1: 13+ Years (Bottom-left) */}
                 <motion.div
                   animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                   className="absolute top-[22%] -left-3 md:-left-12 z-20 w-[70px] h-[70px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center"
                 >
-                  <span className="font-display text-[12px] md:text-lg font-extrabold text-gradient-brand animate-gradient hero-stat-solid-white">13+</span>
-                  <span className="text-[6px] md:text-[8px] uppercase tracking-wider font-extrabold text-ink leading-tight mt-1 max-w-[58px] md:max-w-[80px]">Years of Experience</span>
+                  <span className="font-display text-[12px] md:text-lg font-extrabold text-gradient-brand animate-gradient hero-stat-solid-white">
+                    13+
+                  </span>
+                  <span className="text-[6px] md:text-[8px] uppercase tracking-wider font-extrabold text-ink leading-tight mt-1 max-w-[58px] md:max-w-[80px]">
+                    Years of Experience
+                  </span>
                 </motion.div>
-
                 {/* Floating circle 2: 100+ Businesses (Bottom-right) */}
                 <motion.div
                   animate={{ y: [0, 10, 0] }}
                   transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
                   className="absolute -bottom-8 -right-2 md:-bottom-10 md:-right-12 z-20 w-[70px] h-[70px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center"
                 >
-                  <span className="font-display text-[12px] md:text-lg font-extrabold text-gradient-brand animate-gradient hero-stat-solid-white">100+</span>
-                  <span className="text-[6px] md:text-[8px] uppercase tracking-wider font-extrabold text-ink leading-tight mt-1 max-w-[58px] md:max-w-[80px]">Businesses Scaled</span>
+                  <span className="font-display text-[12px] md:text-lg font-extrabold text-gradient-brand animate-gradient hero-stat-solid-white">
+                    100+
+                  </span>
+                  <span className="text-[6px] md:text-[8px] uppercase tracking-wider font-extrabold text-ink leading-tight mt-1 max-w-[58px] md:max-w-[80px]">
+                    Businesses Scaled
+                  </span>
                 </motion.div>
-
                 {/* Floating circle 3: 5,000+ Trained (Right side middle) */}
                 <motion.div
                   animate={{ y: [0, -8, 0] }}
                   transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                   className="absolute top-[35%] -right-3 md:-right-12 z-20 w-[70px] h-[70px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center"
                 >
-                  <span className="font-display text-[12px] md:text-lg font-extrabold text-gradient-brand animate-gradient hero-stat-solid-white">5,000+</span>
-                  <span className="text-[6px] md:text-[8px] uppercase tracking-wider font-extrabold text-ink leading-tight mt-1 max-w-[58px] md:max-w-[80px]">Professionals Trained</span>
+                  <span className="font-display text-[12px] md:text-lg font-extrabold text-gradient-brand animate-gradient hero-stat-solid-white">
+                    5,000+
+                  </span>
+                  <span className="text-[6px] md:text-[8px] uppercase tracking-wider font-extrabold text-ink leading-tight mt-1 max-w-[58px] md:max-w-[80px]">
+                    Professionals Trained
+                  </span>
                 </motion.div>
               </div>
             </div>
@@ -244,7 +307,9 @@ function HomePage() {
       <section className="relative bg-canvas py-6 featured-bar home-section-alt">
         <div className="container-edit">
           <Reveal eager>
-            <p className="text-center text-xs uppercase tracking-widest text-ink-muted">Featured In</p>
+            <p className="text-center text-xs uppercase tracking-widest text-ink-muted">
+              Featured In
+            </p>
           </Reveal>
           <div className="mt-4">
             <Marquee
@@ -274,22 +339,33 @@ function HomePage() {
             <Reveal className="md:col-span-5">
               <p className="eyebrow eyebrow-indigo">The Problems I Solve</p>
               <h2 className="mt-4 pb-2 font-display text-[2.2rem] sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold leading-[1.1] tracking-[-0.03em] text-ink">
-                Running a business<br />
-                shouldn't feel like<br />
+                Running a business
+                <br />
+                shouldn't feel like
+                <br />
                 <span className="font-serif italic font-medium text-gradient-brand pr-1">
-                  putting out fires<br />
+                  putting out fires
+                  <br />
                   every day.
                 </span>
               </h2>
             </Reveal>
             <Reveal delay={120} className="md:col-span-7">
               <div className="space-y-4 text-ink-soft">
-                <p className="text-ink text-xl md:text-2xl font-bold tracking-tight">I help founders solve problems like:</p>
+                <p className="text-ink text-xl md:text-2xl font-bold tracking-tight">
+                  I help founders solve problems like:
+                </p>
               </div>
               <ul className="mt-8 grid gap-4 sm:grid-cols-2">
                 {problems.map((p) => (
-                  <li key={p} className="flex items-start gap-3 rounded-[20px] custom-theme-card-static pointer-events-none p-5 md:p-6 text-[15px] md:text-base leading-relaxed text-ink-soft">
-                    <CheckCircle2 className="mt-1 h-5 w-5 shrink-0" style={{ color: "var(--accent)" }} />
+                  <li
+                    key={p}
+                    className="flex items-start gap-3 rounded-[20px] custom-theme-card-static pointer-events-none p-5 md:p-6 text-[15px] md:text-base leading-relaxed text-ink-soft"
+                  >
+                    <CheckCircle2
+                      className="mt-1 h-5 w-5 shrink-0"
+                      style={{ color: "var(--accent)" }}
+                    />
                     <span>{p}</span>
                   </li>
                 ))}
@@ -306,36 +382,66 @@ function HomePage() {
             <Reveal className="md:col-span-7">
               <p className="eyebrow eyebrow-indigo">My Approach</p>
               <h2 className="mt-4 font-display text-[2.2rem] font-extrabold leading-[1.1] tracking-[-0.03em] sm:text-4xl md:text-5xl text-ink">
-                Better businesses aren't built by <span className="font-serif italic font-medium text-gradient-brand">adding more tools.</span>
+                Better businesses aren't built by{" "}
+                <span className="font-serif italic font-medium text-gradient-brand">
+                  adding more tools.
+                </span>
               </h2>
             </Reveal>
             <Reveal delay={100} className="md:col-span-5">
               <p className="text-base leading-[1.6] text-ink-soft md:text-lg">
-                They're built by improving the way work gets done. The EASE Framework is a structured path to simplification, clarity, and automation.
+                They're built by improving the way work gets done. The EASE Framework is a
+                structured path to simplification, clarity, and automation.
               </p>
             </Reveal>
           </div>
 
           <div className="text-center mb-12">
             <Reveal>
-              <h3 className="font-display text-2xl font-extrabold text-ink tracking-tight">The EASE Framework</h3>
+              <h3 className="font-display text-2xl font-extrabold text-ink tracking-tight">
+                The EASE Framework
+              </h3>
             </Reveal>
           </div>
 
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { stage: "Stage 01", label: "Eliminate", desc: "Remove work that doesn't create value." },
-              { stage: "Stage 02", label: "Automate", desc: "Use AI only after the process is clear." },
-              { stage: "Stage 03", label: "Streamline", desc: "Connect people, processes, and technology." },
-              { stage: "Stage 04", label: "Execute", desc: "Turn ideas into consistent business results." },
+              {
+                stage: "Stage 01",
+                label: "Eliminate",
+                desc: "Remove work that doesn't create value.",
+              },
+              {
+                stage: "Stage 02",
+                label: "Automate",
+                desc: "Use AI only after the process is clear.",
+              },
+              {
+                stage: "Stage 03",
+                label: "Streamline",
+                desc: "Connect people, processes, and technology.",
+              },
+              {
+                stage: "Stage 04",
+                label: "Execute",
+                desc: "Turn ideas into consistent business results.",
+              },
             ].map(({ stage, label, desc }, i) => (
               <Reveal key={label} delay={80}>
                 <div className="custom-theme-card group relative flex h-full flex-col justify-between overflow-hidden rounded-[20px] backdrop-blur-md p-6">
                   <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-[1100ms] ease-out group-hover:translate-x-full pointer-events-none" />
-                  <div className="pointer-events-none absolute -top-20 -right-20 h-44 w-44 rounded-full opacity-0 blur-3xl transition-opacity duration-[850ms] ease-out group-hover:opacity-50" style={{ background: "var(--accent-soft)" }} aria-hidden />
+                  <div
+                    className="pointer-events-none absolute -top-20 -right-20 h-44 w-44 rounded-full opacity-0 blur-3xl transition-opacity duration-[850ms] ease-out group-hover:opacity-50"
+                    style={{ background: "var(--accent-soft)" }}
+                    aria-hidden
+                  />
                   <div>
-                    <span className="font-mono text-[0.65rem] font-bold uppercase tracking-[0.15em] text-accent">{stage}</span>
-                    <h4 className="mt-3 font-display text-lg font-extrabold tracking-tight text-ink">{label}</h4>
+                    <span className="font-mono text-[0.65rem] font-bold uppercase tracking-[0.15em] text-accent">
+                      {stage}
+                    </span>
+                    <h4 className="mt-3 font-display text-lg font-extrabold tracking-tight text-ink">
+                      {label}
+                    </h4>
                     <p className="mt-3 text-[15px] leading-[1.65] text-ink-soft">{desc}</p>
                   </div>
                 </div>
@@ -345,7 +451,10 @@ function HomePage() {
 
           <Reveal delay={300}>
             <div className="mt-10 text-center">
-              <Link to="/services" className="inline-flex items-center gap-1.5 text-sm font-semibold text-ink hover:opacity-70">
+              <Link
+                to="/services"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-ink hover:opacity-70"
+              >
                 Learn More About EASE <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
@@ -354,19 +463,24 @@ function HomePage() {
       </section>
 
       {/* HOW I HELP */}
-      <section id="services" className="relative overflow-hidden bg-canvas bg-premium-side-gradient py-16 md:py-24">
+      <section
+        id="services"
+        className="relative overflow-hidden bg-canvas bg-premium-side-gradient py-16 md:py-24"
+      >
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <div className="grid gap-6 md:grid-cols-12 md:items-end md:gap-12">
             <Reveal className="md:col-span-7">
               <p className="eyebrow eyebrow-indigo">How I Help</p>
               <h2 className="mt-4 font-display text-[2.2rem] font-extrabold leading-[1.1] tracking-[-0.03em] sm:text-4xl md:text-5xl">
-                I Build. I Advise. <span className="font-serif italic font-medium text-gradient-brand">I Train.</span>
+                I Build. I Advise.{" "}
+                <span className="font-serif italic font-medium text-gradient-brand">I Train.</span>
               </h2>
             </Reveal>
             <Reveal delay={100} className="md:col-span-5">
               <p className="text-base leading-[1.6] text-ink-soft md:text-lg">
-                Practical, hands-on support for founder-led businesses. Building software-driven operations, advising on management processes, and training teams for AI adoption.
+                Practical, hands-on support for founder-led businesses. Building software-driven
+                operations, advising on management processes, and training teams for AI adoption.
               </p>
             </Reveal>
           </div>
@@ -419,16 +533,18 @@ function HomePage() {
                     src={image}
                     alt={title}
                     loading="lazy"
-                    className={`absolute inset-0 h-full w-full object-cover transition-all duration-1500 ease-out ${isHovered ? "scale-100" : "scale-105"
-                      }`}
+                    className={`absolute inset-0 h-full w-full object-cover transition-all duration-1500 ease-out ${
+                      isHovered ? "scale-100" : "scale-105"
+                    }`}
                   />
 
                   {/* Gradient Overlay */}
                   <div
-                    className={`absolute inset-0 transition-opacity duration-1500 ${isHovered
-                      ? "bg-gradient-to-t from-black/95 via-black/55 to-black/15"
-                      : "bg-gradient-to-t from-black/95 via-black/75 to-black/40"
-                      }`}
+                    className={`absolute inset-0 transition-opacity duration-1500 ${
+                      isHovered
+                        ? "bg-gradient-to-t from-black/95 via-black/55 to-black/15"
+                        : "bg-gradient-to-t from-black/95 via-black/75 to-black/40"
+                    }`}
                   />
 
                   {/* Service Number Badge */}
@@ -438,12 +554,20 @@ function HomePage() {
 
                   {/* Card Content */}
                   <div className="relative p-6 md:p-8 w-full">
-                    <h3 className={`font-display leading-tight tracking-tight text-white transition-all duration-1000 ${isHovered ? "text-2xl md:text-[30px] font-extrabold" : "text-xl md:text-2xl font-bold"
-                      }`}>
+                    <h3
+                      className={`font-display leading-tight tracking-tight text-white transition-all duration-1000 ${
+                        isHovered
+                          ? "text-2xl md:text-[30px] font-extrabold"
+                          : "text-xl md:text-2xl font-bold"
+                      }`}
+                    >
                       {title}
                     </h3>
 
-                    <p className="mt-2 inline-flex w-fit items-center gap-1.5 border-l-2 pl-2.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-white/70" style={{ borderColor: "var(--accent)" }}>
+                    <p
+                      className="mt-2 inline-flex w-fit items-center gap-1.5 border-l-2 pl-2.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-white/70"
+                      style={{ borderColor: "var(--accent)" }}
+                    >
                       {eyebrow}
                     </p>
 
@@ -474,15 +598,16 @@ function HomePage() {
       >
         <div className="relative sticky top-[80px] md:top-[100px] h-[calc(100vh-80px)] md:h-[520px] flex md:items-center overflow-hidden">
           <div className="container-edit w-full h-full flex flex-col justify-center gap-20 pb-10 md:h-auto md:grid md:grid-cols-12 md:gap-12 md:items-start md:pb-0">
-
             {/* Left Column (Header) */}
             <div className="md:col-span-5 pb-4 md:pb-0">
               <p className="eyebrow eyebrow-indigo">How I Think</p>
               <h2 className="mt-4 pb-2 font-display text-[1.8rem] sm:text-2xl md:text-[2.2rem] font-extrabold leading-[1.15] tracking-[-0.03em] md:leading-[1.1] md:text-5xl text-ink">
-                Ideas that guide{" "}<br className="hidden sm:block" /><span className="font-serif italic font-medium text-gradient-brand">my work.</span>
+                Ideas that guide <br className="hidden sm:block" />
+                <span className="font-serif italic font-medium text-gradient-brand">my work.</span>
               </h2>
               <p className="mt-3 md:mt-6 text-sm md:text-lg leading-[1.5] md:leading-[1.6] text-ink-soft">
-                These core beliefs shape how I help founders automate operations, scale teams, and build self-managing companies.
+                These core beliefs shape how I help founders automate operations, scale teams, and
+                build self-managing companies.
               </p>
             </div>
 
@@ -491,10 +616,30 @@ function HomePage() {
               {/* Absolutely positioned stacking cards driven by viewport scroll */}
               <div className="relative h-[300px] md:h-[380px] w-full max-w-2xl mt-2 md:mt-[45px]">
                 {[
-                  { n: "01", icon: Workflow, title: "A business should not depend on the founder.", desc: "Founder dependency is structural, not personal. It is resolved with clear accountability, SOPs, and system design." },
-                  { n: "02", icon: Sparkles, title: "AI adoption matters more than AI awareness.", desc: "Workshops have limited value unless teams change how they work. Real training requires daily AI adoption rhythms." },
-                  { n: "03", icon: Compass, title: "Do not automate a process you do not understand.", desc: "Automation makes clean processes faster, but broken ones fail faster. Map the workflow manually before coding." },
-                  { n: "04", icon: Wrench, title: "Technology is only one part of the answer.", desc: "Clear roles and accountability matter more than new tools. Tech accelerates, but human execution is the foundation." },
+                  {
+                    n: "01",
+                    icon: Workflow,
+                    title: "A business should not depend on the founder.",
+                    desc: "Founder dependency is structural, not personal. It is resolved with clear accountability, SOPs, and system design.",
+                  },
+                  {
+                    n: "02",
+                    icon: Sparkles,
+                    title: "AI adoption matters more than AI awareness.",
+                    desc: "Workshops have limited value unless teams change how they work. Real training requires daily AI adoption rhythms.",
+                  },
+                  {
+                    n: "03",
+                    icon: Compass,
+                    title: "Do not automate a process you do not understand.",
+                    desc: "Automation makes clean processes faster, but broken ones fail faster. Map the workflow manually before coding.",
+                  },
+                  {
+                    n: "04",
+                    icon: Wrench,
+                    title: "Technology is only one part of the answer.",
+                    desc: "Clear roles and accountability matter more than new tools. Tech accelerates, but human execution is the foundation.",
+                  },
                 ].map(({ n, icon: Icon, title, desc }, idx) => {
                   return (
                     <motion.div
@@ -512,15 +657,23 @@ function HomePage() {
                     >
                       <div className="custom-theme-card group relative flex flex-col justify-between overflow-hidden rounded-[20px] backdrop-blur-md p-6 !bg-canvas !shadow-xl">
                         <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-[1100ms] ease-out group-hover:translate-x-full pointer-events-none" />
-                        <div className="pointer-events-none absolute -top-24 -right-24 h-48 w-48 rounded-full opacity-0 blur-3xl transition-opacity duration-[850ms] ease-out group-hover:opacity-50" style={{ background: "var(--accent-soft)" }} aria-hidden />
+                        <div
+                          className="pointer-events-none absolute -top-24 -right-24 h-48 w-48 rounded-full opacity-0 blur-3xl transition-opacity duration-[850ms] ease-out group-hover:opacity-50"
+                          style={{ background: "var(--accent-soft)" }}
+                          aria-hidden
+                        />
                         <div>
                           <div className="flex items-center justify-between mb-5">
-                            <span className="inline-flex items-center rounded-full px-2.5 py-0.5 font-mono text-[0.65rem] font-bold uppercase tracking-[0.15em] text-accent bg-accent-soft">Belief {n}</span>
+                            <span className="inline-flex items-center rounded-full px-2.5 py-0.5 font-mono text-[0.65rem] font-bold uppercase tracking-[0.15em] text-accent bg-accent-soft">
+                              Belief {n}
+                            </span>
                             <div className="icon-box flex h-10 w-10 items-center justify-center rounded-xl border border-rule transition-colors">
                               <Icon className="h-5 w-5" />
                             </div>
                           </div>
-                          <h3 className="font-display text-lg font-extrabold tracking-tight text-ink leading-snug">{title}</h3>
+                          <h3 className="font-display text-lg font-extrabold tracking-tight text-ink leading-snug">
+                            {title}
+                          </h3>
                           <p className="mt-3 text-[15px] leading-[1.65] text-ink-soft">{desc}</p>
                         </div>
                       </div>
@@ -529,49 +682,92 @@ function HomePage() {
                 })}
               </div>
             </div>
-
           </div>
         </div>
       </section>
 
-
       {/* WHAT I HAVE BUILT */}
-      <section id="built" className="relative overflow-hidden bg-canvas bg-premium-side-gradient pt-8 pb-16 md:py-24">
+      <section
+        id="built"
+        className="relative overflow-hidden bg-canvas bg-premium-side-gradient pt-8 pb-16 md:py-24"
+      >
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <div className="grid gap-6 md:grid-cols-12 md:items-start md:gap-12 mb-12">
             <Reveal className="md:col-span-6">
               <p className="eyebrow eyebrow-indigo">Brands and Products</p>
               <h2 className="mt-4 pb-2 font-display text-[2.2rem] font-extrabold leading-[1.1] tracking-[-0.03em] sm:text-4xl md:text-5xl text-ink">
-                I do not only advise.{" "}<br className="hidden sm:block" /><span className="font-serif italic font-medium text-gradient-brand">I build.</span>
+                I do not only advise. <br className="hidden sm:block" />
+                <span className="font-serif italic font-medium text-gradient-brand">I build.</span>
               </h2>
             </Reveal>
             <Reveal delay={100} className="md:col-span-6">
               <div className="space-y-2 text-[15px] leading-[1.5] text-ink-soft md:text-base">
-                <p>Building products has taught me lessons that cannot be learned from presentations.</p>
-                <p>You have to understand customers, make difficult choices, work with a team, manage costs and make the product useful enough for people to keep using it.</p>
+                <p>
+                  Building products has taught me lessons that cannot be learned from presentations.
+                </p>
+                <p>
+                  You have to understand customers, make difficult choices, work with a team, manage
+                  costs and make the product useful enough for people to keep using it.
+                </p>
               </div>
             </Reveal>
           </div>
 
           <div className="grid gap-6 md:grid-cols-3">
             {[
-              { n: "01 / Product", title: "BDA Technologies", eyebrow: "Business systems & automation", color: "to-cyan-500/15", desc: "BDA Technologies helps founder-led businesses improve reporting, workflows, dashboards, automation and use of AI.", link: { href: "https://bdatechnologies.com", label: "Visit BDA Technologies" } },
-              { n: "02 / Product", title: "LinkAssist", eyebrow: "AI support for LinkedIn authority", color: "to-accent-soft/30", desc: "LinkAssist helps professionals find ideas, write stronger LinkedIn content and build authority with more consistency.", link: { href: "https://linkassist.ai/", label: "Explore LinkAssist" } },
-              { n: "03 / Platform", title: "Automation School", eyebrow: "AI Training For Professionals", color: "to-amber-500/15", desc: "Practical AI training courses and customized corporate programs designed for hands-on operational adoption.", link: { href: "https://automationschool.in/", label: "Explore Automation School" } },
+              {
+                n: "01 / Product",
+                title: "BDA Technologies",
+                eyebrow: "Business systems & automation",
+                color: "to-cyan-500/15",
+                desc: "BDA Technologies helps founder-led businesses improve reporting, workflows, dashboards, automation and use of AI.",
+                link: { href: "https://bdatechnologies.com", label: "Visit BDA Technologies" },
+              },
+              {
+                n: "02 / Product",
+                title: "LinkAssist",
+                eyebrow: "AI support for LinkedIn authority",
+                color: "to-accent-soft/30",
+                desc: "LinkAssist helps professionals find ideas, write stronger LinkedIn content and build authority with more consistency.",
+                link: { href: "https://linkassist.ai/", label: "Explore LinkAssist" },
+              },
+              {
+                n: "03 / Platform",
+                title: "Automation School",
+                eyebrow: "AI Training For Professionals",
+                color: "to-amber-500/15",
+                desc: "Practical AI training courses and customized corporate programs designed for hands-on operational adoption.",
+                link: { href: "https://automationschool.in/", label: "Explore Automation School" },
+              },
             ].map(({ n, title, eyebrow, color, desc, link }, i) => (
               <Reveal key={n} delay={100}>
                 <div className="custom-theme-card group relative flex h-full flex-col justify-between overflow-hidden rounded-[20px] backdrop-blur-md p-7 md:p-8">
                   <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-[1100ms] ease-out group-hover:translate-x-full pointer-events-none" />
-                  <div className="pointer-events-none absolute -top-24 -right-24 h-48 w-48 rounded-full opacity-0 blur-3xl transition-opacity duration-[850ms] ease-out group-hover:opacity-50" style={{ background: "var(--accent-soft)" }} aria-hidden />
+                  <div
+                    className="pointer-events-none absolute -top-24 -right-24 h-48 w-48 rounded-full opacity-0 blur-3xl transition-opacity duration-[850ms] ease-out group-hover:opacity-50"
+                    style={{ background: "var(--accent-soft)" }}
+                    aria-hidden
+                  />
                   <div>
-                    <span className="font-mono text-[0.65rem] font-bold uppercase tracking-[0.15em] text-accent">{n}</span>
-                    <h3 className="mt-3 font-display text-xl font-extrabold tracking-tight text-ink md:text-2xl">{title}</h3>
-                    <p className="mt-2 inline-flex w-fit items-center gap-1.5 border-l-2 pl-2.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-accent border-accent">{eyebrow}</p>
+                    <span className="font-mono text-[0.65rem] font-bold uppercase tracking-[0.15em] text-accent">
+                      {n}
+                    </span>
+                    <h3 className="mt-3 font-display text-xl font-extrabold tracking-tight text-ink md:text-2xl">
+                      {title}
+                    </h3>
+                    <p className="mt-2 inline-flex w-fit items-center gap-1.5 border-l-2 pl-2.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-accent border-accent">
+                      {eyebrow}
+                    </p>
                     <p className="mt-4 text-[15px] leading-[1.65] text-ink-soft">{desc}</p>
                   </div>
                   <div className="mt-6 pt-4 border-t border-rule">
-                    <a href={link.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm font-semibold text-ink group-hover:text-accent transition-colors">
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-sm font-semibold text-ink group-hover:text-accent transition-colors"
+                    >
                       {link.label} <ArrowRight className="h-4 w-4" />
                     </a>
                   </div>
@@ -583,18 +779,25 @@ function HomePage() {
       </section>
 
       {/* SELECTED WORK */}
-      <section id="work" className="relative overflow-hidden bg-canvas py-16 md:py-24 home-section-alt">
+      <section
+        id="work"
+        className="relative overflow-hidden bg-canvas py-16 md:py-24 home-section-alt"
+      >
         <div className="container-edit relative">
           <div className="grid gap-6 md:grid-cols-12 md:items-end md:gap-12">
             <Reveal className="md:col-span-7">
               <p className="eyebrow eyebrow-indigo">Selected Work</p>
               <h2 className="mt-4 font-display text-[2.2rem] font-extrabold leading-[1.1] tracking-[-0.03em] sm:text-4xl md:text-5xl">
-                Work across companies, <span className="font-serif italic font-medium text-gradient-brand">teams and institutions.</span>
+                Work across companies,{" "}
+                <span className="font-serif italic font-medium text-gradient-brand">
+                  teams and institutions.
+                </span>
               </h2>
             </Reveal>
             <Reveal delay={100} className="md:col-span-5">
               <p className="text-base leading-[1.6] text-ink-soft md:text-lg">
-                I have worked with founders, corporate teams, professional bodies, educational institutions and government organisations.
+                I have worked with founders, corporate teams, professional bodies, educational
+                institutions and government organisations.
               </p>
             </Reveal>
           </div>
@@ -602,12 +805,42 @@ function HomePage() {
           {/* 3D Service Carousel */}
           <ServiceCarousel
             cards={[
-              { title: "Landmark Group, Dubai", desc: "Practical AI & automation training for retail operations teams.", image: "/training/landmark-group-dubai.jpg", href: "/services" },
-              { title: "TATA Digital", desc: "AI consulting & training program for cross-functional digital teams.", image: "/service-transformation.jpg", href: "/services" },
-              { title: "NICASA of NIRC of ICAI", desc: "AI training for finance professionals across ICAI chapters.", image: "/training/icai-nirc-new-delhi.jpg", href: "/services" },
-              { title: "Ministry of Finance, Tanzania", desc: "AI awareness & practical use program for government officials.", image: "/training/ministry-of-finance-tanzania.jpg", href: "/services" },
-              { title: "Future Engagements", desc: "New case studies and training programs are added regularly.", image: "/service-os.jpg", href: "/services" },
-              { title: "Recent Workshops", desc: "Fresh AI workshops and consulting across emerging industries.", image: "/service-ai-training.jpg", href: "/services" },
+              {
+                title: "Landmark Group, Dubai",
+                desc: "Practical AI & automation training for retail operations teams.",
+                image: "/training/landmark-group-dubai.jpg",
+                href: "/services",
+              },
+              {
+                title: "TATA Digital",
+                desc: "AI consulting & training program for cross-functional digital teams.",
+                image: "/service-transformation.jpg",
+                href: "/services",
+              },
+              {
+                title: "NICASA of NIRC of ICAI",
+                desc: "AI training for finance professionals across ICAI chapters.",
+                image: "/training/icai-nirc-new-delhi.jpg",
+                href: "/services",
+              },
+              {
+                title: "Ministry of Finance, Tanzania",
+                desc: "AI awareness & practical use program for government officials.",
+                image: "/training/ministry-of-finance-tanzania.jpg",
+                href: "/services",
+              },
+              {
+                title: "Future Engagements",
+                desc: "New case studies and training programs are added regularly.",
+                image: "/service-os.jpg",
+                href: "/services",
+              },
+              {
+                title: "Recent Workshops",
+                desc: "Fresh AI workshops and consulting across emerging industries.",
+                image: "/service-ai-training.jpg",
+                href: "/services",
+              },
             ]}
           />
 
@@ -617,8 +850,12 @@ function HomePage() {
               {heroStats.map((s, i) => (
                 <Reveal key={s.l} delay={120}>
                   <div className="custom-theme-card p-5 h-full text-center">
-                    <p className="stats-value font-display text-2xl font-extrabold tracking-tight text-gradient-brand animate-gradient md:text-3xl">{s.v}</p>
-                    <p className="stats-label mt-2 text-xs uppercase tracking-wider font-semibold text-ink-muted leading-tight">{s.l}</p>
+                    <p className="stats-value font-display text-2xl font-extrabold tracking-tight text-gradient-brand animate-gradient md:text-3xl">
+                      {s.v}
+                    </p>
+                    <p className="stats-label mt-2 text-xs uppercase tracking-wider font-semibold text-ink-muted leading-tight">
+                      {s.l}
+                    </p>
                   </div>
                 </Reveal>
               ))}
@@ -635,26 +872,39 @@ function HomePage() {
             <Reveal className="md:col-span-5">
               <p className="eyebrow eyebrow-indigo">About</p>
               <h2 className="mt-4 font-display text-4xl font-extrabold tracking-[-0.03em] md:text-5xl text-ink">
-                Meet <span className="font-serif italic font-medium text-gradient-brand">Ambesh.</span>
+                Meet{" "}
+                <span className="font-serif italic font-medium text-gradient-brand">Ambesh.</span>
               </h2>
             </Reveal>
             <Reveal delay={120} className="md:col-span-7">
               <p className="text-base text-ink leading-relaxed font-semibold">
-                I am Ambesh Tiwari, an AI Trainer, Business Systems Consultant, author and founder of BDA Technologies.
+                I am Ambesh Tiwari, an AI Trainer, Business Systems Consultant, author and founder
+                of BDA Technologies.
               </p>
               <hr className="border-rule my-3" />
               <div className="space-y-3.5 text-[15px] md:text-base leading-[1.6] text-ink-soft">
                 <p>I started my career in business development and marketing.</p>
-                <p>Over time, I realised that most business problems weren't caused by technology.</p>
-                <blockquote className="border-l-2 pl-4 font-serif text-lg md:text-xl italic leading-snug text-ink my-3" style={{ borderColor: "var(--accent)" }}>
+                <p>
+                  Over time, I realised that most business problems weren't caused by technology.
+                </p>
+                <blockquote
+                  className="border-l-2 pl-4 font-serif text-lg md:text-xl italic leading-snug text-ink my-3"
+                  style={{ borderColor: "var(--accent)" }}
+                >
                   &ldquo;They were caused by unclear systems and inconsistent execution.&rdquo;
                 </blockquote>
                 <p>This taught me how founders think, how teams work and how businesses grow.</p>
                 <p>I saw the same problem again and again.</p>
-                <p>Companies were buying more tools, but people were still working through WhatsApp, spreadsheets and repeated follow-ups.</p>
+                <p>
+                  Companies were buying more tools, but people were still working through WhatsApp,
+                  spreadsheets and repeated follow-ups.
+                </p>
                 <p>The problem was often not a lack of technology.</p>
                 <p>The problem was the gap between people, process and technology.</p>
-                <p className="text-ink font-semibold">Today, I help businesses close that gap. I help founders build businesses that are simpler to run and easier to grow.</p>
+                <p className="text-ink font-semibold">
+                  Today, I help businesses close that gap. I help founders build businesses that are
+                  simpler to run and easier to grow.
+                </p>
               </div>
               <div className="mt-8">
                 <Link
@@ -673,69 +923,102 @@ function HomePage() {
       </section>
 
       {/* BOOK */}
-      <section className="relative overflow-hidden bg-canvas py-16 md:py-24 home-section-alt">
-        <div className="container-edit relative">
-          <div className="grid gap-12 rounded-[20px] custom-theme-card-static p-8 md:grid-cols-12 md:items-center md:gap-16 md:p-14 shadow-sm">
-            <Reveal className="md:col-span-5">
-              <div className="relative mx-auto w-full max-w-[280px]">
-                <div className="aspect-2/3 overflow-hidden rounded-r-md rounded-l shadow-lift">
-                  <img
-                    src="https://acceleratewithai.in/wp-content/uploads/2023/11/Kindle-cover-1600-x-2500-px-1.jpg"
-                    alt="Accelerate with AI - book cover by Ambesh Tiwari"
-                    className="h-full w-full object-cover"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="absolute -bottom-3 -right-3 -z-10 h-full w-full rounded-r-md rounded-l bg-accent-soft" aria-hidden />
-              </div>
-            </Reveal>
-            <Reveal delay={120} className="md:col-span-7">
-              <p className="eyebrow eyebrow-indigo flex items-center gap-2"><BookOpen className="h-3.5 w-3.5" /> THE BOOK</p>
-              <h2 className="mt-4 font-display text-4xl font-extrabold tracking-[-0.03em] md:text-5xl text-ink">
-                Accelerate <span className="font-serif italic font-medium text-gradient-brand">with AI.</span>
-              </h2>
-              <p className="mt-3 font-serif text-xl italic text-ink-soft">A simple guide to using AI in business.</p>
-              <div className="mt-6 max-w-xl text-[15px] md:text-base leading-[1.65] text-ink-soft space-y-4">
-                <p><span className="italic font-medium text-ink">Accelerate with AI</span> helps founders and professionals understand what AI can do and how they can start using it in practical work.</p>
-              </div>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <a href="https://www.amazon.in/dp/B0CLKZK6JS" target="_blank" rel="noopener noreferrer" className="btn-premium group inline-flex h-12 items-center gap-2 rounded-full px-6 text-sm font-semibold">
-                  <span className="relative z-10 flex items-center gap-2">Get the Book <ArrowRight className="h-4 w-4" /></span>
-                </a>
-                <Link to="/book" className="inline-flex h-12 items-center gap-2 rounded-full border border-rule bg-canvas px-6 text-sm font-semibold text-ink hover:bg-sand transition-colors">
-                  See What Is Inside
-                </Link>
-              </div>
-            </Reveal>
-          </div>
+      <BookStickySection>
+        <p className="eyebrow eyebrow-indigo flex items-center gap-2 mb-4">
+          <BookOpen className="h-3.5 w-3.5" /> THE BOOK
+        </p>
+        <h2 className="mt-4 font-display text-4xl font-extrabold tracking-[-0.03em] md:text-5xl text-ink">
+          Accelerate{" "}
+          <span className="font-serif italic font-medium text-gradient-brand">with AI.</span>
+        </h2>
+        <p className="mt-3 font-serif text-xl italic text-ink-soft">
+          A simple guide to using AI in business.
+        </p>
+        <div className="mt-6 max-w-xl text-[15px] md:text-base leading-[1.65] text-ink-soft space-y-4">
+          <p>
+            <span className="italic font-medium text-ink">Accelerate with AI</span> helps
+            founders and professionals understand what AI can do and how they can start using
+            it in practical work.
+          </p>
+
+          {/* Key pillars bullets in book section (Desktop Only) */}
+          <ul className="hidden md:grid mt-6 grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-semibold text-ink-soft pt-3 border-t border-rule/50">
+            <li className="flex items-center gap-2">
+              <div className="h-1.5 w-1.5 rounded-full bg-accent" /> No-Code Automation
+            </li>
+            <li className="flex items-center gap-2">
+              <div className="h-1.5 w-1.5 rounded-full bg-accent" /> Practical Business Value
+            </li>
+            <li className="flex items-center gap-2">
+              <div className="h-1.5 w-1.5 rounded-full bg-accent" /> LLM Fine-Tuning Basics
+            </li>
+            <li className="flex items-center gap-2">
+              <div className="h-1.5 w-1.5 rounded-full bg-accent" /> Operations Scaling
+            </li>
+          </ul>
         </div>
-      </section>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <a
+            href="https://www.amazon.in/dp/B0CLKZK6JS"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-premium group inline-flex h-12 items-center gap-2 rounded-full px-6 text-sm font-semibold"
+          >
+            <span className="relative z-10 flex items-center gap-2">
+              Get the Book <ArrowRight className="h-4 w-4" />
+            </span>
+          </a>
+          <Link
+            to="/book"
+            className="inline-flex h-12 items-center gap-2 rounded-full border border-rule bg-canvas px-6 text-sm font-semibold text-ink hover:bg-sand transition-colors"
+          >
+            See What Is Inside
+          </Link>
+        </div>
+      </BookStickySection>
 
       {/* FINAL CTA */}
       <section className="cta-dark relative overflow-hidden">
-        <div className="pointer-events-none absolute -top-40 left-1/2 h-[40rem] w-[40rem] -translate-x-1/2 rounded-full opacity-30 blur-3xl" style={{ background: "var(--accent)" }} aria-hidden />
+        <div
+          className="pointer-events-none absolute -top-40 left-1/2 h-[40rem] w-[40rem] -translate-x-1/2 rounded-full opacity-30 blur-3xl"
+          style={{ background: "var(--accent)" }}
+          aria-hidden
+        />
         <div className="container-edit relative py-16 md:py-24">
           <Reveal>
             <h2 className="max-w-4xl font-display text-4xl font-extrabold leading-[1.1] tracking-[-0.03em] text-white sm:text-5xl md:text-7xl">
-              Ready to Build a Business <span className="font-serif italic font-medium text-gradient-brand">That Runs Better?</span>
+              Ready to Build a Business{" "}
+              <span className="font-serif italic font-medium text-gradient-brand">
+                That Runs Better?
+              </span>
             </h2>
             <p className="mt-8 max-w-2xl text-base leading-[1.65] text-white/70 md:text-xl">
-              Let&rsquo;s talk about your business, your goals, and where AI and better systems can create the biggest impact.
+              Let&rsquo;s talk about your business, your goals, and where AI and better systems can
+              create the biggest impact.
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
               <Link
                 to="/contact"
                 search={{ service: "strategy" }}
-                className="group inline-flex h-14 items-center gap-2 rounded-full bg-canvas px-8 text-base font-semibold text-ink transition-all hover:-translate-y-0.5 hover:shadow-glow"
+                className="btn-premium group inline-flex h-14 items-center gap-2 rounded-full px-8 text-base font-semibold text-white transition-all duration-300"
               >
-                Book a Strategy Call
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                <span className="relative z-10 flex items-center gap-2">
+                  Book a Strategy Call
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </span>
               </Link>
-              <a href="https://wa.me/918929465115?text=Hi%20Ambesh%2C%20I%20want%20to%20book%20a%20strategy%20call." target="_blank" rel="noopener noreferrer" className="inline-flex h-14 items-center gap-2 rounded-full border border-white/20 px-8 text-base font-semibold text-white transition-all hover:bg-white/10">
+              <a
+                href="https://wa.me/918929465115?text=Hi%20Ambesh%2C%20I%20want%20to%20book%20a%20strategy%20call."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-14 items-center gap-2 rounded-full border border-white/20 px-8 text-base font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:border-white/50 hover:bg-white/10 hover:shadow-[0_8px_30px_rgba(255,255,255,0.05)] active:scale-[0.98]"
+              >
                 WhatsApp Ambesh
               </a>
             </div>
-            <p className="mt-5 text-xs text-white/50">Responds within 24 hours. No sales script. Just a real conversation.</p>
+            <p className="mt-5 text-xs text-white/50">
+              Responds within 24 hours. No sales script. Just a real conversation.
+            </p>
           </Reveal>
         </div>
       </section>

@@ -1,5 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Quote, Mic, BookOpen, Building2, Wrench, ExternalLink, GraduationCap, Compass } from "lucide-react";
+import {
+  ArrowRight,
+  Quote,
+  Mic,
+  BookOpen,
+  Building2,
+  Wrench,
+  ExternalLink,
+  GraduationCap,
+  Compass,
+} from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { Monogram } from "@/components/Monogram";
 import { buildMeta, jsonLd, personSchema, breadcrumbSchema } from "@/lib/seo";
@@ -98,29 +108,106 @@ const roles = [
 ];
 
 const journey = [
-  { year: "Small Town", t: "Where it started", d: "Grew up in a middle-class family. Curious, restless, never quite fit the mould. Tried joining the Indian Army. Did not make it. Kept the discipline." },
-  { year: "Engineering + MBA", t: "Building the foundation", d: "BTech in Electronics and Telecommunication (BPUT, Odisha). MBA in International Marketing (Symbiosis, Pune). Brand Management from the University of London." },
-  { year: "Zen Technologies", t: "First corporate chapter", d: "Three promotions in three years. Trained defence and police teams on simulators. Discovered a talent for business development. Resigned to build something of his own." },
-  { year: "2017", t: "BDA Technologies", d: "Founded Building Digital Arena in Delhi. A growth and digital transformation agency. StartupIndia recognised. Google, Meta and Shopify partnerships." },
-  { year: "2023", t: "AI pivot", d: "Built a working tool with AI in two minutes. Realised what had just changed. Shifted entirely to AI training and product development." },
-  { year: "2023", t: "Automation School", d: "Launched an online learning platform for professionals building AI and automation skills." },
-  { year: "2024", t: "Book + Podcast", d: "Published Accelerate with AI. Launched Inspire with Ambesh. 30+ podcast episodes with founders and operators." },
-  { year: "2025", t: "Products + International", d: "Shipped LinkAssist, HireAssist, TaskAssist. Delivered training at Landmark Group (Dubai), ISB (Hyderabad), Ministry of Finance (Tanzania)." },
+  {
+    year: "Small Town",
+    t: "Where it started",
+    d: "Grew up in a middle-class family. Curious, restless, never quite fit the mould. Tried joining the Indian Army. Did not make it. Kept the discipline.",
+  },
+  {
+    year: "Engineering + MBA",
+    t: "Building the foundation",
+    d: "BTech in Electronics and Telecommunication (BPUT, Odisha). MBA in International Marketing (Symbiosis, Pune). Brand Management from the University of London.",
+  },
+  {
+    year: "Zen Technologies",
+    t: "First corporate chapter",
+    d: "Three promotions in three years. Trained defence and police teams on simulators. Discovered a talent for business development. Resigned to build something of his own.",
+  },
+  {
+    year: "2017",
+    t: "BDA Technologies",
+    d: "Founded Building Digital Arena in Delhi. A growth and digital transformation agency. StartupIndia recognised. Google, Meta and Shopify partnerships.",
+  },
+  {
+    year: "2023",
+    t: "AI pivot",
+    d: "Built a working tool with AI in two minutes. Realised what had just changed. Shifted entirely to AI training and product development.",
+  },
+  {
+    year: "2023",
+    t: "Automation School",
+    d: "Launched an online learning platform for professionals building AI and automation skills.",
+  },
+  {
+    year: "2024",
+    t: "Book + Podcast",
+    d: "Published Accelerate with AI. Launched Inspire with Ambesh. 30+ podcast episodes with founders and operators.",
+  },
+  {
+    year: "2025",
+    t: "Products + International",
+    d: "Shipped LinkAssist, HireAssist, TaskAssist. Delivered training at Landmark Group (Dubai), ISB (Hyderabad), Ministry of Finance (Tanzania).",
+  },
 ];
 
 const builds = [
-  { name: "BDA Technologies", year: "2017", desc: "AI transformation and growth agency. The home base.", link: "bdatechnologies.com", href: "https://bdatechnologies.com" },
-  { name: "Automation School", year: "2023", desc: "Online learning for professionals. Structured courses on AI and automation.", link: "automationschool.in", href: "https://automationschool.in" },
-  { name: "LinkAssist", year: "2025", desc: "AI-powered LinkedIn authority building.", link: "linkassist.ai", href: "https://linkassist.ai" },
-  { name: "HireAssist", year: "2025", desc: "AI assistant for recruitment workflows.", link: "hireassist.org", href: "https://hireassist.org" },
-  { name: "TaskAssist", year: "2025", desc: "AI productivity tool for overwhelmed professionals.", link: "Coming soon", href: "#" },
-  { name: "BDA OS", year: "2026", desc: "An AI-powered business operating system designed to streamline workflows, automate operations, and help organizations scale with intelligent processes.", link: "Coming soon", href: "https://bdatechnologies.com" },
+  {
+    name: "BDA Technologies",
+    year: "2017",
+    desc: "AI transformation and growth agency. The home base.",
+    link: "bdatechnologies.com",
+    href: "https://bdatechnologies.com",
+  },
+  {
+    name: "Automation School",
+    year: "2023",
+    desc: "Online learning for professionals. Structured courses on AI and automation.",
+    link: "automationschool.in",
+    href: "https://automationschool.in",
+  },
+  {
+    name: "LinkAssist",
+    year: "2025",
+    desc: "AI-powered LinkedIn authority building.",
+    link: "linkassist.ai",
+    href: "https://linkassist.ai",
+  },
+  {
+    name: "HireAssist",
+    year: "2025",
+    desc: "AI assistant for recruitment workflows.",
+    link: "hireassist.org",
+    href: "https://hireassist.org",
+  },
+  {
+    name: "TaskAssist",
+    year: "2025",
+    desc: "AI productivity tool for overwhelmed professionals.",
+    link: "Coming soon",
+    href: "#",
+  },
+  {
+    name: "BDA OS",
+    year: "2026",
+    desc: "An AI-powered business operating system designed to streamline workflows, automate operations, and help organizations scale with intelligent processes.",
+    link: "Coming soon",
+    href: "https://bdatechnologies.com",
+  },
 ];
 
 const placeholderTestimonials = [
-  { q: "One specific observation from a real client.", r: "VP, Financial Services (name withheld)" },
-  { q: "Another quiet, weeks-after-the-session note from a team lead.", r: "Director, Retail Group (name withheld)" },
-  { q: "A third real, permissioned quote will replace this once collected.", r: "Head of L&D, Public Sector (name withheld)" },
+  {
+    q: "One specific observation from a real client.",
+    r: "VP, Financial Services (name withheld)",
+  },
+  {
+    q: "Another quiet, weeks-after-the-session note from a team lead.",
+    r: "Director, Retail Group (name withheld)",
+  },
+  {
+    q: "A third real, permissioned quote will replace this once collected.",
+    r: "Head of L&D, Public Sector (name withheld)",
+  },
 ];
 
 const knowables = [
@@ -150,7 +237,10 @@ function AboutPage() {
             </Reveal>
             <Reveal delay={250} eager>
               <p className="mt-8 max-w-xl text-lg text-ink-soft">
-                I am Ambesh Tiwari, a practical AI adoption partner, automation strategist, author, and founder of BDA Technologies. My work combines hands-on training, custom workflow design, and process implementation to help organizations run without founder dependency.
+                I am Ambesh Tiwari, a practical AI adoption partner, automation strategist, author,
+                and founder of BDA Technologies. My work combines hands-on training, custom workflow
+                design, and process implementation to help organizations run without founder
+                dependency.
               </p>
             </Reveal>
             <Reveal delay={420} eager className="mt-10">
@@ -178,7 +268,9 @@ function AboutPage() {
             <p className="eyebrow eyebrow-indigo">A line he keeps coming back to</p>
             <Quote className="mt-8 h-12 w-12 text-violet" />
             <blockquote className="mt-6 max-w-5xl font-serif text-3xl font-medium leading-[1.2] tracking-tight text-ink md:text-5xl">
-              <span className="italic">"You don't need to be perfect in everything to achieve your dreams.</span>{" "}
+              <span className="italic">
+                "You don't need to be perfect in everything to achieve your dreams.
+              </span>{" "}
               <span className="text-gradient-brand animate-gradient italic">
                 You just have to find someone who knows what you don't."
               </span>
@@ -204,16 +296,22 @@ function AboutPage() {
             <Reveal delay={120}>
               <div className="space-y-6 text-lg leading-relaxed text-ink-soft">
                 <p>
-                  I started by helping people understand AI and automation in a practical way. Over time, one pattern became clear: most businesses do not struggle because they lack tools. They struggle because their execution depends too much on the founder.
+                  I started by helping people understand AI and automation in a practical way. Over
+                  time, one pattern became clear: most businesses do not struggle because they lack
+                  tools. They struggle because their execution depends too much on the founder.
                 </p>
                 <p>
-                  The founder knows what matters. The founder remembers the follow-ups. The founder connects the dots. The founder checks progress. The founder becomes the operating system.
+                  The founder knows what matters. The founder remembers the follow-ups. The founder
+                  connects the dots. The founder checks progress. The founder becomes the operating
+                  system.
                 </p>
                 <p>
                   That works in the beginning. But it becomes a bottleneck as the business grows.
                 </p>
                 <p>
-                  Today, my work is focused on helping founder-led businesses build AI-powered operating systems that bring visibility, accountability, workflows, SOPs, automations, and execution routines into one practical structure.
+                  Today, my work is focused on helping founder-led businesses build AI-powered
+                  operating systems that bring visibility, accountability, workflows, SOPs,
+                  automations, and execution routines into one practical structure.
                 </p>
               </div>
             </Reveal>
@@ -231,26 +329,27 @@ function AboutPage() {
               <span className="text-gradient-brand animate-gradient italic">hired for.</span>
             </h2>
             <p className="mt-6 max-w-2xl text-lg text-ink-soft">
-              Providing a complete bridge between workflow strategy, people training, and automated systems implementation.
+              Providing a complete bridge between workflow strategy, people training, and automated
+              systems implementation.
             </p>
           </Reveal>
           <div className="mt-16 grid gap-6 md:grid-cols-3">
             {hiredFor.map((h) => (
-                <Reveal key={h.title} delay={100}>
-                  <div className="custom-theme-card group h-full rounded-3xl p-8">
-                    <div className="flex items-start justify-between">
-                      <div
-                        className="icon-box flex h-12 w-12 items-center justify-center rounded-xl border border-rule transition-colors duration-300"
-                      >
-                        <h.icon className="h-5 w-5" />
-                      </div>
-                      <span className="font-mono text-xs text-ink-muted">{h.label}</span>
+              <Reveal key={h.title} delay={100}>
+                <div className="custom-theme-card group h-full rounded-3xl p-8">
+                  <div className="flex items-start justify-between">
+                    <div className="icon-box flex h-12 w-12 items-center justify-center rounded-xl border border-rule transition-colors duration-300">
+                      <h.icon className="h-5 w-5" />
                     </div>
-                    <h3 className="mt-6 text-2xl font-extrabold tracking-tight text-ink">{h.title}</h3>
-                    <p className="mt-4 text-base leading-relaxed text-ink-soft">{h.body}</p>
+                    <span className="font-mono text-xs text-ink-muted">{h.label}</span>
                   </div>
-                </Reveal>
-              ))}
+                  <h3 className="mt-6 text-2xl font-extrabold tracking-tight text-ink">
+                    {h.title}
+                  </h3>
+                  <p className="mt-4 text-base leading-relaxed text-ink-soft">{h.body}</p>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
@@ -302,28 +401,25 @@ function AboutPage() {
           </Reveal>
           <div className="mt-16 grid gap-6 md:grid-cols-3">
             {roles.map((r) => (
-                <Reveal key={r.title} delay={100}>
-                  <div className="custom-theme-card group h-full rounded-3xl p-8">
-                    <div className="flex items-start justify-between">
-                      <div className="flex items-center gap-4">
-                        <div
-                          className="icon-box flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-rule transition-colors duration-300"
-                        >
-                          <r.icon className="h-5 w-5" />
-                        </div>
-                        <div>
-                          <h3 className="text-2xl font-extrabold tracking-tight text-ink leading-tight">
-                            {r.title}
-                          </h3>
-                        </div>
+              <Reveal key={r.title} delay={100}>
+                <div className="custom-theme-card group h-full rounded-3xl p-8">
+                  <div className="flex items-start justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className="icon-box flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-rule transition-colors duration-300">
+                        <r.icon className="h-5 w-5" />
                       </div>
-                      <span className="font-mono text-xs text-ink-muted">{r.label}</span>
+                      <div>
+                        <h3 className="text-2xl font-extrabold tracking-tight text-ink leading-tight">
+                          {r.title}
+                        </h3>
+                      </div>
                     </div>
-                    <p className="mt-5 text-base leading-relaxed text-ink-soft">{r.body}</p>
+                    <span className="font-mono text-xs text-ink-muted">{r.label}</span>
                   </div>
-                </Reveal>
-              )
-            )}
+                  <p className="mt-5 text-base leading-relaxed text-ink-soft">{r.body}</p>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
@@ -370,28 +466,27 @@ function AboutPage() {
           </Reveal>
           <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {builds.map((b) => (
-                <Reveal key={b.name} delay={80}>
-                  <a
-                    href={b.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="custom-theme-card group relative block h-full overflow-hidden rounded-3xl p-8"
-                  >
-                    <div className="flex items-start justify-between">
-                      <div>
-                        <h3 className="text-2xl font-extrabold tracking-tight text-ink">{b.name}</h3>
-                      </div>
-                      <span className="font-mono text-xs text-ink-muted">{b.year}</span>
+              <Reveal key={b.name} delay={80}>
+                <a
+                  href={b.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="custom-theme-card group relative block h-full overflow-hidden rounded-3xl p-8"
+                >
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <h3 className="text-2xl font-extrabold tracking-tight text-ink">{b.name}</h3>
                     </div>
-                    <p className="mt-5 text-sm leading-relaxed text-ink-soft">{b.desc}</p>
-                    <div className="mt-6 flex items-center justify-between">
-                      <p className="font-mono text-xs text-accent">{b.link}</p>
-                      <ExternalLink className="h-4 w-4 text-ink-muted transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
-                    </div>
-                  </a>
-                </Reveal>
-              )
-            )}
+                    <span className="font-mono text-xs text-ink-muted">{b.year}</span>
+                  </div>
+                  <p className="mt-5 text-sm leading-relaxed text-ink-soft">{b.desc}</p>
+                  <div className="mt-6 flex items-center justify-between">
+                    <p className="font-mono text-xs text-accent">{b.link}</p>
+                    <ExternalLink className="h-4 w-4 text-ink-muted transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
+                  </div>
+                </a>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
@@ -416,9 +511,7 @@ function AboutPage() {
               <Reveal key={i} delay={100}>
                 <div className="custom-theme-card-static h-full rounded-3xl p-8">
                   <Mic className="h-5 w-5 text-ink-muted" />
-                  <p className="mt-6 font-serif text-lg italic leading-snug text-ink">
-                    "{t.q}"
-                  </p>
+                  <p className="mt-6 font-serif text-lg italic leading-snug text-ink">"{t.q}"</p>
                   <div className="mt-8 border-t border-rule pt-5">
                     <p className="text-xs text-ink-muted">{t.r}</p>
                   </div>

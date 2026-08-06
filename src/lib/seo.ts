@@ -138,7 +138,6 @@ export const organizationSchema = {
   ],
 };
 
-
 export function breadcrumbSchema(items: { name: string; path: string }[]) {
   return {
     "@context": "https://schema.org",

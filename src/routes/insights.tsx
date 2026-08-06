@@ -44,7 +44,8 @@ interface Article {
 const articles: Article[] = [
   {
     title: "Why Your Business is Stuck: The Founder Dependency Trap",
-    excerpt: "If every decision, client issue, and operational query flows through you, you haven't built a company - you've built a high-paying job. Here is how to step out of the loop.",
+    excerpt:
+      "If every decision, client issue, and operational query flows through you, you haven't built a company - you've built a high-paying job. Here is how to step out of the loop.",
     date: "July 12, 2026",
     readTime: "6 min read",
     category: "Systems",
@@ -52,7 +53,8 @@ const articles: Article[] = [
   },
   {
     title: "Pragmatic AI: When to Use LLMs (And When to Avoid Them)",
-    excerpt: "Most corporate AI implementations fail because leaders attempt to automate complex reasoning before stabilizing basic workflows. Let's look at the real opportunity.",
+    excerpt:
+      "Most corporate AI implementations fail because leaders attempt to automate complex reasoning before stabilizing basic workflows. Let's look at the real opportunity.",
     date: "June 28, 2026",
     readTime: "8 min read",
     category: "AI & Tech",
@@ -60,7 +62,8 @@ const articles: Article[] = [
   },
   {
     title: "The 90-Day Strategy Sprint: Aligning Team Workflows",
-    excerpt: "How to translate long-term goals into clear, department-level weekly actions that teams can execute autonomously without constant leadership check-ins.",
+    excerpt:
+      "How to translate long-term goals into clear, department-level weekly actions that teams can execute autonomously without constant leadership check-ins.",
     date: "May 15, 2026",
     readTime: "5 min read",
     category: "Strategy",
@@ -68,7 +71,8 @@ const articles: Article[] = [
   },
   {
     title: "SOPs That Sell: Writing Workflows Your Team Will Actually Use",
-    excerpt: "SOPs languish in shared drives because they are written like compliance manuals. Here is a framework for creating action-oriented guides that drive consistency.",
+    excerpt:
+      "SOPs languish in shared drives because they are written like compliance manuals. Here is a framework for creating action-oriented guides that drive consistency.",
     date: "April 02, 2026",
     readTime: "7 min read",
     category: "Systems",
@@ -81,8 +85,7 @@ function InsightsPage() {
   const [searchQuery, setSearchQuery] = useState("");
 
   const filteredArticles = articles.filter((article) => {
-    const matchesCategory =
-      selectedCategory === "All" || article.category === selectedCategory;
+    const matchesCategory = selectedCategory === "All" || article.category === selectedCategory;
     const matchesSearch =
       article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       article.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
@@ -103,7 +106,8 @@ function InsightsPage() {
               </span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-[1.6] text-ink-soft">
-              Essays, frameworks, and guides on how to simplify operations, reduce founder dependence, and install automated leverage.
+              Essays, frameworks, and guides on how to simplify operations, reduce founder
+              dependence, and install automated leverage.
             </p>
           </Reveal>
 
@@ -172,7 +176,8 @@ function InsightsPage() {
 
                     <div className="mt-8 border-t border-rule pt-5 flex items-center justify-between">
                       <span className="inline-flex items-center gap-1 text-sm font-semibold text-ink group-hover:text-accent transition-colors">
-                        Read essay <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        Read essay{" "}
+                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                       </span>
                     </div>
                   </article>
@@ -181,7 +186,9 @@ function InsightsPage() {
             ) : (
               <Reveal>
                 <div className="col-span-full rounded-2xl border border-dashed border-rule custom-theme-card-static py-16 text-center">
-                  <p className="text-sm text-ink-muted">No articles found matching your criteria.</p>
+                  <p className="text-sm text-ink-muted">
+                    No articles found matching your criteria.
+                  </p>
                 </div>
               </Reveal>
             )}
@@ -198,9 +205,13 @@ function InsightsPage() {
               Get systems advice directly in your inbox.
             </h2>
             <p className="mt-4 text-base text-ink-soft">
-              Every fortnight, I share practical SOP templates, automation ideas, and AI prompts that founders are using to scale operations and reclaim their time.
+              Every fortnight, I share practical SOP templates, automation ideas, and AI prompts
+              that founders are using to scale operations and reclaim their time.
             </p>
-            <form onSubmit={(e) => e.preventDefault()} className="mt-8 flex flex-col gap-2 sm:flex-row sm:justify-center">
+            <form
+              onSubmit={(e) => e.preventDefault()}
+              className="mt-8 flex flex-col gap-2 sm:flex-row sm:justify-center"
+            >
               <input
                 type="email"
                 required
@@ -214,9 +225,7 @@ function InsightsPage() {
                 Join Private Letter
               </button>
             </form>
-            <p className="mt-3 text-xs text-ink-muted">
-              Zero spam. Unsubscribe in a single click.
-            </p>
+            <p className="mt-3 text-xs text-ink-muted">Zero spam. Unsubscribe in a single click.</p>
           </Reveal>
         </div>
       </section>

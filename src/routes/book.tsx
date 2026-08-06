@@ -133,12 +133,16 @@ const pressLogos = [
 function BookCover() {
   return (
     <div className="group relative mx-auto w-full max-w-sm">
-      <div className="absolute -inset-6 -z-10 rounded-3xl opacity-60 blur-3xl" style={{ background: "var(--accent-soft)" }} aria-hidden />
+      <div
+        className="absolute -inset-6 -z-10 rounded-3xl opacity-60 blur-3xl"
+        style={{ background: "var(--accent-soft)" }}
+        aria-hidden
+      />
       <div className="relative aspect-2/3 w-full overflow-hidden rounded-2xl border border-rule shadow-lift transition-transform duration-500 group-hover:-translate-y-1">
         <img
-          src="https://acceleratewithai.in/wp-content/uploads/2023/11/Kindle-cover-1600-x-2500-px-1.jpg"
+          src="/kindle-cover.jpg"
           alt="Accelerate with AI - book cover by Ambesh Tiwari"
-          className="h-full w-full object-cover"
+          className="h-full w-full object-fill"
           loading="eager"
         />
       </div>
@@ -170,7 +174,7 @@ function BookPage() {
   }
 
   return (
-    <div className="premium-canvas book-page">
+    <div className="book-page">
       {/* HERO */}
       <section className="premium-canvas bg-premium-side-gradient relative isolate overflow-hidden">
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
@@ -181,7 +185,7 @@ function BookPage() {
             </Reveal>
             <Reveal delay={100}>
               <h1 className="mt-6 font-display text-5xl font-extrabold leading-[0.95] tracking-[-0.03em] text-ink md:text-7xl lg:text-[5.5rem]">
-                Accelerate <br/>
+                Accelerate <br />
                 <span className="text-gradient-brand">With AI.</span>
               </h1>
             </Reveal>
@@ -192,12 +196,15 @@ function BookPage() {
             </Reveal>
             <Reveal delay={300}>
               <p className="mt-8 max-w-xl text-lg leading-relaxed text-ink-soft md:text-xl">
-                A must-read for those who not only want to understand AI but also apply it to scale their
-                business.
+                A must-read for those who not only want to understand AI but also apply it to scale
+                their business.
               </p>
             </Reveal>
             <Reveal delay={400} className="mt-8 flex flex-wrap items-center gap-3">
-              <span className="inline-flex items-center gap-2 rounded-full border border-rule px-4 py-1.5 text-xs font-semibold uppercase tracking-wider" style={{ color: "var(--accent)" }}>
+              <span
+                className="inline-flex items-center gap-2 rounded-full border border-rule px-4 py-1.5 text-xs font-semibold uppercase tracking-wider"
+                style={{ color: "var(--accent)" }}
+              >
                 <Award className="h-3.5 w-3.5" /> Amazon Bestseller
               </span>
               <span className="text-sm text-ink-muted">Kindle + Physical · English · 2023</span>
@@ -233,7 +240,9 @@ function BookPage() {
       <section className="relative bg-canvas py-6 featured-bar">
         <div className="container-edit">
           <Reveal eager>
-            <p className="text-center text-xs uppercase tracking-widest text-ink-muted">Featured In</p>
+            <p className="text-center text-xs uppercase tracking-widest text-ink-muted">
+              Featured In
+            </p>
           </Reveal>
           <div className="mt-4">
             <Marquee
@@ -261,7 +270,8 @@ function BookPage() {
           <Reveal>
             <p className="eyebrow">Who it is for</p>
             <h2 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-6xl">
-              Written for people who <span className="text-gradient-brand animate-gradient">do real work.</span>
+              Written for people who{" "}
+              <span className="text-gradient-brand animate-gradient">do real work.</span>
             </h2>
           </Reveal>
           <div className="mt-16 grid gap-6 md:grid-cols-3">
@@ -313,7 +323,8 @@ function BookPage() {
           <Reveal>
             <p className="eyebrow">What experts say</p>
             <h2 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-6xl">
-              The people who <span className="text-gradient-brand animate-gradient">read it first.</span>
+              The people who{" "}
+              <span className="text-gradient-brand animate-gradient">read it first.</span>
             </h2>
           </Reveal>
 
@@ -360,26 +371,27 @@ function BookPage() {
       <section className="relative bg-canvas py-16">
         <div className="container-edit relative">
           <div className="grid gap-12 md:grid-cols-12 md:gap-20">
-          <Reveal className="md:col-span-4">
-            <p className="eyebrow">About the author</p>
-          </Reveal>
-          <Reveal delay={150} className="md:col-span-8">
-            <p className="text-2xl font-medium leading-relaxed tracking-tight text-ink md:text-3xl">
-              Ambesh Tiwari is the founder of BDA Technologies, host of the{" "}
-              <em className="font-serif italic">Inspire with Ambesh</em> podcast, and an AI trainer who has
-              worked with{" "}
-              <span className="text-gradient-brand animate-gradient">5,000+ professionals</span> across 50+
-              organisations in India, UAE and Africa. He blends an engineering background with an MBA in
-              International Marketing, a decade of business building, and a practical, no-hype approach to
-              AI that comes from using it in his own work every day.
-            </p>
-            <Link
-              to="/about"
-              className="mt-8 inline-flex items-center gap-2 text-base font-semibold text-violet hover:text-pink"
-            >
-              Read the full story <ArrowRight className="h-4 w-4" />
-            </Link>
-          </Reveal>
+            <Reveal className="md:col-span-4">
+              <p className="eyebrow">About the author</p>
+            </Reveal>
+            <Reveal delay={150} className="md:col-span-8">
+              <p className="text-2xl font-medium leading-relaxed tracking-tight text-ink md:text-3xl">
+                Ambesh Tiwari is the founder of BDA Technologies, host of the{" "}
+                <em className="font-serif italic">Inspire with Ambesh</em> podcast, and an AI
+                trainer who has worked with{" "}
+                <span className="text-gradient-brand animate-gradient">5,000+ professionals</span>{" "}
+                across 50+ organisations in India, UAE and Africa. He blends an engineering
+                background with an MBA in International Marketing, a decade of business building,
+                and a practical, no-hype approach to AI that comes from using it in his own work
+                every day.
+              </p>
+              <Link
+                to="/about"
+                className="mt-8 inline-flex items-center gap-2 text-base font-semibold text-violet hover:text-pink"
+              >
+                Read the full story <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -390,42 +402,45 @@ function BookPage() {
         <div className="container-edit relative">
           <Reveal>
             <div className="cta-dark overflow-hidden rounded-3xl p-12 md:p-16">
-            <div className="grid gap-10 md:grid-cols-2 md:items-center">
-              <div>
-                <p className="font-mono text-xs uppercase tracking-[0.25em] text-white/50">Free</p>
-                <h3 className="mt-4 text-4xl font-extrabold leading-tight tracking-tighter text-white md:text-5xl">
-                  Get <span className="text-gradient-brand animate-gradient">Chapter 1</span> on us.
-                </h3>
-                <p className="mt-4 text-white/70">
-                  Drop your email. We'll send the first chapter as a PDF - and an invite to the next AI
-                  training cohort.
-                </p>
-                <Link
-                  to="/training"
-                  className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white/80 hover:text-white"
-                >
-                  <BookOpen className="h-4 w-4" /> Or explore AI Knowledge programs
-                </Link>
+              <div className="grid gap-10 md:grid-cols-2 md:items-center">
+                <div>
+                  <p className="font-mono text-xs uppercase tracking-[0.25em] text-white/50">
+                    Free
+                  </p>
+                  <h3 className="mt-4 text-4xl font-extrabold leading-tight tracking-tighter text-white md:text-5xl">
+                    Get <span className="text-gradient-brand animate-gradient">Chapter 1</span> on
+                    us.
+                  </h3>
+                  <p className="mt-4 text-white/70">
+                    Drop your email. We'll send the first chapter as a PDF - and an invite to the
+                    next AI training cohort.
+                  </p>
+                  <Link
+                    to="/training"
+                    className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white/80 hover:text-white"
+                  >
+                    <BookOpen className="h-4 w-4" /> Or explore AI Knowledge programs
+                  </Link>
+                </div>
+                <form onSubmit={onChapterSubmit} className="flex flex-col gap-3 sm:flex-row">
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    placeholder="you@company.com"
+                    className="h-14 flex-1 rounded-full border border-white/15 bg-white/5 px-6 text-white placeholder:text-white/40 focus:border-white/40 focus:outline-none"
+                  />
+                  <button
+                    type="submit"
+                    className="btn-premium inline-flex h-14 items-center justify-center gap-2 rounded-full px-7 text-base font-semibold"
+                  >
+                    <span className="relative z-10 flex items-center gap-2">
+                      <Mail className="h-4 w-4" /> Send it
+                    </span>
+                  </button>
+                </form>
               </div>
-              <form onSubmit={onChapterSubmit} className="flex flex-col gap-3 sm:flex-row">
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  placeholder="you@company.com"
-                  className="h-14 flex-1 rounded-full border border-white/15 bg-white/5 px-6 text-white placeholder:text-white/40 focus:border-white/40 focus:outline-none"
-                />
-                <button
-                  type="submit"
-                  className="btn-premium inline-flex h-14 items-center justify-center gap-2 rounded-full px-7 text-base font-semibold"
-                >
-                  <span className="relative z-10 flex items-center gap-2">
-                    <Mail className="h-4 w-4" /> Send it
-                  </span>
-                </button>
-              </form>
             </div>
-          </div>
           </Reveal>
         </div>
       </section>

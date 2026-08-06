@@ -31,8 +31,8 @@ export function GradientButton({
     variant === "solid"
       ? "bg-gradient-brand text-white shadow-glow hover:shadow-glow-pink animate-gradient"
       : variant === "outline"
-      ? "border border-ink/15 bg-canvas text-ink hover:border-ink/40 hover:bg-ink hover:text-canvas"
-      : "text-ink hover:text-violet";
+        ? "border border-ink/15 bg-canvas text-ink hover:border-ink/40 hover:bg-ink hover:text-canvas"
+        : "text-ink hover:text-violet";
 
   const cls = `${base} ${sizes[size]} ${variantClasses} ${className}`;
 

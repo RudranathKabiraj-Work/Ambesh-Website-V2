@@ -40,6 +40,7 @@ export default defineConfig({
     port: 3000,
     // Pre-transform the hot-path files before the browser first requests them,
     // eliminating the waterfall delay on the first page load in dev.
+    /*
     warmup: {
       clientFiles: [
         "./src/routes/__root.tsx",
@@ -64,6 +65,7 @@ export default defineConfig({
         "./src/styles.css",
       ],
     },
+    */
   },
   plugins: [
     tailwindcss(),

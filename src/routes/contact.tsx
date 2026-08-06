@@ -1,17 +1,38 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useEffect, useState, type FormEvent } from "react";
-import { ArrowRight, Calendar, Clock, ShieldCheck, Sparkles, Plus, Minus, Mail, MessageCircle, CheckCircle2, X } from "lucide-react";
+import {
+  ArrowRight,
+  Calendar,
+  Clock,
+  ShieldCheck,
+  Sparkles,
+  Plus,
+  Minus,
+  Mail,
+  MessageCircle,
+  CheckCircle2,
+  X,
+} from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { buildMeta, jsonLd, breadcrumbSchema, faqSchema, SITE_URL } from "@/lib/seo";
 import { whatsappUrl, WA_MESSAGES } from "@/lib/wa";
 import { submitLeadToGHL } from "@/lib/ghl";
 
 const faqs = [
-  { q: "What happens after submitting the form?", a: "You will get a reply within 24 hours, usually with 2 to 3 calendar slots for a 30-minute discovery call." },
-  { q: "Is the discovery call really free?", a: "Yes. The call is free. It is designed to understand your team, not to force a sale." },
+  {
+    q: "What happens after submitting the form?",
+    a: "You will get a reply within 24 hours, usually with 2 to 3 calendar slots for a 30-minute discovery call.",
+  },
+  {
+    q: "Is the discovery call really free?",
+    a: "Yes. The call is free. It is designed to understand your team, not to force a sale.",
+  },
   { q: "Do you sign NDAs before the call?", a: "Yes, if your team requires it." },
-  { q: "Can we get a custom proposal?", a: "Yes. After the discovery call, a custom proposal can usually be shared within 72 hours." },
+  {
+    q: "Can we get a custom proposal?",
+    a: "Yes. After the discovery call, a custom proposal can usually be shared within 72 hours.",
+  },
 ];
 
 export const Route = createFileRoute("/contact")({
@@ -67,7 +88,7 @@ const stats = [
 
 type ServiceKey = "diagnostic" | "training" | "strategy" | "automation";
 const SERVICE_LABELS: Record<ServiceKey, string> = {
-  "diagnostic": "Business Systems Diagnostic",
+  diagnostic: "Business Systems Diagnostic",
   training: "AI Training",
   strategy: "Business OS Strategy",
   automation: "AI Implementation",
@@ -103,7 +124,8 @@ function ContactPage() {
     }
   }, []);
 
-  const serviceLabel = (service as ServiceKey) in SERVICE_LABELS ? SERVICE_LABELS[service as ServiceKey] : "";
+  const serviceLabel =
+    (service as ServiceKey) in SERVICE_LABELS ? SERVICE_LABELS[service as ServiceKey] : "";
   const isPodcast = type === "podcast";
 
   const waMessage = isPodcast
@@ -117,7 +139,6 @@ function ContactPage() {
           : service === "automation"
             ? WA_MESSAGES.automation
             : WA_MESSAGES.contact;
-
 
   const submitLeadFn = useServerFn(submitLeadToGHL);
 
@@ -159,26 +180,21 @@ function ContactPage() {
     setSubmitting(false);
   }
 
-  const heroHeading = isPodcast
-    ? (
-      <>
-        Pitch a conversation{" "}
-        <span className="text-gradient-brand animate-gradient">for the podcast.</span>
-      </>
-    )
-    : service === "diagnostic"
-      ? (
-        <>
-          Let's diagnose{" "}
-          <span className="text-gradient-brand animate-gradient">your business.</span>
-        </>
-      )
-      : (
-        <>
-          Let's build the system{" "}
-          <span className="text-gradient-brand animate-gradient">your business needs.</span>
-        </>
-      );
+  const heroHeading = isPodcast ? (
+    <>
+      Pitch a conversation{" "}
+      <span className="text-gradient-brand animate-gradient">for the podcast.</span>
+    </>
+  ) : service === "diagnostic" ? (
+    <>
+      Let's diagnose <span className="text-gradient-brand animate-gradient">your business.</span>
+    </>
+  ) : (
+    <>
+      Let's build the system{" "}
+      <span className="text-gradient-brand animate-gradient">your business needs.</span>
+    </>
+  );
   const heroSub = isPodcast
     ? "Tell us about you, the story, and why now. If it is a fit, we will set up a recording."
     : "Free 30-minute Business Systems Diagnostic. No pitch deck. A practical diagnosis of where the business is stuck and what the next 90 days should focus on.";
@@ -209,9 +225,15 @@ function ContactPage() {
           </Reveal>
           <Reveal delay={350}>
             <div className="mt-10 flex flex-wrap items-center gap-6 text-sm text-ink-muted">
-              <span className="inline-flex items-center gap-2"><Clock className="h-4 w-4 text-accent" /> 24-hour response</span>
-              <span className="inline-flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-accent" /> NDA on request</span>
-              <span className="inline-flex items-center gap-2"><Calendar className="h-4 w-4 text-accent" /> Custom proposal in 72 hours</span>
+              <span className="inline-flex items-center gap-2">
+                <Clock className="h-4 w-4 text-accent" /> 24-hour response
+              </span>
+              <span className="inline-flex items-center gap-2">
+                <ShieldCheck className="h-4 w-4 text-accent" /> NDA on request
+              </span>
+              <span className="inline-flex items-center gap-2">
+                <Calendar className="h-4 w-4 text-accent" /> Custom proposal in 72 hours
+              </span>
             </div>
           </Reveal>
         </div>
@@ -235,7 +257,9 @@ function ContactPage() {
                       {isPodcast ? "Pitch your episode" : "Tell us about your team"}
                     </h2>
                     <p className="text-sm text-ink-muted">
-                      {isPodcast ? "What should we talk about?" : "The more honest, the more useful the call."}
+                      {isPodcast
+                        ? "What should we talk about?"
+                        : "The more honest, the more useful the call."}
                     </p>
                   </div>
                 </div>
@@ -245,15 +269,29 @@ function ContactPage() {
                   <Field label="Email" name="email" type="email" required />
                   <Field label="Company" name="company" required />
                   <Field label="Designation" name="designation" required />
-                  <SelectField label="Team size" name="teamSize" options={["1 to 10", "10 to 50", "50 to 200", "200 to 1,000", "1,000+"]} />
+                  <SelectField
+                    label="Team size"
+                    name="teamSize"
+                    options={["1 to 10", "10 to 50", "50 to 200", "200 to 1,000", "1,000+"]}
+                  />
                   <SelectField
                     label="Preferred format"
                     name="format"
                     value={format}
                     onChange={setFormat}
-                    options={["Keynote", "Workshop (half-day to multi-day)", "Strategy sprint", "Implementation build", "Not sure yet"]}
+                    options={[
+                      "Keynote",
+                      "Workshop (half-day to multi-day)",
+                      "Strategy sprint",
+                      "Implementation build",
+                      "Not sure yet",
+                    ]}
                   />
-                  <SelectField label="Timeline" name="timeline" options={["This month", "Next 60 days", "Next quarter", "Exploring"]} />
+                  <SelectField
+                    label="Timeline"
+                    name="timeline"
+                    options={["This month", "Next 60 days", "Next quarter", "Exploring"]}
+                  />
                 </div>
 
                 <div className="mt-6">
@@ -266,9 +304,10 @@ function ContactPage() {
                     name="challenge"
                     rows={5}
                     required
-                    placeholder={isPodcast
-                      ? "Please share a brief summary of what you would like to talk about and any background context."
-                      : "Reporting, follow-ups, research, documentation, content, internal coordination, decision-making, or something else."
+                    placeholder={
+                      isPodcast
+                        ? "Please share a brief summary of what you would like to talk about and any background context."
+                        : "Reporting, follow-ups, research, documentation, content, internal coordination, decision-making, or something else."
                     }
                     className="w-full rounded-xl border border-rule bg-canvas px-4 py-3 text-base transition-all focus:border-accent focus:outline-none focus:ring-4 focus:ring-accent/15"
                   />
@@ -295,12 +334,19 @@ function ContactPage() {
                   <div className="absolute inset-0 opacity-30 bg-gradient-brand" aria-hidden />
                   <div className="relative">
                     <Sparkles className="h-6 w-6 text-canvas/90" />
-                    <h3 className="mt-4 text-2xl font-extrabold tracking-tight">Why teams pick Ambesh</h3>
+                    <h3 className="mt-4 text-2xl font-extrabold tracking-tight">
+                      Why teams pick Ambesh
+                    </h3>
                     <ul className="mt-6 space-y-4">
                       {stats.map((x) => (
-                        <li key={x.l} className="flex items-baseline justify-between border-b border-canvas/10 pb-3 last:border-0">
+                        <li
+                          key={x.l}
+                          className="flex items-baseline justify-between border-b border-canvas/10 pb-3 last:border-0"
+                        >
                           <span className="text-sm text-canvas/70">{x.l}</span>
-                          <span className="text-2xl font-extrabold tracking-tighter text-canvas">{x.v}</span>
+                          <span className="text-2xl font-extrabold tracking-tighter text-canvas">
+                            {x.v}
+                          </span>
                         </li>
                       ))}
                     </ul>
@@ -313,15 +359,23 @@ function ContactPage() {
                   <ul className="mt-5 space-y-4 text-sm">
                     <li className="flex items-start gap-3">
                       <Clock className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                      <span><span className="font-semibold">24-hour response</span>, including weekends.</span>
+                      <span>
+                        <span className="font-semibold">24-hour response</span>, including weekends.
+                      </span>
                     </li>
                     <li className="flex items-start gap-3">
                       <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                      <span><span className="font-semibold">NDA available</span> on request, before the first call.</span>
+                      <span>
+                        <span className="font-semibold">NDA available</span> on request, before the
+                        first call.
+                      </span>
                     </li>
                     <li className="flex items-start gap-3">
                       <Calendar className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                      <span><span className="font-semibold">Custom proposal</span> in 72 hours after discovery.</span>
+                      <span>
+                        <span className="font-semibold">Custom proposal</span> in 72 hours after
+                        discovery.
+                      </span>
                     </li>
                   </ul>
                   <a
@@ -358,7 +412,10 @@ function ContactPage() {
             </h2>
             <p className="mt-5 text-base text-ink-muted">
               Still have questions? Email{" "}
-              <a href="mailto:hello@ambesh.com" className="font-semibold text-ink underline-offset-4 hover:underline">
+              <a
+                href="mailto:hello@ambesh.com"
+                className="font-semibold text-ink underline-offset-4 hover:underline"
+              >
                 hello@ambesh.com
               </a>
               .
@@ -386,7 +443,9 @@ function ContactPage() {
               ))}
             </ul>
             <div className="mt-10">
-              <Link to="/" className="text-sm text-ink-muted hover:text-ink">Back to home</Link>
+              <Link to="/" className="text-sm text-ink-muted hover:text-ink">
+                Back to home
+              </Link>
             </div>
           </div>
         </div>
@@ -413,7 +472,8 @@ function ContactPage() {
             </div>
             <h3 className="mt-5 text-2xl font-extrabold tracking-tight">Inquiry sent!</h3>
             <p className="mt-3 text-base text-ink-muted">
-              ✅ Thank you! Your inquiry has been submitted successfully. We'll get in touch with you shortly.
+              ✅ Thank you! Your inquiry has been submitted successfully. We'll get in touch with
+              you shortly.
             </p>
             <div className="mt-7 flex flex-col gap-3">
               <a
@@ -439,7 +499,17 @@ function ContactPage() {
   );
 }
 
-function Field({ label, name, required, type = "text" }: { label: string; name: string; required?: boolean; type?: string }) {
+function Field({
+  label,
+  name,
+  required,
+  type = "text",
+}: {
+  label: string;
+  name: string;
+  required?: boolean;
+  type?: string;
+}) {
   return (
     <div>
       <label className="mb-2 block text-xs font-semibold uppercase tracking-wider text-ink-muted font-mono-label">
@@ -482,7 +552,9 @@ function SelectField({
       >
         <option value="">Select...</option>
         {options.map((o) => (
-          <option key={o} value={o}>{o}</option>
+          <option key={o} value={o}>
+            {o}
+          </option>
         ))}
       </select>
     </div>

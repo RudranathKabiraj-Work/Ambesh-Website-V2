@@ -95,9 +95,24 @@ const formats = [
 ];
 
 const engagements = [
-  { name: "Landmark Group", location: "Dubai", format: "Corporate AI and automation training", tag: "Retail" },
-  { name: "ICSI", location: "Delhi", format: "AI session for CS professionals", tag: "Professional body" },
-  { name: "Ministry of Finance", location: "Dar es Salaam, Tanzania", format: "Government AI adoption program", tag: "Government" },
+  {
+    name: "Landmark Group",
+    location: "Dubai",
+    format: "Corporate AI and automation training",
+    tag: "Retail",
+  },
+  {
+    name: "ICSI",
+    location: "Delhi",
+    format: "AI session for CS professionals",
+    tag: "Professional body",
+  },
+  {
+    name: "Ministry of Finance",
+    location: "Dar es Salaam, Tanzania",
+    format: "Government AI adoption program",
+    tag: "Government",
+  },
 ];
 
 const outcomes = [
@@ -158,9 +173,8 @@ function TrainingPage() {
           </Reveal>
           <Reveal delay={150} eager>
             <p className="mt-6 max-w-2xl text-lg leading-[1.6] text-ink-soft md:text-xl">
-              Hands-on AI workshops for leadership teams, departments and
-              professionals who need to use AI inside real work, not just hear
-              about it.
+              Hands-on AI workshops for leadership teams, departments and professionals who need to
+              use AI inside real work, not just hear about it.
             </p>
           </Reveal>
           <Reveal delay={220} eager>
@@ -213,9 +227,8 @@ function TrainingPage() {
             </Reveal>
             <Reveal delay={100} className="md:col-span-5">
               <p className="text-lg text-ink-soft">
-                Every engagement is shaped to the team in the room, but all of
-                them follow the same principle: people must leave using AI, not
-                just hearing about it.
+                Every engagement is shaped to the team in the room, but all of them follow the same
+                principle: people must leave using AI, not just hearing about it.
               </p>
             </Reveal>
           </div>
@@ -229,9 +242,7 @@ function TrainingPage() {
                       style={{ background: "var(--accent-soft)" }}
                       aria-hidden
                     />
-                    <div
-                      className="icon-box flex h-12 w-12 items-center justify-center rounded-xl border border-rule"
-                    >
+                    <div className="icon-box flex h-12 w-12 items-center justify-center rounded-xl border border-rule">
                       <p.icon className="h-5 w-5" />
                     </div>
                     <h3 className="mt-7 font-display text-[1.65rem] font-extrabold tracking-[-0.025em] leading-[1.15] text-ink md:text-[1.85rem]">
@@ -242,7 +253,10 @@ function TrainingPage() {
                     <ul className="mt-6 space-y-2.5">
                       {p.bullets.map((b) => (
                         <li key={b} className="flex items-start gap-2.5 text-sm text-ink-soft">
-                          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" style={{ color: "var(--accent)" }} />
+                          <CheckCircle2
+                            className="mt-0.5 h-4 w-4 shrink-0"
+                            style={{ color: "var(--accent)" }}
+                          />
                           <span>{b}</span>
                         </li>
                       ))}
@@ -263,7 +277,9 @@ function TrainingPage() {
             <p className="eyebrow">Named engagements</p>
             <h2 className="mt-4 max-w-3xl font-display text-4xl font-extrabold tracking-[-0.03em] md:text-5xl">
               Recognisable rooms.{" "}
-              <span className="font-serif italic font-medium text-gradient-brand animate-gradient">Real teams.</span>
+              <span className="font-serif italic font-medium text-gradient-brand animate-gradient">
+                Real teams.
+              </span>
             </h2>
           </Reveal>
 
@@ -298,14 +314,19 @@ function TrainingPage() {
             <p className="eyebrow">After the training</p>
             <h2 className="mt-4 max-w-3xl font-display text-4xl font-extrabold tracking-[-0.03em] md:text-5xl">
               Your team should leave with{" "}
-              <span className="font-serif italic font-medium text-gradient-brand animate-gradient">things they can use.</span>
+              <span className="font-serif italic font-medium text-gradient-brand animate-gradient">
+                things they can use.
+              </span>
             </h2>
           </Reveal>
           <div className="mt-12 grid gap-3 md:grid-cols-2">
             {outcomes.map((o, i) => (
               <Reveal key={o} delay={60}>
                 <div className="custom-theme-card-static flex items-start gap-4 rounded-2xl p-5">
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0" style={{ color: "var(--accent)" }} />
+                  <CheckCircle2
+                    className="mt-0.5 h-5 w-5 shrink-0"
+                    style={{ color: "var(--accent)" }}
+                  />
                   <p className="text-base text-ink">{o}</p>
                 </div>
               </Reveal>
@@ -322,7 +343,9 @@ function TrainingPage() {
             <p className="eyebrow">Feedback</p>
             <h2 className="mt-4 max-w-3xl font-display text-4xl font-extrabold tracking-[-0.03em] md:text-5xl">
               The feedback teams share,{" "}
-              <span className="font-serif italic font-medium text-gradient-brand animate-gradient">session after session.</span>
+              <span className="font-serif italic font-medium text-gradient-brand animate-gradient">
+                session after session.
+              </span>
             </h2>
           </Reveal>
 
@@ -345,8 +368,8 @@ function TrainingPage() {
             <div className="mt-12 flex items-center justify-center gap-2 text-sm text-ink-muted">
               <Star className="h-4 w-4" style={{ fill: "var(--accent)", color: "var(--accent)" }} />
               <span>
-                Average NPS rating <span className="font-semibold text-ink">9.5</span> across
-                150+ sessions and engagements.
+                Average NPS rating <span className="font-semibold text-ink">9.5</span> across 150+
+                sessions and engagements.
               </span>
             </div>
           </Reveal>
@@ -360,7 +383,9 @@ function TrainingPage() {
             <p className="eyebrow">Industries served</p>
             <h2 className="mt-4 max-w-3xl font-display text-4xl font-extrabold tracking-[-0.03em] md:text-5xl">
               11 industries.{" "}
-              <span className="font-serif italic font-medium text-gradient-brand animate-gradient">One playbook.</span>
+              <span className="font-serif italic font-medium text-gradient-brand animate-gradient">
+                One playbook.
+              </span>
             </h2>
           </Reveal>
           <Reveal>
@@ -393,26 +418,30 @@ function TrainingPage() {
             </p>
             <h2 className="mt-6 max-w-4xl font-display text-5xl font-extrabold leading-[1.02] tracking-[-0.03em] text-white md:text-7xl">
               Bring practical AI training{" "}
-              <span className="font-serif italic font-medium text-gradient-brand">to your team.</span>
+              <span className="font-serif italic font-medium text-gradient-brand">
+                to your team.
+              </span>
             </h2>
             <p className="mt-8 max-w-2xl text-lg leading-[1.6] text-white/70 md:text-xl">
-              Share your team size, department and goal. We will suggest the right
-              format after a short discovery call.
+              Share your team size, department and goal. We will suggest the right format after a
+              short discovery call.
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
               <Link
                 to="/contact"
                 search={{ service: "training" }}
-                className="group inline-flex h-14 items-center gap-2 rounded-full bg-canvas px-8 text-base font-semibold text-ink transition-all hover:-translate-y-0.5"
+                className="btn-premium group inline-flex h-14 items-center gap-2 rounded-full px-8 text-base font-semibold text-white transition-all duration-300"
               >
-                Request a Training
-                <ArrowRight className="h-4 w-4" />
+                <span className="relative z-10 flex items-center gap-2">
+                  Request a Training
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </span>
               </Link>
               <a
                 href={whatsappUrl(WA_MESSAGES.training)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-14 items-center gap-2 rounded-full border border-white/20 px-8 text-base font-semibold text-white transition-all hover:bg-white/10"
+                className="inline-flex h-14 items-center gap-2 rounded-full border border-white/20 px-8 text-base font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:border-white/50 hover:bg-white/10 hover:shadow-[0_8px_30px_rgba(255,255,255,0.05)] active:scale-[0.98]"
               >
                 WhatsApp Ambesh
               </a>

@@ -45,10 +45,7 @@ export function StickyCTABar() {
         <Calendar className="h-4 w-4 shrink-0 text-ink" />
         <p className="flex-1 truncate text-xs sm:text-sm text-ink">
           <span className="font-semibold">Free 30-minute strategy call.</span>
-          <span className="hidden text-ink-muted sm:inline">
-            {" "}
-            Practical advice. No obligation.
-          </span>
+          <span className="hidden text-ink-muted sm:inline"> Practical advice. No obligation.</span>
         </p>
         <a
           href={whatsappUrl(getWaMessage())}

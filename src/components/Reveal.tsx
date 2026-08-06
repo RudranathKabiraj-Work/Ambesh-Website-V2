@@ -5,7 +5,18 @@ interface RevealProps {
   children: ReactNode;
   delay?: number;
   className?: string;
-  as?: "div" | "section" | "li" | "article" | "header" | "footer" | "h1" | "h2" | "h3" | "p" | "span";
+  as?:
+  | "div"
+  | "section"
+  | "li"
+  | "article"
+  | "header"
+  | "footer"
+  | "h1"
+  | "h2"
+  | "h3"
+  | "p"
+  | "span";
   eager?: boolean;
   style?: CSSProperties;
 }
@@ -26,13 +37,20 @@ function getGlobalObserver() {
           }
         }
       },
-      { threshold: 0.01, rootMargin: "200px 0px 200px 0px" }
+      { threshold: 0.01, rootMargin: "0px 0px -85px 0px" },
     );
   }
   return globalObserver;
 }
 
-export function Reveal({ children, delay = 0, className = "", as: Tag = "div", eager = false, style }: RevealProps) {
+export function Reveal({
+  children,
+  delay = 0,
+  className = "",
+  as: Tag = "div",
+  eager = false,
+  style,
+}: RevealProps) {
   const [visible, setVisible] = useState(eager);
   const ref = useRef<HTMLElement>(null);
 
@@ -82,9 +100,13 @@ export function Reveal({ children, delay = 0, className = "", as: Tag = "div", e
     ...(delay ? { transitionDelay: `${delay}ms` } : {}),
   };
   return (
-    <Tag ref={ref as any} className={`reveal ${visible ? "is-visible" : ""} ${className}`} style={revealStyle}>
+    <Tag
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ref={ref as any}
+      className={`reveal ${visible ? "is-visible" : ""} ${className}`}
+      style={revealStyle}
+    >
       {children}
     </Tag>
   );
 }
-

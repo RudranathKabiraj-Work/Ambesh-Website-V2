@@ -17,7 +17,7 @@ type LeadPayload = {
 };
 
 export const submitLeadToGHL = createServerFn({ method: "POST" })
-  .inputValidator((data: LeadPayload) => data)
+  .validator((data: LeadPayload) => data)
   .handler(async ({ data }) => {
     const apiKey = process.env.LEADCONNECTOR_API_KEY;
     const locationId = process.env.LEADCONNECTOR_LOCATION_ID;
@@ -44,7 +44,7 @@ export const submitLeadToGHL = createServerFn({ method: "POST" })
         lastName: lastName || "",
         email: data.email,
         companyName: data.company,
-        tags: ["ambesh.com",  data.serviceLabel].filter(Boolean),
+        tags: ["ambesh.com", data.serviceLabel].filter(Boolean),
         customFields: [
           {
             id: "9SrE2BqAumcvaZMeESO6", // Page source
@@ -97,14 +97,11 @@ export const submitLeadToGHL = createServerFn({ method: "POST" })
         .filter(Boolean)
         .join("\n");
 
-      const noteResponse = await fetch(
-        `${GHL_API_BASE}/contacts/${contactId}/notes`,
-        {
-          method: "POST",
-          headers,
-          body: JSON.stringify({ body: notesText }),
-        },
-      );
+      const noteResponse = await fetch(`${GHL_API_BASE}/contacts/${contactId}/notes`, {
+        method: "POST",
+        headers,
+        body: JSON.stringify({ body: notesText }),
+      });
 
       if (!noteResponse.ok) {
         console.error("Failed to add note to GHL contact");

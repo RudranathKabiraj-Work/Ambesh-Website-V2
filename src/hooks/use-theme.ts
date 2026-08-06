@@ -21,9 +21,7 @@ function readStoredTheme(): Theme {
 }
 
 export function useTheme() {
-  const [theme, setTheme] = useState<Theme>(() =>
-    isDarkClassSet() ? "dark" : readStoredTheme()
-  );
+  const [theme, setTheme] = useState<Theme>(() => (isDarkClassSet() ? "dark" : readStoredTheme()));
 
   useEffect(() => {
     const root = document.documentElement;
@@ -49,10 +47,7 @@ export function useTheme() {
     }
   }, [theme]);
 
-  const toggle = useCallback(
-    () => setTheme((t) => (t === "dark" ? "light" : "dark")),
-    []
-  );
+  const toggle = useCallback(() => setTheme((t) => (t === "dark" ? "light" : "dark")), []);
 
   return { theme, setTheme, toggle };
 }

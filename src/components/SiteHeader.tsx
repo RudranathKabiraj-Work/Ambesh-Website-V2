@@ -45,11 +45,7 @@ export function SiteHeader() {
         }`}
       >
         <div className="flex items-center justify-between">
-          <Link
-            to="/"
-            onClick={() => setOpen(false)}
-            className="group flex items-center gap-2.5"
-          >
+          <Link to="/" onClick={() => setOpen(false)} className="group flex items-center gap-2.5">
             <img
               src="/atlogo.jpeg"
               alt="Ambesh Tiwari logo"
@@ -68,8 +64,7 @@ export function SiteHeader() {
                 key={item.to}
                 to={item.to}
                 activeProps={{
-                  className:
-                    "bg-accent text-accent-foreground shadow-lift font-semibold",
+                  className: "bg-accent text-accent-foreground shadow-lift font-semibold",
                 }}
                 inactiveProps={{
                   className: "text-ink-soft hover:text-ink hover:bg-accent/10",
@@ -111,8 +106,7 @@ export function SiteHeader() {
                   to={item.to}
                   onClick={() => setOpen(false)}
                   activeProps={{
-                    className:
-                      "bg-accent text-accent-foreground shadow-lift font-semibold",
+                    className: "bg-accent text-accent-foreground shadow-lift font-semibold",
                   }}
                   inactiveProps={{ className: "text-ink hover:bg-accent/10" }}
                   className="rounded-lg border border-transparent px-4 py-2.5 text-[15px] font-medium transition-all"
