@@ -42,8 +42,8 @@ export function CorePillars() {
   const mid = (ITEMS.length - 1) / 2;
 
   return (
-    <section ref={sectionRef} className="relative h-[110dvh] border-t border-rule sm:h-[180dvh]">
-      <div className="sticky top-0 flex h-[100dvh] flex-col items-center justify-center overflow-hidden pb-[4dvh] sm:pb-[8dvh]">
+    <section ref={sectionRef} className="core-pillars-section relative h-[110dvh] sm:h-[180dvh] -mt-[8dvh] sm:-mt-[15dvh] -mb-[15dvh] sm:-mb-[30dvh]">
+      <div className="sticky top-0 flex h-[100dvh] flex-col items-center justify-center overflow-hidden pb-0">
         <p className="mb-6 text-center font-mono text-[0.65rem] font-bold uppercase tracking-[0.25em] text-ink-muted">
           The Core Pillars
         </p>
@@ -61,7 +61,7 @@ export function CorePillars() {
             const opacity = 1 - settle * 0.4;
             const rotate = (rand - 0.5) * settle * 10;
             const blurFilter = blur > 0 ? `blur(${blur}px)` : "none";
-            const willChange = eased < 1 ? "transform, filter" : "auto";
+            const willChange = "transform, opacity, filter";
 
             return (
               <div

@@ -634,9 +634,10 @@ export default function HomePageSections() {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-sm font-semibold text-ink group-hover:text-accent transition-colors"
+                      className="inline-flex items-center gap-1 text-sm font-semibold text-shiny transition-colors"
                     >
-                      {link.label} <ArrowRight className="h-4 w-4" />
+                      {link.label}{" "}
+                      <ArrowRight className="h-4 w-4" />
                     </a>
                   </div>
                 </div>

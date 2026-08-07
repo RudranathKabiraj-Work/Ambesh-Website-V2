@@ -28,9 +28,9 @@ export function SiteFooter() {
   ];
 
   return (
-    <footer className="bg-canvas">
+    <footer className="site-footer">
       <Reveal>
-        <div className="container-edit relative pt-8 pb-16 md:pt-10 md:pb-20">
+        <div className="container-edit relative pt-8 pb-20 md:pt-10 md:pb-20">
           {/* Top: Brand + nav columns */}
           <div className="grid gap-10 md:grid-cols-12 md:gap-10">
             {/* Brand block */}
@@ -110,7 +110,7 @@ export function SiteFooter() {
           </div>
 
           {/* Bottom legal */}
-          <div className="mt-12 flex flex-col gap-4 border-t border-rule pt-6 text-xs text-ink-muted md:flex-row md:items-center md:justify-between">
+          <div className="mt-12 md:mt-4 flex flex-col gap-4 border-t border-rule pt-6 text-xs text-ink-muted md:flex-row md:items-center md:justify-between">
             <div className="text-center md:text-left">
               <p>© {new Date().getFullYear()} Ambesh Tiwari. All rights reserved.</p>
             </div>

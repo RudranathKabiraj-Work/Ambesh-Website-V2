@@ -259,10 +259,8 @@ function HomePage() {
                   aria-hidden
                 />{" "}
                 {/* Floating circle 1: 13+ Years (Bottom-left) */}
-                <motion.div
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute top-[22%] -left-3 md:-left-12 z-20 w-[70px] h-[70px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center"
+                <div
+                  className="animate-float-1 absolute top-[22%] -left-3 md:-left-12 z-20 w-[70px] h-[70px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center"
                 >
                   <span className="font-display text-[12px] md:text-lg font-extrabold text-gradient-brand animate-gradient hero-stat-solid-white">
                     13+
@@ -270,12 +268,10 @@ function HomePage() {
                   <span className="text-[6px] md:text-[8px] uppercase tracking-wider font-extrabold text-ink leading-tight mt-1 max-w-[58px] md:max-w-[80px]">
                     Years of Experience
                   </span>
-                </motion.div>
+                </div>
                 {/* Floating circle 2: 100+ Businesses (Bottom-right) */}
-                <motion.div
-                  animate={{ y: [0, 10, 0] }}
-                  transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -bottom-8 -right-2 md:-bottom-10 md:-right-12 z-20 w-[70px] h-[70px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center"
+                <div
+                  className="animate-float-2 absolute -bottom-8 -right-2 md:-bottom-10 md:-right-12 z-20 w-[70px] h-[70px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center"
                 >
                   <span className="font-display text-[12px] md:text-lg font-extrabold text-gradient-brand animate-gradient hero-stat-solid-white">
                     100+
@@ -283,12 +279,10 @@ function HomePage() {
                   <span className="text-[6px] md:text-[8px] uppercase tracking-wider font-extrabold text-ink leading-tight mt-1 max-w-[58px] md:max-w-[80px]">
                     Businesses Scaled
                   </span>
-                </motion.div>
+                </div>
                 {/* Floating circle 3: 5,000+ Trained (Right side middle) */}
-                <motion.div
-                  animate={{ y: [0, -8, 0] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute top-[35%] -right-3 md:-right-12 z-20 w-[70px] h-[70px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center"
+                <div
+                  className="animate-float-3 absolute top-[35%] -right-3 md:-right-12 z-20 w-[70px] h-[70px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center"
                 >
                   <span className="font-display text-[12px] md:text-lg font-extrabold text-gradient-brand animate-gradient hero-stat-solid-white">
                     5,000+
@@ -296,7 +290,7 @@ function HomePage() {
                   <span className="text-[6px] md:text-[8px] uppercase tracking-wider font-extrabold text-ink leading-tight mt-1 max-w-[58px] md:max-w-[80px]">
                     Professionals Trained
                   </span>
-                </motion.div>
+                </div>
               </div>
             </div>
           </div>
@@ -533,18 +527,16 @@ function HomePage() {
                     src={image}
                     alt={title}
                     loading="lazy"
-                    className={`absolute inset-0 h-full w-full object-cover transition-all duration-1500 ease-out ${
-                      isHovered ? "scale-100" : "scale-105"
-                    }`}
+                    className={`absolute inset-0 h-full w-full object-cover transition-all duration-1500 ease-out ${isHovered ? "scale-100" : "scale-105"
+                      }`}
                   />
 
                   {/* Gradient Overlay */}
                   <div
-                    className={`absolute inset-0 transition-opacity duration-1500 ${
-                      isHovered
+                    className={`absolute inset-0 transition-opacity duration-1500 ${isHovered
                         ? "bg-gradient-to-t from-black/95 via-black/55 to-black/15"
                         : "bg-gradient-to-t from-black/95 via-black/75 to-black/40"
-                    }`}
+                      }`}
                   />
 
                   {/* Service Number Badge */}
@@ -555,11 +547,10 @@ function HomePage() {
                   {/* Card Content */}
                   <div className="relative p-6 md:p-8 w-full">
                     <h3
-                      className={`font-display leading-tight tracking-tight text-white transition-all duration-1000 ${
-                        isHovered
+                      className={`font-display leading-tight tracking-tight text-white transition-all duration-1000 ${isHovered
                           ? "text-2xl md:text-[30px] font-extrabold"
                           : "text-xl md:text-2xl font-bold"
-                      }`}
+                        }`}
                     >
                       {title}
                     </h3>
@@ -766,9 +757,10 @@ function HomePage() {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-sm font-semibold text-ink group-hover:text-accent transition-colors"
+                      className="group/link inline-flex items-center gap-1 text-sm font-semibold text-shiny transition-colors"
                     >
-                      {link.label} <ArrowRight className="h-4 w-4" />
+                      {link.label}{" "}
+                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/link:translate-x-1" />
                     </a>
                   </div>
                 </div>

@@ -166,7 +166,7 @@
   --sand: #0e4c75;
   --sand-deep: #115c8c;
   --rule: rgba(187, 224, 250, 0.14);
-  --section-alt: rgba(187, 224, 250, 0.025);
+  --section-alt: #0c1b30;
 
   /* Brand: ocean-blue primary -> sky-blue gradient, green success marks */
   --accent: #3282b7;
@@ -309,7 +309,7 @@
     color: var(--color-canvas);
   }
 
-  .dark html {
+  html.dark {
     background-color: #071123;
     --cursor-grid-color: oklch(0.8 0.01 260);
   }
@@ -327,6 +327,55 @@
   .dark ::selection {
     background-color: var(--color-accent);
     color: var(--color-accent-foreground);
+  }
+
+  /* Fix book pages styling and borders in dark mode (inside base layer to win specificity over generic heading rules) */
+  .dark .book-first-page,
+  .dark .book-cover-back {
+    background-color: #ffffff !important;
+    background-image: none !important;
+  }
+
+  .dark .book-cover-back {
+    background: linear-gradient(to left, #f5f2eb 0%, #fdfbf7 6%, #ffffff 100%) !important;
+    border-color: rgba(0, 0, 0, 0.15) !important;
+    border-right-color: #083350 !important;
+  }
+
+  .dark .book-first-page {
+    background: linear-gradient(to right, #ddd8c1 0%, #f0ede3 4%, #faf8f5 10%, #ffffff 100%) !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .dark .book-first-page :is(h4, p, span),
+  .dark .book-cover-back :is(h4, p, span) {
+    color: #071123 !important;
+  }
+
+  .dark .book-first-page .text-ink-soft,
+  .dark .book-cover-back .text-ink-soft {
+    color: rgba(7, 17, 35, 0.8) !important;
+  }
+
+  .dark .book-first-page .text-ink-muted,
+  .dark .book-cover-back .text-ink-muted {
+    color: rgba(7, 17, 35, 0.6) !important;
+  }
+
+  .dark .book-first-page .text-ink,
+  .dark .book-cover-back .text-ink {
+    color: #071123 !important;
+  }
+
+  .dark .book-back-cover {
+    border: 1px solid rgba(187, 224, 250, 0.25) !important;
+    box-shadow: 4px 6px 20px rgba(0, 0, 0, 0.6) !important;
+  }
+
+  .dark .book-cover-front {
+    box-shadow:
+      0 0 0 1px rgba(187, 224, 250, 0.28),
+      4px 4px 20px rgba(0, 0, 0, 0.5) !important;
   }
 }
 
@@ -707,6 +756,7 @@
     opacity: 1;
     transform: none;
   }
+
 
   /* Slide up (sticky bar) */
   @keyframes slideUp {
@@ -1424,22 +1474,25 @@ html.lenis body {
     opacity: 0.95;
   }
 
-  /* Graph-paper grid wallpaper on the app shell — removed, keep it clean #071123 */
+  /* === DARK MODE: CLEAN ALTERNATING SECTION BACKGROUNDS ===
+     Every section gets ONE solid colour with no gradients.
+     Odd  sections → #071123 (body base colour, no override needed)
+     Even sections → #0c1b30 (alternate navy-blue)
+     Special sections (CorePillars, CTA, footer) are set explicitly below. */
 
-  /* Alternate sections get a whisper of surface tint so the page has the
-     same subtle rhythm as omniroute's section--alt (grid still shows).
-     Skip .container-edit sections — they carry max-width/margin auto, so
-     tinting them would draw a floating box instead of a full-bleed band.
-     !important to beat the transparent override on bg-canvas/bg-sand. */
-  .dark main section:not(.container-edit):not(.featured-bar):not(.book-section-a):not(.book-section-b):nth-of-type(2n) {
-    background-color: var(--section-alt) !important;
+  /* Strip all background-image gradients from every section in dark mode */
+  .dark main section {
+    background-image: none !important;
   }
 
-  /* Homepage: grey-grid sections get a visible alternating navy tone in dark
-     mode so every section reads as alternating (light grey grid vs white). */
-  .dark main section.home-section-alt {
-    background-color: rgba(50, 130, 183, 0.07) !important;
-    background-image: none !important;
+  /* Even-numbered sections get the alternate colour */
+  .dark main section:nth-of-type(2n) {
+    background-color: #0c1b30 !important;
+  }
+
+  /* Odd-numbered sections stay on the body base (#071123) */
+  .dark main section:nth-of-type(2n+1) {
+    background-color: #071123 !important;
   }
 
   /* Book page: explicit alternating full-bleed section tones (canvas / sand)
@@ -1664,7 +1717,7 @@ html.lenis body {
   }
 
   .dark .cta-dark {
-    background: var(--gradient-brand);
+    background-color: #0c1b30 !important;
     color: #fff;
   }
 
@@ -1970,4 +2023,119 @@ html.lenis body {
     inset -2px 0 6px rgba(0, 0, 0, 0.04);
   border-radius: 2px 9px 9px 2px;
   border-left: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+@keyframes float-y-1 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes float-y-2 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+@keyframes float-y-3 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float-1 {
+  animation: float-y-1 6s ease-in-out infinite;
+}
+
+.animate-float-2 {
+  animation: float-y-2 7s ease-in-out infinite;
+}
+
+.animate-float-3 {
+  animation: float-y-3 5s ease-in-out infinite;
+}
+
+@layer utilities {
+  .site-footer {
+    background-color: var(--canvas);
+  }
+
+  /* === DARK MODE: SPECIAL SECTION EXPLICIT COLOURS ===
+     CorePillars is section #11 (odd) → #071123
+     CTA (cta-dark) is section #10 (even) → #0c1b30
+     Footer (site-footer) comes after CorePillars → matches CorePillars = #071123
+     These override the nth-of-type rule for these special layouts. */
+
+  /* CTA section (10th = even) → alternate blue */
+  .dark .cta-dark {
+    background-color: #0c1b30 !important;
+    background-image: none !important;
+    color: #fff;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* CorePillars sticky section (11th = odd) → base dark */
+  .dark .core-pillars-section {
+    background-color: #071123 !important;
+    background-image: none !important;
+  }
+
+  /* Footer follows CorePillars → alternate blue so it visually alternates */
+  .dark .site-footer {
+    background-color: #0c1b30 !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Shiny text sweep animation — outside @layer so it is always output
+   Usage: <span class="text-shiny">...</span>
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@keyframes shine-sweep {
+  0%   { background-position: 100% center; }
+  100% { background-position: -100% center; }
+}
+
+/* Light mode: black base with a bright silver/white flash sweeping left→right */
+.text-shiny {
+  background-color: #000000;
+  background-image: linear-gradient(
+    90deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.90) 50%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  background-position: 100% center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine-sweep 3s linear infinite;
+  will-change: background-position;
+}
+
+/* Dark mode: sky-blue base with a bright white flash */
+.dark .text-shiny {
+  background-color: #90caf9;
+  background-image: linear-gradient(
+    90deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.98) 50%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  background-position: 100% center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine-sweep 3s linear infinite;
+  will-change: background-position;
+}
+
+/* Guarantee the arrow SVG icon inside the shiny link inherits the same mask/gradient and doesn't get overridden by group hovers */
+.text-shiny svg {
+  stroke: currentColor;
+}
+.dark .text-shiny svg {
+  stroke: #90caf9;
 }
