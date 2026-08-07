@@ -252,18 +252,16 @@ export default function HomePageSections() {
                       src={image}
                       alt={title}
                       loading="lazy"
-                      className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out ${
-                        isHovered ? "scale-100" : "scale-105"
-                      }`}
+                      className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out ${isHovered ? "scale-100" : "scale-105"
+                        }`}
                     />
 
                     {/* Gradient Overlay */}
                     <div
-                      className={`absolute inset-0 transition-opacity duration-700 ${
-                        isHovered
+                      className={`absolute inset-0 transition-opacity duration-700 ${isHovered
                           ? "bg-gradient-to-t from-black/95 via-black/55 to-black/15"
                           : "bg-gradient-to-t from-black/95 via-black/75 to-black/40"
-                      }`}
+                        }`}
                     />
 
                     {/* Service Number Badge */}
@@ -281,11 +279,10 @@ export default function HomePageSections() {
                       </p>
 
                       <h3
-                        className={`font-display leading-tight tracking-tight text-white transition-all duration-500 ${
-                          isHovered
+                        className={`font-display leading-tight tracking-tight text-white transition-all duration-500 ${isHovered
                             ? "text-2xl md:text-[30px] font-extrabold"
                             : "text-xl md:text-2xl font-bold"
-                        }`}
+                          }`}
                       >
                         {title}
                       </h3>
@@ -296,11 +293,10 @@ export default function HomePageSections() {
 
                       {/* Bullet list sliding open */}
                       <div
-                        className={`grid transition-all duration-500 ease-in-out ${
-                          isHovered
+                        className={`grid transition-all duration-500 ease-in-out ${isHovered
                             ? "grid-rows-[1fr] opacity-100 mt-4"
                             : "grid-rows-[0fr] opacity-0 h-0 overflow-hidden"
-                        }`}
+                          }`}
                       >
                         <ul className="space-y-2">
                           {bullets.map((b) => (

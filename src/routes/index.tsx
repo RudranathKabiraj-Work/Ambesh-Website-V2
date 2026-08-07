@@ -19,6 +19,8 @@ import { Marquee } from "@/components/Marquee";
 import { ServiceCarousel } from "@/components/ServiceCarousel";
 import { BookStickySection } from "@/components/BookStickySection";
 import { buildMeta, jsonLd, breadcrumbSchema, SITE_URL } from "@/lib/seo";
+import { GridVignetteBackground } from "@/components/ui/vignette-grid-background";
+
 
 export const Route = createFileRoute("/")({
   head: () => {
@@ -163,6 +165,7 @@ function HomePage() {
     <>
       {/* HERO */}
       <section className="premium-canvas bg-premium-side-gradient relative isolate overflow-hidden">
+        <GridVignetteBackground className="hidden dark:block opacity-40" x={50} y={50} intensity={100} size={48} horizontalVignetteSize={80} verticalVignetteSize={60} />
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit pt-10 pb-20 md:pt-14 md:pb-24">
           <div className="grid items-center gap-16 lg:grid-cols-12 lg:gap-12">
@@ -327,6 +330,7 @@ function HomePage() {
 
       {/* PROBLEM */}
       <section className="relative overflow-hidden bg-canvas bg-premium-side-gradient py-20 md:py-32 lg:py-36 optimize-render">
+        <GridVignetteBackground className="hidden dark:block opacity-35" x={50} y={50} intensity={100} size={48} horizontalVignetteSize={80} verticalVignetteSize={60} />
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <div className="grid gap-12 md:grid-cols-12 md:items-start lg:gap-16">
@@ -461,6 +465,7 @@ function HomePage() {
         id="services"
         className="relative overflow-hidden bg-canvas bg-premium-side-gradient py-16 md:py-24"
       >
+        <GridVignetteBackground className="hidden dark:block opacity-40" x={50} y={50} intensity={100} size={48} horizontalVignetteSize={80} verticalVignetteSize={60} />
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <div className="grid gap-6 md:grid-cols-12 md:items-end md:gap-12">
@@ -534,8 +539,8 @@ function HomePage() {
                   {/* Gradient Overlay */}
                   <div
                     className={`absolute inset-0 transition-opacity duration-1500 ${isHovered
-                        ? "bg-gradient-to-t from-black/95 via-black/55 to-black/15"
-                        : "bg-gradient-to-t from-black/95 via-black/75 to-black/40"
+                      ? "bg-gradient-to-t from-black/95 via-black/55 to-black/15"
+                      : "bg-gradient-to-t from-black/95 via-black/75 to-black/40"
                       }`}
                   />
 
@@ -548,8 +553,8 @@ function HomePage() {
                   <div className="relative p-6 md:p-8 w-full">
                     <h3
                       className={`font-display leading-tight tracking-tight text-white transition-all duration-1000 ${isHovered
-                          ? "text-2xl md:text-[30px] font-extrabold"
-                          : "text-xl md:text-2xl font-bold"
+                        ? "text-2xl md:text-[30px] font-extrabold"
+                        : "text-xl md:text-2xl font-bold"
                         }`}
                     >
                       {title}
@@ -682,6 +687,7 @@ function HomePage() {
         id="built"
         className="relative overflow-hidden bg-canvas bg-premium-side-gradient pt-8 pb-16 md:py-24"
       >
+        <GridVignetteBackground className="hidden dark:block opacity-40" x={50} y={50} intensity={100} size={48} horizontalVignetteSize={80} verticalVignetteSize={60} />
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <div className="grid gap-6 md:grid-cols-12 md:items-start md:gap-12 mb-12">
@@ -858,6 +864,7 @@ function HomePage() {
 
       {/* ABOUT */}
       <section className="relative overflow-hidden bg-canvas bg-premium-side-gradient py-12 md:py-16">
+        <GridVignetteBackground className="hidden dark:block opacity-40" x={50} y={50} intensity={100} size={48} horizontalVignetteSize={80} verticalVignetteSize={60} />
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <div className="grid gap-12 md:grid-cols-12 md:gap-16">

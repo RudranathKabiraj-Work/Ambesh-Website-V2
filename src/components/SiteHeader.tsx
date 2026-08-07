@@ -36,22 +36,20 @@ export function SiteHeader() {
               : "var(--header-bg-top)",
           boxShadow: scrolled ? "var(--header-shadow)" : "var(--header-shadow-top)",
         }}
-        className={`mx-auto w-full pointer-events-auto border transition-[width,max-width,padding,border-color] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] backdrop-blur-[28px] [-webkit-backdrop-filter:blur(28px)_saturate(200%)_brightness(1.08)] [backdrop-filter:blur(28px)_saturate(200%)_brightness(1.08)] ${
-          open
-            ? "max-w-2xl rounded-2xl p-5 border-white/40"
-            : scrolled
-              ? "max-w-4xl rounded-full py-2 px-4 md:px-6 border-white/40"
-              : "max-w-[70rem] rounded-full py-3.5 px-6 md:px-8 border-white/25"
-        }`}
+        className={`mx-auto w-full pointer-events-auto border transition-[width,max-width,padding,border-color] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] backdrop-blur-[28px] [-webkit-backdrop-filter:blur(28px)_saturate(200%)_brightness(1.08)] [backdrop-filter:blur(28px)_saturate(200%)_brightness(1.08)] ${open
+          ? "max-w-2xl rounded-2xl p-5 border-white/40"
+          : scrolled
+            ? "max-w-4xl rounded-full py-2 px-4 md:px-6 border-white/40"
+            : "max-w-[70rem] rounded-full py-3.5 px-6 md:px-8 border-white/25"
+          }`}
       >
         <div className="flex items-center justify-between">
           <Link to="/" onClick={() => setOpen(false)} className="group flex items-center gap-2.5">
             <img
               src="/atlogo.jpeg"
               alt="Ambesh Tiwari logo"
-              className={`h-9 w-9 shrink-0 rounded-lg object-contain transition-transform duration-500 group-hover:scale-105 ${
-                scrolled ? "scale-85" : "scale-100"
-              }`}
+              className={`h-9 w-9 shrink-0 rounded-lg object-contain transition-transform duration-500 group-hover:scale-105 ${scrolled ? "scale-85" : "scale-100"
+                }`}
             />
             <span className="font-display text-sm font-bold tracking-tight text-ink md:text-base">
               Ambesh Tiwari
@@ -94,9 +92,8 @@ export function SiteHeader() {
 
         {/* Mobile Dropdown Menu */}
         <div
-          className={`overflow-hidden transition-all duration-300 ease-in-out lg:hidden ${
-            open ? "mt-4 max-h-[400px] opacity-100" : "max-h-0 opacity-0"
-          }`}
+          className={`overflow-hidden transition-all duration-300 ease-in-out lg:hidden ${open ? "mt-4 max-h-[400px] opacity-100" : "max-h-0 opacity-0"
+            }`}
         >
           <div className="border-t border-rule/60 pt-4">
             <nav className="flex flex-col gap-1 py-1">

@@ -1550,7 +1550,7 @@ html.lenis body {
   }
 
   .dark .text-gradient-brand {
-    background-image: linear-gradient(135deg, #ffffff 0%, #3282b7 40%, #0e4c75 100%);
+    background-image: linear-gradient(135deg, #ffffff 0%, #3b82f6 65%, #1e3a8a 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -1617,15 +1617,61 @@ html.lenis body {
     -webkit-backdrop-filter: none;
   }
 
+  .dark .custom-theme-card .border-rule {
+    position: relative;
+    border-color: rgba(187, 224, 250, 0.14) !important;
+  }
+
+  .dark .custom-theme-card .border-rule::after {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #3282b7, #bbe0fa, #3282b7, transparent);
+    background-size: 200% 100%;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    pointer-events: none;
+  }
+
+  .dark .custom-theme-card a:not(.btn-premium) {
+    color: #1e3a8a !important;
+    position: relative;
+    transition: color 0.4s ease !important;
+  }
+
   @media (hover: hover) {
 
     .dark .custom-theme-card:hover,
     .dark .custom-theme-card:active {
       background-color: #115c8c !important;
-      border-color: rgba(187, 224, 250, 0.4) !important;
+      border-color: #3282b7 !important;
       box-shadow:
-        0 0 0 1px rgba(50, 130, 183, 0.12),
-        0 8px 32px -8px rgba(50, 130, 183, 0.25) !important;
+        0 24px 60px -28px rgba(0, 0, 0, 0.55),
+        0 0 10px 1px rgba(50, 130, 183, 0.6),
+        inset 0 0 10px 1px rgba(50, 130, 183, 0.4) !important;
+    }
+
+    .dark .custom-theme-card:hover .border-rule::after {
+      transform: scaleX(1);
+      animation: darkLineSweep 0.8s ease-out forwards;
+    }
+
+    .dark .custom-theme-card:hover a:not(.btn-premium) {
+      color: #ffffff !important;
+    }
+  }
+
+  @keyframes darkLineSweep {
+    0% {
+      background-position: 150% 0;
+    }
+
+    100% {
+      background-position: -50% 0;
     }
   }
 
@@ -1722,9 +1768,11 @@ html.lenis body {
   }
 
   .dark .cta-dark .text-gradient-brand {
-    background-image: none;
-    -webkit-text-fill-color: #fff;
-    color: #fff;
+    background-image: linear-gradient(135deg, oklch(0.99 0 0) 0%, oklch(0.85 0.12 268) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
   }
 
   .dark .cta-dark .bg-canvas {
@@ -2026,18 +2074,39 @@ html.lenis body {
 }
 
 @keyframes float-y-1 {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 @keyframes float-y-2 {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(10px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(10px);
+  }
 }
 
 @keyframes float-y-3 {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 .animate-float-1 {
@@ -2090,19 +2159,22 @@ html.lenis body {
    ═══════════════════════════════════════════════════════════════════════════ */
 
 @keyframes shine-sweep {
-  0%   { background-position: 100% center; }
-  100% { background-position: -100% center; }
+  0% {
+    background-position: 100% center;
+  }
+
+  100% {
+    background-position: -100% center;
+  }
 }
 
 /* Light mode: black base with a bright silver/white flash sweeping left→right */
 .text-shiny {
   background-color: #000000;
-  background-image: linear-gradient(
-    90deg,
-    transparent 30%,
-    rgba(255, 255, 255, 0.90) 50%,
-    transparent 70%
-  );
+  background-image: linear-gradient(90deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.90) 50%,
+      transparent 70%);
   background-size: 200% 100%;
   background-repeat: no-repeat;
   background-position: 100% center;
@@ -2116,12 +2188,10 @@ html.lenis body {
 /* Dark mode: sky-blue base with a bright white flash */
 .dark .text-shiny {
   background-color: #90caf9;
-  background-image: linear-gradient(
-    90deg,
-    transparent 30%,
-    rgba(255, 255, 255, 0.98) 50%,
-    transparent 70%
-  );
+  background-image: linear-gradient(90deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.98) 50%,
+      transparent 70%);
   background-size: 200% 100%;
   background-repeat: no-repeat;
   background-position: 100% center;
@@ -2136,6 +2206,7 @@ html.lenis body {
 .text-shiny svg {
   stroke: currentColor;
 }
+
 .dark .text-shiny svg {
   stroke: #90caf9;
 }
