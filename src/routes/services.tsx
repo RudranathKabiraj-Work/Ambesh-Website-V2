@@ -9,6 +9,9 @@ import {
   Compass,
   Users,
   GraduationCap,
+  Wrench,
+  MessageCircle,
+  Sparkles,
 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { buildMeta, jsonLd, breadcrumbSchema, faqSchema, SITE_URL } from "@/lib/seo";
@@ -203,7 +206,9 @@ function BusinessOSPage() {
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative pt-10 pb-20 md:pt-14 md:pb-24">
           <Reveal eager>
-            <p className="eyebrow eyebrow-indigo">Business OS</p>
+            <p className="eyebrow eyebrow-indigo flex items-center gap-2">
+              <Layers className="h-3.5 w-3.5" /> Business OS
+            </p>
           </Reveal>
           <Reveal delay={100} eager>
             <h1 className="mt-6 max-w-5xl font-display text-[2.4rem] font-extrabold leading-[1.05] tracking-[-0.03em] text-ink sm:text-5xl md:text-6xl lg:text-[4.25rem]">
@@ -262,7 +267,9 @@ function BusinessOSPage() {
       <section className="relative overflow-hidden py-14 md:py-20 bg-canvas">
         <div className="container-edit relative">
           <Reveal>
-            <p className="eyebrow">What gets built</p>
+            <p className="eyebrow flex items-center gap-2">
+              <Wrench className="h-3.5 w-3.5" /> What gets built
+            </p>
             <h2 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-6xl">
               Three layers.{" "}
               <span className="text-gradient-brand animate-gradient">One Operating System.</span>
@@ -322,7 +329,9 @@ function BusinessOSPage() {
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
-            <p className="eyebrow">Who this is for</p>
+            <p className="eyebrow flex items-center gap-2">
+              <Users className="h-3.5 w-3.5" /> Who this is for
+            </p>
             <h2 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-6xl">
               Built for founder-led <span className="text-gradient-brand">businesses.</span>
             </h2>
@@ -382,7 +391,9 @@ function BusinessOSPage() {
         <div className="absolute inset-0 tex-grid tex-fade pointer-events-none" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
-            <p className="eyebrow">The process</p>
+            <p className="eyebrow flex items-center gap-2">
+              <Compass className="h-3.5 w-3.5" /> The process
+            </p>
             <h2 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-6xl">
               How an OS engagement{" "}
               <span className="text-gradient-brand animate-gradient">actually runs.</span>
@@ -441,7 +452,9 @@ function BusinessOSPage() {
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative grid gap-12 md:grid-cols-12 md:gap-16">
           <Reveal className="md:col-span-4">
-            <p className="eyebrow">Common questions</p>
+            <p className="eyebrow flex items-center gap-2">
+              <MessageCircle className="h-3.5 w-3.5" /> Common questions
+            </p>
             <h2 className="mt-4 text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-5xl">
               Before you <span className="text-gradient-brand animate-gradient">ask.</span>
             </h2>
@@ -475,7 +488,9 @@ function BusinessOSPage() {
       <section className="relative overflow-hidden bg-canvas py-14 md:py-20 text-center">
         <div className="container-edit relative">
           <Reveal>
-            <p className="eyebrow">Start with a diagnosis</p>
+            <p className="eyebrow flex items-center gap-2">
+              <Sparkles className="h-3.5 w-3.5" /> Start with a diagnosis
+            </p>
           </Reveal>
           <Reveal delay={100}>
             <h2 className="mx-auto mt-6 max-w-4xl text-4xl font-extrabold leading-[1.05] tracking-tighter text-ink md:text-6xl">

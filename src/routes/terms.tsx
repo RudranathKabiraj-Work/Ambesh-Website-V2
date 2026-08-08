@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { ShieldCheck } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { buildMeta, jsonLd, breadcrumbSchema, SITE_URL } from "@/lib/seo";
 
@@ -34,7 +35,9 @@ function TermsPage() {
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal eager>
-            <p className="eyebrow">Legal</p>
+            <p className="eyebrow flex items-center gap-2">
+              <ShieldCheck className="h-3.5 w-3.5" /> Legal
+            </p>
             <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tighter text-ink md:text-6xl">
               Terms of Use
             </h1>

@@ -11,6 +11,11 @@ import {
   BookOpen,
   Sparkles,
   Wrench,
+  AlertCircle,
+  Brain,
+  Briefcase,
+  FolderOpen,
+  User,
 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { CorePillars } from "@/components/CorePillars";
@@ -20,7 +25,6 @@ import { ServiceCarousel } from "@/components/ServiceCarousel";
 import { BookStickySection } from "@/components/BookStickySection";
 import { buildMeta, jsonLd, breadcrumbSchema, SITE_URL } from "@/lib/seo";
 import { GridVignetteBackground } from "@/components/ui/vignette-grid-background";
-
 
 export const Route = createFileRoute("/")({
   head: () => {
@@ -165,18 +169,23 @@ function HomePage() {
     <>
       {/* HERO */}
       <section className="premium-canvas bg-premium-side-gradient relative isolate overflow-hidden">
-        <GridVignetteBackground className="hidden dark:block opacity-40" x={50} y={50} intensity={100} size={48} horizontalVignetteSize={80} verticalVignetteSize={60} />
+        <GridVignetteBackground
+          className="hidden dark:block opacity-40"
+          x={50}
+          y={50}
+          intensity={100}
+          size={48}
+          horizontalVignetteSize={80}
+          verticalVignetteSize={60}
+        />
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit pt-10 pb-20 md:pt-14 md:pb-24">
           <div className="grid items-center gap-16 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-7">
               <div className="animate-fade-in-up">
-                <span className="inline-flex items-center gap-2 rounded-full border border-rule bg-canvas px-3 py-1 text-xs text-ink-muted">
-                  <span
-                    className="h-1.5 w-1.5 rounded-full"
-                    style={{ background: "var(--accent)" }}
-                  />
-                  AI Strategist · Author · Entrepreneur
+                <span className="eyebrow flex items-center gap-2">
+                  <Sparkles className="h-3.5 w-3.5" />
+                  AI Strategist &nbsp;|&nbsp; Author &nbsp;|&nbsp; Entrepreneur
                 </span>
               </div>
 
@@ -262,9 +271,7 @@ function HomePage() {
                   aria-hidden
                 />{" "}
                 {/* Floating circle 1: 13+ Years (Bottom-left) */}
-                <div
-                  className="animate-float-1 absolute top-[22%] -left-3 md:-left-12 z-20 w-[70px] h-[70px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center"
-                >
+                <div className="animate-float-1 absolute top-[22%] -left-3 md:-left-12 z-20 w-[70px] h-[70px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center">
                   <span className="font-display text-[12px] md:text-lg font-extrabold text-gradient-brand animate-gradient hero-stat-solid-white">
                     13+
                   </span>
@@ -273,9 +280,7 @@ function HomePage() {
                   </span>
                 </div>
                 {/* Floating circle 2: 100+ Businesses (Bottom-right) */}
-                <div
-                  className="animate-float-2 absolute -bottom-8 -right-2 md:-bottom-10 md:-right-12 z-20 w-[70px] h-[70px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center"
-                >
+                <div className="animate-float-2 absolute -bottom-8 -right-2 md:-bottom-10 md:-right-12 z-20 w-[70px] h-[70px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center">
                   <span className="font-display text-[12px] md:text-lg font-extrabold text-gradient-brand animate-gradient hero-stat-solid-white">
                     100+
                   </span>
@@ -284,9 +289,7 @@ function HomePage() {
                   </span>
                 </div>
                 {/* Floating circle 3: 5,000+ Trained (Right side middle) */}
-                <div
-                  className="animate-float-3 absolute top-[35%] -right-3 md:-right-12 z-20 w-[70px] h-[70px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center"
-                >
+                <div className="animate-float-3 absolute top-[35%] -right-3 md:-right-12 z-20 w-[70px] h-[70px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center">
                   <span className="font-display text-[12px] md:text-lg font-extrabold text-gradient-brand animate-gradient hero-stat-solid-white">
                     5,000+
                   </span>
@@ -329,13 +332,23 @@ function HomePage() {
       </section>
 
       {/* PROBLEM */}
-      <section className="relative overflow-hidden bg-canvas bg-premium-side-gradient py-20 md:py-32 lg:py-36 optimize-render">
-        <GridVignetteBackground className="hidden dark:block opacity-35" x={50} y={50} intensity={100} size={48} horizontalVignetteSize={80} verticalVignetteSize={60} />
+      <section className="relative overflow-hidden bg-canvas bg-premium-side-gradient py-20 md:py-32 lg:py-36 optimize-render" style={{ containIntrinsicSize: '0 700px' }}>
+        <GridVignetteBackground
+          className="hidden dark:block opacity-35"
+          x={50}
+          y={50}
+          intensity={100}
+          size={48}
+          horizontalVignetteSize={80}
+          verticalVignetteSize={60}
+        />
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <div className="grid gap-12 md:grid-cols-12 md:items-start lg:gap-16">
             <Reveal className="md:col-span-5">
-              <p className="eyebrow eyebrow-indigo">The Problems I Solve</p>
+              <p className="eyebrow eyebrow-indigo flex items-center gap-2">
+                <AlertCircle className="h-3.5 w-3.5" /> The Problems I Solve
+              </p>
               <h2 className="mt-4 pb-2 font-display text-[2.2rem] sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold leading-[1.1] tracking-[-0.03em] text-ink">
                 Running a business
                 <br />
@@ -374,11 +387,13 @@ function HomePage() {
       </section>
 
       {/* MY APPROACH & EASE FRAMEWORK */}
-      <section className="relative overflow-hidden bg-canvas py-16 md:py-24 home-section-alt">
+      <section className="relative overflow-hidden bg-canvas py-16 md:py-24 home-section-alt optimize-render">
         <div className="container-edit relative">
           <div className="grid gap-6 md:grid-cols-12 md:items-end md:gap-12 mb-12">
             <Reveal className="md:col-span-7">
-              <p className="eyebrow eyebrow-indigo">My Approach</p>
+              <p className="eyebrow eyebrow-indigo flex items-center gap-2">
+                <Compass className="h-3.5 w-3.5" /> My Approach
+              </p>
               <h2 className="mt-4 font-display text-[2.2rem] font-extrabold leading-[1.1] tracking-[-0.03em] sm:text-4xl md:text-5xl text-ink">
                 Better businesses aren't built by{" "}
                 <span className="font-serif italic font-medium text-gradient-brand">
@@ -387,7 +402,7 @@ function HomePage() {
               </h2>
             </Reveal>
             <Reveal delay={100} className="md:col-span-5">
-              <p className="text-base leading-[1.6] text-ink-soft md:text-lg">
+              <p className="text-base leading-[1.6] text-ink-soft md:text-lg dark:text-white">
                 They're built by improving the way work gets done. The EASE Framework is a
                 structured path to simplification, clarity, and automation.
               </p>
@@ -434,13 +449,15 @@ function HomePage() {
                     aria-hidden
                   />
                   <div>
-                    <span className="font-mono text-[0.65rem] font-bold uppercase tracking-[0.15em] text-accent">
+                    <span className="font-mono text-[0.65rem] md:text-[0.78rem] font-bold uppercase tracking-[0.15em] text-accent">
                       {stage}
                     </span>
-                    <h4 className="mt-3 font-display text-lg font-extrabold tracking-tight text-ink">
+                    <h4 className="mt-3 font-display text-lg md:text-xl font-extrabold tracking-tight text-ink">
                       {label}
                     </h4>
-                    <p className="mt-3 text-[15px] leading-[1.65] text-ink-soft">{desc}</p>
+                    <p className="mt-3 text-[15px] md:text-[16px] leading-[1.65] text-ink-soft">
+                      {desc}
+                    </p>
                   </div>
                 </div>
               </Reveal>
@@ -463,21 +480,31 @@ function HomePage() {
       {/* HOW I HELP */}
       <section
         id="services"
-        className="relative overflow-hidden bg-canvas bg-premium-side-gradient py-16 md:py-24"
+        className="relative overflow-hidden bg-canvas bg-premium-side-gradient py-16 md:py-24 optimize-render"
       >
-        <GridVignetteBackground className="hidden dark:block opacity-40" x={50} y={50} intensity={100} size={48} horizontalVignetteSize={80} verticalVignetteSize={60} />
+        <GridVignetteBackground
+          className="hidden dark:block opacity-40"
+          x={50}
+          y={50}
+          intensity={100}
+          size={48}
+          horizontalVignetteSize={80}
+          verticalVignetteSize={60}
+        />
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <div className="grid gap-6 md:grid-cols-12 md:items-end md:gap-12">
             <Reveal className="md:col-span-7">
-              <p className="eyebrow eyebrow-indigo">How I Help</p>
+              <p className="eyebrow eyebrow-indigo flex items-center gap-2">
+                <Wrench className="h-3.5 w-3.5" /> How I Help
+              </p>
               <h2 className="mt-4 font-display text-[2.2rem] font-extrabold leading-[1.1] tracking-[-0.03em] sm:text-4xl md:text-5xl">
                 I Build. I Advise.{" "}
                 <span className="font-serif italic font-medium text-gradient-brand">I Train.</span>
               </h2>
             </Reveal>
             <Reveal delay={100} className="md:col-span-5">
-              <p className="text-base leading-[1.6] text-ink-soft md:text-lg">
+              <p className="text-base leading-[1.6] text-ink-soft md:text-lg dark:text-white">
                 Practical, hands-on support for founder-led businesses. Building software-driven
                 operations, advising on management processes, and training teams for AI adoption.
               </p>
@@ -532,16 +559,18 @@ function HomePage() {
                     src={image}
                     alt={title}
                     loading="lazy"
-                    className={`absolute inset-0 h-full w-full object-cover transition-all duration-1500 ease-out ${isHovered ? "scale-100" : "scale-105"
-                      }`}
+                    className={`absolute inset-0 h-full w-full object-cover transition-all duration-1500 ease-out ${
+                      isHovered ? "scale-100" : "scale-105"
+                    }`}
                   />
 
                   {/* Gradient Overlay */}
                   <div
-                    className={`absolute inset-0 transition-opacity duration-1500 ${isHovered
-                      ? "bg-gradient-to-t from-black/95 via-black/55 to-black/15"
-                      : "bg-gradient-to-t from-black/95 via-black/75 to-black/40"
-                      }`}
+                    className={`absolute inset-0 transition-opacity duration-1500 ${
+                      isHovered
+                        ? "bg-gradient-to-t from-black/95 via-black/55 to-black/15"
+                        : "bg-gradient-to-t from-black/95 via-black/75 to-black/40"
+                    }`}
                   />
 
                   {/* Service Number Badge */}
@@ -552,10 +581,11 @@ function HomePage() {
                   {/* Card Content */}
                   <div className="relative p-6 md:p-8 w-full">
                     <h3
-                      className={`font-display leading-tight tracking-tight text-white transition-all duration-1000 ${isHovered
-                        ? "text-2xl md:text-[30px] font-extrabold"
-                        : "text-xl md:text-2xl font-bold"
-                        }`}
+                      className={`font-display leading-tight tracking-tight text-white transition-all duration-1000 ${
+                        isHovered
+                          ? "text-2xl md:text-[30px] font-extrabold"
+                          : "text-xl md:text-2xl font-bold"
+                      }`}
                     >
                       {title}
                     </h3>
@@ -596,7 +626,9 @@ function HomePage() {
           <div className="container-edit w-full h-full flex flex-col justify-center gap-20 pb-10 md:h-auto md:grid md:grid-cols-12 md:gap-12 md:items-start md:pb-0">
             {/* Left Column (Header) */}
             <div className="md:col-span-5 pb-4 md:pb-0">
-              <p className="eyebrow eyebrow-indigo">How I Think</p>
+              <p className="eyebrow eyebrow-indigo flex items-center gap-2">
+                <Brain className="h-3.5 w-3.5" /> How I Think
+              </p>
               <h2 className="mt-4 pb-2 font-display text-[1.8rem] sm:text-2xl md:text-[2.2rem] font-extrabold leading-[1.15] tracking-[-0.03em] md:leading-[1.1] md:text-5xl text-ink">
                 Ideas that guide <br className="hidden sm:block" />
                 <span className="font-serif italic font-medium text-gradient-brand">my work.</span>
@@ -660,17 +692,19 @@ function HomePage() {
                         />
                         <div>
                           <div className="flex items-center justify-between mb-5">
-                            <span className="inline-flex items-center rounded-full px-2.5 py-0.5 font-mono text-[0.65rem] font-bold uppercase tracking-[0.15em] text-accent bg-accent-soft">
+                            <span className="inline-flex items-center rounded-full px-2.5 py-0.5 font-mono text-[0.65rem] md:text-[0.78rem] font-bold uppercase tracking-[0.15em] text-accent bg-accent-soft">
                               Belief {n}
                             </span>
-                            <div className="icon-box flex h-10 w-10 items-center justify-center rounded-xl border border-rule transition-colors">
-                              <Icon className="h-5 w-5" />
+                            <div className="icon-box flex h-10 w-10 md:h-11 md:w-11 items-center justify-center rounded-xl border border-rule transition-colors">
+                              <Icon className="h-5 w-5 md:h-6 md:w-6" />
                             </div>
                           </div>
-                          <h3 className="font-display text-lg font-extrabold tracking-tight text-ink leading-snug">
+                          <h3 className="font-display text-lg md:text-xl font-extrabold tracking-tight text-ink leading-snug">
                             {title}
                           </h3>
-                          <p className="mt-3 text-[15px] leading-[1.65] text-ink-soft">{desc}</p>
+                          <p className="mt-3 text-[15px] md:text-[16px] leading-[1.65] text-ink-soft">
+                            {desc}
+                          </p>
                         </div>
                       </div>
                     </motion.div>
@@ -685,25 +719,35 @@ function HomePage() {
       {/* WHAT I HAVE BUILT */}
       <section
         id="built"
-        className="relative overflow-hidden bg-canvas bg-premium-side-gradient pt-8 pb-16 md:py-24"
+        className="relative overflow-hidden bg-canvas bg-premium-side-gradient pt-8 pb-16 md:py-24 optimize-render"
       >
-        <GridVignetteBackground className="hidden dark:block opacity-40" x={50} y={50} intensity={100} size={48} horizontalVignetteSize={80} verticalVignetteSize={60} />
+        <GridVignetteBackground
+          className="hidden dark:block opacity-40"
+          x={50}
+          y={50}
+          intensity={100}
+          size={48}
+          horizontalVignetteSize={80}
+          verticalVignetteSize={60}
+        />
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <div className="grid gap-6 md:grid-cols-12 md:items-start md:gap-12 mb-12">
             <Reveal className="md:col-span-6">
-              <p className="eyebrow eyebrow-indigo">Brands and Products</p>
+              <p className="eyebrow eyebrow-indigo flex items-center gap-2">
+                <Briefcase className="h-3.5 w-3.5" /> Brands and Products
+              </p>
               <h2 className="mt-4 pb-2 font-display text-[2.2rem] font-extrabold leading-[1.1] tracking-[-0.03em] sm:text-4xl md:text-5xl text-ink">
                 I do not only advise. <br className="hidden sm:block" />
                 <span className="font-serif italic font-medium text-gradient-brand">I build.</span>
               </h2>
             </Reveal>
             <Reveal delay={100} className="md:col-span-6">
-              <div className="space-y-2 text-[15px] leading-[1.5] text-ink-soft md:text-base">
-                <p>
+              <div className="space-y-2 text-[15px] leading-[1.5] text-ink-soft md:text-base dark:text-white">
+                <p className="dark:text-white">
                   Building products has taught me lessons that cannot be learned from presentations.
                 </p>
-                <p>
+                <p className="dark:text-white">
                   You have to understand customers, make difficult choices, work with a team, manage
                   costs and make the product useful enough for people to keep using it.
                 </p>
@@ -784,7 +828,9 @@ function HomePage() {
         <div className="container-edit relative">
           <div className="grid gap-6 md:grid-cols-12 md:items-end md:gap-12">
             <Reveal className="md:col-span-7">
-              <p className="eyebrow eyebrow-indigo">Selected Work</p>
+              <p className="eyebrow eyebrow-indigo flex items-center gap-2">
+                <FolderOpen className="h-3.5 w-3.5" /> Selected Work
+              </p>
               <h2 className="mt-4 font-display text-[2.2rem] font-extrabold leading-[1.1] tracking-[-0.03em] sm:text-4xl md:text-5xl">
                 Work across companies,{" "}
                 <span className="font-serif italic font-medium text-gradient-brand">
@@ -793,7 +839,7 @@ function HomePage() {
               </h2>
             </Reveal>
             <Reveal delay={100} className="md:col-span-5">
-              <p className="text-base leading-[1.6] text-ink-soft md:text-lg">
+              <p className="text-base leading-[1.6] text-ink-soft md:text-lg dark:text-white">
                 I have worked with founders, corporate teams, professional bodies, educational
                 institutions and government organisations.
               </p>
@@ -864,12 +910,22 @@ function HomePage() {
 
       {/* ABOUT */}
       <section className="relative overflow-hidden bg-canvas bg-premium-side-gradient py-12 md:py-16">
-        <GridVignetteBackground className="hidden dark:block opacity-40" x={50} y={50} intensity={100} size={48} horizontalVignetteSize={80} verticalVignetteSize={60} />
+        <GridVignetteBackground
+          className="hidden dark:block opacity-40"
+          x={50}
+          y={50}
+          intensity={100}
+          size={48}
+          horizontalVignetteSize={80}
+          verticalVignetteSize={60}
+        />
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <div className="grid gap-12 md:grid-cols-12 md:gap-16">
             <Reveal className="md:col-span-5">
-              <p className="eyebrow eyebrow-indigo">About</p>
+              <p className="eyebrow eyebrow-indigo flex items-center gap-2">
+                <User className="h-3.5 w-3.5" /> About
+              </p>
               <h2 className="mt-4 font-display text-4xl font-extrabold tracking-[-0.03em] md:text-5xl text-ink">
                 Meet{" "}
                 <span className="font-serif italic font-medium text-gradient-brand">Ambesh.</span>
@@ -935,9 +991,9 @@ function HomePage() {
         </p>
         <div className="mt-6 max-w-xl text-[15px] md:text-base leading-[1.65] text-ink-soft space-y-4">
           <p>
-            <span className="italic font-medium text-ink">Accelerate with AI</span> helps
-            founders and professionals understand what AI can do and how they can start using
-            it in practical work.
+            <span className="italic font-medium text-ink">Accelerate with AI</span> helps founders
+            and professionals understand what AI can do and how they can start using it in practical
+            work.
           </p>
 
           {/* Key pillars bullets in book section (Desktop Only) */}

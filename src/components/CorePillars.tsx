@@ -42,7 +42,10 @@ export function CorePillars() {
   const mid = (ITEMS.length - 1) / 2;
 
   return (
-    <section ref={sectionRef} className="core-pillars-section relative h-[110dvh] sm:h-[180dvh] -mt-[8dvh] sm:-mt-[15dvh] -mb-[15dvh] sm:-mb-[30dvh]">
+    <section
+      ref={sectionRef}
+      className="core-pillars-section relative h-[110dvh] sm:h-[180dvh] -mt-[8dvh] sm:-mt-[15dvh] -mb-[15dvh] sm:-mb-[30dvh]"
+    >
       <div className="sticky top-0 flex h-[100dvh] flex-col items-center justify-center overflow-hidden pb-0">
         <p className="mb-6 text-center font-mono text-[0.65rem] font-bold uppercase tracking-[0.25em] text-ink-muted">
           The Core Pillars

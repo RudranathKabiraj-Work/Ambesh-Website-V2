@@ -161,7 +161,9 @@ function TrainingPage() {
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative pt-10 pb-20 md:pt-14 md:pb-24">
           <Reveal eager>
-            <p className="eyebrow eyebrow-orange">Training</p>
+            <p className="eyebrow eyebrow-orange flex items-center gap-2">
+              <GraduationCap className="h-3.5 w-3.5" /> Training
+            </p>
           </Reveal>
           <Reveal delay={80} eager>
             <h1 className="mt-5 max-w-4xl font-display text-[2.4rem] font-extrabold leading-[1.05] tracking-[-0.03em] text-ink dark:text-white sm:text-5xl md:text-6xl lg:text-[4rem]">
@@ -217,7 +219,9 @@ function TrainingPage() {
         <div className="container-edit relative">
           <div className="grid gap-12 md:grid-cols-12 md:items-end">
             <Reveal className="md:col-span-7">
-              <p className="eyebrow">Formats</p>
+              <p className="eyebrow flex items-center gap-2">
+                <Users className="h-3.5 w-3.5" /> Formats
+              </p>
               <h2 className="mt-4 font-display text-4xl font-extrabold tracking-[-0.03em] md:text-5xl">
                 Three training formats.{" "}
                 <span className="font-serif italic font-medium text-gradient-brand animate-gradient">
@@ -274,7 +278,9 @@ function TrainingPage() {
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
-            <p className="eyebrow">Named engagements</p>
+            <p className="eyebrow flex items-center gap-2">
+              <Star className="h-3.5 w-3.5" /> Named engagements
+            </p>
             <h2 className="mt-4 max-w-3xl font-display text-4xl font-extrabold tracking-[-0.03em] md:text-5xl">
               Recognisable rooms.{" "}
               <span className="font-serif italic font-medium text-gradient-brand animate-gradient">
@@ -311,7 +317,9 @@ function TrainingPage() {
       <section className="relative overflow-hidden bg-canvas py-14 md:py-20">
         <div className="container-edit relative">
           <Reveal>
-            <p className="eyebrow">After the training</p>
+            <p className="eyebrow flex items-center gap-2">
+              <CheckCircle2 className="h-3.5 w-3.5" /> After the training
+            </p>
             <h2 className="mt-4 max-w-3xl font-display text-4xl font-extrabold tracking-[-0.03em] md:text-5xl">
               Your team should leave with{" "}
               <span className="font-serif italic font-medium text-gradient-brand animate-gradient">
@@ -340,7 +348,9 @@ function TrainingPage() {
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
-            <p className="eyebrow">Feedback</p>
+            <p className="eyebrow flex items-center gap-2">
+              <Sparkles className="h-3.5 w-3.5" /> Feedback
+            </p>
             <h2 className="mt-4 max-w-3xl font-display text-4xl font-extrabold tracking-[-0.03em] md:text-5xl">
               The feedback teams share,{" "}
               <span className="font-serif italic font-medium text-gradient-brand animate-gradient">
@@ -380,7 +390,9 @@ function TrainingPage() {
       <section className="relative overflow-hidden bg-canvas py-14 md:py-20">
         <div className="container-edit relative">
           <Reveal>
-            <p className="eyebrow">Industries served</p>
+            <p className="eyebrow flex items-center gap-2">
+              <MapPin className="h-3.5 w-3.5" /> Industries served
+            </p>
             <h2 className="mt-4 max-w-3xl font-display text-4xl font-extrabold tracking-[-0.03em] md:text-5xl">
               11 industries.{" "}
               <span className="font-serif italic font-medium text-gradient-brand animate-gradient">

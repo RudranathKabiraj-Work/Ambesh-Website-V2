@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Headphones, Play, Mail, Mic } from "lucide-react";
+import { ArrowRight, Headphones, Play, Mail, Mic, Star, MessageCircle, User } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { buildMeta, jsonLd, breadcrumbSchema, SITE_URL, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
@@ -112,7 +112,9 @@ function PodcastPage() {
         <div className="container-edit relative grid gap-12 pt-20 pb-28 md:grid-cols-12 md:gap-16 md:pt-32 md:pb-36">
           <div className="md:col-span-8">
             <Reveal eager>
-              <p className="eyebrow">The podcast</p>
+              <p className="eyebrow flex items-center gap-2">
+                <Headphones className="h-3.5 w-3.5" /> The podcast
+              </p>
             </Reveal>
             <Reveal delay={100} eager>
               <h1 className="mt-6 text-5xl font-extrabold leading-[0.95] tracking-tighter md:text-7xl lg:text-[7rem]">
@@ -158,7 +160,9 @@ function PodcastPage() {
       {/* PLATFORMS */}
       <section className="border-y border-rule bg-canvas py-12">
         <div className="container-edit flex flex-wrap items-center gap-x-6 gap-y-4">
-          <p className="eyebrow w-full md:w-auto">Listen on</p>
+          <p className="eyebrow flex items-center gap-2 w-full md:w-auto">
+            <Play className="h-3.5 w-3.5" /> Listen on
+          </p>
           {platforms.map((p) => (
             <a
               key={p.name}
@@ -178,7 +182,9 @@ function PodcastPage() {
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative py-16">
           <Reveal>
-            <p className="eyebrow">Featured conversations</p>
+            <p className="eyebrow flex items-center gap-2">
+              <Star className="h-3.5 w-3.5" /> Featured conversations
+            </p>
             <h2 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-6xl">
               A few worth{" "}
               <span className="text-gradient-brand animate-gradient">starting with.</span>
@@ -229,7 +235,9 @@ function PodcastPage() {
         <div className="container-edit relative py-16">
           <div className="grid gap-12 md:grid-cols-12">
             <Reveal className="md:col-span-5">
-              <p className="eyebrow">What we talk about</p>
+              <p className="eyebrow flex items-center gap-2">
+                <MessageCircle className="h-3.5 w-3.5" /> What we talk about
+              </p>
               <h2 className="mt-4 text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-5xl">
                 The <span className="text-gradient-brand animate-gradient">territory.</span>
               </h2>
@@ -279,7 +287,9 @@ function PodcastPage() {
               </div>
             </Reveal>
             <Reveal delay={120} className="md:col-span-7">
-              <p className="eyebrow">Your host</p>
+              <p className="eyebrow flex items-center gap-2">
+                <User className="h-3.5 w-3.5" /> Your host
+              </p>
               <h2 className="mt-4 text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-5xl">
                 Ambesh <span className="text-gradient-brand animate-gradient">Tiwari.</span>
               </h2>
@@ -309,7 +319,9 @@ function PodcastPage() {
             <div className="absolute inset-0 tex-dots-soft opacity-60" aria-hidden />
             <div className="relative grid gap-10 md:grid-cols-2 md:items-center">
               <div>
-                <p className="eyebrow">Stay in the loop</p>
+                <p className="eyebrow flex items-center gap-2">
+                  <Mail className="h-3.5 w-3.5" /> Stay in the loop
+                </p>
                 <h3 className="mt-4 text-4xl font-extrabold leading-tight tracking-tighter md:text-5xl">
                   New conversations.{" "}
                   <span className="text-gradient-brand animate-gradient">In your inbox.</span>

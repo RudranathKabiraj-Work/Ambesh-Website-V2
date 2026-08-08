@@ -11,6 +11,11 @@ import {
   BookOpen,
   Sparkles,
   Wrench,
+  AlertCircle,
+  Brain,
+  Briefcase,
+  Package,
+  User,
 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { Marquee } from "@/components/Marquee";
@@ -50,7 +55,9 @@ export default function HomePageSections() {
         <div className="container-edit relative">
           <div className="grid gap-12 md:grid-cols-12 md:items-start">
             <Reveal className="md:col-span-5">
-              <p className="eyebrow">The Problems I Solve</p>
+              <p className="eyebrow flex items-center gap-2">
+                <AlertCircle className="h-3.5 w-3.5" /> The Problems I Solve
+              </p>
               <h2 className="mt-4 font-display text-4xl font-extrabold tracking-[-0.03em] md:text-5xl">
                 Running a business shouldn't feel like{" "}
                 <span className="font-serif italic font-medium">putting out fires</span> every day.
@@ -84,7 +91,9 @@ export default function HomePageSections() {
         <div className="container-edit relative">
           <div className="grid gap-6 md:grid-cols-12 md:items-end md:gap-12 mb-12">
             <Reveal className="md:col-span-7">
-              <p className="eyebrow">My Approach</p>
+              <p className="eyebrow flex items-center gap-2">
+                <Compass className="h-3.5 w-3.5" /> My Approach
+              </p>
               <h2 className="mt-4 font-display text-[2.2rem] font-extrabold leading-[1.1] tracking-[-0.03em] sm:text-4xl md:text-5xl text-ink">
                 Better businesses aren't built by adding more tools.
               </h2>
@@ -172,7 +181,9 @@ export default function HomePageSections() {
         <div className="container-edit relative">
           <div className="grid gap-6 md:grid-cols-12 md:items-end md:gap-12">
             <Reveal className="md:col-span-7">
-              <p className="eyebrow">How I Help</p>
+              <p className="eyebrow flex items-center gap-2">
+                <Briefcase className="h-3.5 w-3.5" /> How I Help
+              </p>
               <h2 className="mt-4 font-display text-[2.2rem] font-extrabold leading-[1.1] tracking-[-0.03em] sm:text-4xl md:text-5xl">
                 I Build. I Advise. I Train.
               </h2>
@@ -252,16 +263,18 @@ export default function HomePageSections() {
                       src={image}
                       alt={title}
                       loading="lazy"
-                      className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out ${isHovered ? "scale-100" : "scale-105"
-                        }`}
+                      className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out ${
+                        isHovered ? "scale-100" : "scale-105"
+                      }`}
                     />
 
                     {/* Gradient Overlay */}
                     <div
-                      className={`absolute inset-0 transition-opacity duration-700 ${isHovered
+                      className={`absolute inset-0 transition-opacity duration-700 ${
+                        isHovered
                           ? "bg-gradient-to-t from-black/95 via-black/55 to-black/15"
                           : "bg-gradient-to-t from-black/95 via-black/75 to-black/40"
-                        }`}
+                      }`}
                     />
 
                     {/* Service Number Badge */}
@@ -279,10 +292,11 @@ export default function HomePageSections() {
                       </p>
 
                       <h3
-                        className={`font-display leading-tight tracking-tight text-white transition-all duration-500 ${isHovered
+                        className={`font-display leading-tight tracking-tight text-white transition-all duration-500 ${
+                          isHovered
                             ? "text-2xl md:text-[30px] font-extrabold"
                             : "text-xl md:text-2xl font-bold"
-                          }`}
+                        }`}
                       >
                         {title}
                       </h3>
@@ -293,10 +307,11 @@ export default function HomePageSections() {
 
                       {/* Bullet list sliding open */}
                       <div
-                        className={`grid transition-all duration-500 ease-in-out ${isHovered
+                        className={`grid transition-all duration-500 ease-in-out ${
+                          isHovered
                             ? "grid-rows-[1fr] opacity-100 mt-4"
                             : "grid-rows-[0fr] opacity-0 h-0 overflow-hidden"
-                          }`}
+                        }`}
                       >
                         <ul className="space-y-2">
                           {bullets.map((b) => (
@@ -351,7 +366,9 @@ export default function HomePageSections() {
         <div className="container-edit relative">
           <div className="grid gap-6 md:grid-cols-12 md:items-end md:gap-12 mb-12">
             <Reveal className="md:col-span-7">
-              <p className="eyebrow">How I Think</p>
+              <p className="eyebrow flex items-center gap-2">
+                <Brain className="h-3.5 w-3.5" /> How I Think
+              </p>
               <h2 className="mt-4 font-display text-[2.2rem] font-extrabold leading-[1.1] tracking-[-0.03em] sm:text-4xl md:text-5xl text-ink">
                 Ideas that guide my work
               </h2>
@@ -437,7 +454,9 @@ export default function HomePageSections() {
         <div className="container-edit relative">
           <div className="grid gap-6 md:grid-cols-12 md:items-end md:gap-12">
             <Reveal className="md:col-span-7">
-              <p className="eyebrow">Selected Work</p>
+              <p className="eyebrow flex items-center gap-2">
+                <Briefcase className="h-3.5 w-3.5" /> Selected Work
+              </p>
               <h2 className="mt-4 font-display text-[2.2rem] font-extrabold leading-[1.1] tracking-[-0.03em] sm:text-4xl md:text-5xl">
                 Work across companies, teams and institutions.
               </h2>
@@ -555,7 +574,9 @@ export default function HomePageSections() {
         <div className="container-edit relative">
           <div className="grid gap-6 md:grid-cols-12 md:items-start md:gap-12 mb-12">
             <Reveal className="md:col-span-6">
-              <p className="eyebrow">Brands and Products</p>
+              <p className="eyebrow flex items-center gap-2">
+                <Package className="h-3.5 w-3.5" /> Brands and Products
+              </p>
               <h2 className="mt-4 font-display text-[2.2rem] font-extrabold leading-[1.1] tracking-[-0.03em] sm:text-4xl md:text-5xl text-ink">
                 I do not only advise.{" "}
                 <span className="font-serif italic font-medium text-gradient-brand animate-gradient">
@@ -632,8 +653,7 @@ export default function HomePageSections() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 text-sm font-semibold text-shiny transition-colors"
                     >
-                      {link.label}{" "}
-                      <ArrowRight className="h-4 w-4" />
+                      {link.label} <ArrowRight className="h-4 w-4" />
                     </a>
                   </div>
                 </div>
@@ -648,7 +668,9 @@ export default function HomePageSections() {
         <div className="container-edit relative">
           <div className="grid gap-12 md:grid-cols-12 md:gap-16">
             <Reveal className="md:col-span-5">
-              <p className="eyebrow">About</p>
+              <p className="eyebrow flex items-center gap-2">
+                <User className="h-3.5 w-3.5" /> About
+              </p>
               <h2 className="mt-4 font-display text-4xl font-extrabold tracking-[-0.03em] md:text-5xl text-ink">
                 Meet{" "}
                 <span className="font-serif italic font-medium text-gradient-brand animate-gradient">
@@ -721,9 +743,9 @@ export default function HomePageSections() {
         <div className="mt-6 max-w-xl text-[15px] md:text-base leading-[1.65] text-ink-soft space-y-4">
           <p>AI can feel confusing because new tools appear every day.</p>
           <p>
-            <span className="italic font-medium text-ink">Accelerate with AI</span> helps
-            founders and professionals understand what AI can do and how they can start using
-            it in practical work.
+            <span className="italic font-medium text-ink">Accelerate with AI</span> helps founders
+            and professionals understand what AI can do and how they can start using it in practical
+            work.
           </p>
           <p>The book focuses on business value, simple examples and clear action.</p>
 

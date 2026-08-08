@@ -4348,26 +4348,24 @@ function oo(e) {
                       marginTop: -220,
                       transformStyle: `preserve-3d`,
                     },
-                    children: t
-                      .slice(0, v)
-                      .map((e, t) =>
-                        d(
-                          `div`,
-                          {
-                            style: {
-                              position: `absolute`,
-                              width: 300,
-                              height: 440,
-                              top: 0,
-                              left: 0,
-                              transform: `rotateY(${ae[t]}deg) translateZ(${i}px)`,
-                              backfaceVisibility: `hidden`,
-                            },
-                            children: d(ro, { card: e, bg: r }),
+                    children: t.slice(0, v).map((e, t) =>
+                      d(
+                        `div`,
+                        {
+                          style: {
+                            position: `absolute`,
+                            width: 300,
+                            height: 440,
+                            top: 0,
+                            left: 0,
+                            transform: `rotateY(${ae[t]}deg) translateZ(${i}px)`,
+                            backfaceVisibility: `hidden`,
                           },
-                          t,
-                        ),
+                          children: d(ro, { card: e, bg: r }),
+                        },
+                        t,
                       ),
+                    ),
                   }),
                   d(ao, { direction: `left`, onClick: re }),
                   d(ao, { direction: `right`, onClick: ie }),

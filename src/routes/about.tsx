@@ -9,6 +9,8 @@ import {
   ExternalLink,
   GraduationCap,
   Compass,
+  User,
+  Info,
 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { Monogram } from "@/components/Monogram";
@@ -227,7 +229,9 @@ function AboutPage() {
         <div className="container-edit relative grid items-center gap-12 pt-10 pb-24 md:grid-cols-12 md:gap-16 md:pt-14 md:pb-32">
           <div className="md:col-span-7">
             <Reveal eager>
-              <p className="eyebrow eyebrow-blue">About</p>
+              <p className="eyebrow eyebrow-blue flex items-center gap-2">
+                <User className="h-3.5 w-3.5" /> About
+              </p>
             </Reveal>
             <Reveal delay={100} eager>
               <h1 className="mt-6 font-display text-4xl font-extrabold leading-[1.1] tracking-[-0.03em] text-ink sm:text-5xl md:text-6xl lg:text-[4.25rem] lg:leading-[1.05]">
@@ -265,7 +269,9 @@ function AboutPage() {
       <section className="relative bg-canvas py-14 md:py-20">
         <div className="container-edit relative">
           <Reveal>
-            <p className="eyebrow eyebrow-indigo">A line he keeps coming back to</p>
+            <p className="eyebrow eyebrow-indigo flex items-center gap-2">
+              <Quote className="h-3.5 w-3.5" /> A line he keeps coming back to
+            </p>
             <Quote className="mt-8 h-12 w-12 text-violet" />
             <blockquote className="mt-6 max-w-5xl font-serif text-3xl font-medium leading-[1.2] tracking-tight text-ink md:text-5xl">
               <span className="italic">
@@ -285,7 +291,9 @@ function AboutPage() {
         <div className="container-edit relative grid gap-12 md:grid-cols-12">
           <Reveal className="md:col-span-4">
             <div className="md:sticky md:top-28">
-              <p className="eyebrow eyebrow-cyan">The story</p>
+              <p className="eyebrow eyebrow-cyan flex items-center gap-2">
+                <BookOpen className="h-3.5 w-3.5" /> The story
+              </p>
               <h2 className="mt-4 font-serif text-3xl font-semibold leading-[1.1] tracking-tight text-ink md:text-4xl">
                 From small town to building across{" "}
                 <em className="text-gradient-brand animate-gradient">three continents.</em>
@@ -323,7 +331,9 @@ function AboutPage() {
       <section className="relative bg-canvas py-14 md:py-16">
         <div className="container-edit">
           <Reveal>
-            <p className="eyebrow eyebrow-blue">Capabilities</p>
+            <p className="eyebrow eyebrow-blue flex items-center gap-2">
+              <Wrench className="h-3.5 w-3.5" /> Capabilities
+            </p>
             <h2 className="mt-4 max-w-3xl font-serif text-4xl font-semibold leading-[1.05] tracking-tight text-ink md:text-6xl">
               What Ambesh is{" "}
               <span className="text-gradient-brand animate-gradient italic">hired for.</span>
@@ -359,7 +369,9 @@ function AboutPage() {
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
-            <p className="eyebrow eyebrow-indigo">What he believes</p>
+            <p className="eyebrow eyebrow-indigo flex items-center gap-2">
+              <Info className="h-3.5 w-3.5" /> What he believes
+            </p>
             <h2 className="mt-4 max-w-3xl font-serif text-4xl font-semibold leading-[1.05] tracking-tight text-ink md:text-6xl">
               Four beliefs that shape{" "}
               <span className="text-gradient-brand animate-gradient italic">every engagement.</span>
@@ -390,7 +402,9 @@ function AboutPage() {
       <section className="relative bg-canvas py-14 md:py-16">
         <div className="container-edit relative">
           <Reveal>
-            <p className="eyebrow eyebrow-cyan">Three roles, one thread</p>
+            <p className="eyebrow eyebrow-cyan flex items-center gap-2">
+              <Building2 className="h-3.5 w-3.5" /> Three roles, one thread
+            </p>
             <h2 className="mt-4 max-w-3xl font-serif text-4xl font-semibold leading-[1.05] tracking-tight text-ink md:text-6xl">
               Entrepreneur. Builder.{" "}
               <span className="text-gradient-brand animate-gradient italic">Teacher.</span>
@@ -429,7 +443,9 @@ function AboutPage() {
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
-            <p className="eyebrow eyebrow-blue">The journey</p>
+            <p className="eyebrow eyebrow-blue flex items-center gap-2">
+              <Compass className="h-3.5 w-3.5" /> The journey
+            </p>
             <h2 className="mt-4 max-w-3xl font-serif text-4xl font-semibold leading-[1.05] tracking-tight text-ink md:text-6xl">
               From small town to training teams across{" "}
               <span className="text-gradient-brand animate-gradient italic">three continents.</span>
@@ -455,7 +471,9 @@ function AboutPage() {
       <section className="relative bg-canvas py-14 md:py-16">
         <div className="container-edit relative">
           <Reveal>
-            <p className="eyebrow eyebrow-indigo">Built along the way</p>
+            <p className="eyebrow eyebrow-indigo flex items-center gap-2">
+              <ExternalLink className="h-3.5 w-3.5" /> Built along the way
+            </p>
             <h2 className="mt-4 max-w-3xl font-serif text-4xl font-semibold leading-[1.05] tracking-tight text-ink md:text-6xl">
               One company. One school.{" "}
               <span className="text-gradient-brand animate-gradient italic">Three products.</span>
@@ -496,7 +514,9 @@ function AboutPage() {
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
-            <p className="eyebrow eyebrow-cyan">What people say</p>
+            <p className="eyebrow eyebrow-cyan flex items-center gap-2">
+              <Mic className="h-3.5 w-3.5" /> What people say
+            </p>
             <h2 className="mt-4 max-w-3xl font-serif text-4xl font-semibold leading-[1.05] tracking-tight text-ink md:text-6xl">
               About working{" "}
               <span className="text-gradient-brand animate-gradient italic">together.</span>
@@ -510,7 +530,13 @@ function AboutPage() {
             {placeholderTestimonials.map((t, i) => (
               <Reveal key={i} delay={100}>
                 <div className="custom-theme-card-static h-full rounded-3xl p-8">
-                  <Mic className="h-5 w-5 text-ink-muted" />
+                  <Mic
+                    className="h-5 w-5"
+                    style={{
+                      color: "var(--accent)",
+                      animation: `mic-pulse 2s ease-in-out ${i * 0.5}s infinite`,
+                    }}
+                  />
                   <p className="mt-6 font-serif text-lg italic leading-snug text-ink">"{t.q}"</p>
                   <div className="mt-8 border-t border-rule pt-5">
                     <p className="text-xs text-ink-muted">{t.r}</p>
@@ -526,7 +552,9 @@ function AboutPage() {
       <section className="relative bg-canvas py-14 md:py-16">
         <div className="container-edit grid gap-12 md:grid-cols-12">
           <Reveal className="md:col-span-5">
-            <p className="eyebrow eyebrow-blue">A few things worth knowing</p>
+            <p className="eyebrow eyebrow-blue flex items-center gap-2">
+              <Info className="h-3.5 w-3.5" /> A few things worth knowing
+            </p>
             <h2 className="mt-4 font-serif text-3xl font-semibold leading-[1.1] tracking-tight text-ink md:text-4xl">
               Small details that shape{" "}
               <span className="italic text-gradient-brand animate-gradient">how Ambesh works.</span>
@@ -550,7 +578,9 @@ function AboutPage() {
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative text-center">
           <Reveal>
-            <p className="eyebrow eyebrow-indigo">Final word</p>
+            <p className="eyebrow eyebrow-indigo flex items-center gap-2">
+              <ArrowRight className="h-3.5 w-3.5" /> Final word
+            </p>
             <h2 className="mx-auto mt-6 max-w-4xl font-serif text-5xl font-semibold leading-[1.05] tracking-tight text-ink md:text-7xl">
               If any of this resonates,{" "}
               <span className="italic text-gradient-brand animate-gradient">

@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Reveal } from "@/components/Reveal";
 import { buildMeta, jsonLd, breadcrumbSchema, SITE_URL } from "@/lib/seo";
-import { BookOpen, Search, Calendar, Clock, ArrowRight } from "lucide-react";
+import { BookOpen, Search, Calendar, Clock, ArrowRight, Mail } from "lucide-react";
 
 export const Route = createFileRoute("/insights")({
   head: () => {
@@ -98,7 +98,9 @@ function InsightsPage() {
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
-            <p className="eyebrow">Insights</p>
+            <p className="eyebrow flex items-center gap-2">
+              <BookOpen className="h-3.5 w-3.5" /> Insights
+            </p>
             <h1 className="mt-5 max-w-3xl font-display text-[2.4rem] font-extrabold leading-[1.05] tracking-[-0.03em] text-ink sm:text-5xl md:text-6xl">
               Systems, scaling, and{" "}
               <span className="font-serif italic font-medium text-gradient-brand animate-gradient">
@@ -200,7 +202,9 @@ function InsightsPage() {
       <section className="relative overflow-hidden bg-canvas py-16 md:py-20 border-t border-rule">
         <div className="container-edit relative max-w-3xl text-center">
           <Reveal>
-            <p className="eyebrow">Newsletter</p>
+            <p className="eyebrow flex items-center gap-2">
+              <Mail className="h-3.5 w-3.5" /> Newsletter
+            </p>
             <h2 className="mt-4 font-display text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
               Get systems advice directly in your inbox.
             </h2>

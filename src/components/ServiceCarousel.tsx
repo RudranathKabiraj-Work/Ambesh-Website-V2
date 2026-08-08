@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -24,8 +24,40 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
   const [rotation, setRotation] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
+  const count = cards.length;
+  const angleStep = 360 / count;
+  const cardW = isMobile ? 290 : 365;
+  const cardH = isMobile ? 230 : 255;
+  // Distance from the hexagon centre to each face; slightly larger than a tight
+  // hexagon so there is a small, even gap between every card.
+  const radius = (cardW / (2 * Math.tan(Math.PI / count))) * 1.08;
+  const containerH = cardH * 1.7;
+
+  const goNext = useCallback(() => {
+    setRotation((r) => r + angleStep);
+    setActiveIndex((p) => (p + 1) % count);
+  }, [angleStep, count]);
+
+  const goPrev = useCallback(() => {
+    setRotation((r) => r - angleStep);
+    setActiveIndex((p) => (p - 1 + count) % count);
+  }, [angleStep, count]);
+
+  const goTo = useCallback(
+    (i: number) => {
+      if (i === activeIndex) return;
+      let delta = i - activeIndex;
+      if (delta > count / 2) delta -= count;
+      if (delta < -count / 2) delta += count;
+      setRotation((r) => r + delta * angleStep);
+      setActiveIndex(i);
+    },
+    [activeIndex, angleStep, count],
+  );
+
   useEffect(() => {
-    const mq = window.matchMedia("(max-width: 767px)");
+    // Match the same breakpoint as CSS mobile performance block
+    const mq = window.matchMedia("(max-width: 1023px)");
     const check = () => setIsMobile(mq.matches);
     check();
     mq.addEventListener("change", check);
@@ -36,33 +68,7 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
   useEffect(() => {
     const timer = setTimeout(goNext, 5000);
     return () => clearTimeout(timer);
-  }, [activeIndex]);
-
-  const count = cards.length;
-  const angleStep = 360 / count;
-  const cardW = isMobile ? 290 : 365;
-  const cardH = isMobile ? 230 : 255;
-  // Distance from the hexagon centre to each face; slightly larger than a tight
-  // hexagon so there is a small, even gap between every card.
-  const radius = (cardW / (2 * Math.tan(Math.PI / count))) * 1.08;
-  const containerH = cardH * 1.7;
-
-  const goNext = () => {
-    setRotation((r) => r + angleStep);
-    setActiveIndex((p) => (p + 1) % count);
-  };
-  const goPrev = () => {
-    setRotation((r) => r - angleStep);
-    setActiveIndex((p) => (p - 1 + count) % count);
-  };
-  const goTo = (i: number) => {
-    if (i === activeIndex) return;
-    let delta = i - activeIndex;
-    if (delta > count / 2) delta -= count;
-    if (delta < -count / 2) delta += count;
-    setRotation((r) => r + delta * angleStep);
-    setActiveIndex(i);
-  };
+  }, [activeIndex, goNext]);
 
   const renderCardShell = (card: ServiceCarouselCard, isActive: boolean) => (
     <div className="group relative h-full w-full">
@@ -76,12 +82,14 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
             : "0 5px 16px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.06)",
         }}
       >
-        {/* Gradient-rotate ring (CodeFronts card-21) — fades in and spins on hover */}
-        <div
-          className="card-21-ring pointer-events-none absolute inset-0 z-20 rounded-[22px] opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-hover:[animation-play-state:running]"
-          aria-hidden
-        />
-        {/* Full-bleed image — object-cover always fills 100%, leaving absolutely zero left or right borders */}
+        {/* Gradient-rotate ring — desktop only (GPU-expensive, skip on mobile) */}
+        {!isMobile && (
+          <div
+            className="card-21-ring pointer-events-none absolute inset-0 z-20 rounded-[22px] opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-hover:[animation-play-state:running]"
+            aria-hidden
+          />
+        )}
+        {/* Full-bleed image — object-cover always fills 100% */}
         <img
           src={card.image}
           alt={card.title}
@@ -139,6 +147,58 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
     </div>
   );
 
+  // ─── MOBILE: simple flat 2D slide carousel (no 3D / perspective overhead) ──
+  if (isMobile) {
+    return (
+      <div className={`mt-7 ${className}`}>
+        <div className="relative overflow-hidden rounded-[22px]" style={{ height: cardH }}>
+          <div
+            className="flex h-full"
+            style={{
+              // Pure CSS transform — compositor-only, zero paint cost
+              transform: `translateX(-${activeIndex * (100 / count)}%)`,
+              transition: "transform 0.35s cubic-bezier(0.25, 1, 0.5, 1)",
+              width: `${count * 100}%`,
+              willChange: "transform",
+            }}
+          >
+            {cards.map((card, i) => (
+              <div
+                key={i}
+                style={{ width: `${100 / count}%`, flexShrink: 0 }}
+              >
+                {renderCardShell(card, i === activeIndex)}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile dot navigation */}
+        <div className="mt-3 flex items-center justify-center gap-1.5">
+          {cards.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => goTo(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+              className={`relative h-1.5 overflow-hidden rounded-full transition-all duration-300 ${
+                activeIndex === idx ? "carousel-dot-track" : ""
+              }`}
+              style={{
+                width: activeIndex === idx ? 20 : 6,
+                backgroundColor: activeIndex === idx ? undefined : "var(--ink-muted)",
+              }}
+            >
+              {activeIndex === idx && (
+                <span className="carousel-dot-progress carousel-dot-fill absolute inset-y-0 left-0 rounded-full" />
+              )}
+            </button>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // ─── DESKTOP: full 3D hexagon carousel ────────────────────────────────────
   return (
     <div className={`mt-7 md:mt-14 ${className}`}>
       {/* Hexagonal 3D stage */}
@@ -146,7 +206,7 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
         className="relative mx-auto"
         style={{
           width: "100%",
-          maxWidth: isMobile ? cardW * 2 : cardW * 2.6,
+          maxWidth: cardW * 2.6,
           height: containerH,
           perspective: 1400,
         }}
@@ -183,54 +243,24 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
           ))}
         </motion.div>
 
-        {/* Left arrow — outside left edge (desktop) */}
-        {!isMobile && (
-          <>
-            <button
-              onClick={goPrev}
-              aria-label="Previous card"
-              className="absolute z-40 grid h-10 w-10 place-items-center rounded-full border border-white/20 bg-black/50 text-white backdrop-blur-sm transition-all duration-200 hover:scale-110 hover:bg-black/70"
-              style={{ left: 0, top: "50%", transform: "translateY(-50%)" }}
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </button>
-            <button
-              onClick={goNext}
-              aria-label="Next card"
-              className="absolute z-40 grid h-10 w-10 place-items-center rounded-full border border-white/20 bg-black/50 text-white backdrop-blur-sm transition-all duration-200 hover:scale-110 hover:bg-black/70"
-              style={{ right: 0, top: "50%", transform: "translateY(-50%)" }}
-            >
-              <ChevronRight className="h-4 w-4" />
-            </button>
-          </>
-        )}
+        {/* Left / Right arrows */}
+        <button
+          onClick={goPrev}
+          aria-label="Previous card"
+          className="absolute z-40 grid h-10 w-10 place-items-center rounded-full border border-white/20 bg-black/50 text-white backdrop-blur-sm transition-all duration-200 hover:scale-110 hover:bg-black/70"
+          style={{ left: 0, top: "50%", transform: "translateY(-50%)" }}
+        >
+          <ChevronLeft className="h-4 w-4" />
+        </button>
+        <button
+          onClick={goNext}
+          aria-label="Next card"
+          className="absolute z-40 grid h-10 w-10 place-items-center rounded-full border border-white/20 bg-black/50 text-white backdrop-blur-sm transition-all duration-200 hover:scale-110 hover:bg-black/70"
+          style={{ right: 0, top: "50%", transform: "translateY(-50%)" }}
+        >
+          <ChevronRight className="h-4 w-4" />
+        </button>
       </div>
-
-      {/* Mobile arrows */}
-      {isMobile && (
-        <div className="mt-0 flex items-center justify-center">
-          <div className="flex items-center gap-1.5">
-            {cards.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => goTo(idx)}
-                aria-label={`Go to slide ${idx + 1}`}
-                className={`relative h-1.5 overflow-hidden rounded-full transition-all duration-300 ${
-                  activeIndex === idx ? "carousel-dot-track" : ""
-                }`}
-                style={{
-                  width: activeIndex === idx ? 20 : 6,
-                  backgroundColor: activeIndex === idx ? undefined : "var(--ink-muted)",
-                }}
-              >
-                {activeIndex === idx && (
-                  <span className="carousel-dot-progress carousel-dot-fill absolute inset-y-0 left-0 rounded-full" />
-                )}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
     </div>
   );
 }

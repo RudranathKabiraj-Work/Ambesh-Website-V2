@@ -20,7 +20,7 @@ export function BookStickySection({
   // Check mobile device size on mount & resize
   useEffect(() => {
     let currentWidth = window.innerWidth;
-    
+
     const checkMobile = () => {
       const newWidth = window.innerWidth;
       // CRITICAL MOBILE PERFORMANCE FIX: Only trigger state update if the screen WIDTH changes.
@@ -28,11 +28,11 @@ export function BookStickySection({
       // Checking width changes prevents layout recalculation/stutter during scrolling.
       if (newWidth !== currentWidth) {
         currentWidth = newWidth;
-        setIsMobile(newWidth < 768);
+        setIsMobile(newWidth < 1024);
       }
     };
 
-    setIsMobile(currentWidth < 768);
+    setIsMobile(currentWidth < 1024);
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
@@ -75,22 +75,21 @@ export function BookStickySection({
   // Uses GPU hardware acceleration layers for butter-smooth mobile compositing
   if (isMobile) {
     return (
-      <section 
+      <section
         className={`relative overflow-hidden bg-canvas py-16 md:py-24 border-t border-b border-rule/30 ${sectionClass}`}
         style={{ transform: "translate3d(0,0,0)" }}
       >
         <div className="container-edit relative">
-          <div className={`grid gap-12 rounded-[20px] p-8 md:grid-cols-12 md:items-center md:gap-16 md:p-14 shadow-sm ${cardClass}`}>
-            
+          <div
+            className={`grid gap-12 rounded-[20px] p-8 md:grid-cols-12 md:items-center md:gap-16 md:p-14 shadow-sm ${cardClass}`}
+          >
             {/* 3D Book front cover — static, same look as desktop, no animation */}
             <div className="md:col-span-5">
               <Book3D progress={0} isMobile={false} />
             </div>
 
             {/* Description Text Column */}
-            <div className="md:col-span-7">
-              {children}
-            </div>
+            <div className="md:col-span-7">{children}</div>
           </div>
         </div>
       </section>
@@ -106,8 +105,9 @@ export function BookStickySection({
       {/* Sticky viewport content block */}
       <div className="sticky top-0 flex h-[100dvh] items-center overflow-hidden w-full">
         <div className="container-edit relative w-full">
-          <div className={`grid gap-12 rounded-[20px] p-8 md:grid-cols-12 md:items-center md:gap-16 md:p-14 shadow-sm ${cardClass}`}>
-            
+          <div
+            className={`grid gap-12 rounded-[20px] p-8 md:grid-cols-12 md:items-center md:gap-16 md:p-14 shadow-sm ${cardClass}`}
+          >
             {/* 3D Book Presentation Column */}
             <Reveal className="md:col-span-5">
               <Book3D progress={progress} isMobile={false} />

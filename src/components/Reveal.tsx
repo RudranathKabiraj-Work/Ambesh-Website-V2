@@ -6,17 +6,17 @@ interface RevealProps {
   delay?: number;
   className?: string;
   as?:
-  | "div"
-  | "section"
-  | "li"
-  | "article"
-  | "header"
-  | "footer"
-  | "h1"
-  | "h2"
-  | "h3"
-  | "p"
-  | "span";
+    | "div"
+    | "section"
+    | "li"
+    | "article"
+    | "header"
+    | "footer"
+    | "h1"
+    | "h2"
+    | "h3"
+    | "p"
+    | "span";
   eager?: boolean;
   style?: CSSProperties;
 }
@@ -37,7 +37,7 @@ function getGlobalObserver() {
           }
         }
       },
-      { threshold: 0.01, rootMargin: "0px 0px -85px 0px" },
+      { threshold: 0.01, rootMargin: "0px 0px 200px 0px" },
     );
   }
   return globalObserver;

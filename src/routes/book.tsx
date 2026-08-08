@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import type { FormEvent } from "react";
-import { ArrowRight, BookOpen, Mail, Award, ShoppingBag } from "lucide-react";
+import { ArrowRight, BookOpen, Mail, Award, ShoppingBag, Users, List, User } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { Marquee } from "@/components/Marquee";
 import { buildMeta, jsonLd, breadcrumbSchema, SITE_URL, DEFAULT_OG_IMAGE } from "@/lib/seo";
@@ -181,7 +181,9 @@ function BookPage() {
         <div className="container-edit relative grid items-center gap-16 pt-10 pb-16 md:grid-cols-12 md:gap-16 md:pt-14 md:pb-20">
           <div className="md:col-span-7">
             <Reveal>
-              <p className="eyebrow">The book</p>
+              <p className="eyebrow flex items-center gap-2">
+                <BookOpen className="h-3.5 w-3.5" /> The book
+              </p>
             </Reveal>
             <Reveal delay={100}>
               <h1 className="mt-6 font-display text-5xl font-extrabold leading-[0.95] tracking-[-0.03em] text-ink md:text-7xl lg:text-[5.5rem]">
@@ -268,7 +270,9 @@ function BookPage() {
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
-            <p className="eyebrow">Who it is for</p>
+            <p className="eyebrow flex items-center gap-2">
+              <Users className="h-3.5 w-3.5" /> Who it is for
+            </p>
             <h2 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-6xl">
               Written for people who{" "}
               <span className="text-gradient-brand animate-gradient">do real work.</span>
@@ -292,7 +296,9 @@ function BookPage() {
       <section className="relative bg-canvas py-16">
         <div className="container-edit relative">
           <Reveal>
-            <p className="eyebrow">Inside the book</p>
+            <p className="eyebrow flex items-center gap-2">
+              <List className="h-3.5 w-3.5" /> Inside the book
+            </p>
             <h2 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-6xl">
               10 things this book will{" "}
               <span className="text-gradient-brand animate-gradient">teach you.</span>
@@ -321,7 +327,9 @@ function BookPage() {
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
-            <p className="eyebrow">What experts say</p>
+            <p className="eyebrow flex items-center gap-2">
+              <Award className="h-3.5 w-3.5" /> What experts say
+            </p>
             <h2 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-6xl">
               The people who{" "}
               <span className="text-gradient-brand animate-gradient">read it first.</span>
@@ -372,7 +380,9 @@ function BookPage() {
         <div className="container-edit relative">
           <div className="grid gap-12 md:grid-cols-12 md:gap-20">
             <Reveal className="md:col-span-4">
-              <p className="eyebrow">About the author</p>
+              <p className="eyebrow flex items-center gap-2">
+                <User className="h-3.5 w-3.5" /> About the author
+              </p>
             </Reveal>
             <Reveal delay={150} className="md:col-span-8">
               <p className="text-2xl font-medium leading-relaxed tracking-tight text-ink md:text-3xl">

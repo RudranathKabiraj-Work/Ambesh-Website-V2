@@ -139,6 +139,12 @@ function RootComponent() {
     // Only run on client-side
     if (typeof window === "undefined") return;
 
+    // Disable Lenis on mobile/touch devices for native, lag-free scrolling
+    const isMobileDevice =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+      window.matchMedia("(max-width: 1023px)").matches;
+    if (isMobileDevice) return;
+
     const lenis = new Lenis({
       duration: 0.9, // Snappier duration to reduce sluggishness/lag feeling
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),

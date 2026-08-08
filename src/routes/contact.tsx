@@ -206,7 +206,9 @@ function ContactPage() {
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative pt-12 pb-16 md:pt-16 md:pb-20">
           <Reveal>
-            <p className="eyebrow">Contact</p>
+            <p className="eyebrow flex items-center gap-2">
+              <Mail className="h-3.5 w-3.5" /> Contact
+            </p>
           </Reveal>
           <Reveal delay={100}>
             <h1 className="mt-6 max-w-5xl font-display text-[2.4rem] font-extrabold leading-[1.05] tracking-[-0.03em] text-ink sm:text-5xl md:text-6xl lg:text-[4.25rem]">
@@ -354,7 +356,9 @@ function ContactPage() {
                 </div>
 
                 <div className="rounded-3xl border border-rule bg-canvas p-7 shadow-soft">
-                  <p className="eyebrow">Trust signals</p>
+                  <p className="eyebrow flex items-center gap-2">
+                    <ShieldCheck className="h-3.5 w-3.5" /> Trust signals
+                  </p>
                   <h3 className="mt-2 text-lg font-bold tracking-tight">What you can expect</h3>
                   <ul className="mt-5 space-y-4 text-sm">
                     <li className="flex items-start gap-3">
@@ -406,7 +410,9 @@ function ContactPage() {
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative grid gap-12 md:grid-cols-12 md:gap-16">
           <Reveal className="md:col-span-4">
-            <p className="eyebrow">FAQ</p>
+            <p className="eyebrow flex items-center gap-2">
+              <MessageCircle className="h-3.5 w-3.5" /> FAQ
+            </p>
             <h2 className="mt-4 text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-5xl">
               Quick <span className="text-gradient-brand">answers.</span>
             </h2>

@@ -21,7 +21,9 @@ export function Book3D({ progress, isMobile = false }: Book3DProps) {
   const shadowSpread = 2 + activeEased * 6;
 
   // Transition style for mobile click to avoid layout thrashing, none for scroll-based desktop mapping
-  const transitionStyle = isMobile ? "transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.6s cubic-bezier(0.25, 1, 0.5, 1)" : "none";
+  const transitionStyle = isMobile
+    ? "transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.6s cubic-bezier(0.25, 1, 0.5, 1)"
+    : "none";
 
   return (
     <div
@@ -37,13 +39,16 @@ export function Book3D({ progress, isMobile = false }: Book3DProps) {
       {/* Book perspective container */}
       <div className="book-container !w-full !h-full" style={{ perspective: "1200px" }}>
         {/* Book wrapper — pause float while cover swings open */}
-        <div className={`book-wrapper w-full h-full${activeEased > 0.05 ? " is-open" : ""}`} style={{ transformStyle: "preserve-3d" }}>
+        <div
+          className={`book-wrapper w-full h-full${activeEased > 0.05 ? " is-open" : ""}`}
+          style={{ transformStyle: "preserve-3d" }}
+        >
           {/* Back Cover with dynamic shadow */}
           <div
             className="book-back-cover"
             style={{
               boxShadow: `${4 + activeEased * 6}px ${6 + activeEased * 8}px ${shadowBlur}px ${shadowSpread}px rgba(0, 0, 0, ${shadowOpacity})`,
-              transition: transitionStyle
+              transition: transitionStyle,
             }}
           />
 
@@ -52,16 +57,17 @@ export function Book3D({ progress, isMobile = false }: Book3DProps) {
 
           {/* First Page (displayed under the cover leaf) */}
           <div className="book-first-page select-none flex flex-col justify-start overflow-visible">
-            <span className="font-serif text-[10px] italic text-ink-soft">
-              Introduction
-            </span>
+            <span className="font-serif text-[10px] italic text-ink-soft">Introduction</span>
             <h4 className="mt-1 font-display text-sm font-black tracking-tight text-ink">
               CHAPTER 1
             </h4>
             <p className="mt-2.5 border-t border-rule pt-2.5 text-[8.5px] font-medium leading-[1.4] text-ink-muted">
               {/* Drop-cap styled letter for physical book look */}
-              <span className="float-left text-2xl font-serif font-black leading-[0.8] mr-1 mt-0.5 text-accent">M</span>
-              ost business builders get trapped in the execution of their own vision. The key is in designing operational systems that run better...
+              <span className="float-left text-2xl font-serif font-black leading-[0.8] mr-1 mt-0.5 text-accent">
+                M
+              </span>
+              ost business builders get trapped in the execution of their own vision. The key is in
+              designing operational systems that run better...
             </p>
 
             {/* Elegant gold foil bookmark ribbon hanging out from under page edges */}
@@ -70,7 +76,7 @@ export function Book3D({ progress, isMobile = false }: Book3DProps) {
               style={{
                 boxShadow: "0 2px 4px rgba(0,0,0,0.18)",
                 transform: `rotateZ(${activeEased * -2}deg)`,
-                transition: transitionStyle
+                transition: transitionStyle,
               }}
             />
 
@@ -90,7 +96,7 @@ export function Book3D({ progress, isMobile = false }: Book3DProps) {
             style={{
               transform: `rotateY(${rotateY}deg)`,
               transformStyle: "preserve-3d",
-              transition: transitionStyle
+              transition: transitionStyle,
             }}
           >
             {/* Front Cover Outer Face */}

@@ -85,14 +85,18 @@
   --cursor-grid-color: oklch(0.5 0.16 250);
 
   /* Premium blue-black button gradient */
-  --btn-blue-black: linear-gradient(135deg,
-      oklch(0.22 0.06 260) 0%,
-      oklch(0.14 0.05 260) 50%,
-      oklch(0.22 0.08 268) 100%);
-  --btn-blue-black-hover: linear-gradient(135deg,
-      oklch(0.28 0.08 268) 0%,
-      oklch(0.18 0.06 260) 50%,
-      oklch(0.3 0.12 268) 100%);
+  --btn-blue-black: linear-gradient(
+    135deg,
+    oklch(0.22 0.06 260) 0%,
+    oklch(0.14 0.05 260) 50%,
+    oklch(0.22 0.08 268) 100%
+  );
+  --btn-blue-black-hover: linear-gradient(
+    135deg,
+    oklch(0.28 0.08 268) 0%,
+    oklch(0.18 0.06 260) 50%,
+    oklch(0.3 0.12 268) 100%
+  );
 
   /* shadcn token map */
   --background: var(--canvas);
@@ -120,9 +124,11 @@
 
   /* Subtle tonal "gradient" - just an indigo wash, not rainbow */
   --gradient-brand: linear-gradient(135deg, oklch(0.22 0.04 265) 0%, oklch(0.46 0.18 268) 100%);
-  --gradient-brand-soft: linear-gradient(135deg,
-      oklch(0.46 0.18 268 / 0.08) 0%,
-      oklch(0.46 0.18 268 / 0.02) 100%);
+  --gradient-brand-soft: linear-gradient(
+    135deg,
+    oklch(0.46 0.18 268 / 0.08) 0%,
+    oklch(0.46 0.18 268 / 0.02) 100%
+  );
   --shadow-soft:
     0 1px 2px oklch(0.16 0.012 265 / 0.04), 0 8px 24px -12px oklch(0.16 0.012 265 / 0.08);
   --shadow-lift:
@@ -131,18 +137,24 @@
   --shadow-glow-pink: var(--shadow-glow);
 
   /* Floating header glass */
-  --header-bg-open: linear-gradient(135deg,
-      oklch(0.995 0.002 250 / 0.55) 0%,
-      oklch(0.98 0.005 260 / 0.4) 50%,
-      oklch(0.995 0.002 250 / 0.55) 100%);
-  --header-bg-scrolled: linear-gradient(135deg,
-      oklch(0.995 0.002 250 / 0.5) 0%,
-      oklch(0.97 0.006 260 / 0.35) 50%,
-      oklch(0.995 0.002 250 / 0.5) 100%);
-  --header-bg-top: linear-gradient(135deg,
-      oklch(0.995 0.002 250 / 0.35) 0%,
-      oklch(0.97 0.006 260 / 0.22) 50%,
-      oklch(0.995 0.002 250 / 0.35) 100%);
+  --header-bg-open: linear-gradient(
+    135deg,
+    oklch(0.995 0.002 250 / 0.55) 0%,
+    oklch(0.98 0.005 260 / 0.4) 50%,
+    oklch(0.995 0.002 250 / 0.55) 100%
+  );
+  --header-bg-scrolled: linear-gradient(
+    135deg,
+    oklch(0.995 0.002 250 / 0.5) 0%,
+    oklch(0.97 0.006 260 / 0.35) 50%,
+    oklch(0.995 0.002 250 / 0.5) 100%
+  );
+  --header-bg-top: linear-gradient(
+    135deg,
+    oklch(0.995 0.002 250 / 0.35) 0%,
+    oklch(0.97 0.006 260 / 0.22) 50%,
+    oklch(0.995 0.002 250 / 0.35) 100%
+  );
   --header-shadow:
     0 4px 32px -4px oklch(0.18 0.04 260 / 0.18), 0 1px 0 0 oklch(1 0 0 / 0.7) inset,
     0 -1px 0 0 oklch(0.9 0.01 260 / 0.15) inset;
@@ -205,26 +217,34 @@
   --pillar-card-shadow: none;
 
   /* Floating header glass — deep navy, blue-lit */
-  --header-bg-open: linear-gradient(135deg,
-      rgba(7, 17, 35, 0.85) 0%,
-      rgba(14, 76, 117, 0.72) 50%,
-      rgba(7, 17, 35, 0.85) 100%);
-  --header-bg-scrolled: linear-gradient(135deg,
-      rgba(7, 17, 35, 0.72) 0%,
-      rgba(14, 76, 117, 0.6) 50%,
-      rgba(7, 17, 35, 0.72) 100%);
-  --header-bg-top: linear-gradient(135deg,
-      rgba(7, 17, 35, 0.55) 0%,
-      rgba(14, 76, 117, 0.42) 50%,
-      rgba(7, 17, 35, 0.55) 100%);
+  --header-bg-open: linear-gradient(
+    135deg,
+    rgba(7, 17, 35, 0.85) 0%,
+    rgba(14, 76, 117, 0.72) 50%,
+    rgba(7, 17, 35, 0.85) 100%
+  );
+  --header-bg-scrolled: linear-gradient(
+    135deg,
+    rgba(7, 17, 35, 0.72) 0%,
+    rgba(14, 76, 117, 0.6) 50%,
+    rgba(7, 17, 35, 0.72) 100%
+  );
+  --header-bg-top: linear-gradient(
+    135deg,
+    rgba(7, 17, 35, 0.55) 0%,
+    rgba(14, 76, 117, 0.42) 50%,
+    rgba(7, 17, 35, 0.55) 100%
+  );
   --header-shadow: 0 4px 32px -4px rgba(0, 0, 0, 0.6), 0 1px 0 0 rgba(255, 255, 255, 0.06) inset;
   --header-shadow-top: 0 2px 20px -4px rgba(0, 0, 0, 0.5);
 
   /* Gradients & shadows */
   --gradient-brand: linear-gradient(135deg, #3282b7 0%, #0e4c75 100%);
-  --gradient-brand-soft: linear-gradient(135deg,
-      rgba(50, 130, 183, 0.3) 0%,
-      rgba(14, 76, 117, 0.16) 100%);
+  --gradient-brand-soft: linear-gradient(
+    135deg,
+    rgba(50, 130, 183, 0.3) 0%,
+    rgba(14, 76, 117, 0.16) 100%
+  );
   --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px -12px rgba(0, 0, 0, 0.5);
   --shadow-lift: 0 1px 2px rgba(0, 0, 0, 0.5), 0 20px 40px -20px rgba(0, 0, 0, 0.6);
   --shadow-glow: 0 20px 50px -20px rgba(50, 130, 183, 0.4);
@@ -232,7 +252,6 @@
 }
 
 @layer base {
-
   /* Kill all CSS transitions/animations for one frame during a theme
      switch so light<->dark is instant, then it is removed by JS. */
   .theme-switching,
@@ -271,11 +290,13 @@
     background-color: oklch(0.99 0.002 260);
     background-image:
       radial-gradient(circle at 50% 45%, oklch(0.62 0.17 158 / 0.18), rgba(0, 0, 0, 0) 34%),
-      linear-gradient(135deg,
+      linear-gradient(
+        135deg,
         oklch(0.62 0.17 158 / 0.18),
         rgba(0, 0, 0, 0) 32%,
         oklch(0.58 0.15 220 / 0.18) 66%,
-        oklch(0.66 0.18 45 / 0.14));
+        oklch(0.66 0.18 45 / 0.14)
+      );
     background-attachment: scroll;
     color: var(--color-ink);
     font-family: var(--font-sans);
@@ -286,7 +307,8 @@
     -webkit-overflow-scrolling: touch;
   }
 
-  @media (hover: hover) {
+  /* fixed attachment only on true desktop (pointer + large screen) — avoids scroll lag on mobile */
+  @media (hover: hover) and (pointer: fine) and (min-width: 1024px) {
     body {
       background-attachment: fixed;
     }
@@ -343,7 +365,13 @@
   }
 
   .dark .book-first-page {
-    background: linear-gradient(to right, #ddd8c1 0%, #f0ede3 4%, #faf8f5 10%, #ffffff 100%) !important;
+    background: linear-gradient(
+      to right,
+      #ddd8c1 0%,
+      #f0ede3 4%,
+      #faf8f5 10%,
+      #ffffff 100%
+    ) !important;
     border-color: rgba(0, 0, 0, 0.08) !important;
   }
 
@@ -392,7 +420,15 @@
     font-family: var(--font-mono);
   }
 
-  .eyebrow {
+  .eyebrow,
+  .eyebrow-indigo,
+  .eyebrow-amber,
+  .eyebrow-blue,
+  .eyebrow-emerald,
+  .eyebrow-violet,
+  .eyebrow-rose,
+  .eyebrow-orange,
+  .eyebrow-cyan {
     display: inline-flex;
     align-items: center;
     gap: 0.55rem;
@@ -401,104 +437,31 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: var(--ink-soft);
-    border: 1px solid var(--rule);
+    color: oklch(0.35 0.17 250) !important;
+    border: 1px solid oklch(0.35 0.17 250 / 0.18) !important;
     border-radius: 9999px;
     padding: 0.3rem 0.85rem;
-    background-color: oklch(0.995 0.002 250 / 0.8);
+    background-color: oklch(0.35 0.17 250 / 0.06) !important;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     width: fit-content;
   }
 
+  .eyebrow svg,
+  .eyebrow-indigo svg,
+  .eyebrow-amber svg,
+  .eyebrow-blue svg,
+  .eyebrow-emerald svg,
+  .eyebrow-violet svg,
+  .eyebrow-rose svg,
+  .eyebrow-orange svg,
+  .eyebrow-cyan svg {
+    stroke: oklch(0.35 0.17 250) !important;
+    color: oklch(0.35 0.17 250) !important;
+  }
+
   .eyebrow::before {
-    content: "";
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    border-radius: 9999px;
-    background-color: var(--accent);
-    flex-shrink: 0;
-  }
-
-  .eyebrow-indigo {
-    color: oklch(0.46 0.18 268) !important;
-    border-color: oklch(0.46 0.18 268 / 0.18) !important;
-    background-color: oklch(0.94 0.04 268 / 0.08) !important;
-  }
-
-  .eyebrow-indigo::before {
-    background-color: oklch(0.46 0.18 268) !important;
-  }
-
-  .eyebrow-amber {
-    color: oklch(0.65 0.15 65) !important;
-    border-color: oklch(0.79 0.15 65 / 0.22) !important;
-    background-color: oklch(0.97 0.03 65 / 0.1) !important;
-  }
-
-  .eyebrow-amber::before {
-    background-color: oklch(0.79 0.15 65) !important;
-  }
-
-  .eyebrow-blue {
-    color: oklch(0.5 0.16 250) !important;
-    border-color: oklch(0.6 0.16 250 / 0.22) !important;
-    background-color: oklch(0.95 0.03 250 / 0.08) !important;
-  }
-
-  .eyebrow-blue::before {
-    background-color: oklch(0.6 0.16 250) !important;
-  }
-
-  .eyebrow-emerald {
-    color: oklch(0.52 0.17 150) !important;
-    border-color: oklch(0.62 0.17 150 / 0.22) !important;
-    background-color: oklch(0.95 0.03 150 / 0.08) !important;
-  }
-
-  .eyebrow-emerald::before {
-    background-color: oklch(0.62 0.17 150) !important;
-  }
-
-  .eyebrow-violet {
-    color: oklch(0.48 0.18 290) !important;
-    border-color: oklch(0.55 0.18 290 / 0.22) !important;
-    background-color: oklch(0.95 0.04 290 / 0.08) !important;
-  }
-
-  .eyebrow-violet::before {
-    background-color: oklch(0.55 0.18 290) !important;
-  }
-
-  .eyebrow-rose {
-    color: oklch(0.5 0.18 15) !important;
-    border-color: oklch(0.6 0.18 15 / 0.22) !important;
-    background-color: oklch(0.96 0.03 15 / 0.08) !important;
-  }
-
-  .eyebrow-rose::before {
-    background-color: oklch(0.6 0.18 15) !important;
-  }
-
-  .eyebrow-orange {
-    color: oklch(0.6 0.16 45) !important;
-    border-color: oklch(0.7 0.16 45 / 0.22) !important;
-    background-color: oklch(0.96 0.03 45 / 0.08) !important;
-  }
-
-  .eyebrow-orange::before {
-    background-color: oklch(0.7 0.16 45) !important;
-  }
-
-  .eyebrow-cyan {
-    color: oklch(0.55 0.14 200) !important;
-    border-color: oklch(0.65 0.14 200 / 0.22) !important;
-    background-color: oklch(0.95 0.03 200 / 0.08) !important;
-  }
-
-  .eyebrow-cyan::before {
-    background-color: oklch(0.65 0.14 200) !important;
+    display: none !important;
   }
 
   .container-edit {
@@ -590,13 +553,13 @@
     will-change: transform;
   }
 
-  /* Subtle reveal - fade + small translate, smooth and unhurried */
+  /* Subtle reveal - fade + small translate, smooth and snappy */
   .reveal {
     opacity: 0;
-    transform: translate3d(0, 16px, 0);
+    transform: translate3d(0, 8px, 0);
     transition:
-      opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity 0.4s cubic-bezier(0.215, 0.61, 0.355, 1),
+      transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
     will-change: opacity, transform;
     backface-visibility: hidden;
   }
@@ -604,6 +567,15 @@
   .reveal.is-visible {
     opacity: 1 !important;
     transform: translate3d(0, 0, 0) !important;
+  }
+
+  /* Sections that are below the fold: defer their paint cost.
+     content-visibility:auto tells the browser to skip rendering off-screen
+     sections until they're close to the viewport.
+     contain-intrinsic-size provides an estimated height to prevent layout shift. */
+  .optimize-render {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 600px;
   }
 
   /* Marquee (logos) - hardware accelerated translation */
@@ -683,7 +655,6 @@
 
   /* Only animate aurora on capable desktop devices that prefer motion */
   @media (hover: hover) and (pointer: fine) and (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
-
     .premium-canvas::before,
     .premium-canvas::after {
       filter: blur(60px);
@@ -698,7 +669,7 @@
     }
   }
 
-  .premium-canvas>*:not(.absolute) {
+  .premium-canvas > *:not(.absolute) {
     position: relative;
     z-index: 1;
   }
@@ -756,7 +727,6 @@
     opacity: 1;
     transform: none;
   }
-
 
   /* Slide up (sticky bar) */
   @keyframes slideUp {
@@ -843,31 +813,39 @@
   /* Premium alternating side-fading color gradient with smooth blending */
   .bg-sand.bg-premium-side-gradient {
     background-image:
-      linear-gradient(to bottom,
+      linear-gradient(
+        to bottom,
         var(--sand) 0%,
         transparent 20%,
         transparent 80%,
-        var(--sand) 100%),
-      linear-gradient(90deg,
+        var(--sand) 100%
+      ),
+      linear-gradient(
+        90deg,
         oklch(0.985 0.005 268 / 0.15) 0%,
         transparent 35%,
         transparent 65%,
-        oklch(0.985 0.004 20 / 0.12) 100%) !important;
+        oklch(0.985 0.004 20 / 0.12) 100%
+      ) !important;
   }
 
   .bg-canvas.bg-premium-side-gradient,
   .premium-canvas.bg-premium-side-gradient {
     background-image:
-      linear-gradient(to bottom,
+      linear-gradient(
+        to bottom,
         var(--canvas) 0%,
         transparent 20%,
         transparent 80%,
-        var(--canvas) 100%),
-      linear-gradient(90deg,
+        var(--canvas) 100%
+      ),
+      linear-gradient(
+        90deg,
         oklch(0.985 0.005 268 / 0.15) 0%,
         transparent 35%,
         transparent 65%,
-        oklch(0.985 0.004 20 / 0.12) 100%) !important;
+        oklch(0.985 0.004 20 / 0.12) 100%
+      ) !important;
   }
 
   /* Smooth section transitions - removes hard borders */
@@ -984,7 +962,6 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-
     .reveal,
     .animate-marquee,
     .animate-slide-up {
@@ -1081,11 +1058,13 @@
     height: var(--h);
     border-radius: var(--r);
     filter: blur(7px);
-    background: linear-gradient(45deg,
-        rgba(255, 255, 255, 0.8) 0%,
-        transparent var(--tr),
-        transparent calc(100% - var(--tr)),
-        rgba(255, 255, 255, 0.8) 100%);
+    background: linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.8) 0%,
+      transparent var(--tr),
+      transparent calc(100% - var(--tr)),
+      rgba(255, 255, 255, 0.8) 100%
+    );
     will-change: filter;
   }
 
@@ -1210,7 +1189,10 @@
 
   /* Unify card body text across all pages to match the home page cards:
      every card reads at 15px / 1.65 regardless of page. */
-  .custom-theme-card :is(p, li, figcaption, blockquote):not(.font-display):not(.font-serif):not(.font-mono):not([class*="text-xs"]):not([class*="text-[0."]) {
+  .custom-theme-card
+    :is(p, li, figcaption, blockquote):not(.font-display):not(.font-serif):not(.font-mono):not(
+      [class*="text-xs"]
+    ):not([class*="text-[0."]) {
     font-size: 15px;
     line-height: 1.65;
     color: var(--ink-soft);
@@ -1218,7 +1200,6 @@
 
   /* Hover state — border highlight + inner glow, no movement (Desktop hover only) */
   @media (hover: hover) {
-
     .custom-theme-card:hover,
     .custom-theme-card:active {
       background-color: oklch(0.978 0.003 260 / 0.9) !important;
@@ -1318,7 +1299,6 @@
 
   /* Target colors for cards inside hover states (Desktop hover only) */
   @media (hover: hover) {
-
     .custom-theme-card[class*="card-accent-"]:hover,
     .custom-theme-card[class*="card-accent-"]:active {
       border-color: oklch(from var(--card-accent) l c h / 0.6) !important;
@@ -1358,7 +1338,6 @@
 
   /* For devices with no hover capability (touch devices/mobiles), show the hover styles natively and keep them static */
   @media (hover: none) {
-
     /* Show the glow/active visual by default on touch devices */
     .custom-theme-card {
       transform: translate3d(0, 0, 0) !important;
@@ -1398,7 +1377,7 @@
     }
 
     /* Hide the shimmer sweep overlay on mobile completely */
-    .custom-theme-card>.pointer-events-none.-translate-x-full {
+    .custom-theme-card > .pointer-events-none.-translate-x-full {
       display: none !important;
     }
 
@@ -1457,7 +1436,6 @@ html.lenis body {
    Only active when `.dark` is present on <html>.
    ========================================== */
 @layer utilities {
-
   /* Featured In / press logos: dark logos vanish on the dark canvas, so
      render them as white silhouettes in dark mode (logo-wall treatment).
      Logos with a solid background (e.g. JPG) get a white logo card instead
@@ -1491,7 +1469,7 @@ html.lenis body {
   }
 
   /* Odd-numbered sections stay on the body base (#071123) */
-  .dark main section:nth-of-type(2n+1) {
+  .dark main section:nth-of-type(2n + 1) {
     background-color: #071123 !important;
   }
 
@@ -1540,7 +1518,7 @@ html.lenis body {
   .dark header .text-ink-muted,
   .dark header nav a,
   .dark header button.transform,
-  .dark header>div>div a {
+  .dark header > div > div a {
     color: #ffffff !important;
   }
 
@@ -1579,7 +1557,7 @@ html.lenis body {
     color: #fff;
   }
 
-  /* Eyebrows -> sky-blue, uppercase mono chip like section__eyebrow */
+  /* Eyebrows -> white text and icons in dark mode, uppercase mono chip like section__eyebrow */
   .dark .eyebrow,
   .dark .eyebrow-indigo,
   .dark .eyebrow-amber,
@@ -1589,9 +1567,22 @@ html.lenis body {
   .dark .eyebrow-rose,
   .dark .eyebrow-orange,
   .dark .eyebrow-cyan {
-    color: #bbe0fa !important;
-    border-color: rgba(50, 130, 183, 0.45) !important;
-    background-color: rgba(14, 76, 117, 0.35) !important;
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.18) !important;
+    background-color: rgba(255, 255, 255, 0.06) !important;
+  }
+
+  .dark .eyebrow svg,
+  .dark .eyebrow-indigo svg,
+  .dark .eyebrow-amber svg,
+  .dark .eyebrow-blue svg,
+  .dark .eyebrow-emerald svg,
+  .dark .eyebrow-violet svg,
+  .dark .eyebrow-rose svg,
+  .dark .eyebrow-orange svg,
+  .dark .eyebrow-cyan svg {
+    stroke: #ffffff !important;
+    color: #ffffff !important;
   }
 
   .dark .eyebrow::before,
@@ -1603,7 +1594,7 @@ html.lenis body {
   .dark .eyebrow-rose::before,
   .dark .eyebrow-orange::before,
   .dark .eyebrow-cyan::before {
-    background-color: #3282b7 !important;
+    display: none !important;
   }
 
   /* Cards -> deep ocean-blue surface with hairline border */
@@ -1615,6 +1606,15 @@ html.lenis body {
     box-shadow: 0 24px 60px -28px rgba(0, 0, 0, 0.55) !important;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+  }
+
+  .dark
+    .custom-theme-card
+    :is(p, span, li, a, figcaption, blockquote):not(.text-accent):not(.font-mono),
+  .dark
+    .custom-theme-card-static
+    :is(p, span, li, a, figcaption, blockquote):not(.text-accent):not(.font-mono) {
+    color: #ffffff !important;
   }
 
   .dark .custom-theme-card .border-rule {
@@ -1637,6 +1637,12 @@ html.lenis body {
     pointer-events: none;
   }
 
+  /* Prevent icon boxes from inheriting the horizontal line-sweep divider animation */
+  .custom-theme-card .icon-box::after,
+  .custom-theme-card-static .icon-box::after {
+    display: none !important;
+  }
+
   .dark .custom-theme-card a:not(.btn-premium) {
     color: #1e3a8a !important;
     position: relative;
@@ -1644,7 +1650,6 @@ html.lenis body {
   }
 
   @media (hover: hover) {
-
     .dark .custom-theme-card:hover,
     .dark .custom-theme-card:active {
       background-color: #115c8c !important;
@@ -1716,10 +1721,12 @@ html.lenis body {
 
   /* Hero glow orbs (hardcoded light oklch in markup) -> ocean blue so they blend */
   .dark .blur-\[120px\] {
-    background: radial-gradient(circle at 50% 50%,
-        rgba(50, 130, 183, 0.5) 0%,
-        rgba(14, 76, 117, 0.4) 60%,
-        transparent 100%) !important;
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(50, 130, 183, 0.5) 0%,
+      rgba(14, 76, 117, 0.4) 60%,
+      transparent 100%
+    ) !important;
   }
 
   /* premium-canvas sections are opaque by default, which hides the dark
@@ -1908,7 +1915,9 @@ html.lenis body {
   filter: blur(8px);
   pointer-events: none;
   z-index: -1;
-  transition: opacity 0.5s ease, width 0.5s ease;
+  transition:
+    opacity 0.5s ease,
+    width 0.5s ease;
 }
 
 .book-page-stack {
@@ -2009,7 +2018,12 @@ html.lenis body {
   bottom: 0;
   left: 12px;
   width: 2px;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.3));
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.35),
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.3)
+  );
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
 }
 
@@ -2018,11 +2032,13 @@ html.lenis body {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(105deg,
-      transparent 30%,
-      rgba(255, 255, 255, 0.18) 48%,
-      rgba(255, 255, 255, 0.28) 52%,
-      transparent 70%);
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.18) 48%,
+    rgba(255, 255, 255, 0.28) 52%,
+    transparent 70%
+  );
   transform: translateX(-120%) skewX(-15deg);
   pointer-events: none;
   z-index: 3;
@@ -2050,8 +2066,8 @@ html.lenis body {
   box-shadow:
     inset -10px 0 20px rgba(0, 0, 0, 0.05),
     -8px 4px 24px rgba(0, 0, 0, 0.18),
-    -2px 0 8px rgba(0, 0, 0, 0.10),
-    0 8px 20px rgba(0, 0, 0, 0.10);
+    -2px 0 8px rgba(0, 0, 0, 0.1),
+    0 8px 20px rgba(0, 0, 0, 0.1);
   transform: rotateY(180deg);
 }
 
@@ -2074,7 +2090,6 @@ html.lenis body {
 }
 
 @keyframes float-y-1 {
-
   0%,
   100% {
     transform: translateY(0);
@@ -2086,7 +2101,6 @@ html.lenis body {
 }
 
 @keyframes float-y-2 {
-
   0%,
   100% {
     transform: translateY(0);
@@ -2098,7 +2112,6 @@ html.lenis body {
 }
 
 @keyframes float-y-3 {
-
   0%,
   100% {
     transform: translateY(0);
@@ -2171,10 +2184,12 @@ html.lenis body {
 /* Light mode: black base with a bright silver/white flash sweeping left→right */
 .text-shiny {
   background-color: #000000;
-  background-image: linear-gradient(90deg,
-      transparent 30%,
-      rgba(255, 255, 255, 0.90) 50%,
-      transparent 70%);
+  background-image: linear-gradient(
+    90deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.9) 50%,
+    transparent 70%
+  );
   background-size: 200% 100%;
   background-repeat: no-repeat;
   background-position: 100% center;
@@ -2188,10 +2203,12 @@ html.lenis body {
 /* Dark mode: sky-blue base with a bright white flash */
 .dark .text-shiny {
   background-color: #90caf9;
-  background-image: linear-gradient(90deg,
-      transparent 30%,
-      rgba(255, 255, 255, 0.98) 50%,
-      transparent 70%);
+  background-image: linear-gradient(
+    90deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.98) 50%,
+    transparent 70%
+  );
   background-size: 200% 100%;
   background-repeat: no-repeat;
   background-position: 100% center;
@@ -2210,3 +2227,129 @@ html.lenis body {
 .dark .text-shiny svg {
   stroke: #90caf9;
 }
+
+/* Animated mic icon for testimonial cards */
+@keyframes mic-pulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+    filter: drop-shadow(0 0 0px var(--accent));
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.18);
+    filter: drop-shadow(0 0 6px var(--accent));
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MOBILE PERFORMANCE: Disable GPU-expensive effects on phones & tablets
+   (max-width: 1023px) — all animations and scroll-triggers are PRESERVED.
+   Only heavy paint/composite operations are turned off for buttery scroll.
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 1023px) {
+  /* Kill backdrop-blur on cards — biggest GPU cost on mobile */
+  .custom-theme-card,
+  .custom-theme-card-static,
+  .glass,
+  .glass-light {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Kill backdrop-blur on hero floating circles and any floating stat bubbles */
+  .animate-float-1,
+  .animate-float-2,
+  .animate-float-3 {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background-color: var(--canvas) !important;
+  }
+
+  /* Kill backdrop-blur on eyebrow pills */
+  .eyebrow,
+  .eyebrow-indigo,
+  .eyebrow-amber,
+  .eyebrow-blue,
+  .eyebrow-emerald,
+  .eyebrow-violet,
+  .eyebrow-rose,
+  .eyebrow-orange,
+  .eyebrow-cyan {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Kill expensive blur orbs that paint during scroll */
+  .blur-3xl {
+    filter: none !important;
+    opacity: 0 !important;
+    display: none !important;
+  }
+
+  /* Simplify home-grid-light to avoid mask-image composite repaint */
+  .home-grid-light::after {
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+    background-image: none !important;
+  }
+
+  /* Kill the premium-canvas aurora blur blobs */
+  .premium-canvas::before,
+  .premium-canvas::after {
+    filter: none !important;
+    opacity: 0 !important;
+    display: none !important;
+  }
+
+  /* Remove mask-image composite on tex-fade */
+  .tex-fade {
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+
+  /* Simplify body background on mobile — no heavy radial gradient */
+  body {
+    background-image: none !important;
+    background-color: oklch(0.99 0.002 260) !important;
+  }
+
+  .dark body {
+    background-color: #071123 !important;
+  }
+
+  /* Faster reveal transition on mobile (was 0.4s — fine but 0.25s feels instant) */
+  .reveal {
+    transition-duration: 0.25s !important;
+  }
+
+
+  /* Kill backdrop-blur on the glass strategy call button */
+  .uiverse-glass-btn {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Kill filter blur on pseudo-elements of glass btn (very expensive on mobile) */
+  .uiverse-glass-btn::before,
+  .uiverse-glass-btn::after,
+  .uiverse-glass-btn .circle-overlay {
+    filter: none !important;
+  }
+
+  /* Kill backdrop-blur on header */
+  header,
+  nav,
+  [class*="backdrop-blur"] {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Promote framer-motion scroll-driven cards to GPU composite layer */
+  #beliefs [style*="transform"] {
+    will-change: transform;
+    transform: translateZ(0);
+  }
+}
+
+

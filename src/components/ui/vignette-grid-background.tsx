@@ -22,14 +22,16 @@ export function GridVignetteBackground({
     <div
       className={cn(
         "absolute inset-0 z-0 pointer-events-none opacity-50 bg-[image:linear-gradient(to_right,var(--muted-foreground),transparent_1px),linear-gradient(to_bottom,var(--muted-foreground),transparent_1px)]",
-        className
+        className,
       )}
       style={{
         backgroundSize: `${size}px ${size}px`,
-        maskImage: `radial-gradient(ellipse ${horizontalVignetteSize}% ${verticalVignetteSize}% at ${x}% ${y}%, black ${100 - intensity
-          }%, transparent 100%)`,
-        WebkitMaskImage: `radial-gradient(ellipse ${horizontalVignetteSize}% ${verticalVignetteSize}% at ${x}% ${y}%, black ${100 - intensity
-          }%, transparent 100%)`,
+        maskImage: `radial-gradient(ellipse ${horizontalVignetteSize}% ${verticalVignetteSize}% at ${x}% ${y}%, black ${
+          100 - intensity
+        }%, transparent 100%)`,
+        WebkitMaskImage: `radial-gradient(ellipse ${horizontalVignetteSize}% ${verticalVignetteSize}% at ${x}% ${y}%, black ${
+          100 - intensity
+        }%, transparent 100%)`,
       }}
     />
   );
