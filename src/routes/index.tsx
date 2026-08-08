@@ -138,24 +138,23 @@ function HomePage() {
     offset: ["start start", "end end"],
   });
 
-  // Card 1 starts at y=0, scales down as others arrive
   const y1 = useTransform(scrollYProgress, [0, 1], [0, 0]);
   const scale1 = useTransform(
     scrollYProgress,
-    [0, 0.38, 0.7, 0.98, 1.0],
+    [0, 0.45, 0.75, 0.98, 1.0],
     [1, 0.95, 0.9, 0.85, 0.85],
   );
 
-  // Card 2
-  const y2 = useTransform(scrollYProgress, [0, 0.05, 0.38], [800, 800, 20]);
-  const scale2 = useTransform(scrollYProgress, [0.38, 0.7, 0.98, 1.0], [1, 0.95, 0.9, 0.9]);
+  // Card 2: stretched progress trigger from 0.38 to 0.45 to slow down stacking
+  const y2 = useTransform(scrollYProgress, [0, 0.05, 0.45], [800, 800, 20]);
+  const scale2 = useTransform(scrollYProgress, [0.45, 0.75, 0.98, 1.0], [1, 0.95, 0.9, 0.9]);
 
-  // Card 3
-  const y3 = useTransform(scrollYProgress, [0, 0.38, 0.7], [800, 800, 40]);
-  const scale3 = useTransform(scrollYProgress, [0.7, 0.98, 1.0], [1, 0.95, 0.95]);
+  // Card 3: stretched trigger from 0.7 to 0.75 to slow down stacking
+  const y3 = useTransform(scrollYProgress, [0, 0.45, 0.75], [800, 800, 40]);
+  const scale3 = useTransform(scrollYProgress, [0.75, 0.98, 1.0], [1, 0.95, 0.95]);
 
-  // Card 4
-  const y4 = useTransform(scrollYProgress, [0, 0.7, 0.98, 1.0], [800, 800, 60, 60]);
+  // Card 4: stretched trigger from 0.98 to 1.0 to slow down stacking
+  const y4 = useTransform(scrollYProgress, [0, 0.75, 0.98, 1.0], [800, 800, 60, 60]);
   const scale4 = useTransform(scrollYProgress, [0, 0.98, 1.0], [1, 1, 1]);
 
   const cardsTransforms = [
@@ -620,7 +619,7 @@ function HomePage() {
       <section
         id="beliefs"
         ref={sectionRef}
-        className="relative h-[320vh] md:h-[420vh] bg-canvas home-section-alt"
+        className="relative h-[320vh] md:h-[580vh] bg-canvas home-section-alt"
       >
         <div className="relative sticky top-[80px] md:top-[100px] h-[calc(100vh-80px)] md:h-[520px] flex md:items-center overflow-hidden">
           <div className="container-edit w-full h-full flex flex-col justify-center gap-20 pb-10 md:h-auto md:grid md:grid-cols-12 md:gap-12 md:items-start md:pb-0">
