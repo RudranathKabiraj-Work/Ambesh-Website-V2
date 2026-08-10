@@ -147,56 +147,7 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
     </div>
   );
 
-  // ─── MOBILE: simple flat 2D slide carousel (no 3D / perspective overhead) ──
-  if (isMobile) {
-    return (
-      <div className={`mt-7 ${className}`}>
-        <div className="relative overflow-hidden rounded-[22px]" style={{ height: cardH }}>
-          <div
-            className="flex h-full"
-            style={{
-              // Pure CSS transform — compositor-only, zero paint cost
-              transform: `translateX(-${activeIndex * (100 / count)}%)`,
-              transition: "transform 0.35s cubic-bezier(0.25, 1, 0.5, 1)",
-              width: `${count * 100}%`,
-              willChange: "transform",
-            }}
-          >
-            {cards.map((card, i) => (
-              <div
-                key={i}
-                style={{ width: `${100 / count}%`, flexShrink: 0 }}
-              >
-                {renderCardShell(card, i === activeIndex)}
-              </div>
-            ))}
-          </div>
-        </div>
 
-        {/* Mobile dot navigation */}
-        <div className="mt-3 flex items-center justify-center gap-1.5">
-          {cards.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => goTo(idx)}
-              aria-label={`Go to slide ${idx + 1}`}
-              className={`relative h-1.5 overflow-hidden rounded-full transition-all duration-300 ${
-                activeIndex === idx ? "carousel-dot-track" : ""
-              }`}
-              style={{
-                width: activeIndex === idx ? 20 : 6,
-                backgroundColor: activeIndex === idx ? undefined : "var(--ink-muted)",
-              }}
-            >
-              {activeIndex === idx && (
-                <span className="carousel-dot-progress carousel-dot-fill absolute inset-y-0 left-0 rounded-full" />
-              )}
-            </button>
-          ))}
-        </div>
-      </div>
-    );
-  }
 
   // ─── DESKTOP: full 3D hexagon carousel ────────────────────────────────────
   return (
@@ -243,23 +194,27 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
           ))}
         </motion.div>
 
-        {/* Left / Right arrows */}
-        <button
-          onClick={goPrev}
-          aria-label="Previous card"
-          className="absolute z-40 grid h-10 w-10 place-items-center rounded-full border border-white/20 bg-black/50 text-white backdrop-blur-sm transition-all duration-200 hover:scale-110 hover:bg-black/70"
-          style={{ left: 0, top: "50%", transform: "translateY(-50%)" }}
-        >
-          <ChevronLeft className="h-4 w-4" />
-        </button>
-        <button
-          onClick={goNext}
-          aria-label="Next card"
-          className="absolute z-40 grid h-10 w-10 place-items-center rounded-full border border-white/20 bg-black/50 text-white backdrop-blur-sm transition-all duration-200 hover:scale-110 hover:bg-black/70"
-          style={{ right: 0, top: "50%", transform: "translateY(-50%)" }}
-        >
-          <ChevronRight className="h-4 w-4" />
-        </button>
+        {/* Left / Right arrows — hidden on mobile */}
+        {!isMobile && (
+          <>
+            <button
+              onClick={goPrev}
+              aria-label="Previous card"
+              className="absolute z-40 grid h-10 w-10 place-items-center rounded-full border border-white/20 bg-black/50 text-white backdrop-blur-sm transition-all duration-200 hover:scale-110 hover:bg-black/70"
+              style={{ left: 0, top: "50%", transform: "translateY(-50%)" }}
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+            <button
+              onClick={goNext}
+              aria-label="Next card"
+              className="absolute z-40 grid h-10 w-10 place-items-center rounded-full border border-white/20 bg-black/50 text-white backdrop-blur-sm transition-all duration-200 hover:scale-110 hover:bg-black/70"
+              style={{ right: 0, top: "50%", transform: "translateY(-50%)" }}
+            >
+              <ChevronRight className="h-4 w-4" />
+            </button>
+          </>
+        )}
       </div>
     </div>
   );
