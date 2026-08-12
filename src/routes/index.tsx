@@ -18,6 +18,7 @@ import {
   User,
 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
+import { BeliefLogo } from "@/components/BeliefLogos";
 import { CorePillars } from "@/components/CorePillars";
 import { StrategyCallButton } from "@/components/StrategyCallButton";
 import { Marquee } from "@/components/Marquee";
@@ -645,29 +646,25 @@ function HomePage() {
                 {[
                   {
                     n: "01",
-                    icon: Workflow,
                     title: "A business should not depend on the founder.",
                     desc: "Founder dependency is structural, not personal. It is resolved with clear accountability, SOPs, and system design.",
                   },
                   {
                     n: "02",
-                    icon: Sparkles,
                     title: "AI adoption matters more than AI awareness.",
                     desc: "Workshops have limited value unless teams change how they work. Real training requires daily AI adoption rhythms.",
                   },
                   {
                     n: "03",
-                    icon: Compass,
                     title: "Do not automate a process you do not understand.",
                     desc: "Automation makes clean processes faster, but broken ones fail faster. Map the workflow manually before coding.",
                   },
                   {
                     n: "04",
-                    icon: Wrench,
                     title: "Technology is only one part of the answer.",
                     desc: "Clear roles and accountability matter more than new tools. Tech accelerates, but human execution is the foundation.",
                   },
-                ].map(({ n, icon: Icon, title, desc }, idx) => {
+                ].map(({ n, title, desc }, idx) => {
                   return (
                     <motion.div
                       key={n}
@@ -694,8 +691,8 @@ function HomePage() {
                             <span className="inline-flex items-center rounded-full px-2.5 py-0.5 font-mono text-[0.65rem] md:text-[0.78rem] font-bold uppercase tracking-[0.15em] text-accent bg-accent-soft">
                               Belief {n}
                             </span>
-                            <div className="icon-box flex h-10 w-10 md:h-11 md:w-11 items-center justify-center rounded-xl border border-rule transition-colors">
-                              <Icon className="h-5 w-5 md:h-6 md:w-6" />
+                            <div className="icon-box flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-2xl border border-rule transition-colors">
+                              <BeliefLogo variant={idx} className="h-9 w-9 md:h-10 md:w-10" />
                             </div>
                           </div>
                           <h3 className="font-display text-lg md:text-xl font-extrabold tracking-tight text-ink leading-snug">

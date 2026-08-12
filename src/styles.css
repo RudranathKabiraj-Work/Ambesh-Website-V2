@@ -2346,4 +2346,206 @@ html.lenis body {
   }
 }
 
+/* ---- "How I Think" belief logo animations (physical, realistic motion) ----
+ * Four bespoke animated marks, one per belief card. Motion is continuous
+ * and mechanical (constant-speed rotation, slow pendulum sweeps, travelling
+ * cadence pulses) instead of cartoonish bouncing. */
+
+@keyframes bl-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bl-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.07);
+  }
+}
+
+@keyframes bl-sway {
+  0%,
+  100% {
+    transform: rotate(9deg);
+  }
+  50% {
+    transform: rotate(-9deg);
+  }
+}
+
+@keyframes bl-glow {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+.bl-anim {
+  display: block;
+  --bl-accent: var(--accent);
+  --bl-accent-soft: var(--accent-soft);
+}
+
+/* Dark mode: belief logos sit on deep-navy cards where the default
+   accent (#3282b7) disappears. Lift them to bright sky-blue so the
+   marks stay readable and the glow reads as light, not dark. */
+.dark #beliefs .custom-theme-card .icon-box {
+  background-color: rgba(140, 210, 255, 0.14) !important;
+  border-color: rgba(140, 210, 255, 0.24) !important;
+}
+
+.dark #beliefs .custom-theme-card .bl-anim {
+  --bl-accent: #8fd0ff;
+  --bl-accent-soft: rgba(140, 210, 255, 0.16);
+  color: #d9efff !important;
+}
+
+.dark #beliefs .custom-theme-card .bl-glow {
+  fill: rgba(140, 210, 255, 0.16);
+}
+
+/* Dark-mode hover: keep the logo marks crisp. The card's big blurred
+   glow orb fades to 50% right behind the icon and the translucent tile
+   lets the white shine sweep / hover glow wash through the logo. Hide
+   the orb and give the tile a solid deep-navy face with a sky glow so
+   the animated mark reads cleanly on hover. */
+.dark #beliefs .custom-theme-card .pointer-events-none.blur-3xl {
+  opacity: 0 !important;
+}
+
+.dark #beliefs .custom-theme-card:hover .icon-box {
+  background-color: #0d3f66 !important;
+  border-color: rgba(140, 210, 255, 0.42) !important;
+  box-shadow: 0 0 24px -6px rgba(140, 210, 255, 0.5);
+}
+
+/* ---- Mechanical burst on card hover ----
+ * Each logo reacts like a real mechanism being engaged: the gear
+ * spin-ups, the AI cadence ring surges, the lens takes one fast
+ * inspection glance, and the orbit gear kicks forward. Implemented as
+ * a one-shot "kick" layer *inside* the always-running animation, so it
+ * adds on top without disturbing the base motion and ends at 360deg
+ * (≡ 0) so there is never a visible jump. */
+@keyframes bl-burst {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bl-burst-sway {
+  0% {
+    transform: rotate(0deg);
+  }
+  45% {
+    transform: rotate(13deg);
+  }
+  72% {
+    transform: rotate(-6deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.bl-burst {
+  transform-box: view-box;
+  transform-origin: 32px 32px;
+}
+.bl-burst-orb {
+  transform-box: view-box;
+  transform-origin: 32px 38px;
+}
+.bl-burst-sway {
+  transform-box: view-box;
+  transform-origin: 52px 53px;
+}
+
+#beliefs .custom-theme-card:hover .bl-burst,
+#beliefs .custom-theme-card:hover .bl-burst-orb {
+  animation: bl-burst 0.45s cubic-bezier(0.2, 0.75, 0.3, 1) forwards;
+}
+
+#beliefs .custom-theme-card:hover .bl-burst-sway {
+  animation: bl-burst-sway 0.6s cubic-bezier(0.3, 0.6, 0.4, 1) forwards;
+}
+
+/* Constant-speed spin = real machinery feel */
+.bl-spin,
+.bl-spin-cadence {
+  animation: bl-rotate 14s linear infinite;
+  will-change: transform;
+}
+
+.bl-spin-cadence {
+  animation-duration: 4.8s;
+}
+
+/* Slow, even "breathing" for structural nodes */
+.bl-breathe {
+  animation: bl-breathe 7s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+/* Gentle pendulum sweep for the inspection lens */
+.bl-sway {
+  animation: bl-sway 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Soft luminous halo behind each mark */
+.bl-glow {
+  fill: var(--accent-soft);
+  animation: bl-glow 8s ease-in-out infinite;
+}
+
+/* Per-mark rotation pivots */
+.bl-origin-center {
+  transform-box: view-box;
+  transform-origin: 32px 32px;
+}
+.bl-origin-30-30 {
+  transform-box: view-box;
+  transform-origin: 30px 30px;
+}
+.bl-origin-32-38 {
+  transform-box: view-box;
+  transform-origin: 32px 38px;
+}
+.bl-origin-52-53 {
+  transform-box: view-box;
+  transform-origin: 52px 53px;
+}
+
+/* On hover the logo keeps spinning smoothly — pausing mid-frame looked
+   broken. The icon tile itself responds instead: a soft accent glow. */
+#beliefs .custom-theme-card .icon-box {
+  transition:
+    border-color 0.85s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.85s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+#beliefs .custom-theme-card:hover .icon-box {
+  border-color: oklch(from var(--accent) l c h / 0.45) !important;
+  box-shadow: 0 0 20px -4px oklch(from var(--accent) l c h / 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bl-spin,
+  .bl-spin-cadence,
+  .bl-breathe,
+  .bl-sway,
+  .bl-glow {
+    animation: none !important;
+  }
+}
+
 

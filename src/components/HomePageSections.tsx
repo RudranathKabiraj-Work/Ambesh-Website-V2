@@ -6,11 +6,9 @@ import {
   CheckCircle2,
   Star,
   GraduationCap,
-  Workflow,
   Compass,
   BookOpen,
   Sparkles,
-  Wrench,
   AlertCircle,
   Brain,
   Briefcase,
@@ -18,6 +16,7 @@ import {
   User,
 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
+import { BeliefLogo } from "@/components/BeliefLogos";
 import { Marquee } from "@/components/Marquee";
 import { BookStickySection } from "@/components/BookStickySection";
 
@@ -385,33 +384,29 @@ export default function HomePageSections() {
             {[
               {
                 n: "01",
-                icon: Workflow,
                 color: "to-orange-500/15",
                 title: "A business should not depend on the founder.",
                 desc: "Founder dependency is a structural issue, not a people problem. It is resolved by clear accountability, SOPs, and system design.",
               },
               {
                 n: "02",
-                icon: Sparkles,
                 color: "to-purple-500/15",
                 title: "AI adoption matters more than AI awareness.",
                 desc: "A workshop has limited value unless people change how they work after it. Real training requires ongoing adoption rhythms and daily AI application.",
               },
               {
                 n: "03",
-                icon: Compass,
                 color: "to-teal-500/15",
                 title: "Do not automate a process you do not understand.",
                 desc: "Automation makes a good process faster, but a broken one fail faster. We must understand the workflow manually before writing code.",
               },
               {
                 n: "04",
-                icon: Wrench,
                 color: "to-indigo-500/15",
                 title: "Technology is only one part of the answer.",
                 desc: "Clear roles, leadership & accountability matter more than another tool. Technology is an accelerator, but human execution remains the foundation.",
               },
-            ].map(({ n, icon: Icon, color, title, desc }, i) => (
+            ].map(({ n, color, title, desc }, i) => (
               <Reveal key={n} delay={i * 80}>
                 <div
                   className={`group relative flex h-full flex-col justify-between overflow-hidden rounded-[20px] border border-ink/15 bg-gradient-to-r from-sand/90 via-sand/35 ${color} backdrop-blur-md p-6 transition-all duration-500 ease-out -translate-y-1.5 shadow-lift hover:translate-y-0 hover:scale-100 hover:border-ink/35 hover:bg-none hover:bg-canvas hover:shadow-none`}
@@ -430,8 +425,8 @@ export default function HomePageSections() {
                       >
                         Belief {n}
                       </span>
-                      <div className="icon-box flex h-10 w-10 items-center justify-center rounded-xl border border-rule">
-                        <Icon className="h-5 w-5" />
+                      <div className="icon-box flex h-12 w-12 items-center justify-center rounded-2xl border border-rule">
+                        <BeliefLogo variant={i} className="h-9 w-9" />
                       </div>
                     </div>
                     <h3 className="font-display text-lg font-extrabold tracking-tight text-ink leading-snug">
