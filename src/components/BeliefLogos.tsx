@@ -44,7 +44,14 @@ function StructureMark({ className }: { className?: string }) {
       </g>
       <g className="bl-spin bl-origin-center" style={{ animationDuration: "16s" }}>
         <g className="bl-burst">
-          <circle cx="32" cy="32" r="13.5" fill="none" stroke="var(--bl-ink, currentColor)" strokeWidth="5" />
+          <circle
+            cx="32"
+            cy="32"
+            r="13.5"
+            fill="none"
+            stroke="var(--bl-ink, currentColor)"
+            strokeWidth="5"
+          />
           {GEAR_TEETH_8.map((a) => (
             <rect
               key={a}
@@ -57,7 +64,14 @@ function StructureMark({ className }: { className?: string }) {
               transform={`rotate(${a} 32 32)`}
             />
           ))}
-          <circle cx="32" cy="32" r="4.6" fill="none" stroke="var(--bl-ink, currentColor)" strokeWidth="2.2" />
+          <circle
+            cx="32"
+            cy="32"
+            r="4.6"
+            fill="none"
+            stroke="var(--bl-ink, currentColor)"
+            strokeWidth="2.2"
+          />
           <circle cx="32" cy="32" r="1.7" fill="var(--bl-ink, currentColor)" />
         </g>
       </g>
@@ -141,8 +155,18 @@ function InspectMark({ className }: { className?: string }) {
         <rect x="8" y="44" width="11" height="7" rx="2" />
         <rect x="26" y="44" width="12" height="7" rx="2" />
         <rect x="45" y="44" width="11" height="7" rx="2" />
-        <path d="M20 43.8 v3.6 l3.4 -1.8 Z" fill="var(--bl-ink, currentColor)" stroke="none" opacity="0.7" />
-        <path d="M39 43.8 v3.6 l3.4 -1.8 Z" fill="var(--bl-ink, currentColor)" stroke="none" opacity="0.7" />
+        <path
+          d="M20 43.8 v3.6 l3.4 -1.8 Z"
+          fill="var(--bl-ink, currentColor)"
+          stroke="none"
+          opacity="0.7"
+        />
+        <path
+          d="M39 43.8 v3.6 l3.4 -1.8 Z"
+          fill="var(--bl-ink, currentColor)"
+          stroke="none"
+          opacity="0.7"
+        />
       </g>
       <g className="bl-sway bl-origin-52-53">
         <g className="bl-burst-sway">
@@ -187,7 +211,15 @@ function HumanTechMark({ className }: { className?: string }) {
       aria-label="Human execution with supportive technology"
     >
       <circle cx="32" cy="34" r="16" className="bl-glow" />
-      <rect x="18" y="38" width="28" height="4.6" rx="2.3" fill="var(--bl-ink, currentColor)" opacity="0.9" />
+      <rect
+        x="18"
+        y="38"
+        width="28"
+        height="4.6"
+        rx="2.3"
+        fill="var(--bl-ink, currentColor)"
+        opacity="0.9"
+      />
       <g fill="var(--bl-ink, currentColor)">
         <circle cx="32" cy="15" r="4.8" />
         <path d="M32 23.5 L26 37.5 L38 37.5 Z" />
@@ -195,7 +227,14 @@ function HumanTechMark({ className }: { className?: string }) {
       <g className="bl-spin bl-origin-32-38" style={{ animationDuration: "12s" }}>
         <g className="bl-burst-orb">
           <g transform="rotate(130 32 38)">
-            <circle cx="32" cy="22" r="4.2" fill="none" stroke="var(--bl-ink, currentColor)" strokeWidth="2" />
+            <circle
+              cx="32"
+              cy="22"
+              r="4.2"
+              fill="none"
+              stroke="var(--bl-ink, currentColor)"
+              strokeWidth="2"
+            />
             {GEAR_TEETH_6.map((a) => (
               <rect
                 key={a}

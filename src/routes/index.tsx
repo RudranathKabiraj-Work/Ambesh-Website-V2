@@ -332,7 +332,10 @@ function HomePage() {
       </section>
 
       {/* PROBLEM */}
-      <section className="relative overflow-hidden bg-canvas bg-premium-side-gradient py-20 md:py-32 lg:py-36 optimize-render" style={{ containIntrinsicSize: '0 700px' }}>
+      <section
+        className="relative overflow-hidden bg-canvas bg-premium-side-gradient py-20 md:py-32 lg:py-36 optimize-render"
+        style={{ containIntrinsicSize: "0 700px" }}
+      >
         <GridVignetteBackground
           className="hidden dark:block opacity-35"
           x={50}
@@ -758,6 +761,7 @@ function HomePage() {
                 title: "BDA Technologies",
                 eyebrow: "Business systems & automation",
                 color: "to-cyan-500/15",
+                logo: "/logos/bda.png",
                 desc: "BDA Technologies helps founder-led businesses improve reporting, workflows, dashboards, automation and use of AI.",
                 link: { href: "https://bdatechnologies.com", label: "Visit BDA Technologies" },
               },
@@ -766,6 +770,7 @@ function HomePage() {
                 title: "LinkAssist",
                 eyebrow: "AI support for LinkedIn authority",
                 color: "to-accent-soft/30",
+                logo: "/logos/linkassist.png",
                 desc: "LinkAssist helps professionals find ideas, write stronger LinkedIn content and build authority with more consistency.",
                 link: { href: "https://linkassist.ai/", label: "Explore LinkAssist" },
               },
@@ -774,10 +779,11 @@ function HomePage() {
                 title: "Automation School",
                 eyebrow: "AI Training For Professionals",
                 color: "to-amber-500/15",
+                logo: "/logos/automation-school.png",
                 desc: "Practical AI training courses and customized corporate programs designed for hands-on operational adoption.",
                 link: { href: "https://automationschool.in/", label: "Explore Automation School" },
               },
-            ].map(({ n, title, eyebrow, color, desc, link }, i) => (
+            ].map(({ n, title, eyebrow, logo, desc, link }) => (
               <Reveal key={n} delay={100}>
                 <div className="custom-theme-card group relative flex h-full flex-col justify-between overflow-hidden rounded-[20px] backdrop-blur-md p-7 md:p-8">
                   <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-[1100ms] ease-out group-hover:translate-x-full pointer-events-none" />
@@ -787,10 +793,18 @@ function HomePage() {
                     aria-hidden
                   />
                   <div>
-                    <span className="font-mono text-[0.65rem] font-bold uppercase tracking-[0.15em] text-accent">
-                      {n}
-                    </span>
-                    <h3 className="mt-3 font-display text-xl font-extrabold tracking-tight text-ink md:text-2xl">
+                    <div className="mb-2 flex items-center justify-between gap-4">
+                      <span className="font-mono text-[0.65rem] font-bold uppercase tracking-[0.15em] text-accent">
+                        {n}
+                      </span>
+                      <img
+                        src={logo}
+                        alt={title}
+                        loading="lazy"
+                        className="h-9 w-28 shrink-0 translate-x-6 object-contain mix-blend-multiply dark:mix-blend-normal"
+                      />
+                    </div>
+                    <h3 className="mt-0 font-display text-xl font-extrabold tracking-tight text-ink md:text-2xl">
                       {title}
                     </h3>
                     <p className="mt-2 inline-flex w-fit items-center gap-1.5 border-l-2 pl-2.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-accent border-accent">

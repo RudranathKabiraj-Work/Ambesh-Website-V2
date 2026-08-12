@@ -147,8 +147,6 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
     </div>
   );
 
-
-
   // ─── DESKTOP: full 3D hexagon carousel ────────────────────────────────────
   return (
     <div className={`mt-7 md:mt-14 ${className}`}>
