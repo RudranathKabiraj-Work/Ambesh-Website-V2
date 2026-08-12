@@ -2257,6 +2257,24 @@ html.lenis body {
     -webkit-backdrop-filter: none !important;
   }
 
+  /* "How I Think" cards use !bg-canvas, which the global transparency
+     rule (main div.bg-canvas) overrides — fine on desktop where
+     backdrop-blur frosts them, but with blur disabled here they become
+     see-through. Restore solid surfaces and keep the logos bright. */
+  main #beliefs .custom-theme-card {
+    background-color: oklch(0.97 0.004 260) !important;
+  }
+
+  .dark main #beliefs .custom-theme-card {
+    background-color: #0e4c75 !important;
+  }
+
+  .dark main #beliefs .custom-theme-card .bl-anim {
+    --bl-ink: #eaf6ff;
+    --bl-accent: #a8dbff;
+    color: #eaf6ff !important;
+  }
+
   /* Kill backdrop-blur on hero floating circles and any floating stat bubbles */
   .animate-float-1,
   .animate-float-2,
@@ -2389,6 +2407,7 @@ html.lenis body {
 
 .bl-anim {
   display: block;
+  --bl-ink: currentColor;
   --bl-accent: var(--accent);
   --bl-accent-soft: var(--accent-soft);
 }
@@ -2402,6 +2421,7 @@ html.lenis body {
 }
 
 .dark #beliefs .custom-theme-card .bl-anim {
+  --bl-ink: #d9efff;
   --bl-accent: #8fd0ff;
   --bl-accent-soft: rgba(140, 210, 255, 0.16);
   color: #d9efff !important;

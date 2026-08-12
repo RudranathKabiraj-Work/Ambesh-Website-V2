@@ -28,23 +28,23 @@ function StructureMark({ className }: { className?: string }) {
       aria-label="Distributed business system"
     >
       <circle cx="32" cy="32" r="17" className="bl-glow" />
-      <g stroke="currentColor" strokeWidth="1.6" opacity="0.5">
+      <g stroke="var(--bl-ink, currentColor)" strokeWidth="1.6" opacity="0.5">
         <line x1="16" y1="16" x2="27" y2="27" />
         <line x1="48" y1="16" x2="37" y2="27" />
         <line x1="32" y1="47" x2="32" y2="37" />
       </g>
       <g className="bl-breathe">
-        <circle cx="13" cy="13" r="3.4" fill="currentColor" />
+        <circle cx="13" cy="13" r="3.4" fill="var(--bl-ink, currentColor)" />
       </g>
       <g className="bl-breathe" style={{ animationDelay: "-2.4s" }}>
-        <circle cx="51" cy="13" r="3.4" fill="currentColor" />
+        <circle cx="51" cy="13" r="3.4" fill="var(--bl-ink, currentColor)" />
       </g>
       <g className="bl-breathe" style={{ animationDelay: "-4.8s" }}>
-        <circle cx="32" cy="51" r="3.4" fill="currentColor" />
+        <circle cx="32" cy="51" r="3.4" fill="var(--bl-ink, currentColor)" />
       </g>
       <g className="bl-spin bl-origin-center" style={{ animationDuration: "16s" }}>
         <g className="bl-burst">
-          <circle cx="32" cy="32" r="13.5" fill="none" stroke="currentColor" strokeWidth="5" />
+          <circle cx="32" cy="32" r="13.5" fill="none" stroke="var(--bl-ink, currentColor)" strokeWidth="5" />
           {GEAR_TEETH_8.map((a) => (
             <rect
               key={a}
@@ -53,12 +53,12 @@ function StructureMark({ className }: { className?: string }) {
               width="4"
               height="6"
               rx="1"
-              fill="currentColor"
+              fill="var(--bl-ink, currentColor)"
               transform={`rotate(${a} 32 32)`}
             />
           ))}
-          <circle cx="32" cy="32" r="4.6" fill="none" stroke="currentColor" strokeWidth="2.2" />
-          <circle cx="32" cy="32" r="1.7" fill="currentColor" />
+          <circle cx="32" cy="32" r="4.6" fill="none" stroke="var(--bl-ink, currentColor)" strokeWidth="2.2" />
+          <circle cx="32" cy="32" r="1.7" fill="var(--bl-ink, currentColor)" />
         </g>
       </g>
     </svg>
@@ -83,13 +83,13 @@ function AiRhythmMark({ className }: { className?: string }) {
         width="22"
         height="22"
         rx="4.5"
-        fill="currentColor"
+        fill="var(--bl-ink, currentColor)"
         opacity="0.16"
-        stroke="currentColor"
+        stroke="var(--bl-ink, currentColor)"
         strokeWidth="1.8"
       />
-      <rect x="28" y="28" width="8" height="8" rx="2" fill="currentColor" />
-      <g fill="currentColor" opacity="0.85">
+      <rect x="28" y="28" width="8" height="8" rx="2" fill="var(--bl-ink, currentColor)" />
+      <g fill="var(--bl-ink, currentColor)" opacity="0.85">
         {[24, 32, 40].map((px) => (
           <rect key={`t${px}`} x={px - 1.1} y="18" width="2.2" height="3.4" rx="1.1" />
         ))}
@@ -108,15 +108,15 @@ function AiRhythmMark({ className }: { className?: string }) {
             cy="32"
             r="20.5"
             fill="none"
-            stroke="currentColor"
+            stroke="var(--bl-ink, currentColor)"
             strokeWidth="1.4"
             opacity="0.4"
             strokeDasharray="1.5 6.5 1.5 6.5"
           />
-          <circle cx="46.5" cy="17.5" r="2.1" fill="currentColor" opacity="0.5" />
-          <circle cx="17.5" cy="17.5" r="2.1" fill="currentColor" opacity="0.5" />
-          <circle cx="17.5" cy="46.5" r="2.1" fill="currentColor" opacity="0.5" />
-          <circle cx="46.5" cy="46.5" r="2.1" fill="currentColor" opacity="0.5" />
+          <circle cx="46.5" cy="17.5" r="2.1" fill="var(--bl-ink, currentColor)" opacity="0.5" />
+          <circle cx="17.5" cy="17.5" r="2.1" fill="var(--bl-ink, currentColor)" opacity="0.5" />
+          <circle cx="17.5" cy="46.5" r="2.1" fill="var(--bl-ink, currentColor)" opacity="0.5" />
+          <circle cx="46.5" cy="46.5" r="2.1" fill="var(--bl-ink, currentColor)" opacity="0.5" />
           <circle cx="32" cy="11.5" r="5.2" fill="var(--bl-accent, var(--accent))" opacity="0.16" />
           <circle cx="32" cy="11.5" r="2.6" fill="var(--bl-accent, var(--accent))" />
         </g>
@@ -137,12 +137,12 @@ function InspectMark({ className }: { className?: string }) {
       aria-label="Understand the workflow before automating"
     >
       <circle cx="30" cy="31" r="15" className="bl-glow" />
-      <g stroke="currentColor" strokeWidth="1.5" opacity="0.8" fill="none">
+      <g stroke="var(--bl-ink, currentColor)" strokeWidth="1.5" opacity="0.8" fill="none">
         <rect x="8" y="44" width="11" height="7" rx="2" />
         <rect x="26" y="44" width="12" height="7" rx="2" />
         <rect x="45" y="44" width="11" height="7" rx="2" />
-        <path d="M20 43.8 v3.6 l3.4 -1.8 Z" fill="currentColor" stroke="none" opacity="0.7" />
-        <path d="M39 43.8 v3.6 l3.4 -1.8 Z" fill="currentColor" stroke="none" opacity="0.7" />
+        <path d="M20 43.8 v3.6 l3.4 -1.8 Z" fill="var(--bl-ink, currentColor)" stroke="none" opacity="0.7" />
+        <path d="M39 43.8 v3.6 l3.4 -1.8 Z" fill="var(--bl-ink, currentColor)" stroke="none" opacity="0.7" />
       </g>
       <g className="bl-sway bl-origin-52-53">
         <g className="bl-burst-sway">
@@ -151,7 +151,7 @@ function InspectMark({ className }: { className?: string }) {
             cy="30"
             r="11.5"
             fill="var(--bl-accent-soft, var(--accent-soft))"
-            stroke="currentColor"
+            stroke="var(--bl-ink, currentColor)"
             strokeWidth="2.4"
           />
           <g className="bl-spin bl-origin-30-30" style={{ animationDuration: "8s" }} opacity="0.7">
@@ -165,7 +165,7 @@ function InspectMark({ className }: { className?: string }) {
           </g>
           <path
             d="M40.5 41.5 L52 53"
-            stroke="currentColor"
+            stroke="var(--bl-ink, currentColor)"
             strokeWidth="4.2"
             strokeLinecap="round"
           />
@@ -187,15 +187,15 @@ function HumanTechMark({ className }: { className?: string }) {
       aria-label="Human execution with supportive technology"
     >
       <circle cx="32" cy="34" r="16" className="bl-glow" />
-      <rect x="18" y="38" width="28" height="4.6" rx="2.3" fill="currentColor" opacity="0.9" />
-      <g fill="currentColor">
+      <rect x="18" y="38" width="28" height="4.6" rx="2.3" fill="var(--bl-ink, currentColor)" opacity="0.9" />
+      <g fill="var(--bl-ink, currentColor)">
         <circle cx="32" cy="15" r="4.8" />
         <path d="M32 23.5 L26 37.5 L38 37.5 Z" />
       </g>
       <g className="bl-spin bl-origin-32-38" style={{ animationDuration: "12s" }}>
         <g className="bl-burst-orb">
           <g transform="rotate(130 32 38)">
-            <circle cx="32" cy="22" r="4.2" fill="none" stroke="currentColor" strokeWidth="2" />
+            <circle cx="32" cy="22" r="4.2" fill="none" stroke="var(--bl-ink, currentColor)" strokeWidth="2" />
             {GEAR_TEETH_6.map((a) => (
               <rect
                 key={a}
@@ -204,7 +204,7 @@ function HumanTechMark({ className }: { className?: string }) {
                 width="2"
                 height="2.6"
                 rx="0.6"
-                fill="currentColor"
+                fill="var(--bl-ink, currentColor)"
                 transform={`rotate(${a} 32 22)`}
               />
             ))}
