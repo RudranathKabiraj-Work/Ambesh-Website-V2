@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useSpring, useTransform } from "framer-motion";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -25,6 +25,7 @@ import { ServiceCarousel } from "@/components/ServiceCarousel";
 import { BookStickySection } from "@/components/BookStickySection";
 import { buildMeta, jsonLd, breadcrumbSchema, SITE_URL } from "@/lib/seo";
 import { GridVignetteBackground } from "@/components/ui/vignette-grid-background";
+import { ParticleField } from "@/components/ParticleField";
 
 export const Route = createFileRoute("/")({
   head: () => {
@@ -160,6 +161,18 @@ function TypeLine({ text, className = "" }: { text: string; className?: string }
   );
 }
 
+function ScrollProgress() {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 });
+  return (
+    <motion.div
+      aria-hidden
+      className="pointer-events-none fixed inset-x-0 top-0 z-[70] h-[3px] origin-left"
+      style={{ scaleX, background: "var(--gradient-brand)" }}
+    />
+  );
+}
+
 function HomePage() {
   const [hoveredService, setHoveredService] = useState<number | null>(null);
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
@@ -267,6 +280,7 @@ function HomePage() {
 
   return (
     <>
+      <ScrollProgress />
       {/* HERO */}
       <section className="premium-canvas bg-premium-side-gradient relative isolate overflow-hidden">
         <GridVignetteBackground
@@ -279,6 +293,7 @@ function HomePage() {
           verticalVignetteSize={60}
         />
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
+        <ParticleField className="opacity-40 hidden md:block" count={14} seed={7} />
         <div className="container-edit pt-10 pb-20 md:pt-14 md:pb-24">
           <div className="grid items-center gap-16 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-7">
@@ -1208,6 +1223,7 @@ function HomePage() {
 
       {/* FINAL CTA */}
       <section className="cta-dark relative overflow-hidden">
+        <ParticleField className="opacity-70" color="rgba(255,255,255,0.8)" count={26} seed={11} />
         <div
           className="pointer-events-none absolute -top-40 left-1/2 h-[40rem] w-[40rem] -translate-x-1/2 rounded-full opacity-30 blur-3xl"
           style={{ background: "var(--accent)" }}

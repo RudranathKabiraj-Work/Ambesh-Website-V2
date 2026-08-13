@@ -2243,6 +2243,34 @@ html.lenis body {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
+   Floating particle dots — slow drifting glow dots for section backgrounds
+   Usage: <ParticleField /> (drift/rise per-dot via CSS custom properties)
+   ═══════════════════════════════════════════════════════════════════════════ */
+@keyframes particle-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(var(--particle-drift, 30px), var(--particle-rise, -20px), 0);
+  }
+}
+
+.particle {
+  animation: particle-drift 12s ease-in-out infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .particle {
+    animation: none;
+    opacity: 0.15;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
    MOBILE PERFORMANCE: Disable GPU-expensive effects on phones & tablets
    (max-width: 1023px) — all animations and scroll-triggers are PRESERVED.
    Only heavy paint/composite operations are turned off for buttery scroll.
