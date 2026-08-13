@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { Monogram } from "@/components/Monogram";
+import { AboutLogo } from "@/components/AboutLogos";
 import { buildMeta, jsonLd, personSchema, breadcrumbSchema } from "@/lib/seo";
 
 export const Route = createFileRoute("/about")({
@@ -328,7 +329,7 @@ function AboutPage() {
       </section>
 
       {/* WHAT HE IS HIRED FOR */}
-      <section className="relative bg-canvas py-14 md:py-16">
+      <section id="capabilities" className="relative bg-canvas py-14 md:py-16">
         <div className="container-edit">
           <Reveal>
             <p className="eyebrow eyebrow-blue flex items-center gap-2">
@@ -344,12 +345,12 @@ function AboutPage() {
             </p>
           </Reveal>
           <div className="mt-16 grid gap-6 md:grid-cols-3">
-            {hiredFor.map((h) => (
+            {hiredFor.map((h, idx) => (
               <Reveal key={h.title} delay={100}>
                 <div className="custom-theme-card group h-full rounded-3xl p-8">
                   <div className="flex items-start justify-between">
                     <div className="icon-box flex h-12 w-12 items-center justify-center rounded-xl border border-rule transition-colors duration-300">
-                      <h.icon className="h-5 w-5" />
+                      <AboutLogo variant={idx} className="h-8 w-8 md:h-9 md:w-9" />
                     </div>
                     <span className="font-mono text-xs text-ink-muted">{h.label}</span>
                   </div>
@@ -399,7 +400,7 @@ function AboutPage() {
       </section>
 
       {/* THREE ROLES */}
-      <section className="relative bg-canvas py-14 md:py-16">
+      <section id="roles" className="relative bg-canvas py-14 md:py-16">
         <div className="container-edit relative">
           <Reveal>
             <p className="eyebrow eyebrow-cyan flex items-center gap-2">
@@ -414,13 +415,13 @@ function AboutPage() {
             </p>
           </Reveal>
           <div className="mt-16 grid gap-6 md:grid-cols-3">
-            {roles.map((r) => (
+            {roles.map((r, idx) => (
               <Reveal key={r.title} delay={100}>
                 <div className="custom-theme-card group h-full rounded-3xl p-8">
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-4">
                       <div className="icon-box flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-rule transition-colors duration-300">
-                        <r.icon className="h-5 w-5" />
+                        <AboutLogo variant={3 + idx} className="h-8 w-8 md:h-9 md:w-9" />
                       </div>
                       <div>
                         <h3 className="text-2xl font-extrabold tracking-tight text-ink leading-tight">

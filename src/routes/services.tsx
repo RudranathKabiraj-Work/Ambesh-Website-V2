@@ -14,6 +14,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
+import { ServicesLogo } from "@/components/ServicesLogos";
 import { buildMeta, jsonLd, breadcrumbSchema, faqSchema, SITE_URL } from "@/lib/seo";
 
 const faqs = [
@@ -264,7 +265,7 @@ function BusinessOSPage() {
       </section>
 
       {/* PILLARS */}
-      <section className="relative overflow-hidden py-14 md:py-20 bg-canvas">
+      <section id="pillars" className="relative overflow-hidden py-14 md:py-20 bg-canvas">
         <div className="container-edit relative">
           <Reveal>
             <p className="eyebrow flex items-center gap-2">
@@ -287,7 +288,7 @@ function BusinessOSPage() {
                   <div className="custom-theme-card group relative flex h-full flex-col overflow-hidden rounded-3xl p-8">
                     <div className="flex items-start justify-between">
                       <div className="icon-box flex h-12 w-12 items-center justify-center rounded-2xl border border-rule">
-                        <p.icon className="h-5 w-5" />
+                        <ServicesLogo variant={i} className="h-8 w-8 md:h-9 md:w-9" />
                       </div>
                       <span className="font-mono text-xs text-ink-muted">{p.n}</span>
                     </div>

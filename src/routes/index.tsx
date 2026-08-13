@@ -19,6 +19,7 @@ import {
   Rocket,
   Building2,
   Star,
+  Check,
 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { BeliefLogo } from "@/components/BeliefLogos";
@@ -509,6 +510,7 @@ function HomePage() {
 
       {/* PROBLEM */}
       <section
+        id="problems"
         className="relative overflow-hidden bg-canvas bg-premium-side-gradient py-20 md:py-32 lg:py-36 optimize-render"
         style={{ containIntrinsicSize: "0 700px" }}
       >
@@ -572,41 +574,21 @@ function HomePage() {
                         }}
                         aria-hidden
                       />
-                      <svg
-                        className="mt-1 h-5 w-5 shrink-0"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="var(--accent)"
-                        strokeWidth={2.2}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
+                      <motion.span
+                        className="problem-tick mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-brand text-white"
+                        initial={{ scale: 0, opacity: 0 }}
+                        whileInView={{ scale: 1, opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 320,
+                          damping: 18,
+                          delay: i * 0.09 + 0.2,
+                        }}
                         aria-hidden
                       >
-                        <motion.circle
-                          cx="12"
-                          cy="12"
-                          r="10"
-                          initial={{ pathLength: 0, opacity: 0 }}
-                          whileInView={{ pathLength: 1, opacity: 1 }}
-                          viewport={{ once: true }}
-                          transition={{
-                            duration: 0.4,
-                            delay: i * 0.09 + 0.15,
-                            ease: "easeOut",
-                          }}
-                        />
-                        <motion.path
-                          d="m9 12 2 2 4-4"
-                          initial={{ pathLength: 0, opacity: 0 }}
-                          whileInView={{ pathLength: 1, opacity: 1 }}
-                          viewport={{ once: true }}
-                          transition={{
-                            duration: 0.25,
-                            delay: i * 0.09 + 0.55,
-                            ease: "easeOut",
-                          }}
-                        />
-                      </svg>
+                        <Check className="h-3.5 w-3.5" />
+                      </motion.span>
                       <span>{p}</span>
                     </motion.li>
                   ))}

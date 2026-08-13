@@ -2634,6 +2634,114 @@ html.lenis body {
   box-shadow: 0 0 20px -4px oklch(from var(--accent) l c h / 0.45);
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   About page — Capabilities & Three Roles reuse the belief logo motion
+   ═══════════════════════════════════════════════════════════════════════════ */
+#capabilities .custom-theme-card:hover .bl-burst,
+#roles .custom-theme-card:hover .bl-burst {
+  animation: bl-burst 0.45s cubic-bezier(0.2, 0.75, 0.3, 1) forwards;
+}
+
+#capabilities .custom-theme-card:hover .bl-burst-sway,
+#roles .custom-theme-card:hover .bl-burst-sway {
+  animation: bl-burst-sway 0.6s cubic-bezier(0.3, 0.6, 0.4, 1) forwards;
+}
+
+#capabilities .custom-theme-card .icon-box,
+#roles .custom-theme-card .icon-box {
+  transition:
+    border-color 0.85s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.85s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+#capabilities .custom-theme-card:hover .icon-box,
+#roles .custom-theme-card:hover .icon-box {
+  border-color: oklch(from var(--accent) l c h / 0.45) !important;
+  box-shadow: 0 0 20px -4px oklch(from var(--accent) l c h / 0.45);
+}
+
+.dark #capabilities .custom-theme-card .icon-box,
+.dark #roles .custom-theme-card .icon-box {
+  background-color: rgba(140, 210, 255, 0.14) !important;
+  border-color: rgba(140, 210, 255, 0.24) !important;
+}
+
+.dark #capabilities .custom-theme-card .bl-anim,
+.dark #roles .custom-theme-card .bl-anim {
+  --bl-ink: #d9efff;
+  --bl-accent: #8fd0ff;
+  --bl-accent-soft: rgba(140, 210, 255, 0.16);
+  color: #d9efff !important;
+}
+
+.dark #capabilities .custom-theme-card .bl-glow,
+.dark #roles .custom-theme-card .bl-glow {
+  fill: rgba(140, 210, 255, 0.16);
+}
+
+.dark #capabilities .custom-theme-card:hover .icon-box,
+.dark #roles .custom-theme-card:hover .icon-box {
+  background-color: #0d3f66 !important;
+  border-color: rgba(140, 210, 255, 0.42) !important;
+  box-shadow: 0 0 24px -6px rgba(140, 210, 255, 0.5);
+}
+
+/* Services page — PILLARS reuse the belief logo motion */
+#pillars .custom-theme-card:hover .bl-burst {
+  animation: bl-burst 0.45s cubic-bezier(0.2, 0.75, 0.3, 1) forwards;
+}
+
+#pillars .custom-theme-card:hover .bl-burst-sway {
+  animation: bl-burst-sway 0.6s cubic-bezier(0.3, 0.6, 0.4, 1) forwards;
+}
+
+#pillars .custom-theme-card .icon-box {
+  transition:
+    border-color 0.85s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.85s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+#pillars .custom-theme-card:hover .icon-box {
+  border-color: oklch(from var(--accent) l c h / 0.45) !important;
+  box-shadow: 0 0 20px -4px oklch(from var(--accent) l c h / 0.45);
+}
+
+.dark #pillars .custom-theme-card .icon-box {
+  background-color: rgba(140, 210, 255, 0.14) !important;
+  border-color: rgba(140, 210, 255, 0.24) !important;
+}
+
+.dark #pillars .custom-theme-card .bl-anim {
+  --bl-ink: #d9efff;
+  --bl-accent: #8fd0ff;
+  --bl-accent-soft: rgba(140, 210, 255, 0.16);
+  color: #d9efff !important;
+}
+
+.dark #pillars .custom-theme-card .bl-glow {
+  fill: rgba(140, 210, 255, 0.16);
+}
+
+.dark #pillars .custom-theme-card:hover .icon-box {
+  background-color: #0d3f66 !important;
+  border-color: rgba(140, 210, 255, 0.42) !important;
+  box-shadow: 0 0 24px -6px rgba(140, 210, 255, 0.5);
+}
+
+/* "The Problems I Solve" ticks — dark mode uses a frosted light-blue circle
+   with a bright sky-blue tick, readable on the navy cards. */
+.dark #problems .problem-tick {
+  background-color: rgba(140, 210, 255, 0.25) !important;
+  background-image: none !important;
+  border: 1px solid rgba(140, 210, 255, 0.35) !important;
+  color: #8fd0ff !important;
+}
+
+.dark #problems .problem-tick svg {
+  stroke: #8fd0ff !important;
+  color: #8fd0ff !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .bl-spin,
   .bl-spin-cadence,
