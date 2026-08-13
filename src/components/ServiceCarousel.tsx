@@ -214,6 +214,30 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
           </>
         )}
       </div>
+
+      {/* Progress dots — mobile only, below the cards */}
+      {isMobile && (
+        <div className="mt-2 flex items-center justify-center gap-2">
+          {cards.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => goTo(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+              className={`relative h-1.5 cursor-pointer overflow-hidden rounded-full transition-all duration-300 ${
+                activeIndex === idx ? "carousel-dot-track" : ""
+              }`}
+              style={{
+                width: activeIndex === idx ? 24 : 7,
+                backgroundColor: activeIndex === idx ? undefined : "rgba(127,127,127,0.35)",
+              }}
+            >
+              {activeIndex === idx && (
+                <span className="carousel-dot-progress carousel-dot-fill absolute inset-y-0 left-0 rounded-full" />
+              )}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
