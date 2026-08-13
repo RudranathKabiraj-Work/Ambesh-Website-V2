@@ -2728,18 +2728,97 @@ html.lenis body {
   box-shadow: 0 0 24px -6px rgba(140, 210, 255, 0.5);
 }
 
+/* Training page — FORMATS reuse the belief logo motion */
+#formats .custom-theme-card:hover .bl-burst {
+  animation: bl-burst 0.45s cubic-bezier(0.2, 0.75, 0.3, 1) forwards;
+}
+
+#formats .custom-theme-card:hover .bl-burst-sway {
+  animation: bl-burst-sway 0.6s cubic-bezier(0.3, 0.6, 0.4, 1) forwards;
+}
+
+#formats .custom-theme-card .icon-box {
+  transition:
+    border-color 0.85s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.85s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+#formats .custom-theme-card:hover .icon-box {
+  border-color: oklch(from var(--accent) l c h / 0.45) !important;
+  box-shadow: 0 0 20px -4px oklch(from var(--accent) l c h / 0.45);
+}
+
+.dark #formats .custom-theme-card .icon-box {
+  background-color: rgba(140, 210, 255, 0.14) !important;
+  border-color: rgba(140, 210, 255, 0.24) !important;
+}
+
+.dark #formats .custom-theme-card .bl-anim {
+  --bl-ink: #d9efff;
+  --bl-accent: #8fd0ff;
+  --bl-accent-soft: rgba(140, 210, 255, 0.16);
+  color: #d9efff !important;
+}
+
+.dark #formats .custom-theme-card .bl-glow {
+  fill: rgba(140, 210, 255, 0.16);
+}
+
+.dark #formats .custom-theme-card:hover .icon-box {
+  background-color: #0d3f66 !important;
+  border-color: rgba(140, 210, 255, 0.42) !important;
+  box-shadow: 0 0 24px -6px rgba(140, 210, 255, 0.5);
+}
+
+/* Keep the bullet ticks static on card hover — the generic card hover rule
+   recolours every svg to the accent, which would bleed into the tick marks. */
+#formats .custom-theme-card:hover .problem-tick svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+.dark #formats .custom-theme-card:hover .problem-tick svg {
+  color: #8fd0ff !important;
+  stroke: #8fd0ff !important;
+}
+
 /* "The Problems I Solve" ticks — dark mode uses a frosted light-blue circle
-   with a bright sky-blue tick, readable on the navy cards. */
-.dark #problems .problem-tick {
+   with a bright sky-blue tick, readable on the navy cards. The training page
+   ("Formats" cards + "After the training" outcomes) reuses the same tick. */
+.dark #problems .problem-tick,
+.dark #formats .problem-tick,
+.dark #outcomes .problem-tick {
   background-color: rgba(140, 210, 255, 0.25) !important;
   background-image: none !important;
   border: 1px solid rgba(140, 210, 255, 0.35) !important;
   color: #8fd0ff !important;
 }
 
-.dark #problems .problem-tick svg {
+.dark #problems .problem-tick svg,
+.dark #formats .problem-tick svg,
+.dark #outcomes .problem-tick svg {
   stroke: #8fd0ff !important;
   color: #8fd0ff !important;
+}
+
+/* ---- Podcast hero — live waveform equalizer ----
+ * Each bar scales vertically on its own rhythm (staggered delays and
+ * slightly varied durations) so the strip reads like a moving audio
+ * visualizer instead of a static pulse. scaleY is compositor-friendly. */
+@keyframes eq-wave {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.eq-bar {
+  transform-origin: 50% 50%;
+  animation: eq-wave 1.2s ease-in-out infinite;
+  will-change: transform;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2747,7 +2826,8 @@ html.lenis body {
   .bl-spin-cadence,
   .bl-breathe,
   .bl-sway,
-  .bl-glow {
+  .bl-glow,
+  .eq-bar {
     animation: none !important;
   }
 }

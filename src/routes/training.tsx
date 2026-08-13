@@ -1,15 +1,20 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
+  Building2,
+  Check,
   CheckCircle2,
   GraduationCap,
-  Users,
-  Workflow,
+  Layers,
   MapPin,
+  Rocket,
   Sparkles,
   Star,
+  Users,
 } from "lucide-react";
+import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { Reveal } from "@/components/Reveal";
+import { TrainingLogo } from "@/components/TrainingLogos";
 import { buildMeta, jsonLd, breadcrumbSchema, SITE_URL } from "@/lib/seo";
 import { whatsappUrl, WA_MESSAGES } from "@/lib/wa";
 
@@ -48,16 +53,41 @@ export const Route = createFileRoute("/training")({
 });
 
 const heroStats = [
-  { v: "5,000+", l: "Professionals trained" },
-  { v: "50+", l: "Organisations served" },
-  { v: "150+", l: "Sessions and engagements" },
-  { v: "11+", l: "Industries delivered in" },
-  { v: "9.5", l: "Average NPS rating" },
+  {
+    end: 5000,
+    suffix: "+",
+    l: "Professionals trained",
+    icon: Users,
+  },
+  {
+    end: 50,
+    suffix: "+",
+    l: "Organisations served",
+    icon: Building2,
+  },
+  {
+    end: 150,
+    suffix: "+",
+    l: "Sessions and engagements",
+    icon: Rocket,
+  },
+  {
+    end: 11,
+    suffix: "+",
+    l: "Industries delivered in",
+    icon: Layers,
+  },
+  {
+    end: 9.5,
+    suffix: "",
+    decimals: 1,
+    l: "Average NPS rating",
+    icon: Star,
+  },
 ];
 
 const formats = [
   {
-    icon: GraduationCap,
     title: "Leadership AI Workshop",
     tagline: "For CXOs, founders and senior teams.",
     body: "A focused session that gives leadership direction, risk clarity, and a 90-day view of where AI fits in the business.",
@@ -69,7 +99,6 @@ const formats = [
     ],
   },
   {
-    icon: Users,
     title: "Department AI Workshop",
     tagline: "For sales, marketing, HR, operations, finance and support teams.",
     body: "Practical workshops that put AI inside the daily work of a specific department. Participants practise on their own tasks.",
@@ -81,7 +110,6 @@ const formats = [
     ],
   },
   {
-    icon: Workflow,
     title: "AI Workflow Bootcamp",
     tagline: "For teams that need deeper hands-on practice.",
     body: "A longer engagement covering prompts, workflows, automation and internal use cases your team will keep using.",
@@ -199,14 +227,25 @@ function TrainingPage() {
               </a>
             </div>
           </Reveal>
-          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-14 grid gap-6 grid-cols-2 lg:grid-cols-5">
             {heroStats.map((s, i) => (
               <Reveal key={s.l} delay={60 + i * 60} eager>
-                <div className="h-full custom-theme-card-static p-6 rounded-2xl">
-                  <p className="stats-value font-display text-2xl font-extrabold tracking-tight text-gradient-brand animate-gradient md:text-3xl">
-                    {s.v}
+                <div className="custom-theme-card-static relative h-full overflow-hidden rounded-[20px] p-4 text-center">
+                  <div
+                    className="stat-aurora pointer-events-none absolute inset-0 opacity-50"
+                    aria-hidden
+                  />
+                  <div className="relative flex items-center justify-center gap-2">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-brand text-white shadow-glow">
+                      <s.icon className="h-3.5 w-3.5" />
+                    </div>
+                    <p className="stats-value font-display text-2xl font-extrabold tracking-tight text-gradient-brand animate-gradient md:text-3xl">
+                      <AnimatedCounter end={s.end} suffix={s.suffix} decimals={s.decimals ?? 0} />
+                    </p>
+                  </div>
+                  <p className="stats-label relative mt-2 text-xs uppercase tracking-wider font-semibold text-ink-muted leading-tight">
+                    {s.l}
                   </p>
-                  <p className="stats-label mt-2 text-xs text-ink-muted">{s.l}</p>
                 </div>
               </Reveal>
             ))}
@@ -247,7 +286,7 @@ function TrainingPage() {
                       aria-hidden
                     />
                     <div className="icon-box flex h-12 w-12 items-center justify-center rounded-xl border border-rule">
-                      <p.icon className="h-5 w-5" />
+                      <TrainingLogo variant={i} className="h-8 w-8 md:h-9 md:w-9" />
                     </div>
                     <h3 className="mt-7 font-display text-[1.65rem] font-extrabold tracking-[-0.025em] leading-[1.15] text-ink md:text-[1.85rem]">
                       {p.title}
@@ -257,10 +296,9 @@ function TrainingPage() {
                     <ul className="mt-6 space-y-2.5">
                       {p.bullets.map((b) => (
                         <li key={b} className="flex items-start gap-2.5 text-sm text-ink-soft">
-                          <CheckCircle2
-                            className="mt-0.5 h-4 w-4 shrink-0"
-                            style={{ color: "var(--accent)" }}
-                          />
+                          <span className="problem-tick mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-brand text-white">
+                            <Check className="h-3.5 w-3.5" />
+                          </span>
                           <span>{b}</span>
                         </li>
                       ))}
@@ -314,7 +352,7 @@ function TrainingPage() {
       </section>
 
       {/* OUTCOMES */}
-      <section className="relative overflow-hidden bg-canvas py-14 md:py-20">
+      <section id="outcomes" className="relative overflow-hidden bg-canvas py-14 md:py-20">
         <div className="container-edit relative">
           <Reveal>
             <p className="eyebrow flex items-center gap-2">
@@ -331,10 +369,9 @@ function TrainingPage() {
             {outcomes.map((o, i) => (
               <Reveal key={o} delay={60}>
                 <div className="custom-theme-card-static flex items-start gap-4 rounded-2xl p-5">
-                  <CheckCircle2
-                    className="mt-0.5 h-5 w-5 shrink-0"
-                    style={{ color: "var(--accent)" }}
-                  />
+                  <span className="problem-tick mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-brand text-white">
+                    <Check className="h-3.5 w-3.5" />
+                  </span>
                   <p className="text-base text-ink">{o}</p>
                 </div>
               </Reveal>

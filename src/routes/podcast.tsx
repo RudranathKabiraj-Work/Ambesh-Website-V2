@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Headphones, Play, Mail, Mic, Star, MessageCircle, User } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { buildMeta, jsonLd, breadcrumbSchema, SITE_URL, DEFAULT_OG_IMAGE } from "@/lib/seo";
+import { GridVignetteBackground } from "@/components/ui/vignette-grid-background";
 
 export const Route = createFileRoute("/podcast")({
   head: () => {
@@ -82,20 +83,21 @@ const topics = [
 ];
 
 function Waveform() {
-  const bars = Array.from(
-    { length: 60 },
-    (_, i) => 30 + Math.sin(i * 0.4) * 25 + Math.random() * 30,
-  );
+  const bars = Array.from({ length: 60 }, (_, i) => {
+    const h = 30 + Math.sin(i * 0.4) * 25 + Math.random() * 30;
+    const dur = 0.9 + Math.sin(i * 0.7) * 0.35 + Math.random() * 0.3;
+    return { h, dur };
+  });
   return (
     <div className="flex h-32 items-center gap-1">
-      {bars.map((h, i) => (
+      {bars.map((b, i) => (
         <div
           key={i}
-          className="w-1.5 rounded-full bg-gradient-brand animate-pulse"
+          className="eq-bar w-1.5 rounded-full bg-gradient-brand"
           style={{
-            height: `${h}%`,
-            animationDelay: `${i * 40}ms`,
-            animationDuration: "1.6s",
+            height: `${b.h}%`,
+            animationDelay: `${i * 45}ms`,
+            animationDuration: `${b.dur}s`,
           }}
         />
       ))}
@@ -109,7 +111,8 @@ function PodcastPage() {
       {/* HERO */}
       <section className="relative isolate overflow-hidden premium-canvas bg-premium-side-gradient">
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
-        <div className="container-edit relative grid gap-12 pt-20 pb-28 md:grid-cols-12 md:gap-16 md:pt-32 md:pb-36">
+        <GridVignetteBackground className="hidden dark:block opacity-40" x={50} y={50} intensity={100} size={48} horizontalVignetteSize={80} verticalVignetteSize={60} />
+        <div className="container-edit relative grid gap-12 pt-10 pb-12 md:grid-cols-12 md:gap-16 md:pt-16 md:pb-16">
           <div className="md:col-span-8">
             <Reveal eager>
               <p className="eyebrow flex items-center gap-2">
@@ -158,8 +161,8 @@ function PodcastPage() {
       </section>
 
       {/* PLATFORMS */}
-      <section className="border-y border-rule bg-canvas py-12">
-        <div className="container-edit flex flex-wrap items-center gap-x-6 gap-y-4">
+      <section className="relative isolate overflow-hidden border-y border-rule py-12">
+        <div className="container-edit relative flex flex-wrap items-center gap-x-6 gap-y-4">
           <p className="eyebrow flex items-center gap-2 w-full md:w-auto">
             <Play className="h-3.5 w-3.5" /> Listen on
           </p>
@@ -178,8 +181,9 @@ function PodcastPage() {
       </section>
 
       {/* FEATURED EPISODES */}
-      <section className="relative isolate overflow-hidden premium-canvas bg-premium-side-gradient">
+      <section className="relative isolate overflow-hidden">
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
+        <GridVignetteBackground className="hidden dark:block opacity-40" x={50} y={50} intensity={100} size={48} horizontalVignetteSize={80} verticalVignetteSize={60} />
         <div className="container-edit relative py-16">
           <Reveal>
             <p className="eyebrow flex items-center gap-2">
@@ -231,7 +235,7 @@ function PodcastPage() {
       </section>
 
       {/* WHAT WE TALK ABOUT */}
-      <section className="relative bg-canvas">
+      <section className="relative isolate overflow-hidden">
         <div className="container-edit relative py-16">
           <div className="grid gap-12 md:grid-cols-12">
             <Reveal className="md:col-span-5">
@@ -263,8 +267,9 @@ function PodcastPage() {
       </section>
 
       {/* ABOUT THE HOST */}
-      <section className="relative isolate overflow-hidden premium-canvas bg-premium-side-gradient">
+      <section className="relative isolate overflow-hidden">
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
+        <GridVignetteBackground className="hidden dark:block opacity-40" x={50} y={50} intensity={100} size={48} horizontalVignetteSize={80} verticalVignetteSize={60} />
         <div className="container-edit relative py-16">
           <div className="grid gap-12 md:grid-cols-12 md:items-center">
             <Reveal className="md:col-span-5">
@@ -313,9 +318,9 @@ function PodcastPage() {
       </section>
 
       {/* NEWSLETTER */}
-      <section className="container-edit pb-20 pt-4">
-        <Reveal>
-          <div className="relative overflow-hidden rounded-3xl border border-rule bg-canvas p-12 md:p-16">
+      <section className="relative isolate overflow-hidden py-16">
+        <div className="container-edit relative">
+          <Reveal className="relative overflow-hidden rounded-3xl border border-rule bg-canvas p-12 md:p-16">
             <div className="absolute inset-0 tex-dots-soft opacity-60" aria-hidden />
             <div className="relative grid gap-10 md:grid-cols-2 md:items-center">
               <div>
@@ -354,13 +359,14 @@ function PodcastPage() {
                 </button>
               </form>
             </div>
-          </div>
-        </Reveal>
+          </Reveal>
+        </div>
       </section>
 
       {/* CLOSING - GUEST PITCH */}
-      <section className="relative isolate overflow-hidden premium-canvas bg-premium-side-gradient">
+      <section className="relative isolate overflow-hidden">
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
+        <GridVignetteBackground className="hidden dark:block opacity-40" x={50} y={50} intensity={100} size={48} horizontalVignetteSize={80} verticalVignetteSize={60} />
         <div className="container-edit relative py-16 text-center">
           <Reveal>
             <h2 className="mx-auto max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-6xl">
