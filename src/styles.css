@@ -2705,12 +2705,29 @@ html.lenis body {
   border-color: rgba(140, 210, 255, 0.24) !important;
 }
 
-.dark #capabilities .custom-theme-card .bl-anim,
-.dark #roles .custom-theme-card .bl-anim {
-  --bl-ink: #d9efff;
+.dark #capabilities .custom-theme-card .bl-anim {
+  --bl-ink: #ffffff;
   --bl-accent: #8fd0ff;
   --bl-accent-soft: rgba(140, 210, 255, 0.16);
-  color: #d9efff !important;
+  color: #ffffff !important;
+}
+
+.dark #capabilities .custom-theme-card .bl-anim.capabilities-first {
+  --bl-ink: #ffffff;
+  --bl-accent: #ffffff;
+  --bl-accent-soft: rgba(255, 255, 255, 0.16);
+  color: #ffffff !important;
+}
+
+.dark #capabilities .custom-theme-card .bl-anim.capabilities-first .bl-glow {
+  fill: rgba(255, 255, 255, 0.16);
+}
+
+.dark #roles .custom-theme-card .bl-anim {
+  --bl-ink: #ffffff;
+  --bl-accent: #8fd0ff;
+  --bl-accent-soft: rgba(140, 210, 255, 0.16);
+  color: #ffffff !important;
 }
 
 .dark #capabilities .custom-theme-card .bl-glow,
@@ -2751,10 +2768,10 @@ html.lenis body {
 }
 
 .dark #pillars .custom-theme-card .bl-anim {
-  --bl-ink: #d9efff;
-  --bl-accent: #8fd0ff;
+  --bl-ink: #ffffff;
+  --bl-accent: #aee0ff;
   --bl-accent-soft: rgba(140, 210, 255, 0.16);
-  color: #d9efff !important;
+  color: #ffffff !important;
 }
 
 .dark #pillars .custom-theme-card .bl-glow {
@@ -2787,16 +2804,23 @@ html.lenis body {
   box-shadow: 0 0 20px -4px oklch(from var(--accent) l c h / 0.45);
 }
 
+#formats .custom-theme-card .bl-anim {
+  --bl-ink: #1a3a5c;
+  --bl-accent: #2a5d8e;
+  --bl-accent-soft: rgba(42, 93, 142, 0.12);
+  color: #1a3a5c !important;
+}
+
 .dark #formats .custom-theme-card .icon-box {
   background-color: rgba(140, 210, 255, 0.14) !important;
   border-color: rgba(140, 210, 255, 0.24) !important;
 }
 
 .dark #formats .custom-theme-card .bl-anim {
-  --bl-ink: #d9efff;
-  --bl-accent: #8fd0ff;
+  --bl-ink: #ffffff;
+  --bl-accent: #aee0ff;
   --bl-accent-soft: rgba(140, 210, 255, 0.16);
-  color: #d9efff !important;
+  color: #ffffff !important;
 }
 
 .dark #formats .custom-theme-card .bl-glow {

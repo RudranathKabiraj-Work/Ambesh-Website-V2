@@ -27,9 +27,10 @@ function WorkshopMark({ className }: { className?: string }) {
         height="20"
         rx="3.5"
         fill="var(--bl-ink, currentColor)"
-        opacity="0.16"
+        fillOpacity="0.18"
         stroke="var(--bl-ink, currentColor)"
-        strokeWidth="1.8"
+        strokeOpacity="0.85"
+        strokeWidth="2"
       />
       <g className="bl-breathe">
         <path d="M29 25.5 v9 l7.5 -4.5 Z" fill="var(--bl-accent, var(--accent))" />
@@ -42,14 +43,15 @@ function WorkshopMark({ className }: { className?: string }) {
             r="21"
             fill="none"
             stroke="var(--bl-ink, currentColor)"
-            strokeWidth="1.2"
-            opacity="0.35"
-            strokeDasharray="1.5 7"
+            strokeOpacity="0.55"
+            strokeWidth="1.5"
+            strokeDasharray="3 6"
+            strokeLinecap="round"
           />
-          <circle cx="46" cy="19" r="2.2" fill="var(--bl-accent, var(--accent))" />
-          <circle cx="18" cy="19" r="2.2" fill="var(--bl-accent, var(--accent))" opacity="0.5" />
-          <circle cx="18" cy="45" r="2.2" fill="var(--bl-accent, var(--accent))" opacity="0.5" />
-          <circle cx="46" cy="45" r="2.2" fill="var(--bl-accent, var(--accent))" opacity="0.5" />
+          <circle cx="46" cy="19" r="2.2" fill="var(--bl-accent, var(--accent))" opacity="0.8" />
+          <circle cx="18" cy="19" r="2.2" fill="var(--bl-accent, var(--accent))" opacity="0.7" />
+          <circle cx="18" cy="45" r="2.2" fill="var(--bl-accent, var(--accent))" opacity="0.7" />
+          <circle cx="46" cy="45" r="2.2" fill="var(--bl-accent, var(--accent))" opacity="0.7" />
         </g>
       </g>
     </svg>
@@ -150,7 +152,7 @@ function AutomateMark({ className }: { className?: string }) {
 }
 
 /** Roles 1 — "Entrepreneur"
- *  A rising growth line with a pulsing spark at its tip and a small orbit
+ *  A rising growth line with a pulsing spark at its tip and an orbit
  *  of momentum circling the business. */
 function EntrepreneurMark({ className }: { className?: string }) {
   return (
@@ -162,33 +164,45 @@ function EntrepreneurMark({ className }: { className?: string }) {
     >
       <circle cx="32" cy="32" r="18" className="bl-glow" />
       <rect
-        x="15"
+        x="14"
         y="41"
-        width="34"
-        height="4"
-        rx="2"
+        width="36"
+        height="4.5"
+        rx="2.2"
         fill="var(--bl-ink, currentColor)"
-        opacity="0.7"
+        opacity="0.85"
       />
       <g
         stroke="var(--bl-ink, currentColor)"
-        strokeWidth="2.6"
+        strokeWidth="3.2"
         strokeLinecap="round"
+        strokeLinejoin="round"
         fill="none"
-        opacity="0.9"
       >
         <path d="M17 42 L36 23" />
         <path d="M36 23 L29 23 M36 23 L36 30" />
       </g>
       <g className="bl-breathe">
         <path
-          d="M46 12 l1.7 4 4 1.7 -4 1.7 -1.7 4 -1.7 -4 -4 -1.7 4 -1.7 Z"
+          d="M46 12 l1.9 4.4 4.4 1.9 -4.4 1.9 -1.9 4.4 -1.9 -4.4 -4.4 -1.9 4.4 -1.9 Z"
           fill="var(--bl-accent, var(--accent))"
         />
       </g>
-      <g className="bl-spin bl-origin-center" style={{ animationDuration: "11s" }}>
+      <g className="bl-spin-cadence bl-origin-center" style={{ animationDuration: "6.5s" }}>
         <g className="bl-burst">
-          <circle cx="21" cy="19" r="2.2" fill="var(--bl-accent, var(--accent))" opacity="0.6" />
+          <circle
+            cx="32"
+            cy="32"
+            r="20"
+            fill="none"
+            stroke="var(--bl-accent, var(--accent))"
+            strokeWidth="1.2"
+            opacity="0.4"
+            strokeDasharray="2 7"
+            strokeLinecap="round"
+          />
+          <circle cx="32" cy="12" r="2.2" fill="var(--bl-accent, var(--accent))" />
+          <circle cx="52" cy="32" r="2.2" fill="var(--bl-accent, var(--accent))" opacity="0.6" />
         </g>
       </g>
     </svg>
@@ -204,60 +218,85 @@ function BuilderMark({ className }: { className?: string }) {
       <circle cx="32" cy="32" r="18" className="bl-glow" />
       <g className="bl-breathe">
         <rect
-          x="14"
-          y="16"
-          width="9"
-          height="9"
-          rx="2"
+          x="13"
+          y="14"
+          width="11"
+          height="11"
+          rx="2.5"
           fill="var(--bl-ink, currentColor)"
-          opacity="0.55"
+          opacity="0.9"
         />
       </g>
       <g className="bl-breathe" style={{ animationDelay: "-2.4s" }}>
         <rect
-          x="41"
-          y="16"
-          width="9"
-          height="9"
-          rx="2"
+          x="40"
+          y="14"
+          width="11"
+          height="11"
+          rx="2.5"
           fill="var(--bl-ink, currentColor)"
-          opacity="0.7"
+          opacity="0.9"
         />
       </g>
       <g className="bl-breathe" style={{ animationDelay: "-4.8s" }}>
         <rect
-          x="27"
+          x="26"
           y="39"
-          width="10"
-          height="10"
-          rx="2"
+          width="12"
+          height="12"
+          rx="2.5"
           fill="var(--bl-ink, currentColor)"
-          opacity="0.85"
+          opacity="0.95"
         />
       </g>
-      <g className="bl-spin bl-origin-center" style={{ animationDuration: "12s" }}>
+      <g className="bl-spin bl-origin-center" style={{ animationDuration: "11s" }}>
         <g className="bl-burst">
           <circle
             cx="32"
             cy="32"
-            r="8.5"
+            r="10"
             fill="none"
             stroke="var(--bl-accent, var(--accent))"
-            strokeWidth="2.6"
+            strokeWidth="3.4"
           />
           {GEAR_TEETH_6.map((a) => (
             <rect
               key={a}
-              x="31.2"
-              y="23"
-              width="1.6"
-              height="2.6"
-              rx="0.5"
+              x="30.4"
+              y="16.5"
+              width="3.2"
+              height="5"
+              rx="1"
               fill="var(--bl-accent, var(--accent))"
               transform={`rotate(${a} 32 32)`}
             />
           ))}
-          <circle cx="32" cy="32" r="2.8" fill="var(--bl-accent, var(--accent))" />
+          <circle
+            cx="32"
+            cy="32"
+            r="4.2"
+            fill="none"
+            stroke="var(--bl-ink, currentColor)"
+            strokeWidth="2"
+            opacity="0.85"
+          />
+          <circle cx="32" cy="32" r="1.6" fill="var(--bl-accent, var(--accent))" />
+        </g>
+      </g>
+      <g className="bl-spin-cadence bl-origin-center" style={{ animationDuration: "6.5s" }}>
+        <g className="bl-burst">
+          <circle
+            cx="32"
+            cy="32"
+            r="21"
+            fill="none"
+            stroke="var(--bl-accent, var(--accent))"
+            strokeWidth="1.2"
+            opacity="0.4"
+            strokeDasharray="2 8"
+            strokeLinecap="round"
+          />
+          <circle cx="32" cy="11" r="2.2" fill="var(--bl-accent, var(--accent))" />
         </g>
       </g>
     </svg>

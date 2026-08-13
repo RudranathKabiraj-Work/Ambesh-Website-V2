@@ -370,7 +370,10 @@ function AboutPage() {
                 <div className="custom-theme-card group h-full rounded-3xl p-8">
                   <div className="flex items-start justify-between">
                     <div className="icon-box flex h-12 w-12 items-center justify-center rounded-xl border border-rule transition-colors duration-300">
-                      <AboutLogo variant={idx} className="h-8 w-8 md:h-9 md:w-9" />
+                      <AboutLogo
+                        variant={idx}
+                        className={`h-8 w-8 md:h-9 md:w-9 ${idx === 0 ? "capabilities-first" : ""}`}
+                      />
                     </div>
                     <span className="font-mono text-xs text-ink-muted">{h.label}</span>
                   </div>
@@ -449,8 +452,8 @@ function AboutPage() {
                 <div className="custom-theme-card group h-full rounded-3xl p-8">
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-4">
-                      <div className="icon-box flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-rule transition-colors duration-300">
-                        <AboutLogo variant={3 + idx} className="h-8 w-8 md:h-9 md:w-9" />
+                      <div className="icon-box flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-rule transition-colors duration-300">
+                        <AboutLogo variant={3 + idx} className="h-11 w-11 md:h-12 md:w-12" />
                       </div>
                       <div>
                         <h3 className="text-2xl font-extrabold tracking-tight text-ink leading-tight">
