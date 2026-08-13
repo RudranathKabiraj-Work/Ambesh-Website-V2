@@ -2428,6 +2428,18 @@ html.lenis body {
     transition-duration: 0.25s !important;
   }
 
+  /* Hero CTAs must be visible immediately on small screens. The delayed
+     fadeInUp entrance uses `both` fill-mode, so the buttons start at
+     opacity:0; on low-end phones the composited animation can be
+     deferred until scroll, leaving the Business OS CTAs invisible.
+     Show hero content instantly instead of gating it behind the
+     entrance animation. */
+  .premium-canvas .animate-fade-in-up {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
   /* Kill backdrop-blur on the glass strategy call button */
   .uiverse-glass-btn {
     backdrop-filter: none !important;
@@ -2843,13 +2855,14 @@ html.lenis body {
 }
 
 /* ---- Services page — PROCESS logos ----
- * Always render in white (light & dark), keep the accent for glow /
- * accent marks, and never recolor on hover. The process cards are not
+ * Light mode: the marks use the accent blue so they stay clearly visible
+ * and blue (not black) on the light accent-soft tile. Dark mode: white
+ * ink with a bright sky accent (see below). The process cards are not
  * .custom-theme-card, so the generic hover recolor rules must be
  * explicitly cancelled here. */
 #process .process-card-logo {
-  color: #ffffff;
-  --bl-ink: #ffffff;
+  color: var(--accent);
+  --bl-ink: var(--accent);
   --bl-accent: var(--accent);
   --bl-accent-soft: var(--accent-soft);
 }
