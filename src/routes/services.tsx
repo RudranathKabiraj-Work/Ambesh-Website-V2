@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
 import {
   ArrowRight,
   Layers,
@@ -19,6 +20,7 @@ import {
 import { Reveal } from "@/components/Reveal";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { ServicesLogo } from "@/components/ServicesLogos";
+import { ProcessLogo } from "@/components/ProcessLogos";
 import { buildMeta, jsonLd, breadcrumbSchema, faqSchema, SITE_URL } from "@/lib/seo";
 import { GridVignetteBackground } from "@/components/ui/vignette-grid-background";
 
@@ -199,6 +201,108 @@ const process = [
     body: "30 and 60 day adoption check-ins. The team is trained on the OS. The business is handed over to run and improve without ongoing dependency on Ambesh.",
   },
 ];
+
+function ProcessStepCard({
+  p,
+  i,
+  active,
+}: {
+  p: (typeof process)[number];
+  i: number;
+  active: boolean;
+}) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(cardRef, { once: true, amount: 0.15 });
+
+  return (
+    <div ref={cardRef} data-step={i} className="relative scroll-mt-28 md:pl-10">
+      <span
+        className={`absolute left-0 top-9 hidden h-3.5 w-3.5 -translate-x-1/2 rounded-full border-2 transition-all duration-500 md:block ${
+          active ? "border-accent bg-accent shadow-glow" : "border-rule bg-canvas"
+        }`}
+        aria-hidden
+      />
+      <motion.div
+        initial={{ opacity: 0, y: 60, scale: 0.97 }}
+        animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: i * 0.15 }}
+        className={`process-card relative overflow-hidden rounded-3xl border p-7 transition-colors duration-500 md:p-9 ${
+          active
+            ? "border-accent/40 bg-canvas/90 shadow-[0_20px_60px_-24px_var(--accent)]"
+            : "border-rule bg-canvas/60"
+        }`}
+      >
+        <span
+          className="pointer-events-none absolute -right-4 top-1/2 -translate-y-1/2 select-none font-display text-[7rem] font-black leading-none tracking-tighter text-ink/[0.05] md:text-[9rem]"
+          aria-hidden
+        >
+          {p.step}
+        </span>
+        <div className="relative flex items-center gap-4">
+          <div className="icon-box flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-rule transition-colors duration-300">
+            <ProcessLogo variant={i} className="process-card-logo h-11 w-11 md:h-12 md:w-12" />
+          </div>
+          <div>
+            <h3 className="text-2xl font-bold tracking-tight text-ink">{p.title}</h3>
+          </div>
+        </div>
+
+        <p className="relative mt-5 text-[15px] leading-[1.65] text-ink-soft">{p.body}</p>
+      </motion.div>
+    </div>
+  );
+}
+
+function ProcessTimeline() {
+  const railRef = useRef<HTMLDivElement>(null);
+  const [activeStep, setActiveStep] = useState(0);
+
+  useEffect(() => {
+    const el = railRef.current;
+    if (!el) return;
+    let raf = 0;
+
+    const update = () => {
+      raf = 0;
+      const steps = Array.from(el.querySelectorAll<HTMLElement>("[data-step]"));
+      const mid = window.innerHeight * 0.45;
+      let best = 0;
+      let bestDist = Infinity;
+      for (let idx = 0; idx < steps.length; idx++) {
+        const r = steps[idx].getBoundingClientRect();
+        const dist = Math.abs(r.top + r.height / 2 - mid);
+        if (dist < bestDist) {
+          bestDist = dist;
+          best = idx;
+        }
+      }
+      setActiveStep(best);
+    };
+
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  return (
+    <div ref={railRef} className="relative mt-16">
+      <div className="relative flex flex-col gap-6 md:gap-10">
+        {process.map((p, i) => (
+          <ProcessStepCard key={p.step} p={p} i={i} active={i === activeStep} />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function BusinessOSPage() {
   const [audience, setAudience] = useState<keyof typeof audiences>("founders");
@@ -425,7 +529,7 @@ function BusinessOSPage() {
       </section>
 
       {/* PROCESS */}
-      <section className="relative overflow-hidden bg-canvas py-16">
+      <section id="process" className="relative overflow-hidden bg-canvas py-16 md:py-24">
         <div className="container-edit relative">
           <Reveal>
             <p className="eyebrow flex items-center gap-2">
@@ -440,18 +544,8 @@ function BusinessOSPage() {
               is 8 to 12 weeks.
             </p>
           </Reveal>
-          <div className="relative mt-16 grid gap-8 md:grid-cols-4">
-            <div className="absolute left-0 right-0 top-8 hidden h-px bg-gradient-brand md:block" />
-            {process.map((p, i) => (
-              <Reveal key={p.step} delay={100} className="relative">
-                <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-brand text-xl font-black text-white shadow-glow animate-gradient">
-                  {p.step}
-                </div>
-                <h3 className="mt-6 text-2xl font-bold">{p.title}</h3>
-                <p className="mt-3 text-sm text-ink-muted">{p.body}</p>
-              </Reveal>
-            ))}
-          </div>
+
+          <ProcessTimeline />
         </div>
       </section>
 
@@ -470,26 +564,26 @@ function BusinessOSPage() {
         <div className="container-edit relative">
           <Reveal>
             <div className="grid gap-8 rounded-3xl custom-theme-card-static p-8 md:grid-cols-12 md:items-center md:gap-12 md:p-12">
-            <div className="md:col-span-7">
-              <p className="eyebrow flex items-center gap-2">
-                <GraduationCap className="h-3 w-3" /> AI Training
-              </p>
-              <h2 className="mt-3 text-3xl font-extrabold tracking-tight md:text-4xl">
-                Need AI training without the full OS build?
-              </h2>
-              <p className="mt-4 text-base text-ink-soft">
-                AI Training is a standalone offer. Leadership workshops, department workshops, and
-                multi-day team bootcamps. Many companies start here and later bring in the full
-                Business OS engagement.
-              </p>
-            </div>
-            <div className="md:col-span-5 md:text-right">
-              <Link
-                to="/training"
-                className="inline-flex h-12 items-center gap-2 rounded-full border border-ink bg-canvas px-6 text-sm font-semibold text-ink hover:bg-ink hover:text-canvas"
-              >
-                Explore AI Training <ArrowRight className="h-4 w-4" />
-              </Link>
+              <div className="md:col-span-7">
+                <p className="eyebrow flex items-center gap-2">
+                  <GraduationCap className="h-3 w-3" /> AI Training
+                </p>
+                <h2 className="mt-3 text-3xl font-extrabold tracking-tight md:text-4xl">
+                  Need AI training without the full OS build?
+                </h2>
+                <p className="mt-4 text-base text-ink-soft">
+                  AI Training is a standalone offer. Leadership workshops, department workshops, and
+                  multi-day team bootcamps. Many companies start here and later bring in the full
+                  Business OS engagement.
+                </p>
+              </div>
+              <div className="md:col-span-5 md:text-right">
+                <Link
+                  to="/training"
+                  className="inline-flex h-12 items-center gap-2 rounded-full border border-ink bg-canvas px-6 text-sm font-semibold text-ink hover:bg-ink hover:text-canvas"
+                >
+                  Explore AI Training <ArrowRight className="h-4 w-4" />
+                </Link>
               </div>
             </div>
           </Reveal>

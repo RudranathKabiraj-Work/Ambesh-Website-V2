@@ -360,7 +360,7 @@ function HomePage() {
           <div className="grid items-center gap-16 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-7">
               <div className="animate-fade-in-up">
-                <span className="eyebrow flex items-center gap-2">
+                <span className="eyebrow flex items-center gap-2 whitespace-nowrap max-sm:gap-1 max-sm:px-2.5 max-sm:text-[0.55rem] max-sm:tracking-[0.08em]">
                   <Sparkles className="h-3.5 w-3.5" />
                   AI Strategist &nbsp;|&nbsp; Author &nbsp;|&nbsp; Entrepreneur
                 </span>
@@ -569,8 +569,7 @@ function HomePage() {
                         animate={{ opacity: i === spotIndex ? 1 : 0 }}
                         transition={{ duration: 0.7, ease: "easeInOut" }}
                         style={{
-                          boxShadow:
-                            "0 0 0 1.5px var(--accent), 0 0 30px -4px var(--accent)",
+                          boxShadow: "0 0 0 1.5px var(--accent), 0 0 30px -4px var(--accent)",
                         }}
                         aria-hidden
                       />

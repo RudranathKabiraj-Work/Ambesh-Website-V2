@@ -2240,7 +2240,8 @@ html.lenis body {
 
 /* Animated mic icon for testimonial cards */
 @keyframes mic-pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.5;
     transform: scale(1);
     filter: drop-shadow(0 0 0px var(--accent));
@@ -2426,7 +2427,6 @@ html.lenis body {
   .reveal {
     transition-duration: 0.25s !important;
   }
-
 
   /* Kill backdrop-blur on the glass strategy call button */
   .uiverse-glass-btn {
@@ -2842,4 +2842,57 @@ html.lenis body {
   }
 }
 
+/* ---- Services page — PROCESS logos ----
+ * Always render in white (light & dark), keep the accent for glow /
+ * accent marks, and never recolor on hover. The process cards are not
+ * .custom-theme-card, so the generic hover recolor rules must be
+ * explicitly cancelled here. */
+#process .process-card-logo {
+  color: #ffffff;
+  --bl-ink: #ffffff;
+  --bl-accent: var(--accent);
+  --bl-accent-soft: var(--accent-soft);
+}
 
+#process .icon-box {
+  background-color: var(--accent-soft);
+  color: #ffffff;
+  transition:
+    border-color 0.85s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.85s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+#process .icon-box:hover,
+#process .process-card:hover .icon-box {
+  border-color: oklch(from var(--accent) l c h / 0.45) !important;
+  box-shadow: 0 0 20px -4px oklch(from var(--accent) l c h / 0.45);
+}
+
+#process .process-card:hover .bl-burst {
+  animation: bl-burst 0.45s cubic-bezier(0.2, 0.75, 0.3, 1) forwards;
+}
+
+#process .process-card:hover .bl-burst-sway {
+  animation: bl-burst-sway 0.6s cubic-bezier(0.3, 0.6, 0.4, 1) forwards;
+}
+
+.dark #process .process-card-logo {
+  color: #ffffff;
+  --bl-ink: #ffffff;
+  --bl-accent: #8fd0ff;
+  --bl-accent-soft: rgba(140, 210, 255, 0.16);
+}
+
+.dark #process .icon-box {
+  background-color: rgba(140, 210, 255, 0.14) !important;
+  border-color: rgba(140, 210, 255, 0.24) !important;
+  color: #ffffff;
+}
+
+.dark #process .icon-box:hover,
+.dark #process .process-card:hover .icon-box {
+  background-color: #0d3f66 !important;
+  border-color: rgba(140, 210, 255, 0.42) !important;
+  box-shadow: 0 0 24px -6px rgba(140, 210, 255, 0.5);
+  color: #ffffff;
+}
