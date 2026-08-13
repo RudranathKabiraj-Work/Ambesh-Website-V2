@@ -15,6 +15,10 @@ import {
   Briefcase,
   FolderOpen,
   User,
+  Users,
+  Rocket,
+  Building2,
+  Star,
 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { BeliefLogo } from "@/components/BeliefLogos";
@@ -68,10 +72,10 @@ export const Route = createFileRoute("/")({
 });
 
 const heroStats = [
-  { v: "5,000+", l: "Professionals trained" },
-  { v: "150+", l: "Sessions and engagements" },
-  { v: "11+", l: "Industries delivered in" },
-  { v: "9.5/10", l: "Average session rating" },
+  { v: "5,000+", l: "Professionals trained", icon: Users },
+  { v: "150+", l: "Sessions and engagements", icon: Rocket },
+  { v: "11+", l: "Industries delivered in", icon: Building2 },
+  { v: "9.5/10", l: "Average session rating", icon: Star },
 ];
 
 const proofLogos = [
@@ -159,6 +163,63 @@ function TypeLine({ text, className = "" }: { text: string; className?: string }
       />
     </p>
   );
+}
+
+function CountUp({ value }: { value: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const [display, setDisplay] = useState("0");
+  const started = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const match = value.match(/^\d+(\.\d+)?/);
+    if (!match) {
+      setDisplay(value);
+      return;
+    }
+    const target = parseFloat(match[0]);
+    const suffix = value.slice(match[0].length);
+    const decimals = match[0].includes(".") ? 1 : 0;
+    const reduceMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (reduceMotion) {
+      setDisplay(value);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting && !started.current) {
+            started.current = true;
+            observer.disconnect();
+            const duration = 1400;
+            const startTime = performance.now();
+            const step = (now: number) => {
+              const p = Math.min((now - startTime) / duration, 1);
+              const eased = 1 - Math.pow(1 - p, 3);
+              const current = target * eased;
+              const formatted = decimals
+                ? current.toFixed(decimals)
+                : Math.round(current).toLocaleString("en-US");
+              setDisplay(`${formatted}${suffix}`);
+              if (p < 1) requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+          }
+        }
+      },
+      { threshold: 0.4 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [value]);
+
+  return <span ref={ref}>{display}</span>;
 }
 
 function ScrollProgress() {
@@ -1081,12 +1142,21 @@ function HomePage() {
           <div className="mt-20 md:mt-8">
             <div className="grid gap-6 grid-cols-2 md:grid-cols-4 max-w-5xl mx-auto">
               {heroStats.map((s, i) => (
-                <Reveal key={s.l} delay={120}>
-                  <div className="custom-theme-card p-5 h-full text-center">
-                    <p className="stats-value font-display text-2xl font-extrabold tracking-tight text-gradient-brand animate-gradient md:text-3xl">
-                      {s.v}
-                    </p>
-                    <p className="stats-label mt-2 text-xs uppercase tracking-wider font-semibold text-ink-muted leading-tight">
+                <Reveal key={s.l} delay={120 + i * 60}>
+                  <div className="custom-theme-card-static relative h-full overflow-hidden rounded-[20px] p-4 text-center">
+                    <div
+                      className="stat-aurora pointer-events-none absolute inset-0 opacity-50"
+                      aria-hidden
+                    />
+                    <div className="relative flex items-center justify-center gap-2">
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-brand text-white shadow-glow">
+                        <s.icon className="h-3.5 w-3.5" />
+                      </div>
+                      <p className="stats-value font-display text-2xl font-extrabold tracking-tight text-gradient-brand animate-gradient md:text-3xl">
+                        <CountUp value={s.v} />
+                      </p>
+                    </div>
+                    <p className="stats-label relative mt-2 text-xs uppercase tracking-wider font-semibold text-ink-muted leading-tight">
                       {s.l}
                     </p>
                   </div>

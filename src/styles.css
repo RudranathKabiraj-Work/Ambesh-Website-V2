@@ -2274,9 +2274,40 @@ html.lenis body {
    Selected Work carousel arrows — gradient fill + glow on hover
    ═══════════════════════════════════════════════════════════════════════════ */
 .carousel-arrow:hover {
-  background: var(--gradient-brand);
-  border-color: transparent;
-  box-shadow: 0 6px 24px -4px var(--accent);
+  background: rgba(0, 0, 0, 0.72);
+  border-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 4px 18px -4px rgba(50, 130, 183, 0.4);
+}
+
+/* Dark mode — brighter arrows + hover so they stand out on the dark canvas */
+.dark .carousel-arrow {
+  background: rgba(187, 224, 250, 0.12);
+  border-color: rgba(187, 224, 250, 0.35);
+  color: #e6f4ff;
+}
+
+.dark .carousel-arrow:hover {
+  background: rgba(187, 224, 250, 0.24);
+  border-color: rgba(187, 224, 250, 0.55);
+  box-shadow: 0 4px 18px -4px rgba(144, 202, 249, 0.35);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Selected Work stats cards — icons, count-up, aurora shimmer
+   ═══════════════════════════════════════════════════════════════════════════ */
+/* Aurora shimmer — slow drifting color wash inside the card background */
+.stat-aurora {
+  background:
+    radial-gradient(70% 80% at 25% 25%, var(--accent-soft), transparent 65%),
+    radial-gradient(60% 80% at 78% 78%, oklch(0.85 0.06 240 / 0.5), transparent 65%);
+  animation: auroraDrift 16s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stat-aurora {
+    animation: none;
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
