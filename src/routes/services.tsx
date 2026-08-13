@@ -25,7 +25,7 @@ import { buildMeta, jsonLd, breadcrumbSchema, faqSchema, SITE_URL } from "@/lib/
 import { GridVignetteBackground } from "@/components/ui/vignette-grid-background";
 import { ParticleField } from "@/components/ParticleField";
 
-const faqs = [
+export const faqs = [
   {
     q: "Who is the Business OS built for?",
     a: "Founder-led businesses, usually between INR 5 crore and INR 100 crore, where the founder is still the ceiling on growth and systems live mostly in the founder's head.",
@@ -180,7 +180,7 @@ const audiences = {
   },
 } as const;
 
-const process = [
+const processSteps = [
   {
     step: "01",
     title: "Audit",
@@ -208,7 +208,7 @@ function ProcessStepCard({
   i,
   active,
 }: {
-  p: (typeof process)[number];
+  p: (typeof processSteps)[number];
   i: number;
   active: boolean;
 }) {
@@ -305,7 +305,7 @@ function ProcessTimeline() {
   return (
     <div ref={railRef} className="relative mt-16">
       <div className="relative flex flex-col gap-6 md:gap-10">
-        {process.map((p, i) => (
+        {processSteps.map((p, i) => (
           <ProcessStepCard key={p.step} p={p} i={i} active={i === activeStep} />
         ))}
       </div>
@@ -313,7 +313,7 @@ function ProcessTimeline() {
   );
 }
 
-function BusinessOSPage() {
+export function BusinessOSPage() {
   const [audience, setAudience] = useState<keyof typeof audiences>("founders");
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const a = audiences[audience];
