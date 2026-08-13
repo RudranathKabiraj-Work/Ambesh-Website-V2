@@ -2259,19 +2259,22 @@ html.lenis body {
 
   /* "How I Think" cards use !bg-canvas, which the global transparency
      rule (main div.bg-canvas) overrides — fine on desktop where
-     backdrop-blur frosts them, but with blur disabled here they become
-     see-through. Force a fully solid surface on mobile: hex first as a
-     fallback for browsers without oklch(), then the brand tone, and clear
-     any image background so the section never shows through. */
-  main #beliefs .custom-theme-card {
-    background-color: #f6f7fb !important;
-    background-color: oklch(0.97 0.004 260) !important;
-    background-image: none !important;
-  }
+     backdrop-blur frosts them, but on mobile the blur is disabled so the
+     cards MUST be fully opaque. These overrides live in the `utilities`
+     layer because unlayered !important loses to layered !important (the
+     global transparency rule is in the utilities layer, so without this it
+     would win and the stacked cards would stay see-through). */
+  @layer utilities {
+    main #beliefs .custom-theme-card {
+      background-color: #f6f7fb !important;
+      background-color: oklch(0.97 0.004 260) !important;
+      background-image: none !important;
+    }
 
-  .dark main #beliefs .custom-theme-card {
-    background-color: #0e4c75 !important;
-    background-image: none !important;
+    .dark main #beliefs .custom-theme-card {
+      background-color: #0e4c75 !important;
+      background-image: none !important;
+    }
   }
 
   .dark main #beliefs .custom-theme-card .bl-anim {
