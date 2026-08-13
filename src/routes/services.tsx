@@ -12,10 +12,15 @@ import {
   Wrench,
   MessageCircle,
   Sparkles,
+  Building2,
+  Star,
+  CalendarClock,
 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
+import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { ServicesLogo } from "@/components/ServicesLogos";
 import { buildMeta, jsonLd, breadcrumbSchema, faqSchema, SITE_URL } from "@/lib/seo";
+import { GridVignetteBackground } from "@/components/ui/vignette-grid-background";
 
 const faqs = [
   {
@@ -85,10 +90,10 @@ export const Route = createFileRoute("/services")({
 });
 
 const heroStats = [
-  { n: "8 to 12", l: "Week engagements" },
-  { n: "50+", l: "Organisations served" },
-  { n: "5,000+", l: "Team members trained" },
-  { n: "9.5/10", l: "Average NPS rating" },
+  { end: 8, prefix: "", suffix: " to 12", decimals: 0, l: "Week engagements", icon: CalendarClock },
+  { end: 50, prefix: "", suffix: "+", decimals: 0, l: "Organisations served", icon: Building2 },
+  { end: 5000, prefix: "", suffix: "+", decimals: 0, l: "Team members trained", icon: Users },
+  { end: 9.5, prefix: "", suffix: "", decimals: 1, l: "Average NPS rating", icon: Star },
 ];
 
 const pillars = [
@@ -204,6 +209,15 @@ function BusinessOSPage() {
     <>
       {/* HERO */}
       <section className="premium-canvas bg-premium-side-gradient relative isolate overflow-hidden">
+        <GridVignetteBackground
+          className="hidden dark:block opacity-40"
+          x={50}
+          y={50}
+          intensity={100}
+          size={48}
+          horizontalVignetteSize={80}
+          verticalVignetteSize={60}
+        />
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative pt-10 pb-20 md:pt-14 md:pb-24">
           <Reveal eager>
@@ -249,12 +263,26 @@ function BusinessOSPage() {
               {heroStats.map((s) => (
                 <div
                   key={s.l}
-                  className="rounded-2xl custom-theme-card-static p-5 backdrop-blur shadow-soft"
+                  className="custom-theme-card-static relative h-full overflow-hidden rounded-[20px] p-4 text-center backdrop-blur shadow-soft"
                 >
-                  <p className="text-3xl font-extrabold tracking-tight text-ink md:text-4xl">
-                    <span className="stats-value text-gradient-brand">{s.n}</span>
-                  </p>
-                  <p className="stats-label mt-2 text-xs uppercase tracking-wider text-ink-muted">
+                  <div
+                    className="stat-aurora pointer-events-none absolute inset-0 opacity-50"
+                    aria-hidden
+                  />
+                  <div className="relative flex items-center justify-center gap-2">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-brand text-white shadow-glow">
+                      <s.icon className="h-3.5 w-3.5" />
+                    </div>
+                    <p className="stats-value font-display text-2xl font-extrabold tracking-tight text-gradient-brand animate-gradient md:text-3xl">
+                      <AnimatedCounter
+                        end={s.end}
+                        prefix={s.prefix}
+                        suffix={s.suffix}
+                        decimals={s.decimals}
+                      />
+                    </p>
+                  </div>
+                  <p className="stats-label relative mt-2 text-xs uppercase tracking-wider font-semibold text-ink-muted leading-tight">
                     {s.l}
                   </p>
                 </div>
@@ -327,6 +355,15 @@ function BusinessOSPage() {
 
       {/* AUDIENCES */}
       <section className="relative isolate overflow-hidden bg-canvas bg-premium-side-gradient py-14 md:py-20">
+        <GridVignetteBackground
+          className="hidden dark:block opacity-40"
+          x={50}
+          y={50}
+          intensity={100}
+          size={48}
+          horizontalVignetteSize={80}
+          verticalVignetteSize={60}
+        />
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
@@ -388,8 +425,7 @@ function BusinessOSPage() {
       </section>
 
       {/* PROCESS */}
-      <section className="relative overflow-hidden bg-sand py-16">
-        <div className="absolute inset-0 tex-grid tex-fade pointer-events-none" aria-hidden />
+      <section className="relative overflow-hidden bg-canvas py-16">
         <div className="container-edit relative">
           <Reveal>
             <p className="eyebrow flex items-center gap-2">
@@ -420,9 +456,20 @@ function BusinessOSPage() {
       </section>
 
       {/* TRAINING CROSSLINK */}
-      <section className="container-edit py-14">
-        <Reveal>
-          <div className="grid gap-8 rounded-3xl custom-theme-card-static p-8 md:grid-cols-12 md:items-center md:gap-12 md:p-12">
+      <section className="relative isolate overflow-hidden bg-canvas bg-premium-side-gradient py-14">
+        <GridVignetteBackground
+          className="hidden dark:block opacity-40"
+          x={50}
+          y={50}
+          intensity={100}
+          size={48}
+          horizontalVignetteSize={80}
+          verticalVignetteSize={60}
+        />
+        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
+        <div className="container-edit relative">
+          <Reveal>
+            <div className="grid gap-8 rounded-3xl custom-theme-card-static p-8 md:grid-cols-12 md:items-center md:gap-12 md:p-12">
             <div className="md:col-span-7">
               <p className="eyebrow flex items-center gap-2">
                 <GraduationCap className="h-3 w-3" /> AI Training
@@ -443,14 +490,14 @@ function BusinessOSPage() {
               >
                 Explore AI Training <ArrowRight className="h-4 w-4" />
               </Link>
+              </div>
             </div>
-          </div>
-        </Reveal>
+          </Reveal>
+        </div>
       </section>
 
       {/* FAQ */}
-      <section className="relative isolate overflow-hidden bg-canvas bg-premium-side-gradient py-16">
-        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
+      <section className="relative overflow-hidden bg-canvas py-16">
         <div className="container-edit relative grid gap-12 md:grid-cols-12 md:gap-16">
           <Reveal className="md:col-span-4">
             <p className="eyebrow flex items-center gap-2">
@@ -486,7 +533,17 @@ function BusinessOSPage() {
       </section>
 
       {/* CLOSING CTA */}
-      <section className="relative overflow-hidden bg-canvas py-14 md:py-20 text-center">
+      <section className="relative isolate overflow-hidden bg-canvas bg-premium-side-gradient py-14 md:py-20 text-center">
+        <GridVignetteBackground
+          className="hidden dark:block opacity-40"
+          x={50}
+          y={50}
+          intensity={100}
+          size={48}
+          horizontalVignetteSize={80}
+          verticalVignetteSize={60}
+        />
+        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
             <p className="eyebrow flex items-center gap-2">

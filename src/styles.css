@@ -1680,6 +1680,16 @@ html.lenis body {
     }
   }
 
+  /* Insights page cards — remove the dark-mode line-sweep on hover */
+  .dark .insights-card-grid .custom-theme-card .border-rule::after {
+    display: none !important;
+  }
+
+  .dark .insights-card-grid .custom-theme-card:hover .border-rule::after {
+    transform: none !important;
+    animation: none !important;
+  }
+
   /* Generic bordered containers */
   .dark main div.border.border-rule.bg-canvas,
   .dark main div.border.border-rule.bg-canvas\/60,

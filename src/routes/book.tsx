@@ -6,6 +6,7 @@ import { Reveal } from "@/components/Reveal";
 import { Marquee } from "@/components/Marquee";
 import { buildMeta, jsonLd, breadcrumbSchema, SITE_URL, DEFAULT_OG_IMAGE } from "@/lib/seo";
 import { submitLeadToGHL } from "@/lib/ghl";
+import { GridVignetteBackground } from "@/components/ui/vignette-grid-background";
 
 export const Route = createFileRoute("/book")({
   head: () => {
@@ -177,6 +178,15 @@ function BookPage() {
     <div className="book-page">
       {/* HERO */}
       <section className="premium-canvas bg-premium-side-gradient relative isolate overflow-hidden">
+        <GridVignetteBackground
+          className="hidden dark:block opacity-40"
+          x={50}
+          y={50}
+          intensity={100}
+          size={48}
+          horizontalVignetteSize={80}
+          verticalVignetteSize={60}
+        />
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative grid items-center gap-16 pt-10 pb-16 md:grid-cols-12 md:gap-16 md:pt-14 md:pb-20">
           <div className="md:col-span-7">
@@ -267,6 +277,15 @@ function BookPage() {
 
       {/* WHO IT'S FOR */}
       <section className="relative isolate overflow-hidden bg-premium-side-gradient py-16">
+        <GridVignetteBackground
+          className="hidden dark:block opacity-40"
+          x={50}
+          y={50}
+          intensity={100}
+          size={48}
+          horizontalVignetteSize={80}
+          verticalVignetteSize={60}
+        />
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
@@ -324,6 +343,15 @@ function BookPage() {
 
       {/* WHAT EXPERTS SAY */}
       <section className="relative isolate overflow-hidden bg-premium-side-gradient py-16">
+        <GridVignetteBackground
+          className="hidden dark:block opacity-40"
+          x={50}
+          y={50}
+          intensity={100}
+          size={48}
+          horizontalVignetteSize={80}
+          verticalVignetteSize={60}
+        />
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
@@ -408,6 +436,15 @@ function BookPage() {
 
       {/* CLOSING CTA */}
       <section className="relative isolate overflow-hidden bg-premium-side-gradient pb-24 pt-16">
+        <GridVignetteBackground
+          className="hidden dark:block opacity-40"
+          x={50}
+          y={50}
+          intensity={100}
+          size={48}
+          horizontalVignetteSize={80}
+          verticalVignetteSize={60}
+        />
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>

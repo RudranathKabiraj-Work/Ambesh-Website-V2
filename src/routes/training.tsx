@@ -17,6 +17,7 @@ import { Reveal } from "@/components/Reveal";
 import { TrainingLogo } from "@/components/TrainingLogos";
 import { buildMeta, jsonLd, breadcrumbSchema, SITE_URL } from "@/lib/seo";
 import { whatsappUrl, WA_MESSAGES } from "@/lib/wa";
+import { GridVignetteBackground } from "@/components/ui/vignette-grid-background";
 
 export const Route = createFileRoute("/training")({
   head: () => {
@@ -186,6 +187,15 @@ function TrainingPage() {
     <div className="relative w-full bg-canvas min-h-screen" style={{ backgroundImage: "none" }}>
       {/* HERO */}
       <section className="relative isolate overflow-hidden bg-premium-side-gradient">
+        <GridVignetteBackground
+          className="hidden dark:block opacity-40"
+          x={50}
+          y={50}
+          intensity={100}
+          size={48}
+          horizontalVignetteSize={80}
+          verticalVignetteSize={60}
+        />
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative pt-10 pb-20 md:pt-14 md:pb-24">
           <Reveal eager>
@@ -313,6 +323,15 @@ function TrainingPage() {
 
       {/* NAMED ENGAGEMENTS */}
       <section className="relative isolate overflow-hidden bg-premium-side-gradient py-14 md:py-20">
+        <GridVignetteBackground
+          className="hidden dark:block opacity-40"
+          x={50}
+          y={50}
+          intensity={100}
+          size={48}
+          horizontalVignetteSize={80}
+          verticalVignetteSize={60}
+        />
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
@@ -382,6 +401,15 @@ function TrainingPage() {
 
       {/* THEMES */}
       <section className="relative isolate overflow-hidden bg-premium-side-gradient py-14 md:py-20">
+        <GridVignetteBackground
+          className="hidden dark:block opacity-40"
+          x={50}
+          y={50}
+          intensity={100}
+          size={48}
+          horizontalVignetteSize={80}
+          verticalVignetteSize={60}
+        />
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>

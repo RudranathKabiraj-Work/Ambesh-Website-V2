@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Reveal } from "@/components/Reveal";
 import { buildMeta, jsonLd, breadcrumbSchema, SITE_URL } from "@/lib/seo";
 import { BookOpen, Search, Calendar, Clock, ArrowRight, Mail } from "lucide-react";
+import { GridVignetteBackground } from "@/components/ui/vignette-grid-background";
 
 export const Route = createFileRoute("/insights")({
   head: () => {
@@ -95,6 +96,15 @@ function InsightsPage() {
   return (
     <>
       <section className="relative isolate overflow-hidden bg-premium-side-gradient py-14 md:py-20">
+        <GridVignetteBackground
+          className="hidden dark:block opacity-40"
+          x={50}
+          y={50}
+          intensity={100}
+          size={48}
+          horizontalVignetteSize={80}
+          verticalVignetteSize={60}
+        />
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
@@ -147,7 +157,7 @@ function InsightsPage() {
             </div>
           </Reveal>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
+          <div className="insights-card-grid mt-12 grid gap-6 md:grid-cols-2">
             {filteredArticles.length > 0 ? (
               filteredArticles.map((article, index) => (
                 <Reveal key={article.slug} delay={100}>

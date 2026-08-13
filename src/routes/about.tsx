@@ -16,6 +16,7 @@ import { Reveal } from "@/components/Reveal";
 import { Monogram } from "@/components/Monogram";
 import { AboutLogo } from "@/components/AboutLogos";
 import { buildMeta, jsonLd, personSchema, breadcrumbSchema } from "@/lib/seo";
+import { GridVignetteBackground } from "@/components/ui/vignette-grid-background";
 
 export const Route = createFileRoute("/about")({
   head: () => {
@@ -226,6 +227,15 @@ function AboutPage() {
     <div className="min-h-screen w-full relative bg-canvas">
       {/* HERO */}
       <section className="relative isolate overflow-hidden bg-premium-side-gradient">
+        <GridVignetteBackground
+          className="hidden dark:block opacity-40"
+          x={50}
+          y={50}
+          intensity={100}
+          size={48}
+          horizontalVignetteSize={80}
+          verticalVignetteSize={60}
+        />
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative grid items-center gap-12 pt-10 pb-24 md:grid-cols-12 md:gap-16 md:pt-14 md:pb-32">
           <div className="md:col-span-7">
@@ -288,6 +298,15 @@ function AboutPage() {
 
       {/* THE STORY - editorial narrative */}
       <section className="relative isolate overflow-hidden bg-premium-side-gradient py-14 md:py-16">
+        <GridVignetteBackground
+          className="hidden dark:block opacity-40"
+          x={50}
+          y={50}
+          intensity={100}
+          size={48}
+          horizontalVignetteSize={80}
+          verticalVignetteSize={60}
+        />
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative grid gap-12 md:grid-cols-12">
           <Reveal className="md:col-span-4">
@@ -367,6 +386,15 @@ function AboutPage() {
 
       {/* WHAT HE BELIEVES */}
       <section className="relative isolate overflow-hidden bg-premium-side-gradient py-14 md:py-16">
+        <GridVignetteBackground
+          className="hidden dark:block opacity-40"
+          x={50}
+          y={50}
+          intensity={100}
+          size={48}
+          horizontalVignetteSize={80}
+          verticalVignetteSize={60}
+        />
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
@@ -441,6 +469,15 @@ function AboutPage() {
 
       {/* JOURNEY */}
       <section className="relative isolate overflow-hidden bg-premium-side-gradient py-14 md:py-16">
+        <GridVignetteBackground
+          className="hidden dark:block opacity-40"
+          x={50}
+          y={50}
+          intensity={100}
+          size={48}
+          horizontalVignetteSize={80}
+          verticalVignetteSize={60}
+        />
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
@@ -512,6 +549,15 @@ function AboutPage() {
 
       {/* TESTIMONIALS */}
       <section className="relative isolate overflow-hidden bg-premium-side-gradient py-14 md:py-16">
+        <GridVignetteBackground
+          className="hidden dark:block opacity-40"
+          x={50}
+          y={50}
+          intensity={100}
+          size={48}
+          horizontalVignetteSize={80}
+          verticalVignetteSize={60}
+        />
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative">
           <Reveal>
@@ -576,6 +622,15 @@ function AboutPage() {
 
       {/* CLOSING CTA */}
       <section className="relative isolate overflow-hidden bg-premium-side-gradient py-14 md:py-16">
+        <GridVignetteBackground
+          className="hidden dark:block opacity-40"
+          x={50}
+          y={50}
+          intensity={100}
+          size={48}
+          horizontalVignetteSize={80}
+          verticalVignetteSize={60}
+        />
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <div className="container-edit relative text-center">
           <Reveal>
