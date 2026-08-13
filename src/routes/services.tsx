@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import {
   ArrowRight,
   Layers,
@@ -214,6 +214,12 @@ function ProcessStepCard({
   const cardRef = useRef<HTMLDivElement>(null);
   const inView = useInView(cardRef, { once: true, amount: 0.15 });
 
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "end start"],
+  });
+  const lift = useTransform(scrollYProgress, [0, 0.5, 1], [36, 0, -36]);
+
   return (
     <div ref={cardRef} data-step={i} className="relative scroll-mt-28 md:pl-10">
       <span
@@ -222,32 +228,34 @@ function ProcessStepCard({
         }`}
         aria-hidden
       />
-      <motion.div
-        initial={{ opacity: 0, y: 60, scale: 0.97 }}
-        animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: i * 0.15 }}
-        className={`process-card relative overflow-hidden rounded-3xl border p-7 transition-colors duration-500 md:p-9 ${
-          active
-            ? "border-accent/40 bg-canvas/90 shadow-[0_20px_60px_-24px_var(--accent)]"
-            : "border-rule bg-canvas/60"
-        }`}
-      >
-        <span
-          className="pointer-events-none absolute -right-4 top-1/2 -translate-y-1/2 select-none font-display text-[7rem] font-black leading-none tracking-tighter text-ink/[0.05] md:text-[9rem]"
-          aria-hidden
+      <motion.div style={{ y: lift }}>
+        <motion.div
+          initial={{ opacity: 0, y: 60, scale: 0.97 }}
+          animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: i * 0.15 }}
+          className={`process-card relative overflow-hidden rounded-3xl border p-7 transition-colors duration-500 md:p-9 ${
+            active
+              ? "border-accent/40 bg-canvas/90 shadow-[0_20px_60px_-24px_var(--accent)]"
+              : "border-rule bg-canvas/60"
+          }`}
         >
-          {p.step}
-        </span>
-        <div className="relative flex items-center gap-4">
-          <div className="icon-box flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-rule transition-colors duration-300">
-            <ProcessLogo variant={i} className="process-card-logo h-11 w-11 md:h-12 md:w-12" />
+          <span
+            className="pointer-events-none absolute -right-4 top-1/2 -translate-y-1/2 select-none font-display text-[7rem] font-black leading-none tracking-tighter text-ink/[0.05] md:text-[9rem]"
+            aria-hidden
+          >
+            {p.step}
+          </span>
+          <div className="relative flex items-center gap-4">
+            <div className="icon-box flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-rule transition-colors duration-300">
+              <ProcessLogo variant={i} className="process-card-logo h-11 w-11 md:h-12 md:w-12" />
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold tracking-tight text-ink">{p.title}</h3>
+            </div>
           </div>
-          <div>
-            <h3 className="text-2xl font-bold tracking-tight text-ink">{p.title}</h3>
-          </div>
-        </div>
 
-        <p className="relative mt-5 text-[15px] leading-[1.65] text-ink-soft">{p.body}</p>
+          <p className="relative mt-5 text-[15px] leading-[1.65] text-ink-soft">{p.body}</p>
+        </motion.div>
       </motion.div>
     </div>
   );
