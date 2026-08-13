@@ -198,7 +198,7 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
             <button
               onClick={goPrev}
               aria-label="Previous card"
-              className="absolute z-40 grid h-10 w-10 place-items-center rounded-full border border-white/20 bg-black/50 text-white backdrop-blur-sm transition-all duration-200 hover:scale-110 hover:bg-black/70"
+              className="carousel-arrow absolute z-40 grid h-10 w-10 place-items-center rounded-full border border-white/20 bg-black/50 text-white backdrop-blur-sm transition-all duration-200"
               style={{ left: 0, top: "50%", transform: "translateY(-50%)" }}
             >
               <ChevronLeft className="h-4 w-4" />
@@ -206,7 +206,7 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
             <button
               onClick={goNext}
               aria-label="Next card"
-              className="absolute z-40 grid h-10 w-10 place-items-center rounded-full border border-white/20 bg-black/50 text-white backdrop-blur-sm transition-all duration-200 hover:scale-110 hover:bg-black/70"
+              className="carousel-arrow absolute z-40 grid h-10 w-10 place-items-center rounded-full border border-white/20 bg-black/50 text-white backdrop-blur-sm transition-all duration-200"
               style={{ right: 0, top: "50%", transform: "translateY(-50%)" }}
             >
               <ChevronRight className="h-4 w-4" />

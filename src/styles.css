@@ -2271,6 +2271,15 @@ html.lenis body {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
+   Selected Work carousel arrows — gradient fill + glow on hover
+   ═══════════════════════════════════════════════════════════════════════════ */
+.carousel-arrow:hover {
+  background: var(--gradient-brand);
+  border-color: transparent;
+  box-shadow: 0 6px 24px -4px var(--accent);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
    MOBILE PERFORMANCE: Disable GPU-expensive effects on phones & tablets
    (max-width: 1023px) — all animations and scroll-triggers are PRESERVED.
    Only heavy paint/composite operations are turned off for buttery scroll.
