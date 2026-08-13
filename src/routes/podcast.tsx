@@ -111,7 +111,15 @@ function PodcastPage() {
       {/* HERO */}
       <section className="relative isolate overflow-hidden premium-canvas bg-premium-side-gradient">
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
-        <GridVignetteBackground className="hidden dark:block opacity-40" x={50} y={50} intensity={100} size={48} horizontalVignetteSize={80} verticalVignetteSize={60} />
+        <GridVignetteBackground
+          className="hidden dark:block opacity-40"
+          x={50}
+          y={50}
+          intensity={100}
+          size={48}
+          horizontalVignetteSize={80}
+          verticalVignetteSize={60}
+        />
         <div className="container-edit relative grid gap-12 pt-10 pb-12 md:grid-cols-12 md:gap-16 md:pt-16 md:pb-16">
           <div className="md:col-span-8">
             <Reveal eager>
@@ -183,7 +191,15 @@ function PodcastPage() {
       {/* FEATURED EPISODES */}
       <section className="relative isolate overflow-hidden">
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
-        <GridVignetteBackground className="hidden dark:block opacity-40" x={50} y={50} intensity={100} size={48} horizontalVignetteSize={80} verticalVignetteSize={60} />
+        <GridVignetteBackground
+          className="hidden dark:block opacity-40"
+          x={50}
+          y={50}
+          intensity={100}
+          size={48}
+          horizontalVignetteSize={80}
+          verticalVignetteSize={60}
+        />
         <div className="container-edit relative py-16">
           <Reveal>
             <p className="eyebrow flex items-center gap-2">
@@ -269,7 +285,15 @@ function PodcastPage() {
       {/* ABOUT THE HOST */}
       <section className="relative isolate overflow-hidden">
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
-        <GridVignetteBackground className="hidden dark:block opacity-40" x={50} y={50} intensity={100} size={48} horizontalVignetteSize={80} verticalVignetteSize={60} />
+        <GridVignetteBackground
+          className="hidden dark:block opacity-40"
+          x={50}
+          y={50}
+          intensity={100}
+          size={48}
+          horizontalVignetteSize={80}
+          verticalVignetteSize={60}
+        />
         <div className="container-edit relative py-16">
           <div className="grid gap-12 md:grid-cols-12 md:items-center">
             <Reveal className="md:col-span-5">
@@ -366,7 +390,15 @@ function PodcastPage() {
       {/* CLOSING - GUEST PITCH */}
       <section className="relative isolate overflow-hidden">
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
-        <GridVignetteBackground className="hidden dark:block opacity-40" x={50} y={50} intensity={100} size={48} horizontalVignetteSize={80} verticalVignetteSize={60} />
+        <GridVignetteBackground
+          className="hidden dark:block opacity-40"
+          x={50}
+          y={50}
+          intensity={100}
+          size={48}
+          horizontalVignetteSize={80}
+          verticalVignetteSize={60}
+        />
         <div className="container-edit relative py-16 text-center">
           <Reveal>
             <h2 className="mx-auto max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-6xl">
