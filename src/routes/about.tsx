@@ -15,6 +15,7 @@ import {
 import { Reveal } from "@/components/Reveal";
 import { Monogram } from "@/components/Monogram";
 import { AboutLogo } from "@/components/AboutLogos";
+import { ParticleField } from "@/components/ParticleField";
 import { buildMeta, jsonLd, personSchema, breadcrumbSchema } from "@/lib/seo";
 import { GridVignetteBackground } from "@/components/ui/vignette-grid-background";
 
@@ -621,29 +622,25 @@ function AboutPage() {
       </section>
 
       {/* CLOSING CTA */}
-      <section className="relative isolate overflow-hidden bg-premium-side-gradient py-14 md:py-16">
-        <GridVignetteBackground
-          className="hidden dark:block opacity-40"
-          x={50}
-          y={50}
-          intensity={100}
-          size={48}
-          horizontalVignetteSize={80}
-          verticalVignetteSize={60}
+      <section className="cta-dark relative overflow-hidden">
+        <ParticleField className="opacity-70" color="rgba(255,255,255,0.8)" count={26} seed={11} />
+        <div
+          className="pointer-events-none absolute -top-40 left-1/2 h-[40rem] w-[40rem] -translate-x-1/2 rounded-full opacity-30 blur-3xl"
+          style={{ background: "var(--accent)" }}
+          aria-hidden
         />
-        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
-        <div className="container-edit relative text-center">
+        <div className="container-edit relative py-12 text-center md:py-20">
           <Reveal>
             <p className="eyebrow eyebrow-indigo flex items-center gap-2">
               <ArrowRight className="h-3.5 w-3.5" /> Final word
             </p>
-            <h2 className="mx-auto mt-6 max-w-4xl font-serif text-5xl font-semibold leading-[1.05] tracking-tight text-ink md:text-7xl">
+            <h2 className="mx-auto mt-6 max-w-4xl font-display text-4xl font-extrabold leading-[1.1] tracking-[-0.03em] text-white sm:text-5xl md:text-7xl">
               If any of this resonates,{" "}
-              <span className="italic text-gradient-brand animate-gradient">
+              <span className="font-serif italic font-medium text-gradient-brand">
                 let us have a conversation.
               </span>
             </h2>
-            <p className="mx-auto mt-8 max-w-2xl text-lg text-ink-soft">
+            <p className="mx-auto mt-8 max-w-2xl text-lg text-white/70">
               Thirty minutes. No pitch deck. No pressure. Just a real discussion about what your
               team needs and whether we are the right fit for each other.
             </p>
@@ -653,7 +650,7 @@ function AboutPage() {
               <Link
                 to="/contact"
                 search={{ service: "strategy" }}
-                className="btn-premium inline-flex h-14 items-center gap-2 rounded-full px-8 text-base font-semibold"
+                className="btn-premium inline-flex h-14 items-center gap-2 rounded-full px-8 text-base font-semibold text-white"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   Book a Strategy Call <ArrowRight className="h-4 w-4" />
@@ -661,12 +658,12 @@ function AboutPage() {
               </Link>
               <a
                 href="mailto:hello@ambesh.com"
-                className="inline-flex h-14 items-center gap-2 rounded-full border border-ink/15 bg-canvas px-8 text-base font-semibold text-ink transition-all hover:-translate-y-0.5 hover:border-ink/40"
+                className="inline-flex h-14 items-center gap-2 rounded-full border border-white/20 px-8 text-base font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:border-white/50 hover:bg-white/10 hover:shadow-[0_8px_30px_rgba(255,255,255,0.05)] active:scale-[0.98]"
               >
                 hello@ambesh.com
               </a>
             </div>
-            <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-muted">
+            <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.2em] text-white/50">
               Responds within 24 hours
             </p>
           </Reveal>

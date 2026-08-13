@@ -1797,6 +1797,23 @@ html.lenis body {
     color: #0e4c75;
   }
 
+  /* Eyebrow pills on the dark final-CTA surface need light text */
+  .cta-dark .eyebrow,
+  .cta-dark .eyebrow-indigo,
+  .cta-dark .eyebrow-amber,
+  .cta-dark .eyebrow-blue {
+    color: rgba(255, 255, 255, 0.85) !important;
+    border-color: rgba(255, 255, 255, 0.25) !important;
+    background-color: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .cta-dark .eyebrow svg,
+  .cta-dark .eyebrow-indigo svg,
+  .cta-dark .eyebrow-amber svg,
+  .cta-dark .eyebrow-blue svg {
+    stroke: rgba(255, 255, 255, 0.85) !important;
+  }
+
   /* Dark scrollbar */
   .dark ::-webkit-scrollbar {
     width: 10px;

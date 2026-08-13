@@ -23,6 +23,7 @@ import { ServicesLogo } from "@/components/ServicesLogos";
 import { ProcessLogo } from "@/components/ProcessLogos";
 import { buildMeta, jsonLd, breadcrumbSchema, faqSchema, SITE_URL } from "@/lib/seo";
 import { GridVignetteBackground } from "@/components/ui/vignette-grid-background";
+import { ParticleField } from "@/components/ParticleField";
 
 const faqs = [
   {
@@ -635,31 +636,27 @@ function BusinessOSPage() {
       </section>
 
       {/* CLOSING CTA */}
-      <section className="relative isolate overflow-hidden bg-canvas bg-premium-side-gradient py-14 md:py-20 text-center">
-        <GridVignetteBackground
-          className="hidden dark:block opacity-40"
-          x={50}
-          y={50}
-          intensity={100}
-          size={48}
-          horizontalVignetteSize={80}
-          verticalVignetteSize={60}
+      <section className="cta-dark relative overflow-hidden text-center">
+        <ParticleField className="opacity-70" color="rgba(255,255,255,0.8)" count={26} seed={11} />
+        <div
+          className="pointer-events-none absolute -top-40 left-1/2 h-[40rem] w-[40rem] -translate-x-1/2 rounded-full opacity-30 blur-3xl"
+          style={{ background: "var(--accent)" }}
+          aria-hidden
         />
-        <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
-        <div className="container-edit relative">
+        <div className="container-edit relative py-12 md:py-20">
           <Reveal>
             <p className="eyebrow flex items-center gap-2">
               <Sparkles className="h-3.5 w-3.5" /> Start with a diagnosis
             </p>
           </Reveal>
           <Reveal delay={100}>
-            <h2 className="mx-auto mt-6 max-w-4xl text-4xl font-extrabold leading-[1.05] tracking-tighter text-ink md:text-6xl">
+            <h2 className="mx-auto mt-6 max-w-4xl text-4xl font-extrabold leading-[1.05] tracking-tighter text-white md:text-6xl">
               The strongest engagements begin with an{" "}
               <span className="text-gradient-brand">honest audit</span>, not a proposal.
             </h2>
           </Reveal>
           <Reveal delay={200}>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-ink-soft">
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-white/70">
               A 30-minute Business Systems Diagnostic is usually enough to know whether we should
               work together, and where the leverage is.
             </p>
@@ -669,13 +666,13 @@ function BusinessOSPage() {
               <Link
                 to="/contact"
                 search={{ service: "diagnostic" }}
-                className="btn-premium inline-flex h-14 items-center gap-2 rounded-full px-8 text-base font-semibold"
+                className="btn-premium inline-flex h-14 items-center gap-2 rounded-full px-8 text-base font-semibold text-white"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   Book a Business Systems Diagnostic <ArrowRight className="h-5 w-5" />
                 </span>
               </Link>
-              <p className="text-xs text-ink-muted">
+              <p className="text-xs text-white/50">
                 Responds within 24 hours · No sales script · Just a real conversation.
               </p>
             </div>

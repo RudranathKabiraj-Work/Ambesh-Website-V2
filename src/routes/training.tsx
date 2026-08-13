@@ -18,6 +18,7 @@ import { TrainingLogo } from "@/components/TrainingLogos";
 import { buildMeta, jsonLd, breadcrumbSchema, SITE_URL } from "@/lib/seo";
 import { whatsappUrl, WA_MESSAGES } from "@/lib/wa";
 import { GridVignetteBackground } from "@/components/ui/vignette-grid-background";
+import { ParticleField } from "@/components/ParticleField";
 
 export const Route = createFileRoute("/training")({
   head: () => {
@@ -482,6 +483,7 @@ function TrainingPage() {
 
       {/* CTA */}
       <section className="cta-dark relative overflow-hidden">
+        <ParticleField className="opacity-70" color="rgba(255,255,255,0.8)" count={26} seed={11} />
         <div
           className="pointer-events-none absolute -top-40 left-1/2 h-[40rem] w-[40rem] -translate-x-1/2 rounded-full opacity-30 blur-3xl"
           style={{ background: "var(--accent)" }}
