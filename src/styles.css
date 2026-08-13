@@ -2806,8 +2806,8 @@ html.lenis body {
 
 #formats .custom-theme-card .bl-anim {
   --bl-ink: #1a3a5c;
-  --bl-accent: #2a5d8e;
-  --bl-accent-soft: rgba(42, 93, 142, 0.12);
+  --bl-accent: #1e3a5f;
+  --bl-accent-soft: rgba(30, 58, 95, 0.12);
   color: #1a3a5c !important;
 }
 
