@@ -4,7 +4,6 @@ import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import {
   ArrowRight,
   ArrowUpRight,
-  CheckCircle2,
   GraduationCap,
   Workflow,
   Compass,
@@ -120,10 +119,111 @@ const beliefs = [
   },
 ];
 
+function TypeLine({ text, className = "" }: { text: string; className?: string }) {
+  const ref = useRef<HTMLParagraphElement>(null);
+  const [shown, setShown] = useState(0);
+  const started = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting && !started.current) {
+            started.current = true;
+            let i = 0;
+            const step = () => {
+              i += 1;
+              setShown(i);
+              if (i <= text.length) window.setTimeout(step, 28);
+            };
+            step();
+            observer.disconnect();
+          }
+        }
+      },
+      { threshold: 0.5, rootMargin: "0px 0px -30px 0px" },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [text]);
+
+  return (
+    <p ref={ref} className={className} aria-label={text}>
+      {text.slice(0, shown)}
+      <span
+        className="inline-block h-[1em] w-[2px] translate-y-[2px] animate-pulse bg-current"
+        aria-hidden
+      />
+    </p>
+  );
+}
+
 function HomePage() {
   const [hoveredService, setHoveredService] = useState<number | null>(null);
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [spotIndex, setSpotIndex] = useState(0);
+  const problemsRef = useRef<HTMLDivElement>(null);
+  const [easeActive, setEaseActive] = useState(0);
+  const easeRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = problemsRef.current;
+    if (!el) return;
+    let timer: ReturnType<typeof setInterval> | undefined;
+    let running = false;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting && !running) {
+            running = true;
+            timer = setInterval(() => {
+              setSpotIndex((i) => (i + 1) % problems.length);
+            }, 1700);
+          } else if (!e.isIntersecting && running) {
+            running = false;
+            if (timer) clearInterval(timer);
+          }
+        }
+      },
+      { threshold: 0.25 },
+    );
+    observer.observe(el);
+    return () => {
+      observer.disconnect();
+      if (timer) clearInterval(timer);
+    };
+  }, []);
+
+  useEffect(() => {
+    const el = easeRef.current;
+    if (!el) return;
+    let timer: ReturnType<typeof setInterval> | undefined;
+    let running = false;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting && !running) {
+            running = true;
+            timer = setInterval(() => {
+              setEaseActive((i) => (i + 1) % 4);
+            }, 1900);
+          } else if (!e.isIntersecting && running) {
+            running = false;
+            if (timer) clearInterval(timer);
+          }
+        }
+      },
+      { threshold: 0.3 },
+    );
+    observer.observe(el);
+    return () => {
+      observer.disconnect();
+      if (timer) clearInterval(timer);
+    };
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -366,24 +466,76 @@ function HomePage() {
             </Reveal>
             <Reveal delay={120} className="md:col-span-7">
               <div className="space-y-4 text-ink-soft">
-                <p className="text-ink text-xl md:text-2xl font-bold tracking-tight">
-                  I help founders solve problems like:
-                </p>
+                <TypeLine
+                  text="I help founders solve problems like:"
+                  className="text-ink text-xl md:text-2xl font-bold tracking-tight"
+                />
               </div>
-              <ul className="mt-8 grid gap-4 sm:grid-cols-2">
-                {problems.map((p) => (
-                  <li
-                    key={p}
-                    className="flex items-start gap-3 rounded-[20px] custom-theme-card-static pointer-events-none p-5 md:p-6 text-[15px] md:text-base leading-relaxed text-ink-soft"
-                  >
-                    <CheckCircle2
-                      className="mt-1 h-5 w-5 shrink-0"
-                      style={{ color: "var(--accent)" }}
-                    />
-                    <span>{p}</span>
-                  </li>
-                ))}
-              </ul>
+              <div ref={problemsRef} className="relative mt-8">
+                <ul className="grid gap-4 sm:grid-cols-2">
+                  {problems.map((p, i) => (
+                    <motion.li
+                      key={p}
+                      initial={{ opacity: 0, y: 24 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{
+                        duration: 0.55,
+                        delay: i * 0.09,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                      className="relative flex items-start gap-3 rounded-[20px] custom-theme-card-static pointer-events-none p-5 md:p-6 text-[15px] md:text-base leading-relaxed text-ink-soft"
+                    >
+                      <motion.div
+                        className="pointer-events-none absolute inset-0 rounded-[20px]"
+                        animate={{ opacity: i === spotIndex ? 1 : 0 }}
+                        transition={{ duration: 0.7, ease: "easeInOut" }}
+                        style={{
+                          boxShadow:
+                            "0 0 0 1.5px var(--accent), 0 0 30px -4px var(--accent)",
+                        }}
+                        aria-hidden
+                      />
+                      <svg
+                        className="mt-1 h-5 w-5 shrink-0"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="var(--accent)"
+                        strokeWidth={2.2}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden
+                      >
+                        <motion.circle
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          initial={{ pathLength: 0, opacity: 0 }}
+                          whileInView={{ pathLength: 1, opacity: 1 }}
+                          viewport={{ once: true }}
+                          transition={{
+                            duration: 0.4,
+                            delay: i * 0.09 + 0.15,
+                            ease: "easeOut",
+                          }}
+                        />
+                        <motion.path
+                          d="m9 12 2 2 4-4"
+                          initial={{ pathLength: 0, opacity: 0 }}
+                          whileInView={{ pathLength: 1, opacity: 1 }}
+                          viewport={{ once: true }}
+                          transition={{
+                            duration: 0.25,
+                            delay: i * 0.09 + 0.55,
+                            ease: "easeOut",
+                          }}
+                        />
+                      </svg>
+                      <span>{p}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+              </div>
             </Reveal>
           </div>
         </div>
@@ -420,7 +572,8 @@ function HomePage() {
             </Reveal>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {/* EASE journey highlight (cycling card glow) */}
+          <div ref={easeRef} className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
                 stage: "Stage 01",
@@ -443,24 +596,35 @@ function HomePage() {
                 desc: "Turn ideas into consistent business results.",
               },
             ].map(({ stage, label, desc }, i) => (
-              <Reveal key={label} delay={80}>
-                <div className="custom-theme-card group relative flex h-full flex-col justify-between overflow-hidden rounded-[20px] backdrop-blur-md p-6">
-                  <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-[1100ms] ease-out group-hover:translate-x-full pointer-events-none" />
-                  <div
-                    className="pointer-events-none absolute -top-20 -right-20 h-44 w-44 rounded-full opacity-0 blur-3xl transition-opacity duration-[850ms] ease-out group-hover:opacity-50"
-                    style={{ background: "var(--accent-soft)" }}
+              <Reveal key={label} delay={i * 120} className="h-full">
+                <div className="relative h-full">
+                  <motion.div
+                    className="pointer-events-none absolute inset-0 rounded-[20px]"
+                    animate={{ opacity: i === easeActive ? 1 : 0 }}
+                    transition={{ duration: 0.7, ease: "easeInOut" }}
+                    style={{
+                      boxShadow: "0 0 0 1.5px var(--accent), 0 0 30px -4px var(--accent)",
+                    }}
                     aria-hidden
                   />
-                  <div>
-                    <span className="font-mono text-[0.65rem] md:text-[0.78rem] font-bold uppercase tracking-[0.15em] text-accent">
-                      {stage}
-                    </span>
-                    <h4 className="mt-3 font-display text-lg md:text-xl font-extrabold tracking-tight text-ink">
-                      {label}
-                    </h4>
-                    <p className="mt-3 text-[15px] md:text-[16px] leading-[1.65] text-ink-soft">
-                      {desc}
-                    </p>
+                  <div className="custom-theme-card group relative flex h-full flex-col justify-between overflow-hidden rounded-[20px] backdrop-blur-md p-6">
+                    <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-[1100ms] ease-out group-hover:translate-x-full pointer-events-none" />
+                    <div
+                      className="pointer-events-none absolute -top-20 -right-20 h-44 w-44 rounded-full opacity-0 blur-3xl transition-opacity duration-[850ms] ease-out group-hover:opacity-50"
+                      style={{ background: "var(--accent-soft)" }}
+                      aria-hidden
+                    />
+                    <div>
+                      <span className="font-mono text-[0.65rem] md:text-[0.78rem] font-bold uppercase tracking-[0.15em] text-accent">
+                        {stage}
+                      </span>
+                      <h4 className="mt-3 font-display text-lg md:text-xl font-extrabold tracking-tight text-ink">
+                        {label}
+                      </h4>
+                      <p className="mt-3 text-[15px] md:text-[16px] leading-[1.65] text-ink-soft">
+                        {desc}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </Reveal>
