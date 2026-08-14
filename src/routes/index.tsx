@@ -125,7 +125,15 @@ const beliefs = [
   },
 ];
 
-function TypeLine({ text, className = "" }: { text: string; className?: string }) {
+function TypeLine({
+  text,
+  className = "",
+  loop = false,
+}: {
+  text: string;
+  className?: string;
+  loop?: boolean;
+}) {
   const ref = useRef<HTMLParagraphElement>(null);
   const [shown, setShown] = useState(0);
   const started = useRef(false);
@@ -133,18 +141,29 @@ function TypeLine({ text, className = "" }: { text: string; className?: string }
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    let alive = true;
+
+    const type = (count: number) => {
+      if (!alive) return;
+      if (count <= text.length) {
+        setShown(count);
+        window.setTimeout(() => type(count + 1), 28);
+      } else if (loop) {
+        // Typing finished: hold for a moment, then retype continuously.
+        window.setTimeout(() => {
+          if (!alive) return;
+          setShown(0);
+          window.setTimeout(() => type(1), 28);
+        }, 3200);
+      }
+    };
+
     const observer = new IntersectionObserver(
       (entries) => {
         for (const e of entries) {
           if (e.isIntersecting && !started.current) {
             started.current = true;
-            let i = 0;
-            const step = () => {
-              i += 1;
-              setShown(i);
-              if (i <= text.length) window.setTimeout(step, 28);
-            };
-            step();
+            type(1);
             observer.disconnect();
           }
         }
@@ -152,8 +171,11 @@ function TypeLine({ text, className = "" }: { text: string; className?: string }
       { threshold: 0.5, rootMargin: "0px 0px -30px 0px" },
     );
     observer.observe(el);
-    return () => observer.disconnect();
-  }, [text]);
+    return () => {
+      alive = false;
+      observer.disconnect();
+    };
+  }, [text, loop]);
 
   return (
     <p ref={ref} className={className} aria-label={text}>
@@ -1316,15 +1338,15 @@ function HomePage() {
               Let&rsquo;s talk about your business, your goals, and where AI and better systems can
               create the biggest impact.
             </p>
-            <div className="mt-10 flex flex-nowrap items-center gap-2 sm:gap-3">
+            <div className="mt-10 flex flex-nowrap items-center gap-1.5 sm:gap-3">
               <Link
                 to="/contact"
                 search={{ service: "strategy" }}
-                className="btn-premium group inline-flex h-12 shrink-0 items-center gap-2 whitespace-nowrap rounded-full px-4 text-sm font-semibold text-white transition-all duration-300 sm:h-14 sm:px-8 sm:text-base"
+                className="btn-premium group inline-flex h-11 flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-full px-3 text-xs font-semibold text-white transition-all duration-300 sm:h-14 sm:flex-none sm:gap-2 sm:justify-start sm:px-8 sm:text-base"
               >
-                <span className="relative z-10 flex items-center gap-2">
+                <span className="relative z-10 flex items-center gap-1.5 sm:gap-2">
                   Book a Strategy Call
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1 sm:h-4 sm:w-4" />
                 </span>
               </Link>
               <a
@@ -1332,7 +1354,7 @@ function HomePage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp Ambesh"
-                className="wa-btn relative inline-flex h-12 shrink-0 items-center gap-2.5 overflow-hidden whitespace-nowrap rounded-full bg-[#25D366] pl-3.5 pr-5 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#1fb958] hover:shadow-[0_12px_40px_-8px_rgba(37,211,102,0.65)] active:scale-[0.98] sm:h-14 sm:pl-4 sm:pr-7 sm:text-base"
+                className="wa-btn relative inline-flex h-11 flex-1 items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded-full bg-[#25D366] pl-2.5 pr-3 text-xs font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#1fb958] hover:shadow-[0_12px_40px_-8px_rgba(37,211,102,0.65)] active:scale-[0.98] sm:h-14 sm:flex-none sm:justify-start sm:gap-2.5 sm:pl-4 sm:pr-7 sm:text-base"
               >
                 <span className="wa-shine" aria-hidden />
                 <span className="flex shrink-0 items-center">
@@ -1340,12 +1362,17 @@ function HomePage() {
                     viewBox="0 0 24 24"
                     fill="currentColor"
                     aria-hidden="true"
-                    className="h-5 w-5 sm:h-6 sm:w-6"
+                    className="h-4 w-4 sm:h-6 sm:w-6"
                   >
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
                   </svg>
                 </span>
-                <span>WhatsApp Ambesh</span>
+                <span className="sm:hidden">WhatsApp Ambesh</span>
+                <TypeLine
+                  text="WhatsApp Ambesh"
+                  loop
+                  className="hidden whitespace-nowrap sm:block sm:min-w-[16ch]"
+                />
               </a>
             </div>
             <p className="mt-5 text-xs text-white/50">
