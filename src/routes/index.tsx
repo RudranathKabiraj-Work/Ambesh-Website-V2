@@ -1280,6 +1280,30 @@ function HomePage() {
           style={{ background: "var(--accent)" }}
           aria-hidden
         />
+        <div className="pointer-events-none absolute inset-0 md:hidden" aria-hidden>
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(125% 70% at 50% -12%, color-mix(in oklch, var(--accent) 28%, transparent) 0%, transparent 62%)",
+            }}
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(75% 45% at 100% 105%, color-mix(in oklch, var(--accent) 18%, transparent) 0%, transparent 55%)",
+            }}
+          />
+          <div
+            className="absolute inset-x-0 top-0 h-px"
+            style={{
+              background:
+                "linear-gradient(90deg, transparent, color-mix(in oklch, var(--accent) 55%, transparent) 50%, transparent)",
+            }}
+            aria-hidden
+          />
+        </div>
         <div className="container-edit relative py-16 md:py-24">
           <Reveal>
             <h2 className="max-w-4xl font-display text-4xl font-extrabold leading-[1.1] tracking-[-0.03em] text-white sm:text-5xl md:text-7xl">
@@ -1292,11 +1316,11 @@ function HomePage() {
               Let&rsquo;s talk about your business, your goals, and where AI and better systems can
               create the biggest impact.
             </p>
-            <div className="mt-10 flex flex-wrap gap-3">
+            <div className="mt-10 flex flex-nowrap items-center gap-2 sm:gap-3">
               <Link
                 to="/contact"
                 search={{ service: "strategy" }}
-                className="btn-premium group inline-flex h-14 items-center gap-2 rounded-full px-8 text-base font-semibold text-white transition-all duration-300"
+                className="btn-premium group inline-flex h-12 shrink-0 items-center gap-2 whitespace-nowrap rounded-full px-4 text-sm font-semibold text-white transition-all duration-300 sm:h-14 sm:px-8 sm:text-base"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   Book a Strategy Call
@@ -1307,7 +1331,7 @@ function HomePage() {
                 href="https://wa.me/918929465115?text=Hi%20Ambesh%2C%20I%20want%20to%20book%20a%20strategy%20call."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-14 items-center gap-2 rounded-full border border-white/20 px-8 text-base font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:border-white/50 hover:bg-white/10 hover:shadow-[0_8px_30px_rgba(255,255,255,0.05)] active:scale-[0.98]"
+                className="inline-flex h-12 shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-white/20 px-4 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:border-white/50 hover:bg-white/10 hover:shadow-[0_8px_30px_rgba(255,255,255,0.05)] active:scale-[0.98] sm:h-14 sm:px-8 sm:text-base"
               >
                 WhatsApp Ambesh
               </a>
