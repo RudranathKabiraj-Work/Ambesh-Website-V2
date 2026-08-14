@@ -1331,7 +1331,7 @@ function HomePage() {
                 href="https://wa.me/918929465115?text=Hi%20Ambesh%2C%20I%20want%20to%20book%20a%20strategy%20call."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-12 shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-white/20 px-4 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:border-white/50 hover:bg-white/10 hover:shadow-[0_8px_30px_rgba(255,255,255,0.05)] active:scale-[0.98] sm:h-14 sm:px-8 sm:text-base"
+                className="inline-flex h-12 shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-[#25D366] px-4 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#1fb958] hover:shadow-[0_8px_30px_rgba(37,211,102,0.35)] active:scale-[0.98] sm:h-14 sm:px-8 sm:text-base"
               >
                 WhatsApp Ambesh
               </a>
