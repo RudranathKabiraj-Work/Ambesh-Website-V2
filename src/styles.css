@@ -800,7 +800,8 @@
     pointer-events: none;
   }
 
-  .btn-email:hover::after {
+  .btn-email:hover::after,
+  .btn-email:active::after {
     transform: translateX(120%);
   }
 
@@ -3053,6 +3054,10 @@ html.lenis body {
   .btn-premium::before {
     animation: wa-idle-shine 6.5s ease-in-out infinite;
   }
+
+  .btn-email::after {
+    animation: wa-idle-shine 6.5s ease-in-out infinite;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -3061,6 +3066,11 @@ html.lenis body {
   }
 
   .btn-premium::before {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .btn-email::after {
     animation: none !important;
     transition: none !important;
   }
