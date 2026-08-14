@@ -717,6 +717,102 @@
     transform: translateX(120%);
   }
 
+  /* Gmail-brand button: flowing gradient border on transparent background */
+  .btn-email {
+    position: relative;
+    border: 1.5px solid transparent;
+    background: transparent;
+    outline: none;
+    overflow: hidden;
+  }
+
+  /* Gradient border ring only — interior stays transparent */
+  .btn-email::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: repeating-linear-gradient(
+      -100deg,
+      #4285f4 0%,
+      #ea4335 25%,
+      #fbbc05 50%,
+      #34a853 75%,
+      #4285f4 100%
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .btn-email:focus-visible {
+    outline: 2px solid #4285f4;
+    outline-offset: 3px;
+  }
+
+  /* Gentle breathing scale on the logo */
+  .btn-email .svg-wrapper {
+    display: block;
+    margin-right: 0.3em;
+    position: relative;
+    z-index: 10;
+  }
+
+  .btn-email .svg-wrapper img {
+    display: block;
+    animation: btn-email-breathe 2.4s ease-in-out infinite;
+  }
+
+  @keyframes btn-email-breathe {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.08);
+    }
+  }
+
+  .btn-email .btn-email-text {
+    display: block;
+    position: relative;
+    z-index: 10;
+  }
+
+  /* Shine sweep on hover, matching .btn-premium */
+  .btn-email::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(120deg, transparent 0%, oklch(1 0 0 / 0.18) 50%, transparent 100%);
+    transform: translateX(-120%);
+    transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+    pointer-events: none;
+  }
+
+  .btn-email:hover::after {
+    transform: translateX(120%);
+  }
+
+  /* Soft outer glow on hover — gmail colors, subtle */
+  .btn-email:hover {
+    box-shadow:
+      0 0 8px 1px rgba(66, 133, 244, 0.12),
+      0 0 14px 3px rgba(234, 67, 53, 0.07),
+      0 0 20px 6px rgba(251, 188, 5, 0.05);
+    transition: box-shadow 0.4s ease;
+  }
+
   /* Removed mesh blob, gradient shift, pulse glow, word stagger animations.
      Keep stub classes so existing markup doesn't break. */
   .animate-blob,

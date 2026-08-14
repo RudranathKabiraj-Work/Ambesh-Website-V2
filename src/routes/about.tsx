@@ -684,10 +684,19 @@ function AboutPage() {
                 </span>
               </Link>
               <a
-                href="mailto:hello@ambesh.com"
-                className="inline-flex h-12 min-w-0 flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-full border border-white/20 px-4 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:border-white/50 hover:bg-white/10 hover:shadow-[0_8px_30px_rgba(255,255,255,0.05)] active:scale-[0.98] sm:h-14 sm:flex-none sm:px-8 sm:text-base"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=hello@ambesh.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-email group inline-flex h-12 min-w-0 flex-1 items-center justify-center whitespace-nowrap rounded-full px-4 text-sm font-semibold text-white sm:h-14 sm:flex-none sm:px-8 sm:text-base"
               >
-                hello@ambesh.com
+                <span className="svg-wrapper relative z-10 flex shrink-0 items-center">
+                  <img
+                    src="/gmail-icon.png"
+                    alt="Gmail"
+                    className="h-7 w-7 shrink-0 object-contain sm:h-8 sm:w-8"
+                  />
+                </span>
+                <span className="btn-email-text relative z-10">hello@ambesh.com</span>
               </a>
             </div>
             <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.2em] text-white/50">
