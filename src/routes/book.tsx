@@ -4,6 +4,7 @@ import type { FormEvent } from "react";
 import { ArrowRight, BookOpen, Mail, Award, ShoppingBag, Users, List, User } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { Marquee } from "@/components/Marquee";
+import { Book3D } from "@/components/Book3D";
 import { buildMeta, jsonLd, breadcrumbSchema, SITE_URL, DEFAULT_OG_IMAGE } from "@/lib/seo";
 import { submitLeadToGHL } from "@/lib/ghl";
 import { GridVignetteBackground } from "@/components/ui/vignette-grid-background";
@@ -131,26 +132,6 @@ const pressLogos = [
   { name: "NewsTrack", src: "/logos/newstrack.jpg", className: "h-5 sm:h-8", solid: true },
 ];
 
-function BookCover() {
-  return (
-    <div className="group relative mx-auto w-full max-w-sm">
-      <div
-        className="absolute -inset-6 -z-10 rounded-3xl opacity-60 blur-3xl"
-        style={{ background: "var(--accent-soft)" }}
-        aria-hidden
-      />
-      <div className="relative aspect-2/3 w-full overflow-hidden rounded-2xl border border-rule shadow-lift transition-transform duration-500 group-hover:-translate-y-1">
-        <img
-          src="/kindle-cover.jpg"
-          alt="Accelerate with AI - book cover by Ambesh Tiwari"
-          className="h-full w-full object-fill"
-          loading="eager"
-        />
-      </div>
-    </div>
-  );
-}
-
 function BookPage() {
   const submitChapterLeadFn = useServerFn(submitLeadToGHL);
 
@@ -196,9 +177,8 @@ function BookPage() {
               </p>
             </Reveal>
             <Reveal delay={100}>
-              <h1 className="mt-6 font-display text-5xl font-extrabold leading-[0.95] tracking-[-0.03em] text-ink md:text-7xl lg:text-[5.5rem]">
-                Accelerate <br />
-                <span className="text-gradient-brand">With AI.</span>
+              <h1 className="mt-6 font-display text-[2.4rem] font-extrabold leading-[0.95] tracking-[-0.03em] text-ink sm:text-5xl md:text-6xl lg:text-[4rem]">
+                Accelerate <span className="text-gradient-brand">With AI.</span>
               </h1>
             </Reveal>
             <Reveal delay={200}>
@@ -212,21 +192,23 @@ function BookPage() {
                 their business.
               </p>
             </Reveal>
-            <Reveal delay={400} className="mt-8 flex flex-wrap items-center gap-3">
+            <Reveal delay={400} className="mt-8 flex flex-nowrap items-center gap-2.5 sm:gap-3">
               <span
-                className="inline-flex items-center gap-2 rounded-full border border-rule px-4 py-1.5 text-xs font-semibold uppercase tracking-wider"
+                className="inline-flex shrink-0 items-center gap-2 rounded-full border border-rule px-3.5 py-1.5 text-[0.65rem] font-semibold uppercase tracking-wider sm:px-4 sm:text-xs"
                 style={{ color: "var(--accent)" }}
               >
                 <Award className="h-3.5 w-3.5" /> Amazon Bestseller
               </span>
-              <span className="text-sm text-ink-muted">Kindle + Physical · English · 2023</span>
+              <span className="truncate whitespace-nowrap text-xs text-ink-muted sm:text-sm">
+                Kindle + Physical · English · 2023
+              </span>
             </Reveal>
-            <Reveal delay={500} className="mt-10 flex flex-wrap gap-3">
+            <Reveal delay={500} className="mt-10 flex flex-nowrap items-center gap-2.5 sm:gap-3">
               <a
                 href="https://www.amazon.in/dp/B0CLKZK6JS?ref_=cm_sw_r_cp_ud_dp_YJBSASGYYGPGJ42PBTK2&asin=B0CLKZK6JS&revisionId=7bc12fe7&format=3&depth=1"
                 target="_blank"
                 rel="noreferrer"
-                className="btn-premium inline-flex h-14 items-center gap-2 rounded-full px-8 text-base font-semibold"
+                className="btn-premium inline-flex h-12 shrink-0 items-center gap-2 rounded-full px-4 text-sm font-semibold sm:h-14 sm:px-8 sm:text-base"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   Read on Kindle <ArrowRight className="h-4 w-4" />
@@ -236,14 +218,16 @@ function BookPage() {
                 href="https://www.amazon.in/dp/B0CLKZK6JS?ref_=cm_sw_r_cp_ud_dp_YJBSASGYYGPGJ42PBTK2"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex h-14 items-center gap-2 rounded-full border border-ink/15 bg-canvas px-8 text-base font-semibold text-ink transition-all hover:-translate-y-0.5 hover:border-ink/40"
+                className="inline-flex h-12 shrink-0 items-center gap-2 rounded-full border border-ink/15 bg-canvas px-4 text-sm font-semibold text-ink transition-all hover:-translate-y-0.5 hover:border-ink/40 sm:h-14 sm:px-8 sm:text-base"
               >
                 <ShoppingBag className="h-4 w-4" /> Get a Physical Copy
               </a>
             </Reveal>
           </div>
-          <Reveal delay={300} className="md:col-span-5">
-            <BookCover />
+          <Reveal delay={300} className="md:col-span-5 md:mt-20">
+            <div className="origin-center md:mb-12 md:scale-[1.15] lg:scale-125">
+              <Book3D progress={0} />
+            </div>
           </Reveal>
         </div>
       </section>
