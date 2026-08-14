@@ -1332,7 +1332,7 @@ function HomePage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp Ambesh"
-                className="relative inline-flex h-12 shrink-0 items-center gap-2.5 overflow-hidden whitespace-nowrap rounded-full bg-[#25D366] pl-3.5 pr-5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#1fb958] hover:shadow-[0_8px_30px_rgba(37,211,102,0.35)] active:scale-[0.98] sm:h-14 sm:pl-4 sm:pr-7 sm:text-base"
+                className="wa-btn relative inline-flex h-12 shrink-0 items-center gap-2.5 overflow-hidden whitespace-nowrap rounded-full bg-[#25D366] pl-3.5 pr-5 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#1fb958] hover:shadow-[0_12px_40px_-8px_rgba(37,211,102,0.65)] active:scale-[0.98] sm:h-14 sm:pl-4 sm:pr-7 sm:text-base"
               >
                 <span className="wa-shine" aria-hidden />
                 <span className="flex shrink-0 items-center">

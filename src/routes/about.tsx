@@ -649,11 +649,11 @@ function AboutPage() {
             </p>
           </Reveal>
           <Reveal delay={200} className="mt-12">
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <div className="flex flex-row items-stretch justify-center gap-2 sm:gap-4">
               <Link
                 to="/contact"
                 search={{ service: "strategy" }}
-                className="btn-premium inline-flex h-14 items-center gap-2 rounded-full px-8 text-base font-semibold text-white"
+                className="btn-premium inline-flex h-12 min-w-0 flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-full px-4 text-sm font-semibold text-white sm:h-14 sm:flex-none sm:gap-2 sm:px-8 sm:text-base"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   Book a Strategy Call <ArrowRight className="h-4 w-4" />
@@ -661,7 +661,7 @@ function AboutPage() {
               </Link>
               <a
                 href="mailto:hello@ambesh.com"
-                className="inline-flex h-14 items-center gap-2 rounded-full border border-white/20 px-8 text-base font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:border-white/50 hover:bg-white/10 hover:shadow-[0_8px_30px_rgba(255,255,255,0.05)] active:scale-[0.98]"
+                className="inline-flex h-12 min-w-0 flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-full border border-white/20 px-4 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:border-white/50 hover:bg-white/10 hover:shadow-[0_8px_30px_rgba(255,255,255,0.05)] active:scale-[0.98] sm:h-14 sm:flex-none sm:px-8 sm:text-base"
               >
                 hello@ambesh.com
               </a>

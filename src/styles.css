@@ -2896,19 +2896,9 @@ html.lenis body {
 }
 
 /* ---- WhatsApp CTA button ----
- * A soft white highlight periodically sweeps across the button — subtle and
- * premium (Apple-style). Only transform animates (compositor-friendly).
+ * Mirrors the primary .btn-premium interaction language:
+ * clean at rest, with a shine that sweeps across only on hover.
  */
-@keyframes wa-shine {
-  0% {
-    transform: translateX(-140%) skewX(-12deg);
-  }
-  45%,
-  100% {
-    transform: translateX(320%) skewX(-12deg);
-  }
-}
-
 .wa-shine {
   position: absolute;
   top: 0;
@@ -2922,14 +2912,50 @@ html.lenis body {
     rgba(255, 255, 255, 0.5),
     transparent
   );
+  transform: translateX(-140%) skewX(-12deg);
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
   pointer-events: none;
-  animation: wa-shine 4.8s ease-in-out infinite;
-  will-change: transform;
+}
+
+.wa-btn:hover .wa-shine {
+  transform: translateX(320%) skewX(-12deg);
+}
+
+/* Touch screens (no hover): periodically sweep a shine across both CTA
+   buttons so they still feel alive on mobile/tablets. */
+@keyframes wa-idle-shine {
+  0% {
+    transform: translateX(-150%) skewX(-12deg);
+  }
+  12% {
+    transform: translateX(-150%) skewX(-12deg);
+  }
+  26% {
+    transform: translateX(340%) skewX(-12deg);
+  }
+  100% {
+    transform: translateX(340%) skewX(-12deg);
+  }
+}
+
+@media (hover: none) {
+  .wa-btn .wa-shine {
+    animation: wa-idle-shine 6.5s ease-in-out infinite;
+  }
+
+  .btn-premium::before {
+    animation: wa-idle-shine 6.5s ease-in-out infinite;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .wa-shine {
     display: none;
+  }
+
+  .btn-premium::before {
+    animation: none !important;
+    transition: none !important;
   }
 }
 
