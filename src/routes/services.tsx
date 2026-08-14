@@ -356,7 +356,7 @@ export function BusinessOSPage() {
               <Link
                 to="/contact"
                 search={{ service: "strategy" }}
-                className="btn-premium inline-flex h-11 flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-full px-3 text-xs font-semibold sm:h-14 sm:flex-none sm:gap-2 sm:justify-start sm:px-8 sm:text-base"
+                className="btn-premium inline-flex h-11 flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-full px-3 text-sm font-semibold sm:h-14 sm:flex-none sm:gap-2 sm:justify-start sm:px-8 sm:text-base"
               >
                 <span className="relative z-10 flex items-center gap-1.5 sm:gap-2">
                   Book a strategy call <ArrowRight className="h-3.5 w-3.5 sm:h-5 sm:w-5" />
@@ -364,7 +364,7 @@ export function BusinessOSPage() {
               </Link>
               <Link
                 to="/training"
-                className="inline-flex h-11 flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-ink/15 bg-canvas/80 px-3 text-xs font-semibold text-ink hover:border-ink/40 sm:h-14 sm:flex-none sm:justify-start sm:px-8 sm:text-base"
+                className="inline-flex h-11 flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-ink/15 bg-canvas/80 px-3 text-sm font-semibold text-ink hover:border-ink/40 sm:h-14 sm:flex-none sm:justify-start sm:px-8 sm:text-base"
               >
                 See AI Training
               </Link>
