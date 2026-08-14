@@ -625,13 +625,37 @@ function AboutPage() {
       </section>
 
       {/* CLOSING CTA */}
-      <section className="cta-dark relative overflow-hidden">
+      <section className="cta-dark relative overflow-hidden border-b border-white/10">
         <ParticleField className="opacity-70" color="rgba(255,255,255,0.8)" count={26} seed={11} />
         <div
           className="pointer-events-none absolute -top-40 left-1/2 h-[40rem] w-[40rem] -translate-x-1/2 rounded-full opacity-30 blur-3xl"
           style={{ background: "var(--accent)" }}
           aria-hidden
         />
+        <div className="pointer-events-none absolute inset-0 md:hidden" aria-hidden>
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(125% 70% at 50% -12%, color-mix(in oklch, var(--accent) 28%, transparent) 0%, transparent 62%)",
+            }}
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(75% 45% at 100% 105%, color-mix(in oklch, var(--accent) 18%, transparent) 0%, transparent 55%)",
+            }}
+          />
+          <div
+            className="absolute inset-x-0 top-0 h-px"
+            style={{
+              background:
+                "linear-gradient(90deg, transparent, color-mix(in oklch, var(--accent) 55%, transparent) 50%, transparent)",
+            }}
+            aria-hidden
+          />
+        </div>
         <div className="container-edit relative py-12 text-center md:py-20">
           <Reveal>
             <p className="eyebrow eyebrow-indigo flex items-center gap-2">
