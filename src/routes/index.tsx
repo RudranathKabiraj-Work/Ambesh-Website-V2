@@ -22,6 +22,7 @@ import {
   Check,
 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
+import { TypeLine } from "@/components/TypeLine";
 import { BeliefLogo } from "@/components/BeliefLogos";
 import { CorePillars } from "@/components/CorePillars";
 import { StrategyCallButton } from "@/components/StrategyCallButton";
@@ -124,69 +125,6 @@ const beliefs = [
     desc: "Clear roles and accountability matter more than new tools. Tech accelerates, but human execution is the foundation.",
   },
 ];
-
-function TypeLine({
-  text,
-  className = "",
-  loop = false,
-}: {
-  text: string;
-  className?: string;
-  loop?: boolean;
-}) {
-  const ref = useRef<HTMLParagraphElement>(null);
-  const [shown, setShown] = useState(0);
-  const started = useRef(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    let alive = true;
-
-    const type = (count: number) => {
-      if (!alive) return;
-      if (count <= text.length) {
-        setShown(count);
-        window.setTimeout(() => type(count + 1), 28);
-      } else if (loop) {
-        // Typing finished: hold for a moment, then retype continuously.
-        window.setTimeout(() => {
-          if (!alive) return;
-          setShown(0);
-          window.setTimeout(() => type(1), 28);
-        }, 3200);
-      }
-    };
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) {
-          if (e.isIntersecting && !started.current) {
-            started.current = true;
-            type(1);
-            observer.disconnect();
-          }
-        }
-      },
-      { threshold: 0.5, rootMargin: "0px 0px -30px 0px" },
-    );
-    observer.observe(el);
-    return () => {
-      alive = false;
-      observer.disconnect();
-    };
-  }, [text, loop]);
-
-  return (
-    <p ref={ref} className={className} aria-label={text}>
-      {text.slice(0, shown)}
-      <span
-        className="inline-block h-[1em] w-[2px] translate-y-[2px] animate-pulse bg-current"
-        aria-hidden
-      />
-    </p>
-  );
-}
 
 function CountUp({ value }: { value: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -1295,7 +1233,7 @@ function HomePage() {
       </BookStickySection>
 
       {/* FINAL CTA */}
-      <section className="cta-dark relative overflow-hidden">
+      <section className="cta-dark relative overflow-hidden border-b border-white/10">
         <ParticleField className="opacity-70" color="rgba(255,255,255,0.8)" count={26} seed={11} />
         <div
           className="pointer-events-none absolute -top-40 left-1/2 h-[40rem] w-[40rem] -translate-x-1/2 rounded-full opacity-30 blur-3xl"
@@ -1342,7 +1280,7 @@ function HomePage() {
               <Link
                 to="/contact"
                 search={{ service: "strategy" }}
-                className="btn-premium group inline-flex h-11 flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-full px-3 text-xs font-semibold text-white transition-all duration-300 sm:h-14 sm:flex-none sm:gap-2 sm:justify-start sm:px-8 sm:text-base"
+                className="btn-premium group inline-flex h-11 flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-full px-3 text-sm font-semibold text-white transition-all duration-300 sm:h-14 sm:flex-none sm:gap-2 sm:justify-start sm:px-8 sm:text-base"
               >
                 <span className="relative z-10 flex items-center gap-1.5 sm:gap-2">
                   Book a Strategy Call
@@ -1354,7 +1292,7 @@ function HomePage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp Ambesh"
-                className="wa-btn relative inline-flex h-11 flex-1 items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded-full bg-[#25D366] pl-2.5 pr-3 text-xs font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#1fb958] hover:shadow-[0_12px_40px_-8px_rgba(37,211,102,0.65)] active:scale-[0.98] sm:h-14 sm:flex-none sm:justify-start sm:gap-2.5 sm:pl-4 sm:pr-7 sm:text-base"
+                className="wa-btn relative inline-flex h-11 flex-1 items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded-full border border-white/20 bg-[#25D366] pl-2.5 pr-3 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#1fb958] hover:shadow-[0_12px_40px_-8px_rgba(37,211,102,0.65)] active:scale-[0.98] sm:h-14 sm:flex-none sm:justify-start sm:gap-2.5 sm:pl-4 sm:pr-7 sm:text-base"
               >
                 <span className="wa-shine" aria-hidden />
                 <span className="flex shrink-0 items-center">

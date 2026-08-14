@@ -643,6 +643,30 @@ export function BusinessOSPage() {
           style={{ background: "var(--accent)" }}
           aria-hidden
         />
+        <div className="pointer-events-none absolute inset-0 md:hidden" aria-hidden>
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(125% 70% at 50% -12%, color-mix(in oklch, var(--accent) 28%, transparent) 0%, transparent 62%)",
+            }}
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(75% 45% at 100% 105%, color-mix(in oklch, var(--accent) 18%, transparent) 0%, transparent 55%)",
+            }}
+          />
+          <div
+            className="absolute inset-x-0 top-0 h-px"
+            style={{
+              background:
+                "linear-gradient(90deg, transparent, color-mix(in oklch, var(--accent) 55%, transparent) 50%, transparent)",
+            }}
+            aria-hidden
+          />
+        </div>
         <div className="container-edit relative py-12 md:py-20">
           <Reveal>
             <p className="eyebrow flex items-center gap-2">
@@ -651,8 +675,8 @@ export function BusinessOSPage() {
           </Reveal>
           <Reveal delay={100}>
             <h2 className="mx-auto mt-6 max-w-4xl text-4xl font-extrabold leading-[1.05] tracking-tighter text-white md:text-6xl">
-              The strongest engagements begin with an{" "}
-              <span className="text-gradient-brand">honest audit</span>, not a proposal.
+              The strongest engagements begin with an honest audit,{" "}
+              <span className="text-gradient-brand animate-gradient">not a proposal.</span>
             </h2>
           </Reveal>
           <Reveal delay={200}>
@@ -666,10 +690,11 @@ export function BusinessOSPage() {
               <Link
                 to="/contact"
                 search={{ service: "diagnostic" }}
-                className="btn-premium inline-flex h-14 items-center gap-2 rounded-full px-8 text-base font-semibold text-white"
+                className="btn-premium inline-flex h-12 items-center gap-1.5 whitespace-nowrap rounded-full px-5 text-sm font-semibold text-white sm:h-14 sm:gap-2 sm:px-8 sm:text-base"
               >
-                <span className="relative z-10 flex items-center gap-2">
-                  Book a Business Systems Diagnostic <ArrowRight className="h-5 w-5" />
+                <span className="relative z-10 flex items-center gap-1.5 sm:gap-2">
+                  Book a Business Systems Diagnostic{" "}
+                  <ArrowRight className="h-3.5 w-3.5 sm:h-5 sm:w-5" />
                 </span>
               </Link>
               <p className="text-xs text-white/50">
