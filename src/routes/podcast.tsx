@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Headphones, Play, Mail, Mic, Star, MessageCircle, User } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
@@ -82,18 +83,33 @@ const topics = [
   "Building a business in India",
 ];
 
+function useResponsiveBarCount() {
+  const [count, setCount] = useState(60);
+  useEffect(() => {
+    const update = () => {
+      const w = window.innerWidth;
+      setCount(w < 480 ? 30 : w < 768 ? 42 : w < 1024 ? 50 : 60);
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+  return count;
+}
+
 function Waveform() {
-  const bars = Array.from({ length: 60 }, (_, i) => {
-    const h = 30 + Math.sin(i * 0.4) * 25 + Math.random() * 30;
+  const barCount = useResponsiveBarCount();
+  const bars = Array.from({ length: barCount }, (_, i) => {
+    const h = 30 + Math.sin(i * 0.45) * 25 + Math.random() * 30;
     const dur = 0.9 + Math.sin(i * 0.7) * 0.35 + Math.random() * 0.3;
     return { h, dur };
   });
   return (
-    <div className="flex h-32 items-center gap-1">
+    <div className="flex h-14 w-full items-center justify-between overflow-hidden sm:h-20 md:h-32">
       {bars.map((b, i) => (
         <div
           key={i}
-          className="eq-bar w-1.5 rounded-full bg-gradient-brand"
+          className="eq-bar w-1 flex-none rounded-full bg-gradient-brand sm:w-1.5"
           style={{
             height: `${b.h}%`,
             animationDelay: `${i * 45}ms`,
@@ -120,7 +136,7 @@ function PodcastPage() {
           horizontalVignetteSize={80}
           verticalVignetteSize={60}
         />
-        <div className="container-edit relative grid gap-12 pt-10 pb-12 md:grid-cols-12 md:gap-16 md:pt-16 md:pb-16">
+        <div className="container-edit relative grid gap-8 pt-10 pb-8 md:grid-cols-12 md:gap-16 md:pt-16 md:pb-16">
           <div className="md:col-span-8">
             <Reveal eager>
               <p className="eyebrow flex items-center gap-2">
@@ -128,28 +144,28 @@ function PodcastPage() {
               </p>
             </Reveal>
             <Reveal delay={100} eager>
-              <h1 className="mt-6 text-5xl font-extrabold leading-[0.95] tracking-tighter md:text-7xl lg:text-[7rem]">
-                Inspire with <br />
+              <h1 className="mt-4 text-[2.2rem] font-extrabold leading-[0.95] tracking-tighter sm:mt-6 sm:text-5xl md:text-7xl lg:text-[7rem]">
+                Inspire with{" "}
                 <span className="text-gradient-brand animate-gradient">Ambesh.</span>
               </h1>
             </Reveal>
             <Reveal delay={250} eager>
-              <p className="mt-8 max-w-xl text-lg text-ink-muted">
+              <p className="mt-3 text-base text-ink-muted sm:mt-6 sm:max-w-xl sm:text-lg">
                 Conversations with founders, operators and builders about the things that actually
                 matter: ambition, decisions, setbacks, and what it takes to build something real.
               </p>
             </Reveal>
             <Reveal delay={350} eager>
-              <p className="mt-4 max-w-xl font-serif italic text-ink-muted">
+              <p className="mt-3 max-w-xl font-serif italic text-ink-muted sm:mt-4">
                 No predictions. No hot takes. Just field notes from people doing the work.
               </p>
             </Reveal>
-            <Reveal delay={450} eager className="mt-10">
+            <Reveal delay={450} eager className="mt-5 md:mt-10">
               <Waveform />
             </Reveal>
           </div>
           <Reveal delay={200} eager className="md:col-span-4">
-            <div className="relative flex aspect-square w-full flex-col items-center justify-center rounded-3xl bg-gradient-brand text-white shadow-glow animate-gradient">
+            <div className="relative flex w-full flex-col items-center justify-center rounded-3xl bg-gradient-brand px-6 py-8 text-white shadow-glow animate-gradient md:aspect-square">
               <div
                 className="absolute inset-0 rounded-3xl opacity-20"
                 style={{
@@ -158,8 +174,10 @@ function PodcastPage() {
                   backgroundSize: "32px 32px",
                 }}
               />
-              <Headphones className="relative h-12 w-12" />
-              <p className="relative mt-4 text-6xl font-extrabold tracking-tighter">30+</p>
+              <Headphones className="relative h-10 w-10 sm:h-12 sm:w-12" />
+              <p className="relative mt-4 text-5xl font-extrabold tracking-tighter sm:text-6xl">
+                30+
+              </p>
               <p className="relative mt-1 px-6 text-center text-xs text-white/80">
                 conversations published
               </p>
@@ -205,7 +223,7 @@ function PodcastPage() {
             <p className="eyebrow flex items-center gap-2">
               <Star className="h-3.5 w-3.5" /> Featured conversations
             </p>
-            <h2 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-6xl">
+            <h2 className="mt-4 max-w-3xl text-3xl font-extrabold leading-[1.05] tracking-tighter sm:text-4xl md:text-6xl">
               A few worth{" "}
               <span className="text-gradient-brand animate-gradient">starting with.</span>
             </h2>
@@ -213,7 +231,7 @@ function PodcastPage() {
               If you are new here, these three conversations are a good way in.
             </p>
           </Reveal>
-          <div className="mt-16 grid gap-5 md:grid-cols-3">
+          <div className="mt-12 grid gap-5 md:mt-16 md:grid-cols-3">
             {featuredEpisodes.map((e, i) => (
               <Reveal key={e.title} delay={80}>
                 <a
@@ -258,7 +276,7 @@ function PodcastPage() {
               <p className="eyebrow flex items-center gap-2">
                 <MessageCircle className="h-3.5 w-3.5" /> What we talk about
               </p>
-              <h2 className="mt-4 text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-5xl">
+              <h2 className="mt-4 text-3xl font-extrabold leading-[1.05] tracking-tighter sm:text-4xl md:text-5xl">
                 The <span className="text-gradient-brand animate-gradient">territory.</span>
               </h2>
             </Reveal>
@@ -308,7 +326,9 @@ function PodcastPage() {
                 />
                 <div className="relative flex h-full w-full flex-col items-center justify-center text-white">
                   <Mic className="h-12 w-12" />
-                  <p className="mt-6 text-[8rem] font-black leading-none tracking-tighter">AT</p>
+                  <p className="mt-6 text-[6rem] font-black leading-none tracking-tighter sm:text-[8rem]">
+                    AT
+                  </p>
                   <p className="mt-4 font-mono text-[0.65rem] uppercase tracking-[0.25em] text-white/80">
                     Your Host
                   </p>
@@ -319,7 +339,7 @@ function PodcastPage() {
               <p className="eyebrow flex items-center gap-2">
                 <User className="h-3.5 w-3.5" /> Your host
               </p>
-              <h2 className="mt-4 text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-5xl">
+              <h2 className="mt-4 text-3xl font-extrabold leading-[1.05] tracking-tighter sm:text-4xl md:text-5xl">
                 Ambesh <span className="text-gradient-brand animate-gradient">Tiwari.</span>
               </h2>
               <p className="mt-6 text-lg text-ink-muted">
@@ -344,14 +364,14 @@ function PodcastPage() {
       {/* NEWSLETTER */}
       <section className="relative isolate overflow-hidden py-16">
         <div className="container-edit relative">
-          <Reveal className="relative overflow-hidden rounded-3xl border border-rule bg-canvas p-12 md:p-16">
+          <Reveal className="relative overflow-hidden rounded-3xl border border-rule bg-canvas p-8 md:p-16">
             <div className="absolute inset-0 tex-dots-soft opacity-60" aria-hidden />
             <div className="relative grid gap-10 md:grid-cols-2 md:items-center">
               <div>
                 <p className="eyebrow flex items-center gap-2">
                   <Mail className="h-3.5 w-3.5" /> Stay in the loop
                 </p>
-                <h3 className="mt-4 text-4xl font-extrabold leading-tight tracking-tighter md:text-5xl">
+                <h3 className="mt-4 text-3xl font-extrabold leading-tight tracking-tighter sm:text-4xl md:text-5xl">
                   New conversations.{" "}
                   <span className="text-gradient-brand animate-gradient">In your inbox.</span>
                 </h3>
@@ -401,7 +421,7 @@ function PodcastPage() {
         />
         <div className="container-edit relative py-16 text-center">
           <Reveal>
-            <h2 className="mx-auto max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tighter md:text-6xl">
+            <h2 className="mx-auto max-w-3xl text-3xl font-extrabold leading-[1.05] tracking-tighter sm:text-4xl md:text-6xl">
               Got a story{" "}
               <span className="text-gradient-brand animate-gradient">worth sharing?</span>
             </h2>
