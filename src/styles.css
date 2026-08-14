@@ -2895,6 +2895,44 @@ html.lenis body {
   }
 }
 
+/* ---- WhatsApp CTA button ----
+ * A soft white highlight periodically sweeps across the button — subtle and
+ * premium (Apple-style). Only transform animates (compositor-friendly).
+ */
+@keyframes wa-shine {
+  0% {
+    transform: translateX(-140%) skewX(-12deg);
+  }
+  45%,
+  100% {
+    transform: translateX(320%) skewX(-12deg);
+  }
+}
+
+.wa-shine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 42%;
+  border-radius: 9999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+  pointer-events: none;
+  animation: wa-shine 4.8s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wa-shine {
+    display: none;
+  }
+}
+
 /* ---- Services page — PROCESS logos ----
  * Light mode: the marks use the accent blue so they stay clearly visible
  * and blue (not black) on the light accent-soft tile. Dark mode: white
