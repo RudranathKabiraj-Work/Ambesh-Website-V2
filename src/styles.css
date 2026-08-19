@@ -3132,17 +3132,17 @@ html.lenis body {
   color: #ffffff;
 }
 
-/* Homepage Mobile Eyebrow Sizing Fix */
+/* Global Mobile Eyebrow Sizing Fix */
 @media (max-width: 639px) {
-  .homepage-wrapper .eyebrow,
-  .homepage-wrapper .eyebrow-indigo,
-  .homepage-wrapper .eyebrow-amber,
-  .homepage-wrapper .eyebrow-blue,
-  .homepage-wrapper .eyebrow-emerald,
-  .homepage-wrapper .eyebrow-violet,
-  .homepage-wrapper .eyebrow-rose,
-  .homepage-wrapper .eyebrow-orange,
-  .homepage-wrapper .eyebrow-cyan {
+  .eyebrow,
+  .eyebrow-indigo,
+  .eyebrow-amber,
+  .eyebrow-blue,
+  .eyebrow-emerald,
+  .eyebrow-violet,
+  .eyebrow-rose,
+  .eyebrow-orange,
+  .eyebrow-cyan {
     font-size: 0.58rem !important;
     padding: 0.2rem 0.65rem !important;
     letter-spacing: 0.1em !important;

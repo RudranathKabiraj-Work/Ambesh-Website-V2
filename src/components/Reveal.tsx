@@ -52,7 +52,14 @@ export function Reveal({
   style,
 }: RevealProps) {
   const [visible, setVisible] = useState(eager);
+  const [isMobile, setIsMobile] = useState(false);
   const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsMobile(window.innerWidth < 1024);
+    }
+  }, []);
 
   useEffect(() => {
     if (eager) return;
@@ -83,10 +90,12 @@ export function Reveal({
     };
   }, [eager]);
 
+  const activeDelay = isMobile ? Math.round(delay * 0.4) : delay;
+
   if (eager) {
     const eagerStyle: CSSProperties = {
       ...style,
-      ...(delay ? { animationDelay: `${delay}ms` } : {}),
+      ...(activeDelay ? { animationDelay: `${activeDelay}ms` } : {}),
     };
     return (
       <Tag className={`animate-fade-in-up ${className}`} style={eagerStyle}>
@@ -97,7 +106,7 @@ export function Reveal({
 
   const revealStyle: CSSProperties = {
     ...style,
-    ...(delay ? { transitionDelay: `${delay}ms` } : {}),
+    ...(activeDelay ? { transitionDelay: `${activeDelay}ms` } : {}),
   };
   return (
     <Tag
