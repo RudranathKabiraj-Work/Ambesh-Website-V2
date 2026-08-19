@@ -180,6 +180,7 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
           alignItems: "center",
           justifyContent: "center",
           overflow: "visible",
+          perspective: 1400,
         }}
       >
         <div
@@ -189,7 +190,6 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
             width: "100%",
             maxWidth: cardW * 2.6,
             height: containerH,
-            perspective: 1400,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
