@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { StrategyCallButton } from "./StrategyCallButton";
 import { ThemeToggle } from "./ThemeToggle";
+import { motion, AnimatePresence } from "framer-motion";
 
 const nav = [
   { to: "/about", label: "About" },
@@ -36,22 +37,20 @@ export function SiteHeader() {
               : "var(--header-bg-top)",
           boxShadow: scrolled ? "var(--header-shadow)" : "var(--header-shadow-top)",
         }}
-        className={`mx-auto w-full pointer-events-auto border transition-[width,max-width,padding,border-color] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] backdrop-blur-[28px] [-webkit-backdrop-filter:blur(28px)_saturate(200%)_brightness(1.08)] [backdrop-filter:blur(28px)_saturate(200%)_brightness(1.08)] ${
-          open
+        className={`mx-auto w-full pointer-events-auto border transition-[width,max-width,padding,border-color] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] backdrop-blur-[28px] [-webkit-backdrop-filter:blur(28px)_saturate(200%)_brightness(1.08)] [backdrop-filter:blur(28px)_saturate(200%)_brightness(1.08)] ${open
             ? "max-w-2xl rounded-2xl p-5 border-white/40"
             : scrolled
               ? "max-w-4xl rounded-full py-2 px-3 min-[400px]:px-4 md:px-6 border-white/40"
               : "max-w-[70rem] rounded-full py-3.5 px-4 min-[400px]:px-6 md:px-8 border-white/25"
-        }`}
+          }`}
       >
         <div className="flex items-center justify-between">
           <Link to="/" onClick={() => setOpen(false)} className="group flex items-center gap-2.5">
             <img
               src="/atlogo.jpeg"
               alt="Ambesh Tiwari logo"
-              className={`h-9 w-9 shrink-0 rounded-lg object-contain transition-transform duration-500 group-hover:scale-105 ${
-                scrolled ? "scale-85" : "scale-100"
-              }`}
+              className={`h-9 w-9 shrink-0 rounded-lg object-contain transition-transform duration-500 group-hover:scale-105 ${scrolled ? "scale-85" : "scale-100"
+                }`}
             />
             <span className="font-display text-sm font-bold tracking-tight text-ink md:text-base">
               Ambesh Tiwari
@@ -92,34 +91,67 @@ export function SiteHeader() {
           </div>
         </div>
 
-        {/* Mobile Dropdown Menu */}
-        <div
-          className={`overflow-y-auto transition-all duration-300 ease-in-out lg:hidden ${
-            open ? "mt-4 max-h-[calc(100dvh-120px)] opacity-100" : "max-h-0 opacity-0"
-          }`}
-        >
-          <div className="border-t border-rule/60 pt-4">
-            <nav className="flex flex-col gap-1 py-1">
-              {nav.map((item) => (
-                <Link
-                  key={item.to}
-                  to={item.to}
-                  onClick={() => setOpen(false)}
-                  activeProps={{
-                    className: "bg-accent text-accent-foreground shadow-lift font-semibold",
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className="overflow-y-auto lg:hidden mt-4 max-h-[calc(100dvh-120px)]"
+            >
+              <div className="border-t border-rule/60 pt-4">
+                <motion.nav
+                  initial="closed"
+                  animate={open ? "open" : "closed"}
+                  exit="closed"
+                  variants={{
+                    open: {
+                      transition: { staggerChildren: 0.04, delayChildren: 0.05 }
+                    },
+                    closed: {
+                      transition: { staggerChildren: 0.02, staggerDirection: -1 }
+                    }
                   }}
-                  inactiveProps={{ className: "text-ink hover:bg-accent/10" }}
-                  className="rounded-lg border border-transparent px-4 py-2.5 text-[15px] font-medium transition-all"
+                  className="flex flex-col gap-1 py-1"
                 >
-                  {item.label}
-                </Link>
-              ))}
-              <div className="mt-3 flex justify-center">
-                <StrategyCallButton size="md" onClick={() => setOpen(false)} />
+                  {nav.map((item) => (
+                    <motion.div
+                      key={item.to}
+                      variants={{
+                        open: { y: 0, opacity: 1 },
+                        closed: { y: -8, opacity: 0 }
+                      }}
+                      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      <Link
+                        to={item.to}
+                        onClick={() => setOpen(false)}
+                        activeProps={{
+                          className: "bg-accent text-accent-foreground shadow-lift font-semibold",
+                        }}
+                        inactiveProps={{ className: "text-ink hover:bg-accent/10" }}
+                        className="rounded-lg border border-transparent px-4 py-2.5 text-[15px] font-medium transition-all block"
+                      >
+                        {item.label}
+                      </Link>
+                    </motion.div>
+                  ))}
+                  <motion.div
+                    variants={{
+                      open: { y: 0, opacity: 1 },
+                      closed: { y: -8, opacity: 0 }
+                    }}
+                    transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                    className="mt-3 flex justify-center"
+                  >
+                    <StrategyCallButton size="md" onClick={() => setOpen(false)} />
+                  </motion.div>
+                </motion.nav>
               </div>
-            </nav>
-          </div>
-        </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </header>
   );
