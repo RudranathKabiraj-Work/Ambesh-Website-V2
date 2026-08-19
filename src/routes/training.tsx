@@ -220,20 +220,20 @@ function TrainingPage() {
             </p>
           </Reveal>
           <Reveal delay={220} eager>
-            <div className="mt-10 flex flex-wrap items-center gap-3">
+            <div className="mt-10 grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:items-center sm:gap-3">
               <Link
                 to="/contact"
                 search={{ service: "training" }}
-                className="btn-premium inline-flex h-12 items-center gap-2 rounded-full px-6 text-[15px] font-semibold"
+                className="btn-premium inline-flex h-12 items-center justify-center rounded-full px-2 min-[360px]:px-4 md:px-6 text-[9.5px] min-[340px]:text-[10px] min-[360px]:text-[11px] min-[390px]:text-xs sm:text-sm md:text-[15px] font-semibold whitespace-nowrap w-full sm:w-auto"
               >
-                <span className="relative z-10 flex items-center gap-2">
-                  Request a Corporate Training
-                  <ArrowRight className="h-4 w-4" />
+                <span className="relative z-10 flex items-center gap-1 min-[360px]:gap-2">
+                  Book a Strategy Call
+                  <ArrowRight className="h-3.5 w-3.5 shrink-0" />
                 </span>
               </Link>
               <a
                 href="#formats"
-                className="inline-flex h-12 items-center gap-2 rounded-full border border-ink/15 bg-canvas/80 px-6 text-[15px] font-semibold text-ink backdrop-blur transition-all hover:border-ink/40 hover:bg-canvas"
+                className="inline-flex h-12 items-center justify-center rounded-full border border-ink/15 bg-canvas/80 px-2 min-[360px]:px-4 md:px-6 text-[9.5px] min-[340px]:text-[10px] min-[360px]:text-[11px] min-[390px]:text-xs sm:text-sm md:text-[15px] font-semibold text-ink backdrop-blur transition-all hover:border-ink/40 hover:bg-canvas whitespace-nowrap w-full sm:w-auto"
               >
                 View Training Formats
               </a>
