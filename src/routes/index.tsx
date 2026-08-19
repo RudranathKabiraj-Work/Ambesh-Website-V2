@@ -301,7 +301,7 @@ function HomePage() {
   ];
 
   return (
-    <>
+    <div className="homepage-wrapper">
       <ScrollProgress />
       {/* HERO */}
       <section className="premium-canvas bg-premium-side-gradient relative isolate overflow-x-clip">
@@ -320,7 +320,7 @@ function HomePage() {
           <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-7">
               <div className="animate-fade-in-up">
-                <span className="eyebrow flex items-center gap-2 whitespace-nowrap max-sm:gap-1 max-sm:px-2.5 max-sm:text-[0.55rem] max-sm:tracking-[0.08em]">
+                <span className="eyebrow flex items-center gap-2 whitespace-nowrap max-sm:gap-1 max-sm:px-2 max-sm:text-[0.45rem] min-[360px]:max-sm:text-[0.52rem] max-sm:tracking-[0.08em]">
                   <Sparkles className="h-3.5 w-3.5" />
                   AI Strategist &nbsp;|&nbsp; Author &nbsp;|&nbsp; Entrepreneur
                 </span>
@@ -1319,6 +1319,6 @@ function HomePage() {
 
       {/* CORE PILLARS (A-M-B-E-S-H) */}
       <CorePillars />
-    </>
+    </div>
   );
 }
