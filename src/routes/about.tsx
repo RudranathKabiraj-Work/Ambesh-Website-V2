@@ -673,13 +673,13 @@ function AboutPage() {
             </p>
           </Reveal>
           <Reveal delay={200} className="mt-12">
-            <div className="flex flex-col sm:flex-row items-stretch justify-center gap-2.5 sm:gap-4">
+            <div className="flex flex-row items-center justify-center gap-1.5 sm:gap-4">
               <Link
                 to="/contact"
                 search={{ service: "strategy" }}
-                className="btn-premium inline-flex h-12 min-w-0 flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-full px-4 text-sm font-semibold text-white sm:h-14 sm:flex-none sm:gap-2 sm:px-8 sm:text-base"
+                className="btn-premium inline-flex h-12 min-w-0 flex-1 items-center justify-center gap-1 min-[375px]:gap-1.5 whitespace-nowrap rounded-full px-2 min-[375px]:px-4 text-[11px] min-[360px]:text-xs min-[400px]:text-sm font-semibold text-white sm:h-14 sm:flex-none sm:gap-2 sm:px-8 sm:text-base"
               >
-                <span className="relative z-10 flex items-center gap-2">
+                <span className="relative z-10 flex items-center gap-1.5 sm:gap-2">
                   Book a Strategy Call <ArrowRight className="h-4 w-4" />
                 </span>
               </Link>
@@ -687,7 +687,7 @@ function AboutPage() {
                 href="https://mail.google.com/mail/?view=cm&fs=1&to=hello@ambesh.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-email group inline-flex h-12 min-w-0 flex-1 items-center justify-center whitespace-nowrap rounded-full px-4 text-sm font-semibold text-white sm:h-14 sm:flex-none sm:px-8 sm:text-base"
+                className="btn-email group inline-flex h-12 min-w-0 flex-1 items-center justify-center whitespace-nowrap rounded-full px-2 min-[375px]:px-4 text-[11px] min-[360px]:text-xs min-[400px]:text-sm font-semibold text-white sm:h-14 sm:flex-none sm:px-8 sm:text-base"
               >
                 <span className="svg-wrapper relative z-10 flex shrink-0 items-center">
                   <img
@@ -696,7 +696,8 @@ function AboutPage() {
                     className="h-7 w-7 shrink-0 object-contain sm:h-8 sm:w-8"
                   />
                 </span>
-                <span className="btn-email-text relative z-10">hello@ambesh.com</span>
+                <span className="btn-email-text relative z-10 hidden min-[360px]:inline">hello@ambesh.com</span>
+                <span className="btn-email-text relative z-10 min-[360px]:hidden">Email</span>
               </a>
             </div>
             <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.2em] text-white/50">

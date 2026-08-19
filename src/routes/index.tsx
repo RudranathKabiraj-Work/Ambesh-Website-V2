@@ -1273,11 +1273,11 @@ function HomePage() {
               Let&rsquo;s talk about your business, your goals, and where AI and better systems can
               create the biggest impact.
             </p>
-            <div className="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
+            <div className="mt-10 flex flex-row items-center gap-1.5 sm:gap-3">
               <Link
                 to="/contact"
                 search={{ service: "strategy" }}
-                className="btn-premium group inline-flex h-11 flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-full px-3 text-sm font-semibold text-white transition-all duration-300 sm:h-14 sm:flex-none sm:gap-2 sm:justify-start sm:px-8 sm:text-base"
+                className="btn-premium group inline-flex h-11 flex-1 items-center justify-center gap-1 min-[375px]:gap-1.5 whitespace-nowrap rounded-full px-2 min-[375px]:px-3 text-[11px] min-[360px]:text-xs min-[400px]:text-sm font-semibold text-white transition-all duration-300 sm:h-14 sm:flex-none sm:gap-2 sm:justify-start sm:px-8 sm:text-base"
               >
                 <span className="relative z-10 flex items-center gap-1.5 sm:gap-2">
                   Book a Strategy Call
@@ -1289,7 +1289,7 @@ function HomePage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp Ambesh"
-                className="wa-btn relative inline-flex h-11 flex-1 items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded-full border border-white/20 bg-[#25D366] pl-2.5 pr-3 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#1fb958] hover:shadow-[0_12px_40px_-8px_rgba(37,211,102,0.65)] active:scale-[0.98] sm:h-14 sm:flex-none sm:justify-start sm:gap-2.5 sm:pl-4 sm:pr-7 sm:text-base"
+                className="wa-btn relative inline-flex h-11 flex-1 items-center justify-center gap-1 min-[375px]:gap-2 overflow-hidden whitespace-nowrap rounded-full border border-white/20 bg-[#25D366] pl-1.5 pr-2 min-[375px]:pl-2.5 min-[375px]:pr-3 text-[11px] min-[360px]:text-xs min-[400px]:text-sm text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#1fb958] hover:shadow-[0_12px_40px_-8px_rgba(37,211,102,0.65)] active:scale-[0.98] sm:h-14 sm:flex-none sm:justify-start sm:gap-2.5 sm:pl-4 sm:pr-7 sm:text-base"
               >
                 <span className="wa-shine" aria-hidden />
                 <span className="flex shrink-0 items-center">
