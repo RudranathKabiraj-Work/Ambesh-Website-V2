@@ -70,11 +70,9 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
     const handleResize = () => {
       const width = window.innerWidth;
       if (width < 1024) {
-        // Bounding width of the carousel rotating stage on mobile is cardW * 2.6
-        // Let's use 760px as the reference bounding size
-        const maxStageWidth = 760;
-        const availableWidth = Math.min(width - 32, 700); // 16px padding on sides
-        setScale(availableWidth / maxStageWidth);
+        // Scale based on the active card width (290px) plus padding margins
+        const targetWidth = 320;
+        setScale(Math.min(1, (width - 16) / targetWidth));
       } else {
         setScale(1);
       }
