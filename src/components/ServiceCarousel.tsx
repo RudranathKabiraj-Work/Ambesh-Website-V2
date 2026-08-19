@@ -145,9 +145,8 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
                     goTo(idx);
                   }}
                   aria-label={`Go to slide ${idx + 1}`}
-                  className={`relative h-1 cursor-pointer overflow-hidden rounded-full transition-all duration-300 ${
-                    activeIndex === idx ? "carousel-dot-track" : ""
-                  }`}
+                  className={`relative h-1 cursor-pointer overflow-hidden rounded-full transition-all duration-300 ${activeIndex === idx ? "carousel-dot-track" : ""
+                    }`}
                   style={{
                     width: activeIndex === idx ? 18 : 5,
                     backgroundColor: activeIndex === idx ? undefined : "rgba(255,255,255,0.35)",
@@ -165,93 +164,70 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
     </div>
   );
 
-  return (
-    <div 
-      className={`mt-7 md:mt-14 relative ${className}`}
-      style={{
-        height: containerH * scale,
-        width: "100%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        overflow: "visible",
-      }}
-    >
-      {/* Scaled 3D Stage container */}
+  // Mobile: scaled 3D stage wrapper
+  if (isMobile) {
+    return (
       <div
+        className={`mt-3 md:mt-6 relative ${className}`}
         style={{
-          transform: `scale(${scale})`,
-          transformOrigin: "center center",
+          height: containerH * scale,
           width: "100%",
-          maxWidth: cardW * 2.6,
-          height: containerH,
-          perspective: 1400,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          flexShrink: 0,
+          overflow: "visible",
         }}
       >
-        <div className="relative w-full h-full">
-          {/* Rotating hexagon — each card is a face of the hexagon */}
-          <motion.div
-            className="absolute"
-            style={{
-              width: cardW,
-              height: cardH,
-              left: "50%",
-              top: "50%",
-              marginLeft: -cardW / 2,
-              marginTop: -cardH / 2,
-              transformStyle: "preserve-3d",
-            }}
-            animate={{ rotateY: -rotation }}
-            transition={HEX_ROTATE_SPRING}
-          >
-            {cards.map((card, i) => (
-              <div
-                key={i}
-                className="absolute cursor-pointer"
-                style={{
-                  inset: 0,
-                  transform: `rotateY(${i * angleStep}deg) translateZ(${radius}px)`,
-                  backfaceVisibility: "hidden",
-                  WebkitBackfaceVisibility: "hidden",
-                }}
-                onClick={() => goTo(i)}
-              >
-                {renderCardShell(card, i === activeIndex)}
-              </div>
-            ))}
-          </motion.div>
-
-          {/* Left / Right arrows — hidden on mobile */}
-          {!isMobile && (
-            <>
-              <button
-                onClick={goPrev}
-                aria-label="Previous card"
-                className="carousel-arrow absolute z-40 grid h-10 w-10 place-items-center rounded-full border border-white/20 bg-black/50 text-white backdrop-blur-sm transition-all duration-200"
-                style={{ left: 0, top: "50%", transform: "translateY(-50%)" }}
-              >
-                <ChevronLeft className="h-4 w-4" />
-              </button>
-              <button
-                onClick={goNext}
-                aria-label="Next card"
-                className="carousel-arrow absolute z-40 grid h-10 w-10 place-items-center rounded-full border border-white/20 bg-black/50 text-white backdrop-blur-sm transition-all duration-200"
-                style={{ right: 0, top: "50%", transform: "translateY(-50%)" }}
-              >
-                <ChevronRight className="h-4 w-4" />
-              </button>
-            </>
-          )}
+        <div
+          style={{
+            transform: `scale(${scale})`,
+            transformOrigin: "center center",
+            width: "100%",
+            maxWidth: cardW * 2.6,
+            height: containerH,
+            perspective: 1400,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexShrink: 0,
+          }}
+        >
+          <div className="relative w-full h-full">
+            <motion.div
+              className="absolute"
+              style={{
+                width: cardW,
+                height: cardH,
+                left: "50%",
+                top: "50%",
+                marginLeft: -cardW / 2,
+                marginTop: -cardH / 2,
+                transformStyle: "preserve-3d",
+              }}
+              animate={{ rotateY: -rotation }}
+              transition={HEX_ROTATE_SPRING}
+            >
+              {cards.map((card, i) => (
+                <div
+                  key={i}
+                  className="absolute cursor-pointer"
+                  style={{
+                    inset: 0,
+                    transform: `rotateY(${i * angleStep}deg) translateZ(${radius}px)`,
+                    backfaceVisibility: "hidden",
+                    WebkitBackfaceVisibility: "hidden",
+                  }}
+                  onClick={() => goTo(i)}
+                >
+                  {renderCardShell(card, i === activeIndex)}
+                </div>
+              ))}
+            </motion.div>
+          </div>
         </div>
-      </div>
 
-      {/* Progress dots — mobile only, below the cards */}
-      {isMobile && (
-        <div 
+        {/* Progress dots — mobile only, below the cards */}
+        <div
           className="absolute left-0 right-0 flex items-center justify-center gap-2"
           style={{ bottom: -8 }}
         >
@@ -260,9 +236,8 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
               key={idx}
               onClick={() => goTo(idx)}
               aria-label={`Go to slide ${idx + 1}`}
-              className={`relative h-1.5 cursor-pointer overflow-hidden rounded-full transition-all duration-300 ${
-                activeIndex === idx ? "carousel-dot-track" : ""
-              }`}
+              className={`relative h-1.5 cursor-pointer overflow-hidden rounded-full transition-all duration-300 ${activeIndex === idx ? "carousel-dot-track" : ""
+                }`}
               style={{
                 width: activeIndex === idx ? 24 : 7,
                 backgroundColor: activeIndex === idx ? undefined : "rgba(127,127,127,0.35)",
@@ -274,7 +249,75 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
             </button>
           ))}
         </div>
-      )}
+      </div>
+    );
+  }
+
+  // Desktop: original layout from commit 5747dbd — simple centered div, no scale transform
+  return (
+    <div className={`mt-7 md:mt-14 ${className}`}>
+      {/* Hexagonal 3D stage */}
+      <div
+        className="relative mx-auto"
+        style={{
+          width: "100%",
+          maxWidth: cardW * 2.6,
+          height: containerH,
+          perspective: 1400,
+        }}
+      >
+        {/* Rotating hexagon — each card is a face of the hexagon */}
+        <motion.div
+          className="absolute"
+          style={{
+            width: cardW,
+            height: cardH,
+            left: "50%",
+            top: "50%",
+            marginLeft: -cardW / 2,
+            marginTop: -cardH / 2,
+            transformStyle: "preserve-3d",
+          }}
+          animate={{ rotateY: -rotation }}
+          transition={HEX_ROTATE_SPRING}
+        >
+          {cards.map((card, i) => (
+            <div
+              key={i}
+              className="absolute cursor-pointer"
+              style={{
+                inset: 0,
+                transform: `rotateY(${i * angleStep}deg) translateZ(${radius}px)`,
+                backfaceVisibility: "hidden",
+                WebkitBackfaceVisibility: "hidden",
+              }}
+              onClick={() => goTo(i)}
+            >
+              {renderCardShell(card, i === activeIndex)}
+            </div>
+          ))}
+        </motion.div>
+
+        {/* Left / Right arrows */}
+        <>
+          <button
+            onClick={goPrev}
+            aria-label="Previous card"
+            className="carousel-arrow absolute z-40 grid h-10 w-10 place-items-center rounded-full border border-white/20 bg-black/50 text-white backdrop-blur-sm transition-all duration-200"
+            style={{ left: 0, top: "50%", transform: "translateY(-50%)" }}
+          >
+            <ChevronLeft className="h-4 w-4" />
+          </button>
+          <button
+            onClick={goNext}
+            aria-label="Next card"
+            className="carousel-arrow absolute z-40 grid h-10 w-10 place-items-center rounded-full border border-white/20 bg-black/50 text-white backdrop-blur-sm transition-all duration-200"
+            style={{ right: 0, top: "50%", transform: "translateY(-50%)" }}
+          >
+            <ChevronRight className="h-4 w-4" />
+          </button>
+        </>
+      </div>
     </div>
   );
 }
