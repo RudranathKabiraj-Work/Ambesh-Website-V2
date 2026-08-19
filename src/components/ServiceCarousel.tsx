@@ -24,11 +24,12 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
   const [rotation, setRotation] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [scale, setScale] = useState(1);
+  const [mobileCardW, setMobileCardW] = useState(305);
 
   const count = cards.length;
   const angleStep = 360 / count;
-  const cardW = isMobile ? 290 : 365;
-  const cardH = isMobile ? 230 : 255;
+  const cardW = isMobile ? mobileCardW : 365;
+  const cardH = isMobile ? Math.round(mobileCardW * 0.78) : 255;
   // Distance from the hexagon centre to each face; slightly larger than a tight
   // hexagon so there is a small, even gap between every card.
   const radius = (cardW / (2 * Math.tan(Math.PI / count))) * 1.08;
@@ -65,14 +66,17 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
     return () => mq.removeEventListener("change", check);
   }, []);
 
-  // Compute scale factor dynamically based on window width
+  // Compute scale + responsive card width based on window width
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
       if (width < 1024) {
-        // Scale based on the active card width (290px) plus padding margins
-        const targetWidth = 320;
-        setScale(Math.min(1, (width - 16) / targetWidth));
+        // Card fills ~82% of screen width, clamped between 290px and 390px
+        const cw = Math.min(390, Math.max(290, Math.round(width * 0.82)));
+        setMobileCardW(cw);
+        // targetWidth keeps ~10% of left+right cards visible on screen edges
+        const targetWidth = cw * 1.12;
+        setScale(Math.min(1.0, (width - 12) / targetWidth));
       } else {
         setScale(1);
       }
