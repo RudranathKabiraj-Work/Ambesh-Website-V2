@@ -162,7 +162,7 @@ export function SiteHeader() {
               transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
               className="overflow-hidden lg:hidden max-h-[calc(100dvh-120px)]"
             >
-              <div className="border-t border-rule/60 pt-8">
+              <div className="pt-6">
                 <motion.nav
                   initial="closed"
                   animate={open ? "open" : "closed"}
@@ -217,7 +217,7 @@ export function SiteHeader() {
                           className: "bg-accent text-accent-foreground border-accent shadow-lift font-semibold",
                         }}
                         inactiveProps={{
-                          className: "text-ink bg-white/5 dark:bg-white/[0.03] border-white/10 dark:border-white/[0.05] hover:bg-white/10 dark:hover:bg-white/[0.08]",
+                          className: "text-ink bg-black/[0.024] dark:bg-white/[0.03] border-rule/70 dark:border-white/[0.06] hover:bg-black/[0.05] dark:hover:bg-white/[0.08]",
                         }}
                         className="rounded-3xl border p-3.5 flex flex-col items-start justify-center gap-0.5 transition-colors block text-left w-full"
                       >
