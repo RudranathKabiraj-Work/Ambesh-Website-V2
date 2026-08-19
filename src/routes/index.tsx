@@ -304,7 +304,7 @@ function HomePage() {
     <>
       <ScrollProgress />
       {/* HERO */}
-      <section className="premium-canvas bg-premium-side-gradient relative isolate overflow-hidden">
+      <section className="premium-canvas bg-premium-side-gradient relative isolate overflow-x-clip">
         <GridVignetteBackground
           className="hidden dark:block opacity-40"
           x={50}
@@ -316,8 +316,8 @@ function HomePage() {
         />
         <div className="home-grid-light pointer-events-none absolute inset-0" aria-hidden />
         <ParticleField className="opacity-40 hidden md:block" count={14} seed={7} />
-        <div className="container-edit pt-10 pb-20 md:pt-14 md:pb-24">
-          <div className="grid items-center gap-16 lg:grid-cols-12 lg:gap-12">
+        <div className="container-edit pt-10 pb-28 md:pt-14 md:pb-28">
+          <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-7">
               <div className="animate-fade-in-up">
                 <span className="eyebrow flex items-center gap-2 whitespace-nowrap max-sm:gap-1 max-sm:px-2.5 max-sm:text-[0.55rem] max-sm:tracking-[0.08em]">
@@ -408,7 +408,7 @@ function HomePage() {
                   aria-hidden
                 />{" "}
                 {/* Floating circle 1: 13+ Years (Bottom-left) */}
-                <div className="animate-float-1 absolute top-[22%] -left-3 md:-left-12 z-20 w-[70px] h-[70px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center">
+                <div className="animate-float-1 absolute top-[22%] left-0 md:-left-12 z-20 w-[70px] h-[70px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center">
                   <span className="font-display text-[12px] md:text-lg font-extrabold text-gradient-brand animate-gradient hero-stat-solid-white">
                     13+
                   </span>
@@ -417,7 +417,7 @@ function HomePage() {
                   </span>
                 </div>
                 {/* Floating circle 2: 100+ Businesses (Bottom-right) */}
-                <div className="animate-float-2 absolute -bottom-8 -right-2 md:-bottom-10 md:-right-12 z-20 w-[70px] h-[70px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center">
+                <div className="animate-float-2 absolute -bottom-10 right-0 md:-bottom-10 md:-right-12 z-20 w-[70px] h-[70px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center">
                   <span className="font-display text-[12px] md:text-lg font-extrabold text-gradient-brand animate-gradient hero-stat-solid-white">
                     100+
                   </span>
@@ -426,7 +426,7 @@ function HomePage() {
                   </span>
                 </div>
                 {/* Floating circle 3: 5,000+ Trained (Right side middle) */}
-                <div className="animate-float-3 absolute top-[35%] -right-3 md:-right-12 z-20 w-[70px] h-[70px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center">
+                <div className="animate-float-3 absolute top-[35%] right-0 md:-right-12 z-20 w-[70px] h-[70px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center">
                   <span className="font-display text-[12px] md:text-lg font-extrabold text-gradient-brand animate-gradient hero-stat-solid-white">
                     5,000+
                   </span>
