@@ -6,8 +6,25 @@ import { StickyCTABar } from "@/components/StickyCTABar";
 import { useReveal } from "@/hooks/use-reveal";
 import Lenis from "lenis";
 import { SITE_URL, jsonLd, personSchema, organizationSchema } from "@/lib/seo";
+import { applyElevenLabsTheme, applyElevenLabsLayout } from "@/lib/elevenLabsTheme";
+import { enhanceElevenLabsAnimations, updateElevenLabsOrbTheme } from "@/lib/elevenLabsAnimations";
+import { setupElevenLabsCollapse } from "@/lib/elevenLabsCollapse";
 
 import appCss from "../styles.css?url";
+
+declare module "react" {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace JSX {
+    interface IntrinsicElements {
+      "elevenlabs-convai": React.DetailedHTMLProps<
+        React.HTMLAttributes<HTMLElement>,
+        HTMLElement
+      > & {
+        "agent-id": string;
+      };
+    }
+  }
+}
 
 function NotFoundComponent() {
   return (
@@ -123,6 +140,11 @@ function RootShell({ children }: { children: React.ReactNode }) {
             __html: `(function(){try{var t=localStorage.getItem("ambesh-theme");if(t==="dark"){document.documentElement.classList.add("dark");}}catch(e){}})();`,
           }}
         />
+        <script
+          src="https://unpkg.com/@elevenlabs/convai-widget-embed"
+          async
+          type="text/javascript"
+        />
       </head>
       <body>
         {children}
@@ -134,6 +156,67 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   useReveal();
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const apply = () => {
+      const host = document.querySelector("elevenlabs-convai");
+      if (!host) return;
+      applyElevenLabsTheme(host);
+      applyElevenLabsLayout(host);
+      if (host.shadowRoot) {
+        enhanceElevenLabsAnimations(host);
+        // Update orb filter to match current light/dark theme every time
+        // the dark class changes (setAttribute alone is ignored after mount).
+        updateElevenLabsOrbTheme(host);
+      }
+    };
+
+    apply();
+    if (customElements.get("elevenlabs-convai")) {
+      apply();
+    } else {
+      customElements
+        .whenDefined("elevenlabs-convai")
+        .then(apply)
+        .catch(() => {});
+    }
+
+    const layoutQuery = window.matchMedia("(min-width: 1024px)");
+    let collapseCleanup: (() => void) | null = null;
+    const syncCollapse = () => {
+      collapseCleanup?.();
+      collapseCleanup = null;
+      const host = document.querySelector("elevenlabs-convai");
+      if (!host) return;
+      if (window.matchMedia("(max-width: 1023px)").matches) {
+        collapseCleanup = setupElevenLabsCollapse(host);
+      } else {
+        host.classList.remove("ambesh-minimized");
+      }
+    };
+    syncCollapse();
+
+    const onLayoutChange = () => {
+      const host = document.querySelector("elevenlabs-convai");
+      if (host) applyElevenLabsLayout(host);
+      syncCollapse();
+    };
+    layoutQuery.addEventListener("change", onLayoutChange);
+
+    const observer = new MutationObserver(apply);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => {
+      observer.disconnect();
+      layoutQuery.removeEventListener("change", onLayoutChange);
+      collapseCleanup?.();
+    };
+  }, []);
 
   useEffect(() => {
     // Only run on client-side
@@ -180,6 +263,7 @@ function RootComponent() {
       </main>
       <SiteFooter />
       <StickyCTABar />
+      <elevenlabs-convai agent-id="agent_4201m0b292dtf5gvpf96ceb6ztkf"></elevenlabs-convai>
     </div>
   );
 }
