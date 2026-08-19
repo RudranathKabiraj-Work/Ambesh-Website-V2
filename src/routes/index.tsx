@@ -326,7 +326,7 @@ function HomePage() {
                 </span>
               </div>
 
-              <h1 className="animate-fade-in-up delay-80 mt-6 font-display text-[2.4rem] font-extrabold leading-[1.05] tracking-[-0.03em] text-ink dark:text-white sm:text-5xl md:text-6xl lg:text-[4rem]">
+              <h1 className="animate-fade-in-up delay-80 mt-6 font-display text-[8.5vw] min-[360px]:text-[2.4rem] font-extrabold leading-[1.05] tracking-[-0.03em] text-ink dark:text-white sm:text-5xl md:text-6xl lg:text-[4rem]">
                 I Help Founders Scale Their{" "}
                 <span className="relative inline-block">
                   <span className="font-serif italic font-medium text-ink dark:text-white">
@@ -804,7 +804,7 @@ function HomePage() {
         className="relative h-[320vh] md:h-[580vh] bg-canvas home-section-alt"
       >
         <div className="relative sticky top-[80px] md:top-[100px] h-[calc(100vh-80px)] md:h-[520px] flex md:items-center overflow-hidden">
-          <div className="container-edit w-full h-full flex flex-col justify-center gap-20 pb-10 md:h-auto md:grid md:grid-cols-12 md:gap-12 md:items-start md:pb-0">
+          <div className="container-edit w-full h-full flex flex-col justify-center gap-4 min-[360px]:gap-8 sm:gap-14 pb-10 md:h-auto md:grid md:grid-cols-12 md:gap-12 md:items-start md:pb-0">
             {/* Left Column (Header) */}
             <div className="md:col-span-5 pb-4 md:pb-0">
               <p className="eyebrow eyebrow-indigo flex items-center gap-2">
@@ -823,7 +823,7 @@ function HomePage() {
             {/* Stacking Cards Right Column */}
             <div className="md:col-span-7 relative flex items-center justify-center md:mt-0">
               {/* Absolutely positioned stacking cards driven by viewport scroll */}
-              <div className="relative h-[300px] md:h-[380px] w-full max-w-2xl mt-2 md:mt-[45px]">
+              <div className="relative h-[220px] min-[360px]:h-[260px] min-[400px]:h-[300px] md:h-[380px] w-full max-w-2xl mt-2 md:mt-[45px]">
                 {[
                   {
                     n: "01",

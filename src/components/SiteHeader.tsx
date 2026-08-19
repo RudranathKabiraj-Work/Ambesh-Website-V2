@@ -94,8 +94,8 @@ export function SiteHeader() {
 
         {/* Mobile Dropdown Menu */}
         <div
-          className={`overflow-hidden transition-all duration-300 ease-in-out lg:hidden ${
-            open ? "mt-4 max-h-[400px] opacity-100" : "max-h-0 opacity-0"
+          className={`overflow-y-auto transition-all duration-300 ease-in-out lg:hidden ${
+            open ? "mt-4 max-h-[calc(100dvh-120px)] opacity-100" : "max-h-0 opacity-0"
           }`}
         >
           <div className="border-t border-rule/60 pt-4">

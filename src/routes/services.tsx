@@ -690,7 +690,7 @@ export function BusinessOSPage() {
               <Link
                 to="/contact"
                 search={{ service: "diagnostic" }}
-                className="btn-premium inline-flex h-12 items-center gap-1.5 whitespace-nowrap rounded-full px-5 text-sm font-semibold text-white sm:h-14 sm:gap-2 sm:px-8 sm:text-base"
+                className="btn-premium inline-flex h-12 items-center gap-1 min-[375px]:gap-1.5 whitespace-nowrap rounded-full px-3.5 min-[375px]:px-5 text-[11px] min-[360px]:text-xs min-[400px]:text-sm font-semibold text-white sm:h-14 sm:gap-2 sm:px-8 sm:text-base"
               >
                 <span className="relative z-10 flex items-center gap-1.5 sm:gap-2">
                   Book a Business Systems Diagnostic{" "}

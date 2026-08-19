@@ -103,7 +103,7 @@ export function BookStickySection({
       className={`relative h-[200dvh] sm:h-[280dvh] bg-canvas overflow-visible ${sectionClass}`}
     >
       {/* Sticky viewport content block */}
-      <div className="sticky top-0 flex h-[100dvh] items-center overflow-hidden w-full">
+      <div className="sticky top-0 flex min-h-[550px] h-[100dvh] items-center overflow-hidden w-full">
         <div className="container-edit relative w-full">
           <div
             className={`grid gap-12 rounded-[20px] p-8 md:grid-cols-12 md:items-center md:gap-16 md:p-14 shadow-sm ${cardClass}`}

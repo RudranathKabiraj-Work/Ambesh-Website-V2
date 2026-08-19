@@ -165,7 +165,7 @@ function PodcastPage() {
             </Reveal>
           </div>
           <Reveal delay={200} eager className="md:col-span-4">
-            <div className="relative flex w-full flex-col items-center justify-center rounded-3xl bg-gradient-brand px-6 py-8 text-white shadow-glow animate-gradient md:aspect-square">
+            <div className="relative flex w-full flex-col items-center justify-center rounded-3xl bg-gradient-brand px-6 py-5 md:py-6 lg:py-8 text-white shadow-glow animate-gradient lg:aspect-square">
               <div
                 className="absolute inset-0 rounded-3xl opacity-20"
                 style={{
