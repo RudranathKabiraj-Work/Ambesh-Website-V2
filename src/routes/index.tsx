@@ -408,7 +408,7 @@ function HomePage() {
                   aria-hidden
                 />{" "}
                 {/* Floating circle 1: 13+ Years (Bottom-left) */}
-                <div className="animate-float-1 absolute top-[22%] left-0 md:-left-12 z-20 w-[70px] h-[70px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center">
+                <div className="animate-float-1 absolute top-[22%] left-0 lg:-left-12 z-20 w-[70px] h-[70px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center">
                   <span className="font-display text-[12px] md:text-lg font-extrabold text-gradient-brand animate-gradient hero-stat-solid-white">
                     13+
                   </span>
@@ -417,7 +417,7 @@ function HomePage() {
                   </span>
                 </div>
                 {/* Floating circle 2: 100+ Businesses (Bottom-right) */}
-                <div className="animate-float-2 absolute -bottom-10 right-0 md:-bottom-10 md:-right-12 z-20 w-[70px] h-[70px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center">
+                <div className="animate-float-2 absolute -bottom-10 right-0 lg:-bottom-10 lg:-right-12 z-20 w-[70px] h-[70px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center">
                   <span className="font-display text-[12px] md:text-lg font-extrabold text-gradient-brand animate-gradient hero-stat-solid-white">
                     100+
                   </span>
@@ -426,7 +426,7 @@ function HomePage() {
                   </span>
                 </div>
                 {/* Floating circle 3: 5,000+ Trained (Right side middle) */}
-                <div className="animate-float-3 absolute top-[35%] right-0 md:-right-12 z-20 w-[70px] h-[70px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center">
+                <div className="animate-float-3 absolute top-[35%] right-0 lg:-right-12 z-20 w-[70px] h-[70px] md:w-[96px] md:h-[96px] rounded-full bg-canvas/40 backdrop-blur-md border border-rule shadow-lift hover:scale-105 hover:border-accent transition-all duration-300 flex flex-col items-center justify-center p-1 text-center">
                   <span className="font-display text-[12px] md:text-lg font-extrabold text-gradient-brand animate-gradient hero-stat-solid-white">
                     5,000+
                   </span>
@@ -743,18 +743,16 @@ function HomePage() {
                     src={image}
                     alt={title}
                     loading="lazy"
-                    className={`absolute inset-0 h-full w-full object-cover transition-all duration-1500 ease-out ${
-                      isHovered ? "scale-100" : "scale-105"
-                    }`}
+                    className={`absolute inset-0 h-full w-full object-cover transition-all duration-1500 ease-out ${isHovered ? "scale-100" : "scale-105"
+                      }`}
                   />
 
                   {/* Gradient Overlay */}
                   <div
-                    className={`absolute inset-0 transition-opacity duration-1500 ${
-                      isHovered
+                    className={`absolute inset-0 transition-opacity duration-1500 ${isHovered
                         ? "bg-gradient-to-t from-black/95 via-black/55 to-black/15"
                         : "bg-gradient-to-t from-black/95 via-black/75 to-black/40"
-                    }`}
+                      }`}
                   />
 
                   {/* Service Number Badge */}
@@ -765,11 +763,10 @@ function HomePage() {
                   {/* Card Content */}
                   <div className="relative p-6 md:p-8 w-full">
                     <h3
-                      className={`font-display leading-tight tracking-tight text-white transition-all duration-1000 ${
-                        isHovered
+                      className={`font-display leading-tight tracking-tight text-white transition-all duration-1000 ${isHovered
                           ? "text-2xl md:text-[30px] font-extrabold"
                           : "text-xl md:text-2xl font-bold"
-                      }`}
+                        }`}
                     >
                       {title}
                     </h3>
@@ -1212,12 +1209,12 @@ function HomePage() {
             </li>
           </ul>
         </div>
-        <div className="mt-8 flex w-full flex-nowrap items-center gap-2 sm:gap-3">
+        <div className="mt-8 flex w-full flex-wrap items-center gap-2 sm:gap-3">
           <a
             href="https://www.amazon.in/dp/B0CLKZK6JS"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-premium group inline-flex h-12 min-w-0 flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-full px-2 text-xs font-semibold sm:px-6 sm:text-sm"
+            className="btn-premium group inline-flex h-12 w-full justify-center items-center gap-2 whitespace-nowrap rounded-full px-2 text-xs font-semibold min-[400px]:w-auto min-[400px]:flex-1 sm:px-6 sm:text-sm"
           >
             <span className="relative z-10 flex items-center gap-2">
               Get the Book <ArrowRight className="h-4 w-4" />
@@ -1225,7 +1222,7 @@ function HomePage() {
           </a>
           <Link
             to="/book"
-            className="inline-flex h-12 min-w-0 flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-full border border-rule bg-canvas px-2 text-xs font-semibold text-ink hover:bg-sand transition-colors sm:px-6 sm:text-sm"
+            className="inline-flex h-12 w-full justify-center items-center gap-2 whitespace-nowrap rounded-full border border-rule bg-canvas px-2 text-xs font-semibold text-ink hover:bg-sand transition-colors min-[400px]:w-auto min-[400px]:flex-1 sm:px-6 sm:text-sm"
           >
             See What Is Inside
           </Link>
@@ -1276,7 +1273,7 @@ function HomePage() {
               Let&rsquo;s talk about your business, your goals, and where AI and better systems can
               create the biggest impact.
             </p>
-            <div className="mt-10 flex flex-nowrap items-center gap-1.5 sm:gap-3">
+            <div className="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
               <Link
                 to="/contact"
                 search={{ service: "strategy" }}

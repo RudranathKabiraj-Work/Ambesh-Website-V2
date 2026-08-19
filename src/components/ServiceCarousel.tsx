@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -23,6 +23,7 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
   const [activeIndex, setActiveIndex] = useState(0);
   const [rotation, setRotation] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const count = cards.length;
   const angleStep = 360 / count;
@@ -46,14 +47,50 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
   const goTo = useCallback(
     (i: number) => {
       if (i === activeIndex) return;
+      if (isMobile) {
+        setActiveIndex(i);
+        const container = scrollContainerRef.current;
+        if (container) {
+          const card = container.children[i] as HTMLElement;
+          if (card) {
+            container.scrollTo({
+              left: card.offsetLeft - (container.offsetWidth - card.offsetWidth) / 2,
+              behavior: "smooth",
+            });
+          }
+        }
+        return;
+      }
       let delta = i - activeIndex;
       if (delta > count / 2) delta -= count;
       if (delta < -count / 2) delta += count;
       setRotation((r) => r + delta * angleStep);
       setActiveIndex(i);
     },
-    [activeIndex, angleStep, count],
+    [activeIndex, angleStep, count, isMobile],
   );
+
+  const handleScroll = () => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+    const scrollLeft = container.scrollLeft;
+    const containerWidth = container.offsetWidth;
+    let closestIndex = 0;
+    let minDistance = Infinity;
+    Array.from(container.children).forEach((child, index) => {
+      const card = child as HTMLElement;
+      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+      const containerCenter = scrollLeft + containerWidth / 2;
+      const distance = Math.abs(cardCenter - containerCenter);
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestIndex = index;
+      }
+    });
+    if (closestIndex !== activeIndex) {
+      setActiveIndex(closestIndex);
+    }
+  };
 
   useEffect(() => {
     // Match the same breakpoint as CSS mobile performance block
@@ -66,9 +103,10 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
 
   // Auto-rotate to the next card; resets after any manual navigation.
   useEffect(() => {
+    if (isMobile) return;
     const timer = setTimeout(goNext, 5000);
     return () => clearTimeout(timer);
-  }, [activeIndex, goNext]);
+  }, [activeIndex, goNext, isMobile]);
 
   const renderCardShell = (card: ServiceCarouselCard, isActive: boolean) => (
     <div className="group relative h-full w-full">
@@ -146,6 +184,45 @@ export function ServiceCarousel({ cards, className = "" }: ServiceCarouselProps)
       </div>
     </div>
   );
+
+  // ─── MOBILE: horizontal swipeable layout with snap-scroll ─────────────────
+  if (isMobile) {
+    return (
+      <div className={`mt-7 w-full overflow-hidden ${className}`}>
+        <div
+          ref={scrollContainerRef}
+          onScroll={handleScroll}
+          className="flex w-full gap-5 overflow-x-auto pb-6 scrollbar-none snap-x snap-mandatory px-4"
+        >
+          {cards.map((card, i) => (
+            <div
+              key={i}
+              className="w-[280px] sm:w-[320px] shrink-0 snap-center"
+              onClick={() => goTo(i)}
+            >
+              <div className="h-[230px] w-full">
+                {renderCardShell(card, activeIndex === i)}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-2 flex items-center justify-center gap-2">
+          {cards.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => goTo(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+              className="relative h-1.5 cursor-pointer overflow-hidden rounded-full transition-all duration-300"
+              style={{
+                width: activeIndex === idx ? 24 : 7,
+                backgroundColor: activeIndex === idx ? "var(--accent)" : "rgba(127,127,127,0.35)",
+              }}
+            />
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   // ─── DESKTOP: full 3D hexagon carousel ────────────────────────────────────
   return (

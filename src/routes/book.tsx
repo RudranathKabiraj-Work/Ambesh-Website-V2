@@ -192,18 +192,18 @@ function BookPage() {
                 their business.
               </p>
             </Reveal>
-            <Reveal delay={400} className="mt-8 flex flex-nowrap items-center gap-2.5 sm:gap-3">
+            <Reveal delay={400} className="mt-8 flex flex-wrap items-center gap-2.5 sm:gap-3">
               <span
                 className="inline-flex shrink-0 items-center gap-2 rounded-full border border-rule px-3.5 py-1.5 text-[0.65rem] font-semibold uppercase tracking-wider sm:px-4 sm:text-xs"
                 style={{ color: "var(--accent)" }}
               >
                 <Award className="h-3.5 w-3.5" /> Amazon Bestseller
               </span>
-              <span className="truncate whitespace-nowrap text-xs text-ink-muted sm:text-sm">
+              <span className="text-xs text-ink-muted sm:text-sm">
                 Kindle + Physical · English · 2023
               </span>
             </Reveal>
-            <Reveal delay={500} className="mt-10 flex flex-nowrap items-center gap-2.5 sm:gap-3">
+            <Reveal delay={500} className="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
               <a
                 href="https://www.amazon.in/dp/B0CLKZK6JS?ref_=cm_sw_r_cp_ud_dp_YJBSASGYYGPGJ42PBTK2&asin=B0CLKZK6JS&revisionId=7bc12fe7&format=3&depth=1"
                 target="_blank"

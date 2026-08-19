@@ -239,7 +239,7 @@ function TrainingPage() {
               </a>
             </div>
           </Reveal>
-          <div className="mt-14 grid gap-6 grid-cols-2 lg:grid-cols-5">
+          <div className="mt-14 grid gap-6 grid-cols-1 min-[420px]:grid-cols-2 lg:grid-cols-5">
             {heroStats.map((s, i) => (
               <Reveal key={s.l} delay={60 + i * 60} eager>
                 <div className="custom-theme-card-static relative h-full overflow-hidden rounded-[20px] p-4 text-center">
@@ -530,7 +530,7 @@ function TrainingPage() {
               Share your team size, department and goal. We will suggest the right format after a
               short discovery call.
             </p>
-            <div className="mt-10 flex flex-nowrap items-center gap-1.5 sm:gap-3">
+            <div className="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
               <Link
                 to="/contact"
                 search={{ service: "training" }}

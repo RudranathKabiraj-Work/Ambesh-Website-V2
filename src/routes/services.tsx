@@ -352,7 +352,7 @@ export function BusinessOSPage() {
             </p>
           </Reveal>
           <Reveal delay={320} eager>
-            <div className="mt-10 flex flex-nowrap items-center gap-1.5 sm:gap-3">
+            <div className="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
               <Link
                 to="/contact"
                 search={{ service: "strategy" }}

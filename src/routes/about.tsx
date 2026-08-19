@@ -673,7 +673,7 @@ function AboutPage() {
             </p>
           </Reveal>
           <Reveal delay={200} className="mt-12">
-            <div className="flex flex-row items-stretch justify-center gap-2 sm:gap-4">
+            <div className="flex flex-col sm:flex-row items-stretch justify-center gap-2.5 sm:gap-4">
               <Link
                 to="/contact"
                 search={{ service: "strategy" }}

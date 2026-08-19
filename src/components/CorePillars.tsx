@@ -51,7 +51,7 @@ export function CorePillars() {
           The Core Pillars
         </p>
 
-        <div className="grid w-full max-w-5xl grid-cols-1 gap-1.5 px-4 sm:grid-cols-3 sm:gap-4 md:grid-cols-6 lg:gap-6">
+        <div className="grid w-full max-w-5xl grid-cols-3 gap-1.5 px-4 sm:gap-4 md:grid-cols-6 lg:gap-6">
           {ITEMS.map((item, i) => {
             const dir = i - mid;
             const rand = seeded(i);

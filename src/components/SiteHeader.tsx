@@ -40,8 +40,8 @@ export function SiteHeader() {
           open
             ? "max-w-2xl rounded-2xl p-5 border-white/40"
             : scrolled
-              ? "max-w-4xl rounded-full py-2 px-4 md:px-6 border-white/40"
-              : "max-w-[70rem] rounded-full py-3.5 px-6 md:px-8 border-white/25"
+              ? "max-w-4xl rounded-full py-2 px-3 min-[400px]:px-4 md:px-6 border-white/40"
+              : "max-w-[70rem] rounded-full py-3.5 px-4 min-[400px]:px-6 md:px-8 border-white/25"
         }`}
       >
         <div className="flex items-center justify-between">
