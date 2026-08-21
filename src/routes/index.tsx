@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion, AnimatePresence, useScroll, useSpring, useTransform } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useSpring, useInView } from "framer-motion";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -11,7 +11,6 @@ import {
   Sparkles,
   Wrench,
   AlertCircle,
-  Brain,
   Briefcase,
   FolderOpen,
   User,
@@ -23,7 +22,6 @@ import {
 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { TypeLine } from "@/components/TypeLine";
-import { BeliefLogo } from "@/components/BeliefLogos";
 import { CorePillars } from "@/components/CorePillars";
 import { StrategyCallButton } from "@/components/StrategyCallButton";
 import { Marquee } from "@/components/Marquee";
@@ -203,6 +201,8 @@ function HomePage() {
   const problemsRef = useRef<HTMLDivElement>(null);
   const [easeActive, setEaseActive] = useState(0);
   const easeRef = useRef<HTMLDivElement>(null);
+  const testimonialsRef = useRef<HTMLDivElement>(null);
+  const starsInView = useInView(testimonialsRef, { once: true, margin: "0px 0px -80px 0px" });
 
   useEffect(() => {
     const el = problemsRef.current;
@@ -268,37 +268,6 @@ function HomePage() {
     });
   };
 
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end end"],
-  });
-
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, 0]);
-  const scale1 = useTransform(
-    scrollYProgress,
-    [0, 0.45, 0.75, 0.98, 1.0],
-    [1, 0.95, 0.9, 0.85, 0.85],
-  );
-
-  // Card 2: stretched progress trigger from 0.38 to 0.45 to slow down stacking
-  const y2 = useTransform(scrollYProgress, [0, 0.05, 0.45], [800, 800, 20]);
-  const scale2 = useTransform(scrollYProgress, [0.45, 0.75, 0.98, 1.0], [1, 0.95, 0.9, 0.9]);
-
-  // Card 3: stretched trigger from 0.7 to 0.75 to slow down stacking
-  const y3 = useTransform(scrollYProgress, [0, 0.45, 0.75], [800, 800, 40]);
-  const scale3 = useTransform(scrollYProgress, [0.75, 0.98, 1.0], [1, 0.95, 0.95]);
-
-  // Card 4: stretched trigger from 0.98 to 1.0 to slow down stacking
-  const y4 = useTransform(scrollYProgress, [0, 0.75, 0.98, 1.0], [800, 800, 60, 60]);
-  const scale4 = useTransform(scrollYProgress, [0, 0.98, 1.0], [1, 1, 1]);
-
-  const cardsTransforms = [
-    { y: y1, scale: scale1 },
-    { y: y2, scale: scale2 },
-    { y: y3, scale: scale3 },
-    { y: y4, scale: scale4 },
-  ];
 
   return (
     <div className="homepage-wrapper">
@@ -797,98 +766,88 @@ function HomePage() {
         </div>
       </section>
 
-      {/* HOW I THINK */}
+      {/* TESTIMONIALS */}
       <section
-        id="beliefs"
-        ref={sectionRef}
-        className="relative h-[320vh] md:h-[580vh] bg-canvas home-section-alt"
+        id="testimonials"
+        ref={testimonialsRef}
+        className="relative overflow-hidden bg-canvas home-section-alt py-16 md:py-24"
       >
-        <div className="relative sticky top-[80px] md:top-[100px] h-[calc(100vh-80px)] md:h-[520px] flex md:items-center overflow-hidden">
-          <div className="container-edit w-full h-full flex flex-col justify-center gap-4 min-[360px]:gap-8 sm:gap-14 pb-10 md:h-auto md:grid md:grid-cols-12 md:gap-12 md:items-start md:pb-0">
-            {/* Left Column (Header) */}
-            <div className="md:col-span-5 pb-4 md:pb-0">
-              <p className="eyebrow eyebrow-indigo flex items-center gap-2">
-                <Brain className="h-3.5 w-3.5" /> How I Think
-              </p>
-              <h2 className="mt-4 pb-2 font-display text-[1.8rem] sm:text-2xl md:text-[2.2rem] font-extrabold leading-[1.15] tracking-[-0.03em] md:leading-[1.1] md:text-5xl text-ink">
-                Ideas that guide <br className="hidden sm:block" />
-                <span className="font-serif italic font-medium text-gradient-brand">my work.</span>
-              </h2>
-              <p className="mt-3 md:mt-6 text-sm md:text-lg leading-[1.5] md:leading-[1.6] text-ink-soft">
-                These core beliefs shape how I help founders automate operations, scale teams, and
-                build self-managing companies.
-              </p>
-            </div>
 
-            {/* Stacking Cards Right Column */}
-            <div className="md:col-span-7 relative flex items-center justify-center md:mt-0">
-              {/* Absolutely positioned stacking cards driven by viewport scroll */}
-              <div className="relative h-[220px] min-[360px]:h-[260px] min-[400px]:h-[300px] md:h-[380px] w-full max-w-2xl mt-2 md:mt-[45px]">
-                {[
-                  {
-                    n: "01",
-                    title: "A business should not depend on the founder.",
-                    desc: "Founder dependency is structural, not personal. It is resolved with clear accountability, SOPs, and system design.",
-                  },
-                  {
-                    n: "02",
-                    title: "AI adoption matters more than AI awareness.",
-                    desc: "Workshops have limited value unless teams change how they work. Real training requires daily AI adoption rhythms.",
-                  },
-                  {
-                    n: "03",
-                    title: "Do not automate a process you do not understand.",
-                    desc: "Automation makes clean processes faster, but broken ones fail faster. Map the workflow manually before coding.",
-                  },
-                  {
-                    n: "04",
-                    title: "Technology is only one part of the answer.",
-                    desc: "Clear roles and accountability matter more than new tools. Tech accelerates, but human execution is the foundation.",
-                  },
-                ].map(({ n, title, desc }, idx) => {
-                  return (
-                    <motion.div
-                      key={n}
-                      style={{
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        y: cardsTransforms[idx].y,
-                        scale: cardsTransforms[idx].scale,
-                        zIndex: 20 + idx,
-                        transformOrigin: "top center",
-                      }}
-                    >
-                      <div className="custom-theme-card group relative flex flex-col justify-between overflow-hidden rounded-[20px] backdrop-blur-md p-6 !bg-canvas !shadow-xl">
-                        <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-[1100ms] ease-out group-hover:translate-x-full pointer-events-none" />
-                        <div
-                          className="pointer-events-none absolute -top-24 -right-24 h-48 w-48 rounded-full opacity-0 blur-3xl transition-opacity duration-[850ms] ease-out group-hover:opacity-50"
-                          style={{ background: "var(--accent-soft)" }}
-                          aria-hidden
-                        />
-                        <div>
-                          <div className="flex items-center justify-between mb-5">
-                            <span className="inline-flex items-center rounded-full px-2.5 py-0.5 font-mono text-[0.65rem] md:text-[0.78rem] font-bold uppercase tracking-[0.15em] text-accent bg-accent-soft">
-                              Belief {n}
-                            </span>
-                            <div className="icon-box flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-2xl border border-rule transition-colors">
-                              <BeliefLogo variant={idx} className="h-9 w-9 md:h-10 md:w-10" />
-                            </div>
-                          </div>
-                          <h3 className="font-display text-lg md:text-xl font-extrabold tracking-tight text-ink leading-snug">
-                            {title}
-                          </h3>
-                          <p className="mt-3 text-[15px] md:text-[16px] leading-[1.65] text-ink-soft">
-                            {desc}
-                          </p>
-                        </div>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
+        <div className="container-edit relative">
+          <Reveal>
+            <p className="eyebrow eyebrow-indigo flex items-center gap-2">
+              <Star className="h-3.5 w-3.5" /> What clients say
+            </p>
+            <h2 className="mt-4 max-w-3xl font-display text-[2.2rem] font-extrabold leading-[1.1] tracking-[-0.03em] sm:text-4xl md:text-5xl text-ink">
+              Results that speak{" "}
+              <span className="font-serif italic font-medium text-gradient-brand">for themselves.</span>
+            </h2>
+          </Reveal>
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {[
+              {
+                quote:
+                  "Ambesh didn't just teach AI — he rewired how our team thinks about work. Three months later, we've cut manual reporting time by 60% and our managers actually own their numbers.",
+                name: "Chief Operating Officer",
+                role: "Mid-size Financial Services Firm",
+                rating: 5,
+              },
+              {
+                quote:
+                  "We've had plenty of consultants come in with slides. Ambesh came in with a system. The SOPs, the accountability structure, the AI workflows — it all clicked together in weeks, not quarters.",
+                name: "Founder & CEO",
+                role: "E-commerce Brand, UAE",
+                rating: 5,
+              },
+              {
+                quote:
+                  "The session rating doesn't lie — 9.6 out of 10 from a room of sceptical senior managers. He made AI feel practical, not threatening. People left wanting to try things the very next day.",
+                name: "Head of Learning & Development",
+                role: "Large Retail Group, India",
+                rating: 5,
+              },
+            ].map(({ quote, name, role, rating }, i) => (
+              <Reveal key={i} delay={i * 80}>
+                <div className="custom-theme-card group relative flex h-full flex-col justify-between rounded-[20px] p-7">
+                  <div>
+                    <div className="flex gap-0.5 mb-5">
+                      {Array.from({ length: rating }).map((_, s) => {
+                        const delay = 0.4 + s * 0.13;
+                        return (
+                          <motion.span
+                            key={s}
+                            initial={{ scale: 0, opacity: 0 }}
+                            animate={starsInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
+                            transition={{
+                              delay,
+                              duration: 0.35,
+                              type: "spring",
+                              stiffness: 400,
+                              damping: 18,
+                            }}
+                            style={{ display: "inline-flex" }}
+                          >
+                            <Star className="testimonial-star h-4 w-4 fill-current text-accent dark:text-white" />
+                          </motion.span>
+                        );
+                      })}
+                    </div>
+                    <p className="text-[15px] leading-[1.7] text-ink-soft">
+                      &ldquo;{quote}&rdquo;
+                    </p>
+                  </div>
+                  <div className="mt-6 flex items-center gap-3 border-t border-rule pt-5">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent-soft font-display text-sm font-bold text-accent">
+                      {name.charAt(0)}
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-ink">{name}</p>
+                      <p className="text-xs text-ink-muted">{role}</p>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>

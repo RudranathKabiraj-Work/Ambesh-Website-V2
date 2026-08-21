@@ -40,38 +40,40 @@ export function StickyCTABar() {
   };
 
   return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-4 z-40 flex justify-center px-4 animate-slide-up">
-      <div className="pointer-events-auto flex w-full max-w-2xl items-center gap-2 rounded-full border border-rule bg-canvas/95 p-1.5 pl-5 shadow-lift backdrop-blur-xl">
-        <Calendar className="h-4 w-4 shrink-0 text-ink" />
-        <p className="flex-1 truncate text-xs sm:text-sm text-ink">
-          <span className="font-semibold">Free 30-minute strategy call.</span>
-          <span className="hidden text-ink-muted sm:inline"> Practical advice. No obligation.</span>
-        </p>
-        <a
-          href={whatsappUrl(getWaMessage())}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="WhatsApp Ambesh"
-          className="hidden h-10 w-10 items-center justify-center rounded-full border border-rule text-ink-soft transition hover:bg-sand sm:inline-flex"
-        >
-          <MessageCircle className="h-4 w-4" />
-        </a>
-        <Link
-          to="/contact"
-          search={getContactSearch()}
-          className="btn-premium inline-flex h-10 items-center gap-1.5 rounded-full px-4 text-xs font-semibold sm:text-sm"
-        >
-          <span className="relative z-10 flex items-center gap-1.5">
-            Book now <ArrowRight className="h-3.5 w-3.5" />
-          </span>
-        </Link>
-        <button
-          onClick={() => setDismissed(true)}
-          className="rounded-full p-2 text-ink-muted hover:text-ink"
-          aria-label="Dismiss"
-        >
-          <X className="h-3.5 w-3.5" />
-        </button>
+    <div className="hidden lg:block">
+      <div className="pointer-events-none fixed inset-x-0 bottom-4 z-40 flex justify-center px-4 animate-slide-up">
+        <div className="pointer-events-auto flex w-full max-w-2xl items-center gap-2 rounded-full border border-rule bg-canvas/95 p-1.5 pl-5 shadow-lift backdrop-blur-xl">
+          <Calendar className="h-4 w-4 shrink-0 text-ink" />
+          <p className="flex-1 truncate text-xs sm:text-sm text-ink">
+            <span className="font-semibold">Free 30-minute strategy call.</span>
+            <span className="hidden text-ink-muted sm:inline"> Practical advice. No obligation.</span>
+          </p>
+          <a
+            href={whatsappUrl(getWaMessage())}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp Ambesh"
+            className="hidden h-10 w-10 items-center justify-center rounded-full border border-rule text-ink-soft transition hover:bg-sand sm:inline-flex"
+          >
+            <MessageCircle className="h-4 w-4" />
+          </a>
+          <Link
+            to="/contact"
+            search={getContactSearch()}
+            className="btn-premium inline-flex h-10 items-center gap-1.5 rounded-full px-4 text-xs font-semibold sm:text-sm"
+          >
+            <span className="relative z-10 flex items-center gap-1.5">
+              Book now <ArrowRight className="h-3.5 w-3.5" />
+            </span>
+          </Link>
+          <button
+            onClick={() => setDismissed(true)}
+            className="rounded-full p-2 text-ink-muted hover:text-ink"
+            aria-label="Dismiss"
+          >
+            <X className="h-3.5 w-3.5" />
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -1313,7 +1313,7 @@
       color: var(--accent) !important;
     }
 
-    .custom-theme-card:hover svg {
+    .custom-theme-card:hover svg:not(.testimonial-star) {
       color: var(--accent) !important;
     }
 
@@ -2521,7 +2521,6 @@ html.lenis body {
   .home-grid-light::after {
     -webkit-mask-image: none !important;
     mask-image: none !important;
-    background-image: none !important;
   }
 
   /* Kill the premium-canvas aurora blur blobs */
