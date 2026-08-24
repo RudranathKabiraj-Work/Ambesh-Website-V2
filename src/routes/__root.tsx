@@ -1,8 +1,10 @@
-import { useEffect } from "react";
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { Outlet, Link, createRootRoute, HeadContent, Scripts, useLocation } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { StickyCTABar } from "@/components/StickyCTABar";
+import { PageTransition, FrozenRoute } from "@/components/PageTransition";
+import { AnimatePresence } from "framer-motion";
 import { useReveal } from "@/hooks/use-reveal";
 import Lenis from "lenis";
 import { SITE_URL, jsonLd, personSchema, organizationSchema } from "@/lib/seo";
@@ -154,8 +156,47 @@ function RootShell({ children }: { children: React.ReactNode }) {
   );
 }
 
+const routeOrder = ["/", "/about", "/work", "/training", "/book", "/podcast", "/insights"];
+
 function RootComponent() {
   useReveal();
+  const location = useLocation();
+  const [displayPath, setDisplayPath] = useState(location.pathname);
+  const [transitionState, setTransitionState] = useState<"idle" | "closing" | "opening">("idle");
+  const [direction, setDirection] = useState<"forward" | "backward">("forward");
+
+  const getPageTitle = (path: string) => {
+    if (path === "/" || !path) return "Home";
+    const segment = path.split("/").filter(Boolean)[0];
+    return segment.charAt(0).toUpperCase() + segment.slice(1);
+  };
+
+  useEffect(() => {
+    if (location.pathname !== displayPath) {
+      const oldIndex = routeOrder.indexOf(displayPath);
+      const newIndex = routeOrder.indexOf(location.pathname);
+
+      if (newIndex !== -1 && oldIndex !== -1) {
+        setDirection(newIndex > oldIndex ? "forward" : "backward");
+      } else {
+        setDirection("forward");
+      }
+
+      setTransitionState("closing");
+      
+      const timer = setTimeout(() => {
+        setDisplayPath(location.pathname);
+        setTransitionState("opening");
+        
+        const openTimer = setTimeout(() => {
+          setTransitionState("idle");
+        }, 750);
+        return () => clearTimeout(openTimer);
+      }, 750);
+
+      return () => clearTimeout(timer);
+    }
+  }, [location.pathname, displayPath]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -253,13 +294,25 @@ function RootComponent() {
 
   return (
     <div className="app-shell relative flex min-h-screen flex-col bg-canvas text-ink">
+      <AnimatePresence>
+        {transitionState !== "idle" && (
+          <PageTransition 
+            key="curtain" 
+            state={transitionState === "closing" ? "closing" : "opening"} 
+            title={getPageTitle(location.pathname)} 
+            direction={direction}
+          />
+        )}
+      </AnimatePresence>
       <div
         className="home-top-grey pointer-events-none absolute top-0 left-0 right-0 z-40 h-16 md:h-20 xl:h-24"
         aria-hidden
       />
       <SiteHeader />
       <main className="flex-1 pt-16 md:pt-20 xl:pt-24">
-        <Outlet />
+        <FrozenRoute freeze={transitionState === "closing"}>
+          <Outlet />
+        </FrozenRoute>
       </main>
       <SiteFooter />
       <StickyCTABar />
